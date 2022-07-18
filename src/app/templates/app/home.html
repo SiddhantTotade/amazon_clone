@@ -1,0 +1,415 @@
+{% extends 'app/base.html' %}
+{% load static %}
+{% block title %}Home{% endblock %}
+{% block style %}
+<link rel="stylesheet" href="{% static 'app/css/owl.carousel.min.css' %}">
+<link rel="stylesheet" href="{% static 'app/css/owl.theme.default.min.css' %}">
+<link rel="stylesheet" href="{% static 'app/css/style.css' %}">
+<img src="{% static 'app/img/big-carousel/amazon-big-carousel-1.jpg' %}" alt="">
+{% endblock %}
+
+
+{% block carousel %}
+<!-- Carousel for Desktop -->
+<div class="carousel-main carousel-items main">
+  <div class="owl-carousel owl-theme" id="carousel-1">
+    <div class="item">
+      <img src="{% static 'app/img/big-carousel/amazon-big-carousel-1.jpg' %}" alt="">
+    </div>
+    <div class="item">
+      <img src="{% static 'app/img/big-carousel/amazon-big-carousel-2.jpg' %}" alt="">
+    </div>
+    <div class="item">
+      <img src="{% static 'app/img/big-carousel/amazon-big-carousel-3.jpg' %}" alt="">
+    </div>
+    <div class="item">
+      <img src="{% static 'app/img/big-carousel/amazon-big-carousel-4.jpg' %}" alt="">
+    </div>
+    <div class="item">
+      <img src="{% static 'app/img/big-carousel/amazon-big-carousel-5.jpg' %}" alt="">
+    </div>
+    <div class="item">
+      <img src="{% static 'app/img/big-carousel/amazon-big-carousel-6.jpg' %}" alt="">
+    </div>
+  </div>
+  <div class="blur"></div>
+</div>
+{% endblock %}
+
+{% block main-content %}
+<div class="grid-container">
+  <div class="item1">
+    <div class="card">
+      <div class="card-title">
+        <h3>Keep shopping for</h3>
+      </div>
+      <div class="card-images">
+        <div class="card-product-img">
+          <img src="./img/card-items/col-1-img-1.jpg" alt="">
+          <div class="card-product-name">
+            <span><small>Readgear shadow</small></span>
+          </div>
+        </div>
+        <div class="card-product-img">
+          <img src="./img/card-items/col-1-img-2.jpg" alt="">
+          <div class="card-product-name">
+            <span><small>HP KM300F</small></span>
+          </div>
+        </div>
+        <div class="card-product-img">
+          <img src="./img/card-items/col-1-img-3.jpg" alt="">
+          <div class="card-product-name">
+            <span><small>TVS Electronic Gold</small></span>
+          </div>
+        </div>
+        <div class="card-product-img">
+          <img src="./img/card-items/col-1-img-4.jpg" alt="">
+          <div class="card-product-name">
+            <span><small>TVS -e Gold Bharat</small></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="item2">
+    <div class="card">
+      <div class="card-title">
+        <h3>Amazon Pay | Book your travel tickets</h3>
+      </div>
+      <div class="card-images">
+        <div class="card-product-img">
+          <img src="./img/card-items/col-2-img-1.jpg" alt="">
+          <div class="card-product-name">
+            <span><small>Flight tickets</small></span>
+          </div>
+        </div>
+        <div class="card-product-img">
+          <img src="./img/card-items/col-2-img-2.jpg" alt="">
+          <div class="card-product-name">
+            <span><small>Bus tickets</small></span>
+          </div>
+        </div>
+        <div class="card-product-img">
+          <img src="./img/card-items/col-2-img-3.jpg" alt="">
+          <div class="card-product-name">
+            <span><small>Train tickets</small></span>
+          </div>
+        </div>
+        <div class="card-product-img">
+          <img src="./img/card-items/col-2-img-4.jpg" alt="">
+          <div class="card-product-name">
+            <span><small>Essential travel products</small></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="item3">
+    <div class="card">
+      <div class="card-title">
+        <h3>Shop & Pay daily | Earn rewards daily</h3>
+      </div>
+      <div class="card-images">
+        <div class="card-product-img">
+          <img src="./img/card-items/col-3-img-5.jpg" alt="">
+          <div class="card-product-name">
+            <span><small>Claim your scratch cards</small></span>
+          </div>
+        </div>
+        <div class="card-product-img">
+          <img src="./img/card-items/col-3-img-6.jpg" alt="">
+          <div class="card-product-name">
+            <span><small>Reedem your rewards</small></span>
+          </div>
+        </div>
+        <div class="card-product-img">
+          <img src="./img/card-items/col-3-img-7.jpg" alt="">
+          <div class="card-product-name">
+            <span><small>Unlock more rewards</small></span>
+          </div>
+        </div>
+        <div class="card-product-img">
+          <img src="./img/card-items/col-3-img-8.jpg" alt="">
+          <div class="card-product-name">
+            <span><small>Explore all offers</small></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="item4">
+    <div class="card app">
+      <div class="card-title">
+        <h3>Shop on the Amazon App</h3>
+      </div>
+
+      <div class="app-subtitle">
+        <p><span>Fast, convinient and secure | over 17 crore products in your pocket</span></p>
+      </div>
+    </div>
+  </div>
+  <div class="item5">
+    <div class="card vid">
+      <video controls>
+        <source src="./img/video.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+    </div>
+  </div>
+  <div class="item6">
+    <div class="card">
+      <div class="card-title">
+        <h3>Upto 70% off | Styles for Men</h3>
+      </div>
+      <div class="card-images">
+        <div class="card-product-img">
+          <img src="./img/card-items/col-3-img-1.jpg" alt="">
+          <div class="card-product-name">
+            <span><small>Clothing</small></span>
+          </div>
+        </div>
+        <div class="card-product-img">
+          <img src="./img/card-items/col-3-img-2.jpg" alt="">
+          <div class="card-product-name">
+            <span><small>Footwear</small></span>
+          </div>
+        </div>
+        <div class="card-product-img">
+          <img src="./img/card-items/col-3-img-3.jpg" alt="">
+          <div class="card-product-name">
+            <span><small>Watches</small></span>
+          </div>
+        </div>
+        <div class="card-product-img">
+          <img src="./img/card-items/col-3-img-4.jpg" alt="">
+          <div class="card-product-name">
+            <span><small>Bags & Luggage</small></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="item7">
+    <div class="card">
+      <div class="card-title">
+        <h3>Shop by Category</h3>
+      </div>
+      <div class="card-images">
+        <div class="card-product-img">
+          <img src="./img/card-items/col-4-img-1.jpg" alt="">
+          <div class="card-product-name">
+            <span><small>Fresh</small></span>
+          </div>
+        </div>
+        <div class="card-product-img">
+          <img src="./img/card-items/col-4-img-2.jpg" alt="">
+          <div class="card-product-name">
+            <span><small>Mobiles</small></span>
+          </div>
+        </div>
+        <div class="card-product-img">
+          <img src="./img/card-items/col-4-img-3.jpg" alt="">
+          <div class="card-product-name">
+            <span><small>Fashion</small></span>
+          </div>
+        </div>
+        <div class="card-product-img">
+          <img src="./img/card-items/col-4-img-4.jpg" alt="">
+          <div class="card-product-name">
+            <span><small>Electronics</small></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="item8" id="carousel">
+    <div class="carousel-title-1">
+      <h3>Today's Deal</h3>
+    </div>
+    <div class="owl-carousel" id="carousel-2">
+      {% for w in watch %}
+      <div class="item">
+        <img src="{{w.product_image.url}}" alt="">
+        <div class="offer">
+          <h4>{{w.id}}% off</h4>
+          <h5>Deal of the Day</h5>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+  <div class="item9" id="carousel">
+    <div class="carousel-title-2 carousel-title-1">
+      <h3>More items to consider</h3>
+    </div>
+    <div class="owl-carousel" id="carousel-3">
+      {% for ps in product_shuffle %}
+      <div class="item">
+        <img src="{{ps.product_image.url}}" alt="">
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+  <div class="item10">
+    <div class="card">
+      <div class="card-title">
+        <h3>Bring joy with the perfect wedding gifts</h3>
+      </div>
+      <div class="card-images">
+        <div class="card-product-img">
+          <img src="./img/card-items-2/col-1-img-1.jpg" alt="">
+          <div class="card-product-name">
+            <span><small>Dinner set</small></span>
+          </div>
+        </div>
+        <div class="card-product-img">
+          <img src="./img/card-items-2/col-1-img-2.jpg" alt="">
+          <div class="card-product-name">
+            <span><small>Kitchen appliences</small></span>
+          </div>
+        </div>
+        <div class="card-product-img">
+          <img src="./img/card-items-2/col-1-img-3.jpg" alt="">
+          <div class="card-product-name">
+            <span><small>Jeweliery</small></span>
+          </div>
+        </div>
+        <div class="card-product-img">
+          <img src="./img/card-items-2/col-1-img-4.jpg" alt="">
+          <div class="card-product-name">
+            <span><small>Gift card</small></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="item11">
+    <div class="card">
+      <div class="card-title">
+        <h3>Up to 45% off | Top offers from Amazon Brand - Solimo</h3>
+      </div>
+      <div class="card-images">
+        <div class="card-product-img">
+          <img class="big" src="./img/card-items-2/col-2-img-1.jpg" alt="">
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="item12">
+    <div class="card">
+      <div class="card-title">
+        <h3>For all birthday gifting and celebration needs</h3>
+      </div>
+      <div class="card-images">
+        <div class="card-product-img">
+          <img class="big" src="./img/card-items-2/col-3-img-1.jpg" alt="">
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="item13">
+    <div class="card">
+      <div class="card-title">
+        <h3>Up to 60% off | Fitness essentials to set up your home</h3>
+      </div>
+      <div class="card-images">
+        <div class="card-product-img">
+          <img class="big" src="./img/card-items-2/col-4-img-1.jpg" alt="">
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="item14" id="carousel">
+    <div class="carousel-title-3 carousel-title-1">
+      <h3>Additional items to explore</h3>
+    </div>
+    <div class="owl-carousel" id="carousel-4">
+      {% for m in mobiles %}
+      <div class="item">
+        <img src="{{m.product_image.url}}" alt="">
+        <div class="offer">
+          <h4>50% off</h4>
+          <h5>Deal of the Day</h5>
+        </div>
+      </div>
+      {% endfor %}
+      <!-- <div class="item">
+                <img src="./img/card-carousel-3/card-carousel-2.jpg" alt="">
+                <div class="offer">
+                    <h4>70% off</h4>
+                    <h5>Deal of the Day</h5>
+                </div>
+            </div>
+            <div class="item">
+                <img src="./img/card-carousel-3/card-carousel-3.jpg" alt="">
+                <div class="offer">
+                    <h4>25% off</h4>
+                    <h5>Deal of the Day</h5>
+                </div>
+            </div>
+            <div class="item">
+                <img src="./img/card-carousel-3/card-carousel-4.jpg" alt="">
+                <div class="offer">
+                    <h4>33% off</h4>
+                    <h5>Deal of the Day</h5>
+                </div>
+            </div>
+            <div class="item">
+                <img src="./img/card-carousel-3/card-carousel-5.jpg" alt="">
+                <div class="offer">
+                    <h4>69% off</h4>
+                    <h5>Deal of the Day</h5>
+                </div>
+            </div>
+            <div class="item">
+                <img src="./img/card-carousel-3/card-carousel-7.jpg" alt="">
+                <div class="offer">
+                    <h4>10% off</h4>
+                    <h5>Deal of the Day</h5>
+                </div>
+            </div>
+            <div class="item">
+                <img src="./img/card-carousel-3/card-carousel-8.jpg" alt="">
+                <div class="offer">
+                    <h4>100% off</h4>
+                    <h5>Deal of the Day</h5>
+                </div>
+            </div>
+            <div class="item">
+                <img src="./img/card-carousel-3/card-carousel-9.jpg" alt="">
+                <div class="offer">
+                    <h4>20% off</h4>
+                    <h5>Deal of the Day</h5>
+                </div>
+            </div>
+            <div class="item">
+                <img src="./img/card-carousel-3/card-carousel-10.jpg" alt="">
+                <div class="offer">
+                    <h4>35% off</h4>
+                    <h5>Deal of the Day</h5>
+                </div>
+            </div>
+            <div class="item">
+                <img src="./img/card-carousel-3/card-carousel-11.jpg" alt="">
+                <div class="offer">
+                    <h4>10% off</h4>
+                    <h5>Deal of the Day</h5>
+                </div>
+            </div>
+            <div class="item">
+                <img src="./img/card-carousel-3/card-carousel-12.jpg" alt="">
+                <div class="offer">
+                    <h4>50% off</h4>
+                    <h5>Deal of the Day</h5>
+                </div>
+            </div> -->
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+{% block js %}
+<script src="{% static 'app/js/jquery.min.js' %}"></script>
+<script src="{% static 'app/js/owl.carousel.min.js' %}"></script>
+<script src="{% static 'app/js/index.js' %}"></script>
+{% endblock %}

@@ -1,0 +1,133 @@
+html {
+    height: 100%;
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    color: #fff;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+*::before,
+*::after {
+    box-sizing: inherit;
+}
+
+body {
+    background: rgb(255, 255, 255);
+}
+
+@media screen and (min-width:401px) {
+
+    .amazon-logo {
+        display: flex;
+        width: 30%;
+        margin: auto;
+        margin-bottom: 1em;
+        justify-content: center;
+    }
+
+    .amazon-logo img {
+        width: 30%;
+        object-fit: contain;
+    }
+
+    .amazon-logo h4 {
+        margin: 30px 0;
+        color: #000000;
+    }
+
+    .login-container {
+        margin-top: 1em;
+        border: 1px solid gainsboro;
+        margin: auto;
+        width: 25%;
+        border-radius: 5px;
+    }
+
+    .login-container h1,
+    .login-container small,
+    .login-container h4 {
+        color: #000000;
+    }
+
+    .sign-in-title {
+        width: 90%;
+        margin: auto;
+        padding: 15px 0;
+    }
+
+    .user-login {
+        display: grid;
+        gap: 20px;
+        width: 90%;
+        margin: auto;
+        margin-bottom: 1em;
+    }
+
+    .user-login div {
+        display: grid;
+        gap: 5px;
+    }
+
+    .user-login button,
+    .user-login input {
+        height: 4vh;
+        width: 100%;
+        border: 2px solid gainsboro;
+        border-radius: 5px;
+        color: #000000;
+        padding: 0 10px;
+        font-size: 15px;
+    }
+
+    .user-login button {
+        cursor: pointer;
+        margin-top: 1em;
+        color: #000000;
+        border: none;
+        background-color: orange;
+    }
+
+    .continue {
+        margin-top: 2em;
+    }
+
+    .new-amazon {
+        margin-top: 2em;
+        width: 25%;
+        display: flex;
+        justify-content: center;
+    }
+
+    .new-amazon:after,
+    .new-amazon:before {
+        content: "";
+        flex: 1 1;
+        border-bottom: 1px solid rgb(130, 130, 130);
+        margin: auto;
+    }
+
+    .new-amazon small {
+        color: rgb(130, 130, 130);
+    }
+
+    .create-account {
+        display: flex;
+        justify-content: center;
+        width: 25%;
+        margin: auto;
+        margin-top: 2em;
+    }
+
+    .create-account button {
+        cursor: pointer;
+        width: 90%;
+        height: 4vh;
+        border-radius: 5px;
+        border: 1px solid grey;
+        color: #000000;
+    }
+}
