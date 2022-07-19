@@ -268,10 +268,12 @@
         </div>
         <div class="animation"></div>
         <div class="sub-card-item">
-          <img src="{% static 'app/img/grid-animation/grid-animation-1.jpg' %}" alt="">
-          <img src="{% static 'app/img/grid-animation/grid-animation-2.jpg' %}" alt="">
+          {% for msm in mobile_shuffle_mob %}
+          <img src="{{msm.product_image.url}}" alt="">
+          {% endfor %}
+          <!-- <img src="{% static 'app/img/grid-animation/grid-animation-2.jpg' %}" alt="">
           <img src="{% static 'app/img/grid-animation/grid-animation-3.jpeg' %}" alt="">
-          <img src="{% static 'app/img/grid-animation/grid-animation-4.jpeg' %}" alt="">
+          <img src="{% static 'app/img/grid-animation/grid-animation-4.jpeg' %}" alt=""> -->
         </div>
       </div>
       <div class="item-cards-grid">

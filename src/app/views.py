@@ -23,12 +23,13 @@ class ProductView(View):
         watch_shuffle = random.sample(random_watch, 14)
         random_mobile = list(mobiles)
         mobile_shuffle = random.sample(random_mobile, 9)
+        mobile_shuffle_mob = random.sample(random_mobile, 4)
         random_item = list(Product.objects.all())
         item_shuffle = random.sample(random_item, 20)
         if request.user.is_authenticated:
             totalitem = len(Cart.objects.filter(user=request.user))
 
-        return render(request, 'app/home.html', {'topwears': topwears, 'bottomwears': bottomwears, 'mobiles': mobiles, 'laptops': laptops, 'watch': watch, 'computer_accessories': computer_accessories, 'mobile_shuffle': mobile_shuffle, 'watch_shuffle': watch_shuffle, 'item_shuffle': item_shuffle, 'totalitem': totalitem})
+        return render(request, 'app/home.html', {'topwears': topwears, 'bottomwears': bottomwears, 'mobiles': mobiles, 'laptops': laptops, 'watch': watch, 'computer_accessories': computer_accessories, 'watch_shuffle': watch_shuffle, 'mobile_shuffle': mobile_shuffle, 'mobile_shuffle_mob': mobile_shuffle_mob, 'item_shuffle': item_shuffle, 'totalitem': totalitem})
 
 
 # def home(request):

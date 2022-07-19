@@ -1071,8 +1071,9 @@ body {
     }
 
     .sub-card-item img {
-        width: 70%;
+        width: 75%;
         margin: 10px;
+        height: 15vh;
     }
 
     .animation {
