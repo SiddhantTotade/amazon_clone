@@ -1079,7 +1079,6 @@ body {
     .animation {
         display: grid;
         width: 100%;
-        /* background-color: #050d22; */
         height: 20em;
         z-index: -1;
     }
