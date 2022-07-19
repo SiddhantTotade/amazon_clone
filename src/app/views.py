@@ -24,8 +24,7 @@ class ProductView(View):
         random_watch = list(watch)
         watch_shuffle = random.sample(random_watch, 14)
         random_item = list(Product.objects.all())
-        product_shuffle = random.sample(random_item, 30)
-        # print("Hello", product_shuffle)
+        product_shuffle = random.sample(random_item, 20)
         if request.user.is_authenticated:
             totalitem = len(Cart.objects.filter(user=request.user))
 

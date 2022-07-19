@@ -25,7 +25,11 @@
         </div>
         <!-- Right Div -->
         <div class="col-right">
-          <h6 class="name">Siddhant</h6>
+          {% if request.user.is_authenticated %}
+          <h6 class="name">{{ request.user|capfirst }}</h6>
+          {% else %}
+          <h6 class="name">Sign in</h6>
+          {% endif %}
           <i class="uil uil-user"></i>
           <i class="uil uil-shopping-cart"></i>
         </div>
@@ -99,7 +103,11 @@
     <div class="location-container">
       <div class="location">
         <i class="uil uil-location-point"></i>
+        {% if request.user.is_authenticated %}
         <span><small>Deleiver to Siddhant - Raipur 492009</small></span>
+        {% else %}
+        <span><small>Deleiver to Sign in</small></span>
+        {% endif %}
       </div>
     </div>
   </header>
@@ -107,7 +115,7 @@
   <div class="item-types">
     <div class="item">
       <div class="img">
-        <img src="./img/nav-images/nav-img-1.jpg" alt="">
+        <img src="{% static 'app/img/nav-images/nav-img-1.jpg' %}" alt="">
       </div>
       <div class="item-type-name">
         <span><small>Mobiles</small></span>
@@ -115,7 +123,7 @@
     </div>
     <div class="item">
       <div class="img">
-        <img src="./img/nav-images/nav-img-2.jpeg" alt="">
+        <img src="{% static 'app/img/nav-images/nav-img-2.jpeg' %}" alt="">
       </div>
       <div class="item-type-name">
         <span><small>Home</small></span>
@@ -123,7 +131,7 @@
     </div>
     <div class="item">
       <div class="img">
-        <img src="./img/nav-images/nav-img-3.jpg" alt="">
+        <img src="{% static 'app/img/nav-images/nav-img-3.jpg' %}" alt="">
       </div>
       <div class="item-type-name">
         <span><small>Fashion</small></span>
@@ -131,7 +139,7 @@
     </div>
     <div class="item">
       <div class="img">
-        <img src="./img/nav-images/nav-img-4.jpg" alt="">
+        <img src="{% static 'app/img/nav-images/nav-img-4.jpg' %}" alt="">
       </div>
       <div class="item-type-name">
         <span><small>Prime</small></span>
@@ -139,7 +147,7 @@
     </div>
     <div class="item">
       <div class="img">
-        <img src="./img/nav-images/nav-img-5.jpg" alt="">
+        <img src="{% static 'app/img/nav-images/nav-img-5.jpg' %}" alt="">
       </div>
       <div class="item-type-name">
         <span><small>miniTV</small></span>
@@ -147,7 +155,7 @@
     </div>
     <div class="item">
       <div class="img">
-        <img src="./img/nav-images/nav-img-6.jpg" alt="">
+        <img src="{% static 'app/img/nav-images/nav-img-6.jpg' %}" alt="">
       </div>
       <div class="item-type-name">
         <span><small>Fresh</small></span>
@@ -155,7 +163,7 @@
     </div>
     <div class="item">
       <div class="img">
-        <img src="./img/nav-images/nav-img-7.jpg" alt="">
+        <img src="{% static 'app/img/nav-images/nav-img-7.jpg' %}" alt="">
       </div>
       <div class="item-type-name">
         <span><small>Electronics</small></span>
@@ -163,7 +171,7 @@
     </div>
     <div class="item">
       <div class="img">
-        <img src="./img/nav-images/nav-img-8.jpg" alt="">
+        <img src="{% static 'app/img/nav-images/nav-img-8.jpg' %}" alt="">
       </div>
       <div class="item-type-name">
         <span><small>Appliances</small></span>
@@ -171,7 +179,7 @@
     </div>
     <div class="item">
       <div class="img">
-        <img src="./img/nav-images/nav-img-9.jpg" alt="">
+        <img src="{% static 'app/img/nav-images/nav-img-9.jpg' %}" alt="">
       </div>
       <div class="item-type-name">
         <span><small>Books, Toys</small></span>
@@ -179,7 +187,7 @@
     </div>
     <div class="item">
       <div class="img">
-        <img class="item-img" src="./img/nav-images/nav-img-10.jpg" alt="">
+        <img class="item-img" src="{% static 'app/img/nav-images/nav-img-10.jpg' %}" alt="">
       </div>
       <div class="item-type-name">
         <span><small>Essentials</small></span>
@@ -190,31 +198,31 @@
   <div class="carousel-main-mob">
     <div class="owl-carousel owl-theme" id="carousel-mobile">
       <div class="carousel-img">
-        <img src="./img/carousel-mobile/carousel-mob-1.jpg" alt="">
+        <img src="{% static 'app/img/carousel-mobile/carousel-mob-1.jpg' %}" alt="">
       </div>
       <div class="carousel-img">
-        <img src="./img/carousel-mobile/carousel-mob-2.jpg" alt="">
+        <img src="{% static 'app/img/carousel-mobile/carousel-mob-2.jpg' %}" alt="">
       </div>
       <div class="carousel-img">
-        <img src="./img/carousel-mobile/carousel-mob-3.jpg" alt="">
+        <img src="{% static 'app/img/carousel-mobile/carousel-mob-3.jpg' %}" alt="">
       </div>
       <div class="carousel-img">
-        <img src="./img/carousel-mobile/carousel-mob-4.jpg" alt="">
+        <img src="{% static 'app/img/carousel-mobile/carousel-mob-4.jpg' %}" alt="">
       </div>
       <div class="carousel-img">
-        <img src="./img/carousel-mobile/carousel-mob-5.jpg" alt="">
+        <img src="{% static 'app/img/carousel-mobile/carousel-mob-5.jpg' %}" alt="">
       </div>
       <div class="carousel-img">
-        <img src="./img/carousel-mobile/carousel-mob-6.jpg" alt="">
+        <img src="{% static 'app/img/carousel-mobile/carousel-mob-6.jpg' %}" alt="">
       </div>
       <div class="carousel-img">
-        <img src="./img/carousel-mobile/carousel-mob-7.jpg" alt="">
+        <img src="{% static 'app/img/carousel-mobile/carousel-mob-7.jpg' %}" alt="">
       </div>
       <div class="carousel-img">
-        <img src="./img/carousel-mobile/carousel-mob-8.jpg" alt="">
+        <img src="{% static 'app/img/carousel-mobile/carousel-mob-8.jpg' %}" alt="">
       </div>
       <div class="carousel-img">
-        <img src="./img/carousel-mobile/carousel-mob-9.jpg" alt="">
+        <img src="{% static 'app/img/carousel-mobile/carousel-mob-9.jpg' %}" alt="">
       </div>
     </div>
   </div>
@@ -222,34 +230,34 @@
   <div class="card-carousel">
     <div class="cards">
       <div class="item-card">
-        <img src="./img/card-carousel-mobile/card-carousel-1.jpg" alt="">
+        <img src="{% static 'app/img/card-carousel-mobile/card-carousel-1.jpg' %}" alt="">
       </div>
       <div class="item-card">
-        <img src="./img/card-carousel-mobile/card-carousel-2.jpg" alt="">
+        <img src="{% static 'app/img/card-carousel-mobile/card-carousel-2.jpg' %}" alt="">
       </div>
       <div class="item-card">
-        <img src="./img/card-carousel-mobile/card-carousel-3.jpg" alt="">
+        <img src="{% static 'app/img/card-carousel-mobile/card-carousel-3.jpg' %}" alt="">
       </div>
       <div class="item-card">
-        <img src="./img/card-carousel-mobile/card-carousel-4.jpg" alt="">
+        <img src="{% static 'app/img/card-carousel-mobile/card-carousel-4.jpg' %}" alt="">
       </div>
       <div class="item-card">
-        <img src="./img/card-carousel-mobile/card-carousel-5.jpg" alt="">
+        <img src="{% static 'app/img/card-carousel-mobile/card-carousel-5.jpg' %}" alt="">
       </div>
       <div class="item-card">
-        <img src="./img/card-carousel-mobile/card-carousel-6.jpg" alt="">
+        <img src="{% static 'app/img/card-carousel-mobile/card-carousel-6.jpg' %}" alt="">
       </div>
       <div class="item-card">
-        <img src="./img/card-carousel-mobile/card-carousel-7.jpg" alt="">
+        <img src="{% static 'app/img/card-carousel-mobile/card-carousel-7.jpg' %}" alt="">
       </div>
       <div class="item-card">
-        <img src="./img/card-carousel-mobile/card-carousel-8.jpg" alt="">
+        <img src="{% static 'app/img/card-carousel-mobile/card-carousel-8.jpg' %}" alt="">
       </div>
       <div class="item-card">
-        <img src="./img/card-carousel-mobile/card-carousel-9.jpg" alt="">
+        <img src="{% static 'app/img/card-carousel-mobile/card-carousel-9.jpg' %}" alt="">
       </div>
       <div class="item-card">
-        <img src="./img/card-carousel-mobile/card-carousel-10.jpg" alt="">
+        <img src="{% static 'app/img/card-carousel-mobile/card-carousel-10.jpg' %}" alt="">
       </div>
     </div>
 
@@ -260,10 +268,10 @@
         </div>
         <div class="animation"></div>
         <div class="sub-card-item">
-          <img src="./img/grid-animation/grid-animation-1.jpg" alt="">
-          <img src="./img/grid-animation/grid-animation-2.jpg" alt="">
-          <img src="./img/grid-animation/grid-animation-3.jpeg" alt="">
-          <img src="./img/grid-animation/grid-animation-4.jpeg" alt="">
+          <img src="{% static 'app/img/grid-animation/grid-animation-1.jpg' %}" alt="">
+          <img src="{% static 'app/img/grid-animation/grid-animation-2.jpg' %}" alt="">
+          <img src="{% static 'app/img/grid-animation/grid-animation-3.jpeg' %}" alt="">
+          <img src="{% static 'app/img/grid-animation/grid-animation-4.jpeg' %}" alt="">
         </div>
       </div>
       <div class="item-cards-grid">
@@ -273,7 +281,7 @@
         <div class="grid-container-mob">
           <div class="img-grid">
             <div class="item-img">
-              <img src="./img/grid-images-mobile/grid-img-mob-1.jpg" alt="">
+              <img src="{% static 'app/img/grid-images-mobile/grid-img-mob-1.jpg' %}" alt="">
             </div>
             <div class="item-title">
               <small>Clothing</small>
@@ -281,7 +289,7 @@
           </div>
           <div class="img-grid">
             <div class="item-img">
-              <img src="./img/grid-images-mobile/grid-img-mob-2.jpg" alt="">
+              <img src="{% static 'app/img/grid-images-mobile/grid-img-mob-2.jpg' %}" alt="">
             </div>
             <div class="item-title">
               <small>Beauty & makeup</small>
@@ -289,7 +297,7 @@
           </div>
           <div class="img-grid">
             <div class="item-img">
-              <img src="./img/grid-images-mobile/grid-img-mob-3.jpg" alt="">
+              <img src="{% static 'app/img/grid-images-mobile/grid-img-mob-3.jpg' %}" alt="">
             </div>
             <div class="item-title">
               <small>Footwear</small>
@@ -297,7 +305,7 @@
           </div>
           <div class="img-grid">
             <div class="item-img">
-              <img src="./img/grid-images-mobile/grid-img-mob-4.jpg" alt="">
+              <img src="{% static 'app/img/grid-images-mobile/grid-img-mob-4.jpg' %}" alt="">
             </div>
             <div class="item-title">
               <small>Watches</small>
@@ -312,7 +320,7 @@
         <div class="grid-container-mob">
           <div class="img-grid">
             <div class="item-img">
-              <img src="./img/grid-images-mobile/grid-img-mob-5.jpg" alt="">
+              <img src="{% static 'app/img/grid-images-mobile/grid-img-mob-5.jpg' %}" alt="">
             </div>
             <div class="item-title">
               <small>Clothing</small>
@@ -320,7 +328,7 @@
           </div>
           <div class="img-grid">
             <div class="item-img">
-              <img src="./img/grid-images-mobile/grid-img-mob-6.jpg" alt="">
+              <img src="{% static 'app/img/grid-images-mobile/grid-img-mob-6.jpg' %}" alt="">
             </div>
             <div class="item-title">
               <small>Beauty & makeup</small>
@@ -328,7 +336,7 @@
           </div>
           <div class="img-grid">
             <div class="item-img">
-              <img src="./img/grid-images-mobile/grid-img-mob-7.jpg" alt="">
+              <img src="{% static 'app/img/grid-images-mobile/grid-img-mob-7.jpg' %}" alt="">
             </div>
             <div class="item-title">
               <small>Footwear</small>
@@ -336,7 +344,7 @@
           </div>
           <div class="img-grid">
             <div class="item-img">
-              <img src="./img/grid-images-mobile/grid-img-mob-8.jpg" alt="">
+              <img src="{% static 'app/img/grid-images-mobile/grid-img-mob-8.jpg' %}" alt="">
             </div>
             <div class="item-title">
               <small>Watches</small>
@@ -350,7 +358,7 @@
         </div>
         <div class=" show">
           <div class="item-img-show">
-            <img src="./img/grid-images-mobile/grid-img-mob-9.jpg" alt="">
+            <img src="{% static 'app/img/grid-images-mobile/grid-img-mob-9.jpg' %}" alt="">
           </div>
         </div>
       </div>
@@ -358,7 +366,11 @@
   </div>
   <footer class="upper">
     <div class="col-1">
-      <small>Siddhant's Amazon.in</small>
+      {% if request.user.is_authenticated %}
+      <small>{{ request.user|capfirst }}'s Amazon.in</small>
+      {% else %}
+      <small>Amazon.in</small>
+      {% endif %}
       <small>Amazon Pay</small>
       <small>Wish List</small>
       <small>Your Account</small>
@@ -395,14 +407,19 @@
     <nav class="container">
       <div class="left">
         <div class="logo">
-          <img class="amazon-logo" src="./img/amazon-logo.png" alt="">
+          <img class="amazon-logo" src="{% static 'app/img/amazon-logo.png' %}" alt="">
           <span>.in</span>
         </div>
         <div class="address-container">
           <i class="uil uil-location-point location-icon"></i>
           <div class="address">
+            {% if request.user.is_authenticated %}
             <span><small>Deliver to Siddhant</small></span>
             <h4>Raipur 0X0X0X</h4>
+            {% else %}
+            <span><small>Deliver to Sign in</small></span>
+            <h4>Raipur 0X0X0X</h4>
+            {% endif %}
           </div>
         </div>
       </div>
@@ -438,11 +455,15 @@
       </div>
       <div class="right">
         <div class="flag">
-          <img class="india-flag" src="./img/india.png" alt="">
+          <img class="india-flag" src="{% static 'app/img/india.png' %}" alt="">
           <i class="uil uil-angle-down"></i>
         </div>
         <div class="account">
-          <span><small>Hello, Siddhant</small></span>
+          {% if request.user.is_authenticated %}
+          <span><small>Hello, {{ request.user|capfirst }}</small></span>
+          {% else %}
+          <span><small>Hello, Sign in</small></span>
+          {% endif %}
           <div class="account-down">
             <h4>Account & Lists</h4>
             <i class="uil uil-angle-down account-icon"></i>
@@ -461,7 +482,11 @@
           <i class="uil uil-multiply close-menu-desktop"></i>
           <div class="user">
             <i class="uil uil-user user-desktop"></i>
-            <h2>Hello, Siddhant</h2>
+            {% if request.user.is_authenticated %}
+            <h2>Hello, {{ request.user|capfirst }}</h2>
+            {% else %}
+            <h2>Hello, Sign in</h2>
+            {% endif %}
           </div>
         </div>
         <hr>
@@ -578,537 +603,6 @@
   {% block carousel %}{% endblock %}
   {% block main-content %}{% endblock %}
 
-  <!-- Carousel for Desktop
-  <div class="carousel-main carousel-items main">
-    <div class="owl-carousel owl-theme" id="carousel-1">
-      <div class="item">
-        <img src="./img/big-carousel/amazon-big-carousel-1.jpg" alt="">
-      </div>
-      <div class="item">
-        <img src="./img/big-carousel/amazon-big-carousel-2.jpg" alt="">
-      </div>
-      <div class="item">
-        <img src="./img/big-carousel/amazon-big-carousel-3.jpg" alt="">
-      </div>
-      <div class="item">
-        <img src="./img/big-carousel/amazon-big-carousel-4.jpg" alt="">
-      </div>
-      <div class="item">
-        <img src="./img/big-carousel/amazon-big-carousel-5.jpg" alt="">
-      </div>
-      <div class="item">
-        <img src="./img/big-carousel/amazon-big-carousel-6.jpg" alt="">
-      </div>
-    </div>
-    <div class="blur"></div>
-  </div> -->
-
-  <!-- <div class="grid-container">
-    <div class="item1">
-      <div class="card">
-        <div class="card-title">
-          <h3>Keep shopping for</h3>
-        </div>
-        <div class="card-images">
-          <div class="card-product-img">
-            <img src="./img/card-items/col-1-img-1.jpg" alt="">
-            <div class="card-product-name">
-              <span><small>Readgear shadow</small></span>
-            </div>
-          </div>
-          <div class="card-product-img">
-            <img src="./img/card-items/col-1-img-2.jpg" alt="">
-            <div class="card-product-name">
-              <span><small>HP KM300F</small></span>
-            </div>
-          </div>
-          <div class="card-product-img">
-            <img src="./img/card-items/col-1-img-3.jpg" alt="">
-            <div class="card-product-name">
-              <span><small>TVS Electronic Gold</small></span>
-            </div>
-          </div>
-          <div class="card-product-img">
-            <img src="./img/card-items/col-1-img-4.jpg" alt="">
-            <div class="card-product-name">
-              <span><small>TVS -e Gold Bharat</small></span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="item2">
-      <div class="card">
-        <div class="card-title">
-          <h3>Amazon Pay | Book your travel tickets</h3>
-        </div>
-        <div class="card-images">
-          <div class="card-product-img">
-            <img src="./img/card-items/col-2-img-1.jpg" alt="">
-            <div class="card-product-name">
-              <span><small>Flight tickets</small></span>
-            </div>
-          </div>
-          <div class="card-product-img">
-            <img src="./img/card-items/col-2-img-2.jpg" alt="">
-            <div class="card-product-name">
-              <span><small>Bus tickets</small></span>
-            </div>
-          </div>
-          <div class="card-product-img">
-            <img src="./img/card-items/col-2-img-3.jpg" alt="">
-            <div class="card-product-name">
-              <span><small>Train tickets</small></span>
-            </div>
-          </div>
-          <div class="card-product-img">
-            <img src="./img/card-items/col-2-img-4.jpg" alt="">
-            <div class="card-product-name">
-              <span><small>Essential travel products</small></span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="item3">
-      <div class="card">
-        <div class="card-title">
-          <h3>Shop & Pay daily | Earn rewards daily</h3>
-        </div>
-        <div class="card-images">
-          <div class="card-product-img">
-            <img src="./img/card-items/col-3-img-5.jpg" alt="">
-            <div class="card-product-name">
-              <span><small>Claim your scratch cards</small></span>
-            </div>
-          </div>
-          <div class="card-product-img">
-            <img src="./img/card-items/col-3-img-6.jpg" alt="">
-            <div class="card-product-name">
-              <span><small>Reedem your rewards</small></span>
-            </div>
-          </div>
-          <div class="card-product-img">
-            <img src="./img/card-items/col-3-img-7.jpg" alt="">
-            <div class="card-product-name">
-              <span><small>Unlock more rewards</small></span>
-            </div>
-          </div>
-          <div class="card-product-img">
-            <img src="./img/card-items/col-3-img-8.jpg" alt="">
-            <div class="card-product-name">
-              <span><small>Explore all offers</small></span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="item4">
-      <div class="card app">
-        <div class="card-title">
-          <h3>Shop on the Amazon App</h3>
-        </div>
-
-        <div class="app-subtitle">
-          <p><span>Fast, convinient and secure | over 17 crore products in your pocket</span></p>
-        </div>
-      </div>
-    </div>
-    <div class="item5">
-      <div class="card vid">
-        <video controls>
-          <source src="./img/video.mp4" type="video/mp4">
-          Your browser does not support the video tag.
-        </video>
-      </div>
-    </div>
-    <div class="item6">
-      <div class="card">
-        <div class="card-title">
-          <h3>Upto 70% off | Styles for Men</h3>
-        </div>
-        <div class="card-images">
-          <div class="card-product-img">
-            <img src="./img/card-items/col-3-img-1.jpg" alt="">
-            <div class="card-product-name">
-              <span><small>Clothing</small></span>
-            </div>
-          </div>
-          <div class="card-product-img">
-            <img src="./img/card-items/col-3-img-2.jpg" alt="">
-            <div class="card-product-name">
-              <span><small>Footwear</small></span>
-            </div>
-          </div>
-          <div class="card-product-img">
-            <img src="./img/card-items/col-3-img-3.jpg" alt="">
-            <div class="card-product-name">
-              <span><small>Watches</small></span>
-            </div>
-          </div>
-          <div class="card-product-img">
-            <img src="./img/card-items/col-3-img-4.jpg" alt="">
-            <div class="card-product-name">
-              <span><small>Bags & Luggage</small></span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="item7">
-      <div class="card">
-        <div class="card-title">
-          <h3>Shop by Category</h3>
-        </div>
-        <div class="card-images">
-          <div class="card-product-img">
-            <img src="./img/card-items/col-4-img-1.jpg" alt="">
-            <div class="card-product-name">
-              <span><small>Fresh</small></span>
-            </div>
-          </div>
-          <div class="card-product-img">
-            <img src="./img/card-items/col-4-img-2.jpg" alt="">
-            <div class="card-product-name">
-              <span><small>Mobiles</small></span>
-            </div>
-          </div>
-          <div class="card-product-img">
-            <img src="./img/card-items/col-4-img-3.jpg" alt="">
-            <div class="card-product-name">
-              <span><small>Fashion</small></span>
-            </div>
-          </div>
-          <div class="card-product-img">
-            <img src="./img/card-items/col-4-img-4.jpg" alt="">
-            <div class="card-product-name">
-              <span><small>Electronics</small></span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="item8" id="carousel">
-      <div class="carousel-title-1">
-        <h3>Today's Deal</h3>
-      </div>
-      <div class="owl-carousel" id="carousel-2">
-        <div class="item">
-          <img src="./img/card-carousel/card-carousel-1.jpg" alt="">
-          <div class="offer">
-            <h4>50% off</h4>
-            <h5>Deal of the Day</h5>
-          </div>
-        </div>
-        <div class="item">
-          <img src="./img/card-carousel/card-carousel-2.jpg" alt="">
-          <div class="offer">
-            <h4>70% off</h4>
-            <h5>Deal of the Day</h5>
-          </div>
-        </div>
-        <div class="item">
-          <img src="./img/card-carousel/card-carousel-3.jpg" alt="">
-          <div class="offer">
-            <h4>25% off</h4>
-            <h5>Deal of the Day</h5>
-          </div>
-        </div>
-        <div class="item">
-          <img src="./img/card-carousel/card-carousel-4.jpg" alt="">
-          <div class="offer">
-            <h4>33% off</h4>
-            <h5>Deal of the Day</h5>
-          </div>
-        </div>
-        <div class="item">
-          <img src="./img/card-carousel/card-carousel-5.jpg" alt="">
-          <div class="offer">
-            <h4>69% off</h4>
-            <h5>Deal of the Day</h5>
-          </div>
-        </div>
-        <div class="item">
-          <img src="./img/card-carousel/card-carousel-7.jpg" alt="">
-          <div class="offer">
-            <h4>10% off</h4>
-            <h5>Deal of the Day</h5>
-          </div>
-        </div>
-        <div class="item">
-          <img src="./img/card-carousel/card-carousel-8.jpg" alt="">
-          <div class="offer">
-            <h4>100% off</h4>
-            <h5>Deal of the Day</h5>
-          </div>
-        </div>
-        <div class="item">
-          <img src="./img/card-carousel/card-carousel-9.jpg" alt="">
-          <div class="offer">
-            <h4>20% off</h4>
-            <h5>Deal of the Day</h5>
-          </div>
-        </div>
-        <div class="item">
-          <img src="./img/card-carousel/card-carousel-10.jpg" alt="">
-          <div class="offer">
-            <h4>35% off</h4>
-            <h5>Deal of the Day</h5>
-          </div>
-        </div>
-        <div class="item">
-          <img src="./img/card-carousel/card-carousel-11.jpg" alt="">
-          <div class="offer">
-            <h4>10% off</h4>
-            <h5>Deal of the Day</h5>
-          </div>
-        </div>
-        <div class="item">
-          <img src="./img/card-carousel/card-carousel-12.jpeg" alt="">
-          <div class="offer">
-            <h4>50% off</h4>
-            <h5>Deal of the Day</h5>
-          </div>
-        </div>
-        <div class="item">
-          <img src="./img/card-carousel/card-carousel-13.jpg" alt="">
-          <div class="offer">
-            <h4>40% off</h4>
-            <h5>Deal of the Day</h5>
-          </div>
-        </div>
-        <div class="item">
-          <img src="./img/card-carousel/card-carousel-14.jpg" alt="">
-          <div class="offer">
-            <h4>60% off</h4>
-            <h5>Deal of the Day</h5>
-          </div>
-        </div>
-        <div class="item">
-          <img src="./img/card-carousel/card-carousel-15.jpg" alt="">
-          <div class="offer">
-            <h4>45% off</h4>
-            <h5>Deal of the Day</h5>
-          </div>
-        </div>
-        <div class="item">
-          <img src="./img/card-carousel/card-carousel-16.jpg" alt="">
-          <div class="offer">
-            <h4>37% off</h4>
-            <h5>Deal of the Day</h5>
-          </div>
-        </div>
-        <div class="item">
-          <img src="./img/card-carousel/card-carousel-17.jpg" alt="">
-          <div class="offer">
-            <h4>24% off</h4>
-            <h5>Deal of the Day</h5>
-          </div>
-        </div>
-        <div class="item">
-          <img src="./img/card-carousel/card-carousel-18.jpg" alt="">
-          <div class="offer">
-            <h4>5% off</h4>
-            <h5>Deal of the Day</h5>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="item9" id="carousel">
-      <div class="carousel-title-2 carousel-title-1">
-        <h3>More items to consider</h3>
-      </div>
-      <div class="owl-carousel" id="carousel-3">
-        <div class="item">
-          <img src="./img/card-carousel-2/card-carousel-1.jpg" alt="">
-        </div>
-        <div class="item">
-          <img src="./img/card-carousel-2/card-carousel-2.jpg" alt="">
-        </div>
-        <div class="item">
-          <img src="./img/card-carousel-2/card-carousel-3.jpg" alt="">
-        </div>
-        <div class="item">
-          <img src="./img/card-carousel-2/card-carousel-4.jpg" alt="">
-        </div>
-        <div class="item">
-          <img src="./img/card-carousel-2/card-carousel-5.jpg" alt="">
-        </div>
-        <div class="item">
-          <img src="./img/card-carousel-2/card-carousel-7.jpg" alt="">
-        </div>
-        <div class="item">
-          <img src="./img/card-carousel-2/card-carousel-8.jpg" alt="">
-        </div>
-        <div class="item">
-          <img src="./img/card-carousel-2/card-carousel-9.jpg" alt="">
-        </div>
-        <div class="item">
-          <img src="./img/card-carousel-2/card-carousel-10.jpg" alt="">
-        </div>
-        <div class="item">
-          <img src="./img/card-carousel-2/card-carousel-11.jpg" alt="">
-        </div>
-        <div class="item">
-          <img src="./img/card-carousel-2/card-carousel-12.jpg" alt="">
-        </div>
-      </div>
-    </div>
-    <div class="item10">
-      <div class="card">
-        <div class="card-title">
-          <h3>Bring joy with the perfect wedding gifts</h3>
-        </div>
-        <div class="card-images">
-          <div class="card-product-img">
-            <img src="./img/card-items-2/col-1-img-1.jpg" alt="">
-            <div class="card-product-name">
-              <span><small>Dinner set</small></span>
-            </div>
-          </div>
-          <div class="card-product-img">
-            <img src="./img/card-items-2/col-1-img-2.jpg" alt="">
-            <div class="card-product-name">
-              <span><small>Kitchen appliences</small></span>
-            </div>
-          </div>
-          <div class="card-product-img">
-            <img src="./img/card-items-2/col-1-img-3.jpg" alt="">
-            <div class="card-product-name">
-              <span><small>Jeweliery</small></span>
-            </div>
-          </div>
-          <div class="card-product-img">
-            <img src="./img/card-items-2/col-1-img-4.jpg" alt="">
-            <div class="card-product-name">
-              <span><small>Gift card</small></span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="item11">
-      <div class="card">
-        <div class="card-title">
-          <h3>Up to 45% off | Top offers from Amazon Brand - Solimo</h3>
-        </div>
-        <div class="card-images">
-          <div class="card-product-img">
-            <img class="big" src="./img/card-items-2/col-2-img-1.jpg" alt="">
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="item12">
-      <div class="card">
-        <div class="card-title">
-          <h3>For all birthday gifting and celebration needs</h3>
-        </div>
-        <div class="card-images">
-          <div class="card-product-img">
-            <img class="big" src="./img/card-items-2/col-3-img-1.jpg" alt="">
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="item13">
-      <div class="card">
-        <div class="card-title">
-          <h3>Up to 60% off | Fitness essentials to set up your home</h3>
-        </div>
-        <div class="card-images">
-          <div class="card-product-img">
-            <img class="big" src="./img/card-items-2/col-4-img-1.jpg" alt="">
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="item14" id="carousel">
-      <div class="carousel-title-3 carousel-title-1">
-        <h3>Additional items to explore</h3>
-      </div>
-      <div class="owl-carousel" id="carousel-4">
-        <div class="item">
-          <img src="./img/card-carousel-3/card-carousel-1.jpg" alt="">
-          <div class="offer">
-            <h4>50% off</h4>
-            <h5>Deal of the Day</h5>
-          </div>
-        </div>
-        <div class="item">
-          <img src="./img/card-carousel-3/card-carousel-2.jpg" alt="">
-          <div class="offer">
-            <h4>70% off</h4>
-            <h5>Deal of the Day</h5>
-          </div>
-        </div>
-        <div class="item">
-          <img src="./img/card-carousel-3/card-carousel-3.jpg" alt="">
-          <div class="offer">
-            <h4>25% off</h4>
-            <h5>Deal of the Day</h5>
-          </div>
-        </div>
-        <div class="item">
-          <img src="./img/card-carousel-3/card-carousel-4.jpg" alt="">
-          <div class="offer">
-            <h4>33% off</h4>
-            <h5>Deal of the Day</h5>
-          </div>
-        </div>
-        <div class="item">
-          <img src="./img/card-carousel-3/card-carousel-5.jpg" alt="">
-          <div class="offer">
-            <h4>69% off</h4>
-            <h5>Deal of the Day</h5>
-          </div>
-        </div>
-        <div class="item">
-          <img src="./img/card-carousel-3/card-carousel-7.jpg" alt="">
-          <div class="offer">
-            <h4>10% off</h4>
-            <h5>Deal of the Day</h5>
-          </div>
-        </div>
-        <div class="item">
-          <img src="./img/card-carousel-3/card-carousel-8.jpg" alt="">
-          <div class="offer">
-            <h4>100% off</h4>
-            <h5>Deal of the Day</h5>
-          </div>
-        </div>
-        <div class="item">
-          <img src="./img/card-carousel-3/card-carousel-9.jpg" alt="">
-          <div class="offer">
-            <h4>20% off</h4>
-            <h5>Deal of the Day</h5>
-          </div>
-        </div>
-        <div class="item">
-          <img src="./img/card-carousel-3/card-carousel-10.jpg" alt="">
-          <div class="offer">
-            <h4>35% off</h4>
-            <h5>Deal of the Day</h5>
-          </div>
-        </div>
-        <div class="item">
-          <img src="./img/card-carousel-3/card-carousel-11.jpg" alt="">
-          <div class="offer">
-            <h4>10% off</h4>
-            <h5>Deal of the Day</h5>
-          </div>
-        </div>
-        <div class="item">
-          <img src="./img/card-carousel-3/card-carousel-12.jpg" alt="">
-          <div class="offer">
-            <h4>50% off</h4>
-            <h5>Deal of the Day</h5>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div> -->
-
   <footer class="upper-desk">
     <div class="foot-col-1 foot-col">
       <div class="footer-title">
@@ -1172,7 +666,7 @@
   </footer>
   <footer class="middle-desk">
     <div class="footer-img">
-      <img src="./img/amazon-logo.png" alt="">
+      <img src="{% static 'app/img/amazon-logo.png' %}" alt="">
     </div>
     <div class="countries">
       <span><small>Australia</small></span>
