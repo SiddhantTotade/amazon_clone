@@ -1,4 +1,3 @@
-import django
 from django.contrib import admin
 from django.utils.html import format_html
 from django.urls import reverse
@@ -12,26 +11,23 @@ class CustomerModelAdmin(admin.ModelAdmin):
                     'locality', 'city', 'zipcode', 'state']
 
 
+class Product_Img_Admin(admin.StackedInline):
+    model = Product_Img_Desktop
+
+
 @admin.register(Product)
 class ProductModelAdmin(admin.ModelAdmin):
     list_display = ['id', 'title', 'selling_price',
                     'discounted_price', 'description', 'brand', 'category', 'product_image']
+    inlines = [Product_Img_Admin]
 
-
-class Product_Img_Admin(admin.StackedInline):
-    model = Product_Img_Desktop
+    class Meta:
+        model = Product
 
 
 @admin.register(Product_Img_Desktop)
 class Product_Image_Admin(admin.ModelAdmin):
     pass
-
-
-class Product_Admin(admin.ModelAdmin):
-    inlines = [Product_Img_Admin]
-
-    class Meta:
-        model = Product
 
 
 @admin.register(Cart)
