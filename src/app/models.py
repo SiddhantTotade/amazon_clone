@@ -23,7 +23,7 @@ class Customer(models.Model):
 CATEGORY_CHOICES = (('M', 'Mobile'), ('L', 'Laptop'),
                     ('TW', 'Top Wear'), ('BW', 'Bottom Wear'), ('W', 'Watch'),
                     ('P', 'Printer'), ('F', 'Fan'), ('EB', 'Earbuds'),
-                    ('C', 'Camera'), ('O', 'Oil'), ('SH', 'Shower'), ('MU', 'Museli'),('CL', 'Cleaner'),('CA', 'Computer and Accessories'))
+                    ('C', 'Camera'), ('O', 'Oil'), ('SH', 'Shower'), ('MU', 'Museli'), ('CL', 'Cleaner'), ('CA', 'Computer and Accessories'))
 
 
 class Product(models.Model):
@@ -37,6 +37,15 @@ class Product(models.Model):
 
     def __str__(self):
         return str(self.id)
+
+
+class Product_Img_Desktop(models.Model):
+    product_img_desktop = models.ForeignKey(
+        Product, default=None, on_delete=models.CASCADE)
+    product_img = models.ImageField(upload_to='product_img_desktop')
+
+    def __str__(self):
+        return str(self.product_img_desktop.id)
 
 
 class Cart(models.Model):

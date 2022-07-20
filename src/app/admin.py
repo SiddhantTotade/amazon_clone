@@ -2,7 +2,7 @@ import django
 from django.contrib import admin
 from django.utils.html import format_html
 from django.urls import reverse
-from .models import Customer, Product, Cart, OrderPlaced
+from .models import Customer, Product, Cart, OrderPlaced, Product_Img_Desktop
 # Register your models here.
 
 
@@ -16,6 +16,22 @@ class CustomerModelAdmin(admin.ModelAdmin):
 class ProductModelAdmin(admin.ModelAdmin):
     list_display = ['id', 'title', 'selling_price',
                     'discounted_price', 'description', 'brand', 'category', 'product_image']
+
+
+class Product_Img_Admin(admin.StackedInline):
+    model = Product_Img_Desktop
+
+
+@admin.register(Product_Img_Desktop)
+class Product_Image_Admin(admin.ModelAdmin):
+    pass
+
+
+class Product_Admin(admin.ModelAdmin):
+    inlines = [Product_Img_Admin]
+
+    class Meta:
+        model = Product
 
 
 @admin.register(Cart)
