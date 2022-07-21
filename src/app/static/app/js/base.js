@@ -1,6 +1,6 @@
 // Sidebar
-const openMenu = document.querySelector('#open-menu')
-const closeMenu = document.querySelector('#close-menu')
+const openMenu = document.querySelector('.open-menu')
+const closeMenu = document.querySelector('.close-menu')
 const openMenuDesktop = document.querySelector('.open-menu-desktop')
 const closeMenuDesktop = document.querySelector('.close-menu-desktop')
 
