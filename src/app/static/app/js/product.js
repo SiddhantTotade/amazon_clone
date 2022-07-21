@@ -1,30 +1,3 @@
-// Redirect Page Desktop
-document.querySelector('.buynow').addEventListener('click', () => {
-    location.href = '/address.html'
-})
-
-document.querySelector('.addtocart').addEventListener('click', () => {
-    alert('Your item has been added to the cart')
-})
-
-document.querySelector('.cart').addEventListener('click', () => {
-    location.href = '/cart.html';
-})
-
-
-// Redirect Page Mobile
-document.querySelector('.buynow-mob').addEventListener('click', () => {
-    location.href = '/address.html'
-})
-
-document.querySelector('.addtocart-mob').addEventListener('click', () => {
-    alert('Your item has been added to the cart')
-})
-
-document.getElementById('uil-shopping-cart').addEventListener('click', () => {
-    location.href = '/cart.html';
-})
-
 // Sidebar
 const openMenu = document.querySelector('#open-menu')
 const closeMenu = document.querySelector('#close-menu')
@@ -61,8 +34,8 @@ window.onclick = () => {
 }
 
 if (window.screen.width >= 400) {
-    document.querySelector(".mobile").style.display = 'none'
     document.querySelector(".desktop").style.display = 'block'
+    document.querySelector(".mobile").style.display = 'none'
     document.querySelector(".product-mob").style.display = 'none'
     document.querySelector(".upper").style.display = 'none'
     document.querySelector(".lower").style.display = 'none'

@@ -6,7 +6,9 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  {% block style %}{% endblock %}
+  <link rel="stylesheet" href="{% static 'app/css/base.css' %}">
+  {% block style-home %}{% endblock %}
+  {% block style-product %}{% endblock %}
   <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
   <title>Amazon Clone | {% block title %}{% endblock %}</title>
 </head>
@@ -508,8 +510,8 @@
     </div>
   </footer>
 </body>
-<script src="{% static 'app/js/jquery.min.js' %}"></script>
-<script src="{% static 'app/js/owl.carousel.min.js' %}"></script>
-<script src="{% static 'app/js/index.js' %}"></script>
+<script src="{% static 'app/css/base.js' %}"></script>
+{% block js-home %}{% endblock %}
+{% block js-product %}{% endblock %}
 
 </html>

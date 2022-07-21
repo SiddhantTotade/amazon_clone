@@ -3,10 +3,10 @@
 
 {% block title %}Home{% endblock %}
 
-{% block style %}
+{% block style-home %}
 <link rel="stylesheet" href="{% static 'app/css/owl.carousel.min.css' %}">
 <link rel="stylesheet" href="{% static 'app/css/owl.theme.default.min.css' %}">
-<link rel="stylesheet" href="{% static 'app/css/index.css' %}">
+<link rel="stylesheet" href="{% static 'app/css/home.css' %}">
 {% endblock %}
 
 
@@ -227,13 +227,15 @@
     </div>
     <div class="owl-carousel" id="carousel-2">
       {% for ms in mobile_shuffle %}
-      <div class="item">
-        <img src="{{ms.product_image.url}}" alt="">
-        <div class="offer">
-          <h4>{{ms.id}}% off</h4>
-          <h5>Deal of the Day</h5>
+      <a href="{% url 'product-detail' ms.id %}">
+        <div class="item">
+          <img src="{{ms.product_image.url}}" alt="">
+          <div class="offer">
+            <h4>{{ms.id}}% off</h4>
+            <h5>Deal of the Day</h5>
+          </div>
         </div>
-      </div>
+      </a>
       {% endfor %}
     </div>
   </div>
@@ -592,7 +594,7 @@
 </div>
 {% endblock %}
 
-{% block js %}
+{% block js-home %}
 <script src="{% static 'app/js/jquery.min.js' %}"></script>
 <script src="{% static 'app/js/owl.carousel.min.js' %}"></script>
 <script src="{% static 'app/js/index.js' %}"></script>

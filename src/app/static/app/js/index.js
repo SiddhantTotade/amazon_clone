@@ -1,56 +1,3 @@
-// Redirect Page Desktop
-document.querySelector('.account').addEventListener('click', () => {
-    location.href = '/account.html';
-})
-
-document.querySelector('.order').addEventListener('click', () => {
-    location.href = '/order.html';
-})
-
-document.querySelector('.address').addEventListener('click', () => {
-    location.href = '/changeaddress.html';
-})
-
-document.querySelector('.cart').addEventListener('click', () => {
-    location.href = '/cart.html';
-})
-
-document.querySelector('.uil-shopping-cart').addEventListener('click', () => {
-    location.href = '/cart.html';
-})
-// For Desktop
-document.querySelector('.search-btn').addEventListener('click', (e) => {
-    if (document.getElementById('search-bar').value.toLowerCase() == 'mobile') {
-        e.preventDefault();
-        window.location.href = '/product-list.html';
-        document.getElementById('search-bar').value = " ";
-    }
-    else {
-        alert('Please type mobile in search bar.')
-    }
-})
-
-// For Mobile
-document.querySelector('.submit-btn').addEventListener('click', (e) => {
-    if (document.getElementById('search-bar-mob').value.toLowerCase() == 'mobile') {
-        e.preventDefault();
-        window.location.href = '/product-list.html';
-        document.getElementById('search-bar-mob').value = " ";
-    }
-    else {
-        alert('Please type mobile in search bar.')
-    }
-})
-
-let item = document.querySelectorAll('.item,.carousel-main-mob,.item-card,.img-grid,.animation,.sub-card-item')
-
-Array.prototype.forEach.call(item, (e) => {
-    e.addEventListener('click', () => {
-        location.href = '/product.html'
-    })
-})
-
-
 // Sidebar Menu
 const openMenu = document.querySelector('.open-menu')
 const closeMenu = document.querySelector('.close-menu')
@@ -195,24 +142,4 @@ $(document).ready(() => {
             }
         }
     })
-})
-
-// Redirect Page Mobile
-document.querySelector('.item-card').addEventListener('click', () => {
-    location.href = '/product.html'
-})
-document.querySelector('.carousel-main-mob').addEventListener('click', () => {
-    location.href = '/product.html'
-})
-document.querySelector('.item').addEventListener('click', () => {
-    location.href = '/product.html'
-})
-document.querySelector('.animation,.sub-card-item,.img-grid').addEventListener('click', () => {
-    location.href = '/product.html'
-})
-document.querySelector('.sub-card-item').addEventListener('click', () => {
-    location.href = '/product.html'
-})
-document.querySelector('.img-grid').addEventListener('click', () => {
-    location.href = '/product.html'
 })

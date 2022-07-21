@@ -1,46 +1,738 @@
 {% extends 'app/base.html' %}
 {% load static %}
-{% block title %}Product Detail{% endblock title %}
-{% block main-content %}
-<div class="container my-5">
-    <div class="row">
-        <div class="col-sm-6 text-center align-self-center">
-            <img src="{{product.product_image.url}}" alt="" class="img-fluid img-thumbnail">
+
+{% block style-product %}
+<link rel="stylesheet" href="{% static 'app/css/product.css' %}">
+{% endblock %}
+
+{% block title %}Product{% endblock %}
+
+
+{% block main-content-desk-product %}
+<!-- Product for desktop -->
+<div class="product">
+    <div class="product-img">
+        <div class="big-img xzoom-container">
+            <img src="{{product.product_image.url}}" class="xzoom" xoriginal="./img/product/product-img-1.jpg">
         </div>
-        <div class="col-sm-5 offset-sm-1">
-            <h2>{{product.title}}</h2>
-            <hr>
-            <p>{{product.description}}</p> <br>
-            <h4>Rs. {{product.discounted_price}} <small class="fw-light text-decoration-line-through"> Rs.
-                    {{product.selling_price}}</small></h4> <br>
+        <div class="xzoom-thumbs small-img-container">
+            <a href="./img/product/product-img-1.jpg" class="small-img">
+                <img src="./img/product/product-img-1.jpg" class="xzoom-gallery" alt="">
+            </a>
+            <a href="./img/product/product-img-2.jpg" class="small-img">
+                <img src="./img/product/product-img-2.jpg" class="xzoom-gallery">
+            </a>
+            <a href="./img/product/product-img-3.jpg" class="small-img">
+                <img src="./img/product/product-img-3.jpg" class="xzoom-gallery">
+            </a>
+            <a href="./img/product/product-img-4.jpg" class="small-img">
+                <img src="./img/product/product-img-4.jpg" class="xzoom-gallery">
+            </a>
+            <a href="./img/product/product-img-5.jpg" class="small-img">
+                <img src="./img/product/product-img-5.jpg" class="xzoom-gallery">
+            </a>
+        </div>
+    </div>
+    <div class="product-about">
+        <div class="product-name">
+            <h3>{{product.title}}</h3>
+        </div>
+        <div class="product-price product-name">
+            <h4>₹{{product.discounted_price}}</h4>
+        </div>
+        <div class="product-offers product-name">
+            <table>
+                <tr>
+                    <th> <img src="./img/product/product-discount.png" alt=""> Save Extra with 5 offers</th>
+                </tr>
+                <tr>
+                    <td>Cashback (4): Amazon Pay Later Reward - Activate now & earn ₹150. And get surprise rewards
+                        when you shop with Amazon Pay</td>
+                </tr>
+                <tr>
+                    <td>No Cost EMI: Avail No Cost EMI on select cards for orders above ₹3000</td>
+                </tr>
+                <tr>
+                    <td>Exchange Offer: Up to ₹21,100.00 off on Exchange</td>
+                </tr>
+                <tr>
+                    <td>Bank Offer (3): 10% Instant Discount upto Rs.1500 with Citibank Credit Cards and Debit
+                        Cards(Non-EMI).Minimum purchase</td>
+                </tr>
+                <tr>
+                    <td>Partner Offers: Get GST invoice and save up to 28% on business purchases.</td>
+                </tr>
+            </table>
+        </div>
+        <div class="product-colors product-name">
+            <div class="color">
+                <img src="./img/product/product-color-1.jpg" alt="">
+            </div>
+            <div class="color">
+                <img src="./img/product/product-color-2.jpg" alt="">
+            </div>
+            <div class="color">
+                <img src="./img/product/product-color-3.jpg" alt="">
+            </div>
+            <div class="color">
+                <img src="./img/product/product-color-4.jpg" alt="">
+            </div>
+            <div class="color">
+                <img src="./img/product/product-color-5.jpg" alt="">
+            </div>
+        </div>
+        <div class="buy product-name">
             {% if request.user.is_authenticated %}
             {% if item_already_in_cart %}
-            <a href="{% url 'showcart' %}" class="btn btn-warning shadow px-5 py-2 ms-4">Go to cart</a>
+            <a href="{% url 'showcart' %}">Go to cart</a>
             {% else %}
-            <form action="/add-to-cart" class="d-inline">
+            <form action="/add-to-cart">
                 <input type="hidden" name="prod_id" id="prod_id" value="{{product.id}}">
-                <button class="btn btn-primary shadow px-5 py-2" type="submit">Add to Cart</button>
+                <button type="submit" class="addtocart">Add to cart</button>
             </form>
             {% endif %}
             {% endif %}
 
+
             {% if not request.user.is_authenticated %}
-            <form action="/checkout" class="d-inline">
+            <form action="/checkout">
                 <input type="hidden" name="prod_id" id="prod_id" value="{{product.id}}">
-                <button class="btn btn-primary shadow px-5 py-2" type="submit">Add to Cart</button>
+                <button type="submit" class="addtocart">Add to cart</button>
             </form>
             {% endif %}
-            <!-- <a href="{% url 'add-to-cart' %}" class="btn btn-primary shadow px-5 py-2">Add to Cart</a> -->
-            <a href="{% url 'checkout' %}" class="btn btn-danger shadow px-5 py-2 ms-4">Buy Now</a>
-            <h5 class="mt-5">Available Offers</h5>
+
+            <a href="{% url 'checkout' %}">Buy now</a>
+        </div>
+        <div class="product-short-desc product-name">
+            <h3>About this item</h3>
             <ul>
-                <li>Bank Offer 5% Unlimited Cashback on Flipkart Axis Bank Credit</li>
-                <li>Special Price Get extra ₹3000 off (price inclusive of discount)</li>
-                <li>No cost EMI ₹1,667/month. Standard EMI also available</li>
-                <li>Partner Offer ₹2000 Flipkart Gift Card on Every 1000th Transaction with a new Visa Debit/Credit Card
+                <li>
+                    17 cm (6.7-inch) Super Retina XDR display with ProMotion for a faster, more responsive feel
+                </li>
+            </ul>
+            <ul>
+                <li>
+                    Cinematic mode adds shallow depth of field and shifts focus automatically in your videos
+                </li>
+            </ul>
+            <ul>
+                <li>
+                    Pro camera system with new 12MP Telephoto, Wide and Ultra Wide cameras; LiDAR Scanner; 6x
+                    optical
+                    zoom range; macro photography; Photographic Styles, ProRes video, Smart HDR 4, Night mode, Apple
+                    ProRAW, 4K Dolby Vision HDR recording
+                </li>
+            </ul>
+            <ul>
+                <li>
+                    12MP TrueDepth front camera with Night mode, 4K Dolby Vision HDR recording
+                    A15 Bionic chip for lightning-fast performance
+                </li>
+            </ul>
+            <ul>
+                <li>
+                    Up to 28 hours of video playback, the best battery life ever in an iPhone
+                </li>
+            </ul>
+            <ul>
+                <li>
+                    Durable design with Ceramic Shield
                 </li>
             </ul>
         </div>
     </div>
+    <div class="product-description">
+        <div class="product-description-img">
+            <img src="./img/product/product-description-1.jpg" alt="">
+            <img src="./img/product/product-description-2'.jpg" alt="">
+            <img src="./img/product/product-description-2.jpg" alt="">
+            <img src="./img/product/product-description-4.jpg" alt="">
+            <img src="./img/product/product-description-5.jpg" alt="">
+            <img src="./img/product/product-description-7.jpg" alt="">
+            <img src="./img/product/product-description-8.jpg" alt="">
+            <img src="./img/product/product-description-9.jpg" alt="">
+            <img src="./img/product/product-description-10.jpg" alt="">
+            <img src="./img/product/product-description-11.jpg" alt="">
+        </div>
+    </div>
+    <div class="product-details product-description product-about">
+        <div class="product-title">
+            <h1>Technical Details</h1>
+        </div>
+        <div class="product-subtitle">
+            <h3>iPhone 13 Pro Max</h3>
+        </div>
+        <div class="product-detail-table">
+            <table class="detail-tabel-1">
+                <tr>
+                    <td><strong>Display</strong></td>
+                    <td>6.7-inch (17 cm diagonal) Super Retina XDR display with ProMotion</td>
+                </tr>
+                <tr>
+                    <td><strong>Capacity</strong></td>
+                    <td>128GB, 256GB, 512GB, 1TB</td>
+                </tr>
+                <tr>
+                    <td><strong>Splash, Water and Dust Resistant</strong></td>
+                    <td>All-glass and surgical-grade stainless
+                        steel design, water and dust resistant (rated IP68)</td>
+                </tr>
+                <tr>
+                    <td><strong>Camera and Video</strong></td>
+                    <td>Triple 12MP cameras with Portrait mode, Depth Control,
+                        Portrait Lighting, Smart HDR 3, and 4K Dolby Vision HDR video up to 60 fps</td>
+                </tr>
+                <tr>
+                    <td><strong>Power and Battery</strong></td>
+                    <td>Video playback:Up to 28 hours, Video playback
+                        (streamed):Up to 25 hours, Audio playback:Up to 95 hours, 20W adapter or higher (sold
+                        separately), Fast-charge capable: Up to 50% charge in around 30 minutes with 20W adapter or
+                        higher</td>
+                </tr>
+                <tr>
+                    <td><strong>In the Box</strong></td>
+                    <td>iPhone with iOS 15, USB-C to Lightning Cable, Documentation</td>
+                </tr>
+                <tr>
+                    <td><strong>Warranty</strong></td>
+                    <td>Apple-branded hardware product and accessories contained in the
+                        original packaging (“Apple Product”) come with a One-Year Limited Warranty. See
+                        apple.com/in/legal/warranty for more information.</td>
+                </tr>
+                <tr>
+                    <td><strong>Height</strong></td>
+                    <td>6.33 inches (160.8 mm)</td>
+                </tr>
+            </table>
+            <table class="detail-table-2">
+                <tr>
+                    <td><strong>Width</strong></td>
+                    <td>3.07 inches (78.1 mm)</td>
+                </tr>
+                <tr>
+                    <td><strong>Depth</strong></td>
+                    <td>0.3 inch (7.65 mm)</td>
+                </tr>
+                <tr>
+                    <td><strong>Weight</strong></td>
+                    <td>8.46 ounces (240 grams)</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <div class="review product-description">
+        <div class="review-left">
+            <div class="review-title">
+                <h2>Customer reviews</h2>
+            </div>
+            <div class="stars">
+                <div class="star">
+                    <span class="fa fa-star checked"></span>
+                </div>
+                <div class="star">
+                    <span class="fa fa-star checked"></span>
+                </div>
+                <div class="star">
+                    <span class="fa fa-star checked"></span>
+                </div>
+                <div class="star">
+                    <span class="fa fa-star checked"></span>
+                </div>
+                <div class="star">
+                    <span class="fa fa-star unchecked"></span>
+                </div>
+            </div>
+            <div class="bars">
+                <div class="bar-5 bar">
+                    <h5>5 Star</h5>
+                    <div class="5-star review-bar">
+                        <div class="fill-5 fill"></div>
+                    </div>
+                </div>
+                <div class="bar-4 bar">
+                    <h5>4 Star</h5>
+                    <div class="4-star review-bar">
+                        <div class="fill-4 fill"></div>
+                    </div>
+                </div>
+                <div class="bar-3 bar">
+                    <h5>3 Star</h5>
+                    <div class="3-star review-bar">
+                        <div class="fill-3 fill"></div>
+                    </div>
+                </div>
+                <div class="bar-2 bar">
+                    <h5>2 Star</h5>
+                    <div class="2-star review-bar">
+                        <div class="fill-2 fill"></div>
+                    </div>
+                </div>
+                <div class="bar-1 bar">
+                    <h5>1 Star</h5>
+                    <div class="1-star review-bar">
+                        <div class="fill-1 fill"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="review-right">
+            <div class="review-title top-reviews">
+                <h2>Top reviews from India</h2>
+            </div>
+            <div class="review-container">
+                <div class="user-rev">
+                    <div><i class="uil uil-user"></i></div>
+                    <strong>
+                        <h4>Siddhant Totade</h4>
+                    </strong>
+                </div>
+                <div class="user-star">
+                    <div class="star-review">
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star unchecked"></span>
+                        <span class="fa fa-star unchecked"></span>
+                    </div>
+                    <strong>
+                        <h5>Lorem ipsum dolor sit amet.</h5>
+                    </strong>
+                </div>
+                <div class="review-content">
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti veritatis ipsam excepturi
+                        nulla
+                        sapiente eius maxime, quam dolorum expedita, quas suscipit distinctio fuga.</p>
+                </div>
+            </div>
+            <div class="review-container">
+                <div class="user-rev">
+                    <div><i class="uil uil-user"></i></div>
+                    <strong>
+                        <h4>Siddhant Totade</h4>
+                    </strong>
+                </div>
+                <div class="user-star">
+                    <div class="star-review">
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star unchecked"></span>
+                        <span class="fa fa-star unchecked"></span>
+                        <span class="fa fa-star unchecked"></span>
+                    </div>
+                    <strong>
+                        <h5>Lorem ipsum dolor sit amet.</h5>
+                    </strong>
+                </div>
+                <div class="review-content">
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti veritatis ipsam excepturi
+                        nulla
+                        sapiente eius maxime, quam dolorum expedita, quas suscipit distinctio fuga.</p>
+                </div>
+            </div>
+            <div class="review-container">
+                <div class="user-rev">
+                    <div><i class="uil uil-user"></i></div>
+                    <strong>
+                        <h4>Siddhant Totade</h4>
+                    </strong>
+                </div>
+                <div class="user-star">
+                    <div class="star-review">
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                    </div>
+                    <strong>
+                        <h5>Lorem ipsum dolor sit amet.</h5>
+                    </strong>
+                </div>
+                <div class="review-content">
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti veritatis ipsam excepturi
+                        nulla
+                        sapiente eius maxime, quam dolorum expedita, quas suscipit distinctio fuga.</p>
+                </div>
+            </div>
+            <div class="review-container">
+                <div class="user-rev">
+                    <div><i class="uil uil-user"></i></div>
+                    <strong>
+                        <h4>Siddhant Totade</h4>
+                    </strong>
+                </div>
+                <div class="user-star">
+                    <div class="star-review">
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star unchecked"></span>
+                    </div>
+                    <strong>
+                        <h5>Lorem ipsum dolor sit amet.</h5>
+                    </strong>
+                </div>
+                <div class="review-content">
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti veritatis ipsam excepturi
+                        nulla
+                        sapiente eius maxime, quam dolorum expedita, quas suscipit distinctio fuga.</p>
+                </div>
+            </div>
+            <div class="review-container">
+                <div class="user-rev">
+                    <div><i class="uil uil-user"></i></div>
+                    <strong>
+                        <h4>Siddhant Totade</h4>
+                    </strong>
+                </div>
+                <div class="user-star">
+                    <div class="star-review">
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star unchecked"></span>
+                        <span class="fa fa-star unchecked"></span>
+                        <span class="fa fa-star unchecked"></span>
+                        <span class="fa fa-star unchecked"></span>
+                    </div>
+                    <strong>
+                        <h5>Lorem ipsum dolor sit amet.</h5>
+                    </strong>
+                </div>
+                <div class="review-content">
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti veritatis ipsam excepturi
+                        nulla
+                        sapiente eius maxime, quam dolorum expedita, quas suscipit distinctio fuga.</p>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
-{% endblock main-content %}
+{% endblock %}
+
+{% block main-content-mob-product %}
+<!--Product for mobile  -->
+<div class="product-mob">
+    <div class="product-carousel">
+        <div class="product-title">
+            <small>Apple iPhone 13 Pro Max (256GB) - Sierra Blue</small>
+        </div>
+        <div class="owl-carousel owl-theme">
+            <div class="item">
+                <img src="./img/product/product-img-1.jpg" alt="">
+            </div>
+            <div class="item">
+                <img src="./img/product/product-img-2.jpg" alt="">
+            </div>
+            <div class="item">
+                <img src="./img/product/product-img-3.jpg" alt="">
+            </div>
+            <div class="item">
+                <img src="./img/product/product-img-4.jpg" alt="">
+            </div>
+            <div class="item">
+                <img src="./img/product/product-img-5.jpg" alt="">
+            </div>
+            <div class="item">
+                <img src="./img/product/product-img-6.jpg" alt="">
+            </div>
+        </div>
+        <div class="product-price">
+            <h3>-2% ₹1,36,900</h3>
+        </div>
+        <div class="product-emi">
+            <strong>EMI from ₹6,444. No Cost EMI Available.</strong>
+        </div>
+    </div>
+    <div class="product-color">
+        <div class="product-color-img">
+            <div class="color-img">
+                <img src="./img/product/product-mob-color-1.jpg" alt="">
+                <h4>Sierra Blue</h4>
+            </div>
+            <div class="color-img">
+                <img src="./img/product/product-mob-color-2.jpg" alt="">
+                <h4>Alpine Green</h4>
+            </div>
+            <div class="color-img">
+                <img src="./img/product/product-mob-color-3.jpg" alt="">
+                <h4>Gold</h4>
+            </div>
+            <div class="color-img">
+                <img src="./img/product/product-mob-color-4.jpg" alt="">
+                <h4>Graphite</h4>
+            </div>
+            <div class="color-img">
+                <img src="./img/product/product-mob-color-5.jpg" alt="">
+                <h4>Silver</h4>
+            </div>
+        </div>
+        <div class="price-box">
+            <div class="price-box-inner">
+                <p>128GB</p>
+                <h3>₹1,26,900.00</h3>
+            </div>
+            <div class="price-box-inner">
+                <p>256GB</p>
+                <h3>₹1,36,900.00</h3>
+            </div>
+            <div class="price-box-inner">
+                <p>512GB</p>
+                <h3>₹1,59,900.00</h3>
+            </div>
+        </div>
+    </div>
+    <div class="product-offer">
+        <table>
+            <tr>
+                <th><img src="./img/product/product-discount.png" alt=""> Save Extra with 5 offers</th>
+            </tr>
+            <tr>
+                <td>Cashback (4): Amazon Pay Later Reward - Activate now & earn ₹150. And get surprise rewards
+                    when you shop with Amazon Pay</td>
+            </tr>
+            <tr>
+                <td>No Cost EMI: Avail No Cost EMI on select cards for orders above ₹3000</td>
+            </tr>
+            <tr>
+                <td>Exchange Offer: Up to ₹21,100.00 off on Exchange</td>
+            </tr>
+            <tr>
+                <td>Bank Offer (3): 10% Instant Discount upto Rs.1500 with Citibank Credit Cards and Debit
+                    Cards(Non-EMI).Minimum purchase</td>
+            </tr>
+            <tr>
+                <td>Partner Offers: Get GST invoice and save up to 28% on business purchases.</td>
+            </tr>
+        </table>
+        <div class="buy-buttons">
+            <button class="addtocart-mob">Add to Cart</button>
+            <button class="buynow-mob">Buy Now</button>
+        </div>
+    </div>
+    <div class="product-details product-offer">
+        <div class="detail-title">
+            <h2>Details</h2>
+        </div>
+        <div class="details-small">
+            <table class="detail-tabel-1">
+                <tr>
+                    <td><strong>Display</strong></td>
+                    <td>6.7-inch (17 cm diagonal) Super Retina XDR display with ProMotion</td>
+                </tr>
+                <tr>
+                    <td><strong>Capacity</strong></td>
+                    <td>128GB, 256GB, 512GB, 1TB</td>
+
+                </tr>
+                <tr>
+                    <td><strong>Splash, Water and Dust Resistant</strong></td>
+                    <td>All-glass and surgical-grade stainless
+                        steel design, water and dust resistant (rated IP68)</td>
+
+                </tr>
+                <tr>
+                    <td><strong>Camera and Video</strong></td>
+                    <td>Triple 12MP cameras with Portrait mode, Depth Control,
+                        Portrait Lighting, Smart HDR 3, and 4K Dolby Vision HDR video up to 60 fps</td>
+                </tr>
+                <tr>
+                    <td><strong>Power and Battery</strong></td>
+                    <td>Video playback:Up to 28 hours, Video playback
+                        (streamed):Up to 25 hours, Audio playback:Up to 95 hours, 20W adapter or higher (sold
+                        separately), Fast-charge capable: Up to 50% charge in around 30 minutes with 20W adapter or
+                        higher</td>
+                </tr>
+                <tr>
+                    <td><strong>In the Box</strong></td>
+                    <td>iPhone with iOS 15, USB-C to Lightning Cable, Documentation</td>
+                </tr>
+                <tr>
+                    <td><strong>Warranty</strong></td>
+                    <td>Apple-branded hardware product and accessories contained in the
+                        original packaging (“Apple Product”) come with a One-Year Limited Warranty. See
+                        apple.com/in/legal/warranty for more information.</td>
+                </tr>
+                <tr>
+                    <td><strong>Height</strong></td>
+                    <td>6.33 inches (160.8 mm)</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <div class="details-img product-details product-offer">
+        <div class="details-img-title detail-title">
+            <h2>From the manufacturer</h2>
+        </div>
+        <div class="details-img-container">
+            <img src="./img/product/product-detail-img-mob-1.jpg" alt="">
+            <img src="./img/product/product-detail-img-mob-2.jpg" alt="">
+            <img src="./img/product/product-detail-img-mob-3.jpg" alt="">
+            <img src="./img/product/product-detail-img-mob-4.jpg" alt="">
+            <img src="./img/product/product-detail-img-mob-5.jpg" alt="">
+            <img src="./img/product/product-detail-img-mob-6.jpg" alt="">
+            <img src="./img/product/product-detail-img-mob-7.jpg" alt="">
+        </div>
+    </div>
+    <div class="features-details product-details product-offer">
+        <div class="features-title detail-title">
+            <h2>Features & Details</h2>
+        </div>
+        <div class="details-desc">
+            <ul>
+                <li>17 cm (6.7-inch) Super Retina XDR display with ProMotion for a faster, more responsive feel</li>
+            </ul>
+            <ul>
+                <li>Cinematic mode adds shallow depth of field and shifts focus automatically in your videos</li>
+            </ul>
+            <ul>
+                <li>Pro camera system with new 12MP Telephoto, Wide and Ultra Wide cameras; LiDAR Scanner; 6x
+                    optical
+                    zoom range; macro photography; Photographic Styles, ProRes video, Smart HDR 4, Night mode, Apple
+                    ProRAW, 4K Dolby Vision HDR recording</li>
+            </ul>
+            <ul>
+                <li>12MP TrueDepth front camera with Night mode, 4K Dolby Vision HDR recording</li>
+            </ul>
+        </div>
+    </div>
+    <div class="product-review product-details product-offer">
+        <div class="review-left">
+            <div class="review-title">
+                <h2>Customer reviews</h2>
+            </div>
+            <div class="stars">
+                <div class="star">
+                    <span class="fa fa-star checked"></span>
+                </div>
+                <div class="star">
+                    <span class="fa fa-star checked"></span>
+                </div>
+                <div class="star">
+                    <span class="fa fa-star checked"></span>
+                </div>
+                <div class="star">
+                    <span class="fa fa-star checked"></span>
+                </div>
+                <div class="star">
+                    <span class="fa fa-star"></span>
+                </div>
+                <div class="outof">
+                    <span>4 out of 5</span>
+                </div>
+            </div>
+            <div class="bars">
+                <div class="bar-5 bar">
+                    <h5>5 Star</h5>
+                    <div class="5-star review-bar">
+                        <div class="fill-5 fill"></div>
+                    </div>
+                </div>
+                <div class="bar-4 bar">
+                    <h5>4 Star</h5>
+                    <div class="4-star review-bar">
+                        <div class="fill-4 fill"></div>
+                    </div>
+                </div>
+                <div class="bar-3 bar">
+                    <h5>3 Star</h5>
+                    <div class="3-star review-bar">
+                        <div class="fill-3 fill"></div>
+                    </div>
+                </div>
+                <div class="bar-2 bar">
+                    <h5>2 Star</h5>
+                    <div class="2-star review-bar">
+                        <div class="fill-2 fill"></div>
+                    </div>
+                </div>
+                <div class="bar-1 bar">
+                    <h5>1 Star</h5>
+                    <div class="1-star review-bar">
+                        <div class="fill-1 fill"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="review-container">
+            <div class="user">
+                <div><i class="uil uil-user"></i></div>
+                <strong>
+                    <h4>Siddhant Totade</h4>
+                </strong>
+            </div>
+            <div class="user-star">
+                <div class="star-review">
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star"></span>
+                    <span class="fa fa-star"></span>
+                </div>
+                <strong>
+                    <h5>Lorem ipsum dolor sit amet.</h5>
+                </strong>
+            </div>
+            <div class="review-content">
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti veritatis ipsam excepturi
+                    nulla
+                    sapiente eius maxime, quam dolorum expedita, quas suscipit distinctio fuga.</p>
+            </div>
+        </div>
+        <div class="review-container">
+            <div class="user">
+                <div><i class="uil uil-user"></i></div>
+                <strong>
+                    <h4>Siddhant Totade</h4>
+                </strong>
+            </div>
+            <div class="user-star">
+                <div class="star-review">
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                </div>
+                <strong>
+                    <h5>Lorem ipsum dolor sit amet.</h5>
+                </strong>
+            </div>
+            <div class="review-content">
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti veritatis ipsam excepturi
+                    nulla
+                    sapiente eius maxime, quam dolorum expedita, quas suscipit distinctio fuga.</p>
+            </div>
+        </div>
+        <div class="review-container">
+            <div class="user">
+                <div><i class="uil uil-user"></i></div>
+                <strong>
+                    <h4>Siddhant Totade</h4>
+                </strong>
+            </div>
+            <div class="user-star">
+                <div class="star-review">
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star "></span>
+                    <span class="fa fa-star"></span>
+                    <span class="fa fa-star"></span>
+                </div>
+                <strong>
+                    <h5>Lorem ipsum dolor sit amet.</h5>
+                </strong>
+            </div>
+            <div class="review-content">
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti veritatis ipsam excepturi
+                    nulla
+                    sapiente eius maxime, quam dolorum expedita, quas suscipit distinctio fuga.</p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block js-product %}
+<script src="{% static 'app/js/zoom.js' %}"></script>
+<script src="{% static 'app/js/product.js' %}"></script>
+{% endblock %}
