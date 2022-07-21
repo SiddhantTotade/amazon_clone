@@ -7,6 +7,7 @@ from django.contrib import messages
 from django.db.models import Q
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
+from django.template.defaultfilters import linebreaksbr
 import random
 
 
@@ -39,12 +40,14 @@ class ProductDetailView(View):
     def get(self, request, pk):
         totalitem = 0
         product = Product.objects.get(pk=pk)
+        product_br = Product.objects.get(pk=pk)
+        line_br = linebreaksbr(product_br)
         item_already_in_cart = False
         if request.user.is_authenticated:
             totalitem = len(Cart.objects.filter(user=request.user))
             item_already_in_cart = Cart.objects.filter(
                 Q(product=product.id) & Q(user=request.user)).exists()
-        return render(request, 'app/productdetail.html', {'product': product, 'item_already_in_cart': item_already_in_cart, 'totalitem': totalitem})
+        return render(request, 'app/productdetail.html', {'product': product, 'line_br': line_br, 'item_already_in_cart': item_already_in_cart, 'totalitem': totalitem})
 # def product_detail(request):
 #     return render(request, 'app/productdetail.html')
 

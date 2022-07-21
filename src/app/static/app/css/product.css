@@ -4,8 +4,9 @@
         display: grid;
         grid-template-columns: repeat(2, 1fr);
         margin: auto;
+        margin-bottom: 17em;
         width: 80%;
-        padding: 10px 10px;
+        padding: 0 10px;
     }
 
     .product-img {
@@ -69,6 +70,7 @@
     }
 
     .product-name {
+        /* background-color: #000000; */
         display: grid;
         align-items: center;
         width: 95%;
@@ -99,6 +101,10 @@
 
     .product-short-desc {
         height: 30vh;
+    }
+
+    .product-short-desc p {
+        color: #000000;
     }
 
     .product-short-desc ul {
@@ -140,15 +146,24 @@
 
     .buy {
         display: flex;
+        gap: 20px;
+    }
+
+    .buy a {
+        padding: 10px 25px;
+        border-radius: 30px;
+        text-decoration: none;
+        color: #000000;
+        background-color: #fda22c;
     }
 
     .buy button {
-        width: 25%;
-        height: 4vh;
-        margin-right: 5px;
-        border-radius: 40px;
-        background-color: orange;
+        padding: 10px 25px;
+        border-radius: 30px;
+        font-size: 15px;
         border: none;
+        color: #000000;
+        background-color: #fda22c;
     }
 
     .buy button:hover {

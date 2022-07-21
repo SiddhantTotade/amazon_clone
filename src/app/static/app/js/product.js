@@ -1,19 +1,10 @@
 // Media Query
 if (window.screen.width >= 400) {
-    document.querySelector(".desktop").style.display = 'block'
-    document.querySelector(".mobile").style.display = 'none'
     document.querySelector(".product-mob").style.display = 'none'
-    document.querySelector(".upper").style.display = 'none'
-    document.querySelector(".lower").style.display = 'none'
+    document.querySelector(".mobile").style.display = 'none'
 }
 else if (window.screen.width <= 400) {
-    document.querySelector(".mobile").style.display = 'block'
-    document.querySelector(".desktop").style.display = 'none'
     document.querySelector(".product").style.display = 'none'
-    document.querySelector(".upper-desk").style.display = 'none'
-    document.querySelector(".middle-desk").style.display = 'none'
-    document.querySelector(".lower-desk").style.display = 'none'
-    document.querySelector(".copyright").style.display = 'none'
 }
 
 // Product Zoom

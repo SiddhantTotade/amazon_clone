@@ -43,7 +43,8 @@
         <div class="product-offers product-name">
             <table>
                 <tr>
-                    <th> <img src="./img/product/product-discount.png" alt=""> Save Extra with 5 offers</th>
+                    <th> <img src="{% static 'app/img/product/product-discount.png' %}" alt=""> Save Extra with 5 offers
+                    </th>
                 </tr>
                 <tr>
                     <td>Cashback (4): Amazon Pay Later Reward - Activate now & earn ₹150. And get surprise rewards
@@ -93,7 +94,6 @@
             {% endif %}
             {% endif %}
 
-
             {% if not request.user.is_authenticated %}
             <form action="/checkout">
                 <input type="hidden" name="prod_id" id="prod_id" value="{{product.id}}">
@@ -107,10 +107,10 @@
             <h3>About this item</h3>
             <ul>
                 <li>
-                    17 cm (6.7-inch) Super Retina XDR display with ProMotion for a faster, more responsive feel
+                    {{ product.description|linebreaks }}
                 </li>
             </ul>
-            <ul>
+            <!-- <ul>
                 <li>
                     Cinematic mode adds shallow depth of field and shifts focus automatically in your videos
                 </li>
@@ -138,7 +138,7 @@
                 <li>
                     Durable design with Ceramic Shield
                 </li>
-            </ul>
+            </ul> -->
         </div>
     </div>
     <div class="product-description">
