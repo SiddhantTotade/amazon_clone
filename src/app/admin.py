@@ -1,7 +1,7 @@
 from django.contrib import admin
 from django.utils.html import format_html
 from django.urls import reverse
-from .models import Customer, Product, Cart, OrderPlaced, Product_Img_Desktop, Product_Img_Desc_Desktop, Product_Img_Color_Desktop, Product_Img_Mobile
+from .models import Customer, Product, Cart, OrderPlaced, Product_Img_Desktop, Product_Img_Desc_Desktop, Product_Img_Color_Desktop, Product_Img_Mobile, Product_Img_Desc_Mobile
 # Register your models here.
 
 
@@ -27,12 +27,16 @@ class Product_Img_Admin_Mobile(admin.StackedInline):
     model = Product_Img_Mobile
 
 
+class Product_Img_Desc_Admin_Mobile(admin.StackedInline):
+    model = Product_Img_Desc_Mobile
+
+
 @admin.register(Product)
 class ProductModelAdmin(admin.ModelAdmin):
     list_display = ['id', 'title', 'selling_price',
                     'discounted_price', 'description', 'brand', 'category', 'product_image']
     inlines = [Product_Img_Admin_Desk,
-               Product_Img_Desc_Admin_Desk, Product_Img_Color_Admin_Desk, Product_Img_Admin_Mobile]
+               Product_Img_Desc_Admin_Desk, Product_Img_Color_Admin_Desk, Product_Img_Admin_Mobile, Product_Img_Desc_Admin_Mobile]
 
     class Meta:
         model = Product
@@ -55,6 +59,11 @@ class Product_Image_Color_Admin_Desk(admin.ModelAdmin):
 
 @admin.register(Product_Img_Mobile)
 class Product_Image_Admin_Mobile(admin.ModelAdmin):
+    pass
+
+
+@admin.register(Product_Img_Desc_Mobile)
+class Product_Image_Desc_Admin_Mobile(admin.ModelAdmin):
     pass
 
 

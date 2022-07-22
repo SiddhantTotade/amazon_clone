@@ -51,7 +51,8 @@ class Product_Img_Desktop(models.Model):
 class Product_Img_Desc_Desktop(models.Model):
     product_img_desc_desktop = models.ForeignKey(
         Product, default=None, on_delete=models.CASCADE)
-    product_img_desc_desk = models.ImageField(upload_to='product_img_desc_desktop')
+    product_img_desc_desk = models.ImageField(
+        upload_to='product_img_desc_desktop')
 
     def __str__(self):
         return str(self.product_img_desc_desktop.id)
@@ -75,6 +76,16 @@ class Product_Img_Mobile(models.Model):
 
     def __str__(self):
         return str(self.product_img_mobile.id)
+
+
+class Product_Img_Desc_Mobile(models.Model):
+    product_img_desc_mobile = models.ForeignKey(
+        Product, default=None, on_delete=models.CASCADE)
+    product_img_desc_mob = models.ImageField(
+        upload_to='product_img_desc_mobile')
+
+    def __str__(self):
+        return str(self.product_img_desc_mobile.id)
 
 
 class Cart(models.Model):
