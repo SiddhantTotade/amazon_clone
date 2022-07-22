@@ -48,6 +48,15 @@ class Product_Img_Desktop(models.Model):
         return str(self.product_img_desktop.id)
 
 
+class Product_Img_Desc_Desktop(models.Model):
+    product_img_desc_desktop = models.ForeignKey(
+        Product, default=None, on_delete=models.CASCADE)
+    product_img_desc = models.ImageField(upload_to='product_img_desc_desktop')
+
+    def __str__(self):
+        return str(self.product_img_desc_desktop.id)
+
+
 class Cart(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     product = models.ForeignKey(Product, on_delete=models.CASCADE)

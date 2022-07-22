@@ -1,5 +1,5 @@
 from django.http import JsonResponse
-from django.shortcuts import redirect, render, get_object_or_404
+from django.shortcuts import redirect, render
 from django.views import View
 from .models import Customer, Product, Cart, OrderPlaced, Product_Img_Desktop
 from .forms import CustomerRegistrationForm, CustomerProfileForm
@@ -40,7 +40,6 @@ class ProductDetailView(View):
         totalitem = 0
         product = Product.objects.get(pk=pk)
         product_img_dsk = Product_Img_Desktop.objects.all()
-        print("Hello", Product_Img_Desktop.objects.all())
         item_already_in_cart = False
         if request.user.is_authenticated:
             totalitem = len(Cart.objects.filter(user=request.user))
@@ -49,13 +48,6 @@ class ProductDetailView(View):
         return render(request, 'app/productdetail.html', {'product': product, 'product_img_dsk': product_img_dsk, 'item_already_in_cart': item_already_in_cart, 'totalitem': totalitem})
 # def product_detail(request):
 #     return render(request, 'app/productdetail.html')
-
-
-def product_img_desk(request, pk):
-    print("Hello")
-    product = get_object_or_404(Product, pk=pk)
-    product_img = Product_Img_Desktop.objects.filter(product=product)
-    return render(request, 'app/productdetail.html', {'product': product, 'product_img': product_img})
 
 
 @ login_required

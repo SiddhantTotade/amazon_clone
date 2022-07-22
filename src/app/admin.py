@@ -1,7 +1,7 @@
 from django.contrib import admin
 from django.utils.html import format_html
 from django.urls import reverse
-from .models import Customer, Product, Cart, OrderPlaced, Product_Img_Desktop
+from .models import Customer, Product, Cart, OrderPlaced, Product_Img_Desktop, Product_Img_Desc_Desktop
 # Register your models here.
 
 
@@ -13,6 +13,7 @@ class CustomerModelAdmin(admin.ModelAdmin):
 
 class Product_Img_Admin(admin.StackedInline):
     model = Product_Img_Desktop
+    model_img_desc = Product_Img_Desc_Desktop
 
 
 @admin.register(Product)
@@ -20,6 +21,7 @@ class ProductModelAdmin(admin.ModelAdmin):
     list_display = ['id', 'title', 'selling_price',
                     'discounted_price', 'description', 'brand', 'category', 'product_image']
     inlines = [Product_Img_Admin]
+    inlines_img_desc = [Product_Img_Desc_Desktop]
 
     class Meta:
         model = Product
@@ -27,6 +29,11 @@ class ProductModelAdmin(admin.ModelAdmin):
 
 @admin.register(Product_Img_Desktop)
 class Product_Image_Admin(admin.ModelAdmin):
+    pass
+
+
+@admin.register(Product_Img_Desc_Desktop)
+class Product_Image_Desc_Admin(admin.ModelAdmin):
     pass
 
 
