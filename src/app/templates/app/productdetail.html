@@ -13,13 +13,17 @@
 <div class="product">
     <div class="product-img">
         <div class="big-img xzoom-container">
-            <img src="{{product.product_image.url}}" class="xzoom" xoriginal="./img/product/product-img-1.jpg">
+            {% for p in product_img_dsk|slice:":1" %}
+            <img src="{{p.product_img.url}}" class="xzoom" xoriginal="{{p.product_img.url}}">
+            {% endfor %}
         </div>
         <div class="xzoom-thumbs small-img-container">
-            <a href="./img/product/product-img-1.jpg" class="small-img">
-                <img src="./img/product/product-img-1.jpg" class="xzoom-gallery" alt="">
+            {% for p in product_img_dsk %}
+            <a href="{{p.product_img.url}}" class="small-img">
+                <img src="{{p.product_img.url}}" class="xzoom-gallery" alt="">
             </a>
-            <a href="./img/product/product-img-2.jpg" class="small-img">
+            {% endfor %}
+            <!-- <a href="./img/product/product-img-2.jpg" class="small-img">
                 <img src="./img/product/product-img-2.jpg" class="xzoom-gallery">
             </a>
             <a href="./img/product/product-img-3.jpg" class="small-img">
@@ -30,7 +34,7 @@
             </a>
             <a href="./img/product/product-img-5.jpg" class="small-img">
                 <img src="./img/product/product-img-5.jpg" class="xzoom-gallery">
-            </a>
+            </a> -->
         </div>
     </div>
     <div class="product-about">
@@ -105,11 +109,13 @@
         </div>
         <div class="product-short-desc product-name">
             <h3>About this item</h3>
-            <ul>
-                <li>
-                    {{ product.description|linebreaks }}
-                </li>
-            </ul>
+            <p id="list-item">
+                {{ product.description|linebreaks }}
+            </p>
+            <!-- <ul>
+            <li>
+            </li>
+            </ul> -->
             <!-- <ul>
                 <li>
                     Cinematic mode adds shallow depth of field and shifts focus automatically in your videos
@@ -733,6 +739,8 @@
 {% endblock %}
 
 {% block js-product %}
+<script src="{% static 'app/js/jquery.min.js' %}"></script>
+<script src="{% static 'app/js/owl.carousel.min.js' %}"></script>
 <script src="{% static 'app/js/zoom.js' %}"></script>
 <script src="{% static 'app/js/product.js' %}"></script>
 {% endblock %}
