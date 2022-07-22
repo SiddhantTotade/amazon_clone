@@ -88,6 +88,16 @@ class Product_Img_Desc_Mobile(models.Model):
         return str(self.product_img_desc_mobile.id)
 
 
+class Product_Img_Color_Mobile(models.Model):
+    product_img_color_mobile = models.ForeignKey(
+        Product, default=None, on_delete=models.CASCADE)
+    product_img_color_mob = models.ImageField(
+        upload_to='product_img_color_mobile')
+
+    def __str__(self):
+        return str(self.product_img_desc_mobile.id)
+
+
 class Cart(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
