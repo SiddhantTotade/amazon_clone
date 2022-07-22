@@ -13,15 +13,17 @@ class CustomerModelAdmin(admin.ModelAdmin):
 
 class Product_Img_Admin(admin.StackedInline):
     model = Product_Img_Desktop
-    model_img_desc = Product_Img_Desc_Desktop
+
+
+class Product_Img_Desc_Admin(admin.StackedInline):
+    model = Product_Img_Desc_Desktop
 
 
 @admin.register(Product)
 class ProductModelAdmin(admin.ModelAdmin):
     list_display = ['id', 'title', 'selling_price',
                     'discounted_price', 'description', 'brand', 'category', 'product_image']
-    inlines = [Product_Img_Admin]
-    inlines_img_desc = [Product_Img_Desc_Desktop]
+    inlines = [Product_Img_Admin, Product_Img_Desc_Admin]
 
     class Meta:
         model = Product
