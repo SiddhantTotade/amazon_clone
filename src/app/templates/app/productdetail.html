@@ -14,27 +14,15 @@
     <div class="product-img">
         <div class="big-img xzoom-container">
             {% for p in product_img_dsk|slice:":1" %}
-            <img src="{{p.product_img.url}}" class="xzoom" xoriginal="{{p.product_img.url}}">
+            <img src="{{p.product_img_desk.url}}" class="xzoom" xoriginal="{{p.product_img_desk.url}}">
             {% endfor %}
         </div>
         <div class="xzoom-thumbs small-img-container">
             {% for p in product_img_dsk %}
-            <a href="{{p.product_img.url}}" class="small-img">
-                <img src="{{p.product_img.url}}" class="xzoom-gallery" alt="">
+            <a href="{{p.product_img_desk.url}}" class="small-img">
+                <img src="{{p.product_img_desk.url}}" class="xzoom-gallery" alt="">
             </a>
             {% endfor %}
-            <!-- <a href="./img/product/product-img-2.jpg" class="small-img">
-                <img src="./img/product/product-img-2.jpg" class="xzoom-gallery">
-            </a>
-            <a href="./img/product/product-img-3.jpg" class="small-img">
-                <img src="./img/product/product-img-3.jpg" class="xzoom-gallery">
-            </a>
-            <a href="./img/product/product-img-4.jpg" class="small-img">
-                <img src="./img/product/product-img-4.jpg" class="xzoom-gallery">
-            </a>
-            <a href="./img/product/product-img-5.jpg" class="small-img">
-                <img src="./img/product/product-img-5.jpg" class="xzoom-gallery">
-            </a> -->
         </div>
     </div>
     <div class="product-about">
@@ -112,39 +100,6 @@
             <p id="list-item">
                 {{ product.description|linebreaks }}
             </p>
-            <!-- <ul>
-            <li>
-            </li>
-            </ul> -->
-            <!-- <ul>
-                <li>
-                    Cinematic mode adds shallow depth of field and shifts focus automatically in your videos
-                </li>
-            </ul>
-            <ul>
-                <li>
-                    Pro camera system with new 12MP Telephoto, Wide and Ultra Wide cameras; LiDAR Scanner; 6x
-                    optical
-                    zoom range; macro photography; Photographic Styles, ProRes video, Smart HDR 4, Night mode, Apple
-                    ProRAW, 4K Dolby Vision HDR recording
-                </li>
-            </ul>
-            <ul>
-                <li>
-                    12MP TrueDepth front camera with Night mode, 4K Dolby Vision HDR recording
-                    A15 Bionic chip for lightning-fast performance
-                </li>
-            </ul>
-            <ul>
-                <li>
-                    Up to 28 hours of video playback, the best battery life ever in an iPhone
-                </li>
-            </ul>
-            <ul>
-                <li>
-                    Durable design with Ceramic Shield
-                </li>
-            </ul> -->
         </div>
     </div>
     <div class="product-description">

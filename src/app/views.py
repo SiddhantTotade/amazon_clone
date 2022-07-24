@@ -40,6 +40,7 @@ class ProductDetailView(View):
         totalitem = 0
         product = Product.objects.get(pk=pk)
         product_img_dsk = Product_Img_Desktop.objects.all()
+        print('Hello',product_img_dsk)
         item_already_in_cart = False
         if request.user.is_authenticated:
             totalitem = len(Cart.objects.filter(user=request.user))
@@ -242,3 +243,8 @@ def payment_done(request):
                     product=c.product, quantity=c.quantity).save()
         c.delete()
         return redirect('orders')
+
+
+@login_required
+def upload_details(request):
+    return render(request, 'app/uploaddetails.html')
