@@ -39,6 +39,13 @@
                 </div>
                 <div class="product-category product">
                     <small>Product Category</small>
+                    <input type="search" name="" class="select-product-category" list="category-list"
+                        value="Select Product Category">
+                    <datalist id="category-list" class="product-category-dropdown">
+                        {% for k,v in dict_category.items %}
+                        <option value="{{v}}">{{v}}</option>
+                        {% endfor %}
+                    </datalist>
                 </div>
                 <div class="product-main-image product">
                     <small>Product Main Image</small>

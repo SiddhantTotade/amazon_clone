@@ -1,7 +1,8 @@
+from unicodedata import category
 from django.http import JsonResponse
 from django.shortcuts import redirect, render
 from django.views import View
-from .models import Customer, Product, Cart, OrderPlaced, Product_Img_Desktop
+from .models import Customer, Product, Cart, OrderPlaced, Product_Img_Desktop, CATEGORY_CHOICES
 from .forms import CustomerRegistrationForm, CustomerProfileForm
 from django.contrib import messages
 from django.db.models import Q
@@ -40,7 +41,6 @@ class ProductDetailView(View):
         totalitem = 0
         product = Product.objects.get(pk=pk)
         product_img_dsk = Product_Img_Desktop.objects.all()
-        print('Hello',product_img_dsk)
         item_already_in_cart = False
         if request.user.is_authenticated:
             totalitem = len(Cart.objects.filter(user=request.user))
@@ -247,4 +247,6 @@ def payment_done(request):
 
 @login_required
 def upload_details(request):
-    return render(request, 'app/uploaddetails.html')
+    category = CATEGORY_CHOICES
+    dict_category = dict(category)
+    return render(request, 'app/uploaddetails.html', {'dict_category': dict_category})
