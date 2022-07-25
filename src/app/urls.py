@@ -39,5 +39,5 @@ urlpatterns = [
          auth_views.PasswordResetConfirmView.as_view(template_name='app/password_reset_confirm.html', form_class=MySetPasswordForm), name='password_reset_confirm'),
     path('checkout/', views.checkout, name='checkout'),
     path('paymentdone/', views.payment_done, name='paymentdone'),
-    path('uploaddetails/', views.upload_details),
+    path('uploaddetails/', views.upload_details,name='saveproduct'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

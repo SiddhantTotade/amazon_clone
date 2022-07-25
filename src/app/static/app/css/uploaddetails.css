@@ -60,29 +60,44 @@ body {
     }
 
     .product-category-dropdown {
-        width: 50%;
-        display: none;
-        gap: 5px;
-        background-color: rgb(219, 219, 219);
+        width: 100%;
+        padding: 10px 10px;
+        background-color: rgb(255, 255, 255);
     }
 
-    .product-category-dropdown h4 {
-        display: grid;
-        justify-content: center;
+    .product-category-dropdown option {
+        padding: 10px 10px;
+    }
+
+    select {
+        padding: 5px 10px;
+        border-radius: 5px;
+        border: none;
         color: #000000;
     }
 
-    .product-category-dropdown h4:hover {
-        color: #fff;
-        background-color: rgb(187, 150, 255);
-        border-radius: 5px;
+    select option {
+        color: #000000;
+    }
+
+    select:hover {
         cursor: pointer;
     }
 
-    .show {
-        display: grid;
-        border-radius: 5px;
+    select option:hover {
+        cursor: pointer;
+    }
+
+    .product-submit button {
         padding: 10px 10px;
+        border-radius: 5px;
+        border: none;
+        background-color: green;
+    }
+
+    .product-submit button:hover {
+        cursor: pointer;
+        background-color: darkgreen;
     }
 }
 
