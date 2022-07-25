@@ -246,6 +246,9 @@ def payment_done(request):
 
 @login_required
 def upload_details(request):
+    category = CATEGORY_CHOICES
+    dict_category = dict(category)
+    print("Category", type(category))
     if request.method == "POST":
         product_name = request.POST.get('product-title')
         product_selling_price = request.POST.get('product-selling-price')
@@ -253,9 +256,12 @@ def upload_details(request):
         product_description = request.POST.get('product-description')
         product_brand = request.POST.get('product-brand')
         product_category = request.POST.get('product-category')
+        product_main_image = request.FILES['product-main-image']
+
+        print("Product Category", type(product_category))
 
         save_product = Product(title=product_name, selling_price=product_selling_price,
-                               discounted_price=product_discounted_price, description=product_description, brand=product_brand, category=product_category)
-    category = CATEGORY_CHOICES
-    dict_category = dict(category)
+                               discounted_price=product_discounted_price, description=product_description,
+                               brand=product_brand.upper(), category=product_category, product_image=product_main_image)
+        save_product.save()
     return render(request, 'app/uploaddetails.html', {'dict_category': dict_category})

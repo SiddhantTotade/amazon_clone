@@ -16,7 +16,7 @@
             <h1>Upload Product/Details</h1>
         </div>
         <div class="upload-product">
-            <form action="{% url 'saveproduct' %}" method="post">
+            <form enctype="multipart/form-data" action="{% url 'saveproduct' %}" method="post" id="product-form">
                 {% csrf_token %}
                 <div class="product-title product">
                     <small>Product Title</small>
@@ -38,7 +38,7 @@
                 </div>
                 <div class="product-brand product">
                     <small>Product Brand</small>
-                    <input type="text" name="product-brand" id="" placeholder="Enter Product Brand">
+                    <input type="text" name="product-brand" id="productbrand" placeholder="Enter Product Brand">
                 </div>
                 <div class="product-category product">
                     <small>Product Category</small>
