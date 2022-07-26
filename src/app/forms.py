@@ -3,7 +3,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm, UsernameField, PasswordChangeForm, PasswordResetForm, SetPasswordForm
 from django.utils.translation import gettext_lazy as _
 from django.contrib.auth import password_validation
-from .models import Customer
+from .models import Customer, Product
 
 
 class CustomerRegistrationForm(UserCreationForm):
@@ -56,3 +56,13 @@ class CustomerProfileForm(forms.ModelForm):
         fields = ['name', 'locality', 'city', 'state', 'zipcode']
         widgets = {'name': forms.TextInput(attrs={'class': 'form-control'}), 'locality': forms.TextInput(attrs={'class': 'form-control'}), 'city': forms.TextInput(
             attrs={'class': 'form-control'}), 'state': forms.Select(attrs={'class': 'form-control'}), 'zipcode': forms.NumberInput(attrs={'class': 'form-control'}), }
+
+
+class UploadProductForm(forms.ModelForm):
+    class Meta:
+        model = Product
+        fields = ['title', 'selling_price', 'discounted_price',
+                  'description', 'brand', 'category']
+        widgets = {'product-name': forms.TextInput(attrs={'class': 'form-control'}), 'product-selling-price': forms.TextInput(attrs={'class': 'form-control'}),
+                   'product-discounted-price': forms.TextInput(attrs={'class': 'form-control'}), 'product-description': forms.TextInput(attrs={'class': 'form-control'}),
+                   'product-brand': forms.TextInput(attrs={'class': 'form-control'}), 'product-category': forms.TextInput(attrs={'class': 'form-control'})}

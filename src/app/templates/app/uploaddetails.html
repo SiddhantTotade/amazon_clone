@@ -16,13 +16,15 @@
             <h1>Upload Product/Details</h1>
         </div>
         <div class="upload-product">
-            <form enctype="multipart/form-data" action="{% url 'saveproduct' %}" method="post" id="product-form">
+            <form method="post">
                 {% csrf_token %}
-                <div class="product-title product">
-                    <small>Product Title</small>
-                    <input type="text" name="product-title" id="" placeholder="Enter Product Title/Name">
+                {% for fm in form %}
+                <div class="product">
+                    {{fm.label_tag}} {{fm}}<small>{{fm.errors|striptags}}</small>
+                    <!-- <input type="text" name="product-title" id="" placeholder="Enter Product Title/Name"> -->
                 </div>
-                <div class="product-selling-price product">
+                {% endfor %}
+                <!-- <div class="product-selling-price product">
                     <small>Product Selling Price</small>
                     <input type="number" name="product-selling-price" id="" placeholder="Enter Product Selling Price">
                 </div>
@@ -63,7 +65,7 @@
                 </div>
                 <div class="product-submit">
                     <button class="submit-btn" type="submit" name="saveproduct">Save Product</button>
-                </div>
+                </div> -->
             </form>
         </div>
     </div>
