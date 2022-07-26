@@ -16,53 +16,13 @@
             <h1>Upload Product/Details</h1>
         </div>
         <div class="upload-product">
-            <form method="post" enctype="multipart/form-data">
+            <form id="product-form" method="post" enctype="multipart/form-data">
                 {% csrf_token %}
                 {% for fm in form %}
                 <div class="product">
                     {{fm.label_tag}} {{fm}}<small></small>
-                    <!-- <input type="text" name="product-title" id="" placeholder="Enter Product Title/Name"> -->
                 </div>
                 {% endfor %}
-                <!-- <div class="product-selling-price product">
-                    <small>Product Selling Price</small>
-                    <input type="number" name="product-selling-price" id="" placeholder="Enter Product Selling Price">
-                </div>
-                <div class="product-discounted-price product">
-                    <small>Product Discounted Price</small>
-                    <input type="number" name="product-discounted-price" id=""
-                        placeholder="Enter Product Discounted Price">
-                </div>
-                <div class="product-description product">
-                    <small>Product Description</small>
-                    <textarea name="product-description" id="" cols="30" rows="10"
-                        placeholder="Type Product Description here..."></textarea>
-                </div>
-                <div class="product-brand product">
-                    <small>Product Brand</small>
-                    <input type="text" name="product-brand" id="productbrand" placeholder="Enter Product Brand">
-                </div>
-                <div class="product-category product">
-                    <small>Product Category</small>
-                    <select id="category-list" class="product-category-dropdown product" name="product-category">
-                        <option value="none">----Select Product Category----</option>
-                        {% for k,v in dict_category.items %}
-                        <option value="{{v}}">{{v}}</option>
-                        {% endfor %}
-                    </select>
-                </div>
-                <div class="product-main-image product">
-                    <small>Product Main Image</small>
-                    <input type="file" name="product-main-image" id="">
-                </div>
-                <div class="product-sub-image product">
-                    <small>Product Sub Image(s)</small>
-                    <input type="file" name="product-sub-image" id="">
-                </div>
-                <div class="product-desc-image product">
-                    <small>Product Description Image(s)</small>
-                    <input type="file" name="product-descriptionimage" id="">
-                </div> -->
                 <div class="product-submit">
                     <button class="submit-btn" type="submit" name="saveproduct">Save Product</button>
                 </div>

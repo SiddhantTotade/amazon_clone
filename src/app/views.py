@@ -1,12 +1,13 @@
 from django.http import JsonResponse
 from django.shortcuts import redirect, render
 from django.views import View
-from .models import Customer, Product, Cart, OrderPlaced, Product_Img_Desktop, CATEGORY_CHOICES
+from .models import Customer, Product, Cart, OrderPlaced, Product_Img_Desktop
 from .forms import CustomerRegistrationForm, CustomerProfileForm, UploadProductForm
 from django.contrib import messages
 from django.db.models import Q
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
+from django.template import RequestContext
 import random
 
 
@@ -246,11 +247,11 @@ def payment_done(request):
 
 class ProductUpload(View):
     def get(self, request):
-        form = UploadProductForm(request.POST)
+        form = UploadProductForm(request.POST, request.FILES)
         return render(request, 'app/uploaddetails.html', {'form': form})
 
     def post(self, request):
-        form = UploadProductForm(request.POST)
+        form = UploadProductForm(request.POST, request.FILES)
         if form.is_valid():
             product_name = form.cleaned_data['title']
             product_selling_price = form.cleaned_data['selling_price']
@@ -258,12 +259,12 @@ class ProductUpload(View):
             product_description = form.cleaned_data['description']
             product_brand = form.cleaned_data['brand']
             product_category = form.cleaned_data['category']
+            product_img = form.cleaned_data['product_image']
 
             save_product = Product(title=product_name, selling_price=product_selling_price,
                                    discounted_price=product_discounted_price, description=product_description,
-                                   brand=product_brand.upper(), category=product_category)
-            save_product.save()
-
+                                   brand=product_brand.upper(), category=product_category, product_image=product_img)
+            # save_product.save()
             return render(request, 'app/uploaddetails.html', {'form': form})
 
     # @login_required

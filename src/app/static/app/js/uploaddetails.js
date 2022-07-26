@@ -1,4 +1,4 @@
 // Uppercase Transform
-// document.querySelector('.submit-btn').addEventListener('click', () => {
-//     document.getElementById('product-form').reset()
-// })
+document.querySelector('.submit-btn').addEventListener('click', () => {
+    document.getElementById('product-form').reset()
+})

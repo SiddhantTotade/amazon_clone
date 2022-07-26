@@ -1,3 +1,4 @@
+from dataclasses import fields
 from django import forms
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm, UsernameField, PasswordChangeForm, PasswordResetForm, SetPasswordForm
@@ -62,7 +63,7 @@ class UploadProductForm(forms.ModelForm):
     class Meta:
         model = Product
         fields = ['title', 'selling_price', 'discounted_price',
-                  'description', 'brand', 'category']
+                  'description', 'brand', 'category', 'product_image']
         widgets = {'product-name': forms.TextInput(attrs={'class': 'form-control'}), 'product-selling-price': forms.TextInput(attrs={'class': 'form-control'}),
                    'product-discounted-price': forms.TextInput(attrs={'class': 'form-control'}), 'product-description': forms.TextInput(attrs={'class': 'form-control'}),
-                   'product-brand': forms.TextInput(attrs={'class': 'form-control'}), 'product-category': forms.TextInput(attrs={'class': 'form-control'})}
+                   'product-brand': forms.TextInput(attrs={'class': 'form-control'}), 'product-category': forms.TextInput(attrs={'class': 'form-control'}), 'product-image': forms.TextInput(attrs={'class': 'form-control'})}
