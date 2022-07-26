@@ -1,3 +1,4 @@
+from email.policy import default
 from django.db import models
 from django.contrib.auth.models import User
 from django.core.validators import MaxValueValidator, MinValueValidator
@@ -42,7 +43,8 @@ class Product(models.Model):
 class Product_Img_Desktop(models.Model):
     product_img_desktop = models.ForeignKey(
         Product, default=None, on_delete=models.CASCADE)
-    product_img_desk = models.ImageField(upload_to='product_img_desktop')
+    product_img_desk = models.ImageField(null=False, blank=False,
+                                         default=None, upload_to='product_img_desktop')
 
     def __str__(self):
         return str(self.product_img_desktop.id)

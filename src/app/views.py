@@ -253,6 +253,7 @@ class ProductUpload(View):
         form = UploadProductForm(request.POST, request.FILES)
 
         if form.is_valid():
+            data = request.user.id
             product_name = form.cleaned_data['title']
             product_selling_price = form.cleaned_data['selling_price']
             product_discounted_price = form.cleaned_data['discounted_price']
@@ -260,11 +261,23 @@ class ProductUpload(View):
             product_brand = form.cleaned_data['brand']
             product_category = form.cleaned_data['category']
             product_img = form.cleaned_data['product_image']
+            product_sub_img_desk = request.FILES.getlist('product-sub-img')
 
+            print(data)
+
+            for img in product_sub_img_desk:
+                product_sub_img_desktop = Product_Img_Desktop(
+                    product_img_desk=img
+                )
+
+            product_sub_img_desktop.save()
             save_product = Product(title=product_name, selling_price=product_selling_price,
                                    discounted_price=product_discounted_price, description=product_description,
                                    brand=product_brand.upper(), category=product_category, product_image=product_img)
-            # save_product.save()
+            # save_sub_img_desk = Product_Img_Desktop(
+            #     product_img_desk=product_sub_img_desk)
+
+            save_product.save()
             return render(request, 'app/uploaddetails.html', {'form': form})
 
     # @login_required
