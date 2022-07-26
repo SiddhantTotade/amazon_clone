@@ -68,11 +68,3 @@ class UploadProductForm(forms.ModelForm):
         widgets = {'product-name': forms.TextInput(attrs={'class': 'form-control'}), 'product-selling-price': forms.TextInput(attrs={'class': 'form-control'}),
                    'product-discounted-price': forms.TextInput(attrs={'class': 'form-control'}), 'product-description': forms.TextInput(attrs={'class': 'form-control'}),
                    'product-brand': forms.TextInput(attrs={'class': 'form-control'}), 'product-category': forms.TextInput(attrs={'class': 'form-control'}), 'product-image': forms.TextInput(attrs={'class': 'form-control'})}
-
-
-class UploadProductSubImageDesktop(forms.ModelForm):
-    class Meta:
-        model = Product_Img_Desktop
-        fields = ['product_img_desk']
-        widgets = {
-            'product-sub-img': forms.TextInput(attrs={'class': 'form-control'})}
