@@ -16,11 +16,11 @@
             <h1>Upload Product/Details</h1>
         </div>
         <div class="upload-product">
-            <form method="post">
+            <form method="post" enctype="multipart/form-data">
                 {% csrf_token %}
                 {% for fm in form %}
                 <div class="product">
-                    {{fm.label_tag}} {{fm}}<small>{{fm.errors|striptags}}</small>
+                    {{fm.label_tag}} {{fm}}<small></small>
                     <!-- <input type="text" name="product-title" id="" placeholder="Enter Product Title/Name"> -->
                 </div>
                 {% endfor %}
@@ -62,10 +62,10 @@
                 <div class="product-desc-image product">
                     <small>Product Description Image(s)</small>
                     <input type="file" name="product-descriptionimage" id="">
-                </div>
+                </div> -->
                 <div class="product-submit">
                     <button class="submit-btn" type="submit" name="saveproduct">Save Product</button>
-                </div> -->
+                </div>
             </form>
         </div>
     </div>

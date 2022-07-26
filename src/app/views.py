@@ -251,19 +251,20 @@ class ProductUpload(View):
 
     def post(self, request):
         form = UploadProductForm(request.POST)
-        product_name = form.cleaned_data['title']
-        product_selling_price = form.cleaned_data['selling-price']
-        product_discounted_price = form.cleaned_data['discounted-price']
-        product_description = form.cleaned_data['description']
-        product_brand = form.cleaned_data['brand']
-        product_category = form.cleaned_data['category']
+        if form.is_valid():
+            product_name = form.cleaned_data['title']
+            product_selling_price = form.cleaned_data['selling_price']
+            product_discounted_price = form.cleaned_data['discounted_price']
+            product_description = form.cleaned_data['description']
+            product_brand = form.cleaned_data['brand']
+            product_category = form.cleaned_data['category']
 
-        save_product = Product(title=product_name, selling_price=product_selling_price,
-                               discounted_price=product_discounted_price, description=product_description,
-                               brand=product_brand.upper(), category=product_category)
-        # save_product.save()
+            save_product = Product(title=product_name, selling_price=product_selling_price,
+                                   discounted_price=product_discounted_price, description=product_description,
+                                   brand=product_brand.upper(), category=product_category)
+            save_product.save()
 
-        return render(request, 'app/uploaddetails.html', {'form': form})
+            return render(request, 'app/uploaddetails.html', {'form': form})
 
     # @login_required
     # def upload_details(request):
