@@ -1,10 +1,11 @@
 from dataclasses import fields
+from pyexpat import model
 from django import forms
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm, UsernameField, PasswordChangeForm, PasswordResetForm, SetPasswordForm
 from django.utils.translation import gettext_lazy as _
 from django.contrib.auth import password_validation
-from .models import Customer, Product
+from .models import Customer, Product, Product_Img_Desktop
 
 
 class CustomerRegistrationForm(UserCreationForm):
@@ -67,3 +68,11 @@ class UploadProductForm(forms.ModelForm):
         widgets = {'product-name': forms.TextInput(attrs={'class': 'form-control'}), 'product-selling-price': forms.TextInput(attrs={'class': 'form-control'}),
                    'product-discounted-price': forms.TextInput(attrs={'class': 'form-control'}), 'product-description': forms.TextInput(attrs={'class': 'form-control'}),
                    'product-brand': forms.TextInput(attrs={'class': 'form-control'}), 'product-category': forms.TextInput(attrs={'class': 'form-control'}), 'product-image': forms.TextInput(attrs={'class': 'form-control'})}
+
+
+class UploadProductSubImageDesktop(forms.ModelForm):
+    class Meta:
+        model = Product_Img_Desktop
+        fields = ['product_img_desk']
+        widgets = {
+            'product-sub-img': forms.TextInput(attrs={'class': 'form-control'})}

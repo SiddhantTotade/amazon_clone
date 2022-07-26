@@ -23,6 +23,11 @@
                     {{fm.label_tag}} {{fm}}<small></small>
                 </div>
                 {% endfor %}
+                {% for fm in form2 %}
+                <div class="product">
+                    {{fm.label_tag}} {{fm}}<small></small>
+                </div>
+                {% endfor %}
                 <div class="product-submit">
                     <button class="submit-btn" type="submit" name="saveproduct">Save Product</button>
                 </div>
