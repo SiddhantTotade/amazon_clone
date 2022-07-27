@@ -104,24 +104,14 @@
     </div>
     <div class="product-description">
         <div class="product-description-img">
-            <img src="./img/product/product-description-1.jpg" alt="">
-            <img src="./img/product/product-description-2'.jpg" alt="">
-            <img src="./img/product/product-description-2.jpg" alt="">
-            <img src="./img/product/product-description-4.jpg" alt="">
-            <img src="./img/product/product-description-5.jpg" alt="">
-            <img src="./img/product/product-description-7.jpg" alt="">
-            <img src="./img/product/product-description-8.jpg" alt="">
-            <img src="./img/product/product-description-9.jpg" alt="">
-            <img src="./img/product/product-description-10.jpg" alt="">
-            <img src="./img/product/product-description-11.jpg" alt="">
+            {% for p in product_desc_desk %}
+            <img src="{{p.product_img_desc_desk.url}}" alt="">
+            {% endfor %}
         </div>
     </div>
     <div class="product-details product-description product-about">
         <div class="product-title">
             <h1>Technical Details</h1>
-        </div>
-        <div class="product-subtitle">
-            <h3>iPhone 13 Pro Max</h3>
         </div>
         <div class="product-detail-table">
             <table class="detail-tabel-1">

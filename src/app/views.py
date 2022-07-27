@@ -1,7 +1,7 @@
 from django.http import JsonResponse
 from django.shortcuts import redirect, render
 from django.views import View
-from .models import Customer, Product, Cart, OrderPlaced, Product_Img_Desktop
+from .models import Customer, Product, Cart, OrderPlaced, Product_Img_Desktop, Product_Img_Desc_Desktop
 from .forms import CustomerRegistrationForm, CustomerProfileForm, UploadProductForm
 from django.contrib import messages
 from django.db.models import Q
@@ -41,14 +41,14 @@ class ProductDetailView(View):
         product = Product.objects.get(pk=pk)
         product_img_dsk = Product_Img_Desktop.objects.filter(
             product_img_desktop=product)
-        print("Hello", product_img_dsk)
-
+        product_desc_desk = Product_Img_Desc_Desktop.objects.filter(
+            product_img_desc_desktop=product)
         item_already_in_cart = False
         if request.user.is_authenticated:
             totalitem = len(Cart.objects.filter(user=request.user))
             item_already_in_cart = Cart.objects.filter(
                 Q(product=product.id) & Q(user=request.user)).exists()
-        return render(request, 'app/productdetail.html', {'product': product, 'product_img_dsk': product_img_dsk, 'item_already_in_cart': item_already_in_cart, 'totalitem': totalitem})
+        return render(request, 'app/productdetail.html', {'product': product, 'product_img_dsk': product_img_dsk, 'product_desc_desk': product_desc_desk, 'item_already_in_cart': item_already_in_cart, 'totalitem': totalitem})
 # def product_detail(request):
 #     return render(request, 'app/productdetail.html')
 
@@ -254,9 +254,7 @@ class ProductUpload(View):
 
     def post(self, request):
         form = UploadProductForm(request.POST, request.FILES)
-
         if form.is_valid():
-            data = request.user.id
             product_name = form.cleaned_data['title']
             product_selling_price = form.cleaned_data['selling_price']
             product_discounted_price = form.cleaned_data['discounted_price']
@@ -264,43 +262,30 @@ class ProductUpload(View):
             product_brand = form.cleaned_data['brand']
             product_category = form.cleaned_data['category']
             product_img = form.cleaned_data['product_image']
-            product_sub_img_desk = request.FILES.getlist('product-sub-img')
-
-            print(data)
-
-            for img in product_sub_img_desk:
-                product_sub_img_desktop = Product_Img_Desktop(
-                    product_img_desk=img
-                )
-
-            product_sub_img_desktop.save()
             save_product = Product(title=product_name, selling_price=product_selling_price,
                                    discounted_price=product_discounted_price, description=product_description,
                                    brand=product_brand.upper(), category=product_category, product_image=product_img)
-            # save_sub_img_desk = Product_Img_Desktop(
-            #     product_img_desk=product_sub_img_desk)
-
             save_product.save()
             return render(request, 'app/uploaddetails.html', {'form': form})
 
-    # @login_required
-    # def upload_details(request):
-    #     category = CATEGORY_CHOICES
-    #     dict_category = dict(category)
-    #     print("Category", type(category))
-    #     if request.method == "POST":
-    #         product_name = request.POST.get('product-title')
-    #         product_selling_price = request.POST.get('product-selling-price')
-    #         product_discounted_price = request.POST.get('product-discounted-price')
-    #         product_description = request.POST.get('product-description')
-    #         product_brand = request.POST.get('product-brand')
-    #         product_category = request.POST.get('product-category')
-    #         product_main_image = request.FILES['product-main-image']
+        # @login_required
+        # def upload_details(request):
+        #     category = CATEGORY_CHOICES
+        #     dict_category = dict(category)
+        #     print("Category", type(category))
+        #     if request.method == "POST":
+        #         product_name = request.POST.get('product-title')
+        #         product_selling_price = request.POST.get('product-selling-price')
+        #         product_discounted_price = request.POST.get('product-discounted-price')
+        #         product_description = request.POST.get('product-description')
+        #         product_brand = request.POST.get('product-brand')
+        #         product_category = request.POST.get('product-category')
+        #         product_main_image = request.FILES['product-main-image']
 
-    #         print("Product Category", type(product_category))
+        #         print("Product Category", type(product_category))
 
-    #         save_product = Product(title=product_name, selling_price=product_selling_price,
-    #                                discounted_price=product_discounted_price, description=product_description,
-    #                                brand=product_brand.upper(), category=product_category, product_image=product_main_image)
-    #         save_product.save()
-    #     return render(request, 'app/uploaddetails.html', {'dict_category': dict_category})
+        #         save_product = Product(title=product_name, selling_price=product_selling_price,
+        #                                discounted_price=product_discounted_price, description=product_description,
+        #                                brand=product_brand.upper(), category=product_category, product_image=product_main_image)
+        #         save_product.save()
+        #     return render(request, 'app/uploaddetails.html', {'dict_category': dict_category})
