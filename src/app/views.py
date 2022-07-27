@@ -22,7 +22,7 @@ class ProductView(View):
         random_watch = list(watch)
         watch_shuffle = random.sample(random_watch, 14)
         random_mobile = list(mobiles)
-        mobile_shuffle = random.sample(random_mobile, 9)
+        mobile_shuffle = random.sample(random_mobile, 11)
         mobile_shuffle_mob = random.sample(random_mobile, 4)
         random_item = list(Product.objects.all())
         item_shuffle = random.sample(random_item, 20)
@@ -39,7 +39,10 @@ class ProductDetailView(View):
     def get(self, request, pk):
         totalitem = 0
         product = Product.objects.get(pk=pk)
-        product_img_dsk = Product_Img_Desktop.objects.all()
+        product_img_dsk = Product_Img_Desktop.objects.filter(
+            product_img_desktop=product)
+        print("Hello", product_img_dsk)
+
         item_already_in_cart = False
         if request.user.is_authenticated:
             totalitem = len(Cart.objects.filter(user=request.user))
