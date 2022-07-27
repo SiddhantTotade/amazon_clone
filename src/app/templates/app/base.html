@@ -9,6 +9,7 @@
   <link rel="stylesheet" href="{% static 'app/css/base.css' %}">
   {% block style-home %}{% endblock %}
   {% block style-product %}{% endblock %}
+  {% block style-address %}{% endblock %}
   <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
   <title>Amazon Clone | {% block title %}{% endblock %}</title>
 </head>
@@ -115,6 +116,7 @@
   {% block upload-product %}{% endblock %}
   {% block main-content-mob-index %}{% endblock %}
   {% block main-content-mob-product %}{% endblock %}
+  {% block main-content-mob-address %}{% endblock %}
 
   <footer class="upper">
     <div class="col-1">
@@ -354,6 +356,7 @@
 
   {% block main-content-desk-index %}{% endblock %}
   {% block main-content-desk-product %}{% endblock %}
+  {% block main-content-desk-address %}{% endblock %}
 
   <footer class="upper-desk">
     <div class="foot-col-1 foot-col">
@@ -513,6 +516,7 @@
 </body>
 {% block js-home %}{% endblock %}
 {% block js-product %}{% endblock %}
+{% block js-address %}{% endblock %}
 {% block js-upload-product %}{% endblock %}
 <script src="{% static 'app/js/base.js' %}"></script>
 

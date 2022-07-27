@@ -1,34 +1,222 @@
 {% extends 'app/base.html' %}
 {% load static %}
-{% block title %}Address{% endblock title %}
-{% block main-content %}
-<div class="container my-5">
-    <div class="row">
-        <h3>Welcome {{request.user|capfirst}}</h3>
-        <div class="col-sm-2 border-end">
-            <ul class="list-unstyled">
-                <li class="d-grid"><a href="{% url 'profile' %}" class="btn">Profile</a></li>
-                <li class="d-grid"><a href="{% url 'address' %}" class="btn {{active}}">Address</a></li>
-            </ul>
+
+{% block style-address %}
+<link rel="stylesheet" href="{% static 'app/css/address.css' %}">
+{% endblock %}
+
+{% block title %}Select Address{% endblock %}
+
+{% block main-content-desk-address %}
+<!-- Address for Desktop -->
+<div class="address-container">
+    <div class="address">
+        <div class="address-title">
+            <h1>Select a delivery address</h1>
+            <p>
+                Is the address you'd like to use displayed below? If so, click the corresponding "Deliver to this
+                address" button. Or you can enter a new delivery address.
+            </p>
         </div>
-        <div class="col-sm-9 offset-sm-1">
-            <div class="row">
-                {% for ad in add %}
-                <div class="col-sm-6">
-                    <div class="card my-2">
-                        <div class="card-body">
-                            <h3>Address {{forloop.counter}}</h3>
-                            <p>Name: {{ad.name}}</p>
-                            <p>Locality: {{ad.locality}}</p>
-                            <p>City: {{ad.city}}</p>
-                            <p>State: {{ad.state}}</p>
-                            <p>Pin: {{ad.zipcode}}</p>
-                        </div>
-                    </div>
-                </div>
-                {% endfor %}
+        <div class="current-address">
+            <div class="user-name">
+                <h2>Siddhant Totade</h2>
+            </div>
+            <div class="address-details">
+                <p>
+                    Lorem ipsum dolor sit, amet consectetur adipisicing elit. Animi natus modi impedit aperiam eos
+                    nam veniam voluptatibus harum nesciunt facere.
+                </p>
+            </div>
+            <div class="deliver-button">
+                <button class="delivery">Deliver to this address</button>
+            </div>
+            <div class="edit-del-button">
+                <button class="edit">Edit</button>
+                <button class="delete">Delete</button>
             </div>
         </div>
     </div>
+    <div class="add-address address">
+        <div class="add-address-title">
+            <h2>Add a new Address</h2>
+        </div>
+        <div class="country">
+            <h5>Country/Region</h5>
+            <div class="dropdown">
+                <button class="dropbtn">India</button>
+                <div id="myDropdown" class="dropdown-content">
+                    <a href="">Afghanistan</a>
+                    <a href="">Aland Islands</a>
+                    <a href="">Albania</a>
+                    <a href="">Algeria</a>
+                    <a href="">Bangladsh</a>
+                    <a href="">Barbados</a>
+                    <a href="">Belarus</a>
+                    <a href="">Belgium</a>
+                    <a href="">Congo</a>
+                    <a href="">Costarica</a>
+                    <a href="">Croatia</a>
+                    <a href="">Cyprus</a>
+                    <a href="">Denmark</a>
+                    <a href="">Djibouti</a>
+                    <a href="">Dominica</a>
+                </div>
+            </div>
+        </div>
+        <div class="add-name add">
+            <h5>Full name</h5>
+            <input type="text">
+        </div>
+        <div class="add-mob-no add">
+            <h5>Mobile number</h5>
+            <input type="tel">
+        </div>
+        <div class="add-pincode add">
+            <h5>Pincode</h5>
+            <input type="number">
+        </div>
+        <div class="add-user-address add">
+            <h5>Flat, House no., Building, Company, Apartment</h5>
+            <input type="text">
+        </div>
+        <div class="add-area add">
+            <h5>Area, Street, Sector, Village</h5>
+            <input type="text">
+        </div>
+        <div class="add-landmark add">
+            <h5>Landmark</h5>
+            <input type="text">
+        </div>
+        <div class="add-city add">
+            <div class="town">
+                <h5>Town/City</h5>
+                <input type="text">
+            </div>
+            <div class="state town">
+                <h5>State</h5>
+                <div class="dropdown">
+                    <button class="dropbtn-state dropbtn">Select a State</button>
+                    <div id="myDropdown-state" class="dropdown-content-state">
+                        <a href="">ANDANMAN & NICOBAR ISLANDS</a>
+                        <a href="">ANDRA PRADESH</a>
+                        <a href="">ARUNANCHAL PRADESH</a>
+                        <a href="">ASSAM</a>
+                        <a href="">BIHAR</a>
+                        <a href="">CHANDIGARH</a>
+                        <a href="">CHHATTISGARH</a>
+                        <a href="">DELHI</a>
+                        <a href="">GOA</a>
+                        <a href="">GUJARAT</a>
+                        <a href="">HARYANA</a>
+                        <a href="">HIMACHAL PRADESH</a>
+                        <a href="">JAMMU & KASHMIR</a>
+                        <a href="">JHARKHAND</a>
+                        <a href="">KARNATAKA</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="instructions address">
+        <div class="default">
+            <input type="checkbox">
+            <h4> Make this my default address</h4>
+        </div>
+        <div class="instruction-title add">
+            <h3>Add delivery instructions</h3>
+            <p>
+                Preferences are used to plan your delivery. However, shipments can sometimes arrive early or later
+                than
+                planned.
+            </p>
+        </div>
+        <div class="address-type add">
+            <h5>Address Type</h5>
+            <div class="dropdown">
+                <button class="address-type-btn dropbtn">Select an Address Type</button>
+                <div id="myDropdown-add" class="dropdown-content-add">
+                    <a href="">Home (7 am - 9 pm delivery)</a>
+                    <a href="">Office/Commercial (10 AM - 6 PM delivery)</a>
+                </div>
+            </div>
+        </div>
+        <div class="use-address">
+            <button>Use this address</button>
+        </div>
+    </div>
 </div>
-{% endblock main-content %}
+{% endblock %}
+
+{% block main-content-mob-address %}
+<!-- Address for mobile -->
+<header class="header-mob">
+    <div class="logo">
+        <img src="./img/amazon-logo.png" alt="">
+        <h5>.in</h5>
+    </div>
+    <div class="address-container">
+        <div class="address-title">
+            <h2>Select a delivery address</h2>
+        </div>
+        <div class="address-box">
+            <div class="radio-btn">
+                <input type="radio" name="" id="">
+            </div>
+            <div class="user-address">
+                <h4>RECENTLY USED</h4>
+                <h4>Siddhant Totade</h4>
+                <p>
+                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dicta saepe ad quam, ducimus nesciunt
+                    vel cum libero labore culpa placeat!
+                </p>
+                <p>
+                    Phone number: X1X2X3X4X5
+                </p>
+            </div>
+        </div>
+        <div class="delivery-buttons">
+            <div class="delivery">
+                <button class="delivery-btn deliver">
+                    Deliver to this address
+                </button>
+            </div>
+            <div class="edit-btn delivery">
+                <button class="delivery-btn edit">
+                    Edit Address
+                </button>
+            </div>
+            <div class="delete-btn">
+                <button class="delivery-btn edit">
+                    Delete Address
+                </button>
+            </div>
+        </div>
+        <div class="new-address">
+            <div class="add-address">
+                <h3>Add a New Address</h3>
+                <i class="uil uil-angle-right-b"></i>
+            </div>
+            <div class="pickup-location">
+                <h3>Find a pickup location near you</h3>
+                <i class="uil uil-angle-right-b"></i>
+            </div>
+        </div>
+    </div>
+</header>
+
+<footer class="delivery-footer">
+    <div class="footer-content">
+        <small>Conditions of Use</small>
+        <small>Privacy Notice</small>
+        <small>Interest-Based Ads</small>
+    </div>
+    <div class="copyrights">
+        <small>&copy;All rights reserved by Siddhat Totade</small>
+    </div>
+</footer>
+{% endblock %}
+
+{% block js-address %}
+<script src="{% static 'app/js/address.js' %}"></script>
+{% endblock %}
