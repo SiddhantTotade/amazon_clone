@@ -1,0 +1,171 @@
+{% extends 'app/base.html' %}
+{% load static %}
+
+{% block style-checkout %}
+<link rel="stylesheet" href="{% static 'app/css/payment.css' %}">
+{% endblock %}
+
+{% block title %}Checkout{% endblock %}
+
+{% block main-content-desk-checkout %}
+<div class="payment">
+    <div class="payment-title">
+        <h1>Select a payment method</h1>
+    </div>
+    <div class="payment-container payment-title">
+        <div class="payment-block-1">
+            <div class="payment-bal">
+                <h4>Your available balance</h4>
+            </div>
+            <div class="amazon-pay-bal">
+                <div class="pay-bal">
+                    <small>Amazon Pay Balance ₹ X.xx</small>
+                </div>
+                <div class="pay-content">
+                    <small>1. For optimal utilization of your Amazon Pay balance, balance expiring the earliest will
+                        be
+                        redeemed first.</small>
+                    <small>2. Your Amazon Pay balance cannot be used along with Cash on Delivery or the EMI payment
+                        modes.</small>
+                </div>
+            </div>
+        </div>
+        <div class="payment-block-2 payment-block-1">
+            <div class="credit-cards">
+                <h4>Your saved credit and debit cards</h4>
+            </div>
+            <div class="cards">
+                <h5>Bank of Baroda Debit Card</h5>
+            </div>
+            <div class="cvv">
+                <small>Enter CVV (?):</small>
+                <input type="number">
+            </div>
+            <div class="chkbox">
+                <input type="checkbox">
+                <h5>Save card as per new RBI guidelines.</h5>
+            </div>
+        </div>
+        <div class="payment-block-3 payment-block-2 payment-block-1">
+            <div class="buy-now">
+                <h4>Buy now, Pay later</h4>
+            </div>
+            <div class="pay-later chkbox">
+                <input type="radio" id="amazon-pay">
+                <h5>Amazon Pay Later</h5>
+            </div>
+        </div>
+        <div class="payment-block-4 payment-block-2 payment-block-1">
+            <div class="payment-options">
+                <h4>Another payment method</h4>
+            </div>
+            <div class="options-1 chkbox">
+                <input type="radio" id="add-card">
+                <h5>Add Debit/Credit/ATM Card</h5>
+                <img src="{% static 'app/img/payment.png' %}" alt="">
+            </div>
+            <div class="options-2 chkbox">
+                <input type="radio" id="other-upi">
+                <h5>Other UPI Apps</h5>
+            </div>
+            <div class="options-3 chkbox">
+                <input type="radio" id="pay-on-delivery">
+                <h5>Pay on Delivery</h5>
+            </div>
+        </div>
+        <div class="next payment-block-1">
+            <button class="continue">Continue</button>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block main-content-mob-checkout %}
+<!-- Payment for Mobile -->
+<div class="payment-mob">
+    <div class="address-title">
+        <h2>Select a payment method</h2>
+    </div>
+    <div class="continue address-title">
+        <button class="next-continue" id="next-continue">Continue</button>
+    </div>
+    <div class="amazon-pay address-title">
+        <div class="title">
+            <h4>Amazon Pay balance ₹ X.xx</h4>
+        </div>
+        <div class="amazon-pay-content">
+            <i class="uil uil-info-circle"></i>
+            <small>You have reached monthly usage limit of ₹ 10,000 of your money in amazon pay balanace</small>
+        </div>
+    </div>
+    <div class="buy-now address-title">
+        <div class="buy-now-title">
+            <h4>BUY NOW, PAY LATER</h4>
+        </div>
+        <div class="pay-later">
+            <input type="radio" class="amazon-pay-mob" id="amazon-pay-mob">
+            <h5>Amazon Pay Later</h5>
+        </div>
+    </div>
+    <div class="credit-card address-title">
+        <div class="bank">
+            <h4>Bank of Baroda</h4>
+        </div>
+        <div class="holder">
+            <input type="radio">
+            <div class="info">
+                <small>Siddhant Totade</small>
+                <small>Expires XX/XXXX</small>
+                <input type="number">
+                <div class="recommended">
+                    <i class="uil uil-info-circle"></i>
+                    <small>This card is recommended for you</small>
+                </div>
+                <div class="chkbox">
+                    <input type="checkbox">
+                    <small>Save card as per new RBI guidelines.</small>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="more-ways address-title">
+        <div class="more-ways-title">
+            <h4>OTHER WAYS TO PAY</h4>
+        </div>
+        <div class="ways">
+            <div class="upi">
+                <input type="radio" class="other-upi-mob" id="other-upi-mob">
+                <h5>Other UPI Apps</h5>
+            </div>
+            <div class="upi">
+                <input type="radio" class="add-card-mob" id="add-card-mob">
+                <div class="debit">
+                    <h5>Add Debit/Credit/ATM Card</h5>
+                    <small>You can save your cards as per new RBI guidelines.</small>
+                </div>
+            </div>
+            <div class="upi">
+                <input type="radio" class="net-banking-mob" id="net-banking-mob">
+                <h5>Net Banking</h5>
+            </div>
+        </div>
+    </div>
+    <div class="pay-on-delivery address-title upi">
+        <input type="radio" class="pay-on-delivery-mob" id="pay-on-delivery-mob">
+        <div class="info">
+            <h4>Pay on Delivery</h4>
+            <small>
+                Pay using cash, Paylink(debit, credit, UPI) or Scan & Pay (Flat INR 25 back on first Amazon
+                Scan & Pay transaction)
+            </small>
+        </div>
+    </div>
+    <div class="continue address-title">
+        <button class="next-continue" id="next-continue">Continue</button>
+    </div>
+</div>
+{% endblock %}
+
+{% block js-checkout %}
+<script src="{% static 'app/js/payment.js' %}"></script>
+{% endblock %}

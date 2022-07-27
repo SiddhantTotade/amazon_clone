@@ -56,12 +56,12 @@ window.onclick = function (event) {
 
 // Media Query
 if (window.screen.width >= 400) {
-    document.querySelector('.header-mob').style.display = 'none'
+    document.querySelector('.header-mob-address').style.display = 'none'
     document.querySelector('.delivery-footer').style.display = 'none'
 }
 else if (window.screen.width <= 400) {
-    document.querySelector(".header-mob").style.display = 'block'
-    document.querySelector(".address-container").style.display = 'none'
+    document.querySelector(".header-mob-address").style.display = 'block'
+    document.querySelector(".select-address-container").style.display = 'none'
     document.querySelector(".upper-desk").style.display = 'none'
     document.querySelector(".middle-desk").style.display = 'none'
     document.querySelector(".lower-desk").style.display = 'none'

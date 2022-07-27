@@ -176,7 +176,13 @@ def address(request):
 @login_required
 def select_address(request):
     add = Customer.objects.filter(user=request.user)
-    return render(request, 'app/selectaddress.html', {'add': add, 'active': 'btn-primary'})
+    return render(request, 'app/selectaddress.html', {'add': add})
+
+
+@login_required
+def payment(request):
+    add = Customer.objects.filter(user=request.user)
+    return render(request, 'app/payment.html', {'add': add})
 
 
 @login_required
