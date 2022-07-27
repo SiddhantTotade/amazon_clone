@@ -174,6 +174,12 @@ def address(request):
 
 
 @login_required
+def select_address(request):
+    add = Customer.objects.filter(user=request.user)
+    return render(request, 'app/selectaddress.html', {'add': add, 'active': 'btn-primary'})
+
+
+@login_required
 def orders(request):
     op = OrderPlaced.objects.filter(user=request.user)
     return render(request, 'app/orders.html', {'order_placed': op})

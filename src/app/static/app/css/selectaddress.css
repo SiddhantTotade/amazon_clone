@@ -1,31 +1,32 @@
 @media screen and (min-width:401px) {
 
-    .address-container {
-        width: 80%;
+    .select-address-container {
+        width: 100%;
         margin: auto;
+        display: grid;
+        margin-bottom: 17em;
     }
 
-    .address-container button:hover {
+    .select-address-container button:hover {
         cursor: pointer;
     }
 
-    .address {
+    .select-address {
         width: 80%;
-        padding-top: 20px;
-        padding-bottom: 1em;
+        padding: 20px 20px;
         background-color: #fff;
         margin: auto;
         border-bottom: 1px solid gainsboro;
     }
 
-    .address h1,
-    .address h2,
-    .address h3,
-    .address h4,
-    .address h5,
-    .address p,
-    .address a,
-    .address button {
+    .select-address h1,
+    .select-address h2,
+    .select-address h3,
+    .select-address h4,
+    .select-address h5,
+    .select-address p,
+    .select-address a,
+    .select-address button {
         color: #000000;
     }
 
@@ -92,7 +93,7 @@
         gap: 5px;
     }
 
-    .dropdown {
+    .select-dropdown {
         display: grid;
         width: 100%;
         position: relative;

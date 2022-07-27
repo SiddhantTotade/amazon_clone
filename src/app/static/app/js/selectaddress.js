@@ -1,25 +1,25 @@
 // Redirect Page Desktop
-document.querySelector('.delivery').addEventListener('click', () => {
-    location.href = '/payment.html'
-})
+// document.querySelector('.delivery').addEventListener('click', () => {
+//     location.href = '/payment.html'
+// })
 
 // Redirect Page Mobile
-document.querySelector('.delivery-btn').addEventListener('click', () => {
-    location.href = '/payment.html'
-})
+// document.querySelector('.delivery-btn').addEventListener('click', () => {
+//     location.href = '/payment.html'
+// })
 
 // Country Dropdown
-document.querySelector('.dropbtn').addEventListener('click', () => {
-    document.getElementById("myDropdown").classList.toggle("show");
-})
+// document.querySelector('.dropbtn').addEventListener('click', () => {
+//     document.getElementById("myDropdown").classList.toggle("show");
+// })
 
-document.querySelector('.dropbtn-state').addEventListener('click', () => {
-    document.getElementById("myDropdown-state").classList.toggle("show-state");
-})
+// document.querySelector('.dropbtn-state').addEventListener('click', () => {
+//     document.getElementById("myDropdown-state").classList.toggle("show-state");
+// })
 
-document.querySelector('.address-type-btn').addEventListener('click', () => {
-    document.getElementById("myDropdown-add").classList.toggle("show-add");
-})
+// document.querySelector('.address-type-btn').addEventListener('click', () => {
+//     document.getElementById("myDropdown-add").classList.toggle("show-add");
+// })
 
 window.onclick = function (event) {
     if (!event.target.matches('.dropbtn')) {

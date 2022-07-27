@@ -2,15 +2,15 @@
 {% load static %}
 
 {% block style-address %}
-<link rel="stylesheet" href="{% static 'app/css/address.css' %}">
+<link rel="stylesheet" href="{% static 'app/css/selectaddress.css' %}">
 {% endblock %}
 
 {% block title %}Select Address{% endblock %}
 
 {% block main-content-desk-address %}
 <!-- Address for Desktop -->
-<div class="address-container">
-    <div class="address">
+<div class="select-address-container">
+    <div class="select-address">
         <div class="address-title">
             <h1>Select a delivery address</h1>
             <p>
@@ -37,13 +37,13 @@
             </div>
         </div>
     </div>
-    <div class="add-address address">
+    <div class="add-address select-address">
         <div class="add-address-title">
             <h2>Add a new Address</h2>
         </div>
         <div class="country">
             <h5>Country/Region</h5>
-            <div class="dropdown">
+            <div class="select-dropdown">
                 <button class="dropbtn">India</button>
                 <div id="myDropdown" class="dropdown-content">
                     <a href="">Afghanistan</a>
@@ -118,7 +118,7 @@
             </div>
         </div>
     </div>
-    <div class="instructions address">
+    <div class="instructions select-address">
         <div class="default">
             <input type="checkbox">
             <h4> Make this my default address</h4>
@@ -218,5 +218,5 @@
 {% endblock %}
 
 {% block js-address %}
-<script src="{% static 'app/js/address.js' %}"></script>
+<script src="{% static 'app/js/selectaddress.js' %}"></script>
 {% endblock %}

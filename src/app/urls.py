@@ -17,6 +17,7 @@ urlpatterns = [
     path('buy/', views.buy_now, name='buy-now'),
     path('profile/', views.ProfileView.as_view(), name='profile'),
     path('address/', views.address, name='address'),
+    path('selectaddress/', views.select_address, name='selectaddress'),
     path('orders/', views.orders, name='orders'),
     path('passwordchangedone/', auth_views.PasswordChangeDoneView.as_view(
         template_name='app/passwordchangedone.html'), name='passwordchangedone'),
