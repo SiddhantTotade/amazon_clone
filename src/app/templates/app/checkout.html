@@ -1,0 +1,165 @@
+{% extends 'app/base.html' %}
+{% load static %}
+
+{% block style-checkout %}
+<link rel="stylesheet" href="{% static 'app/css/checkout.css' %}">
+{% endblock %}
+
+{% block title %}Checkout{% endblock %}
+
+{% block main-content-desk-checkout %}
+<div class="checkout-container">
+    <div class="left-checkout-container">
+        <div class="checkout-title">
+            <h2>Review your order</h2>
+            <small>By placing your order, you agree to Amazon's privacy notice and conditions to use.</small>
+        </div>
+        <div class="address-payment-container">
+            <div class="checkout-address-container">
+                <h5>Shipping address</h5>
+                <small>Siddhant Totade</small>
+                <small>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Laborum, ex.</small>
+                <small>locality</small>
+                <small>City, State 0X0X0X</small>
+                <small>Phone, 0X0X0X0X0X0X</small>
+            </div>
+            <div class="checkout-payment-container">
+                <h5>Payment method:</h5>
+                <small>Pay on delivery</small>
+            </div>
+        </div>
+        <div class="product-checkout">
+            <div class="delivery-date">
+                <h3>Delivery date: 2 Aug 2022</h3>
+            </div>
+            <div class="order-detail">
+                <div class="order-img">
+                    <img src="" alt="">
+                </div>
+                <div class="order-desc">
+                    <h4>
+                        Redmi Note 11T 5G (Aquamarine Blue, 6GB RAM, 128GB ROM)| Dimensity 810 5G | 33W Pro Fast
+                        Charging |
+                        Charger Included | Additional Exchange Offers| Get 2 Months of YouTube Premium Free!
+                    </h4>
+                    <div class="order-price">
+                        <h4>₹ 15,999.00</h4>
+                    </div>
+                    <div class="quantity">
+                        <h4>Quantity:</h4>
+                        <small>1</small>
+                    </div>
+                </div>
+                <div class="delivery-method">
+                    <h4>Delivery Method:</h4>
+                    <small>Standard delivery</small>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="right-checkout-container">
+        <div class="summary">
+            <div class="place-order">
+                <a href="">Place your order</a>
+            </div>
+            <div class="summary-title">
+                <h4>Order Summary</h4>
+            </div>
+            <div class="order-sub-summary">
+                <div class="item-summary item">
+                    <small>Items:</small>
+                    <small>₹ 15,999.00</small>
+                </div>
+                <div class="delivery item">
+                    <small>Delivery:</small>
+                    <small>₹ 40.00</small>
+                </div>
+                <div class="total item">
+                    <small>Total:</small>
+                    <small>₹ 16,039.00</small>
+                </div>
+                <div class="promotion item">
+                    <small>Promotion applied:</small>
+                    <small>-₹ 40.00</small>
+                </div>
+            </div>
+            <div class="order-total">
+                <div class="total-price item">
+                    <h3>Order Total</h3>
+                    <h3>₹ 15,999.00</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block main-content-mob-checkout %}
+<div class="checkout-container-mob">
+    <div class="checkout-summary">
+        <div class="checkout-address">
+            <h3>Shipping to:</h3>
+            <small>Siddhant Totade, Lorem, dolor....</small>
+        </div>
+        <div class="order-sub-summary">
+            <div class="item-summary item">
+                <h3>Items:</h3>
+                <h3>₹ 15,999.00</h3>
+            </div>
+            <div class="delivery item">
+                <h3>Delivery:</h3>
+                <h3>₹ 40.00</h3>
+            </div>
+            <div class="total item">
+                <h3>Total:</h3>
+                <h3>₹ 16,039.00</h3>
+            </div>
+            <div class="promotion item">
+                <h3>Promotion applied:</h3>
+                <h3>-₹ 40.00</h3>
+            </div>
+        </div>
+        <div class="total-price item">
+            <h3>Order Total</h3>
+            <h3>₹ 15,999.00</h3>
+        </div>
+    </div>
+    <div class="product-summary">
+        <div class="product-checkout">
+            <div class="delivery-date">
+                <h3>Delivery date: 2 Aug 2022</h3>
+            </div>
+            <div class="order-detail">
+                <div class="order-img">
+                    <img src="" alt="">
+                </div>
+                <div class="order-desc">
+                    <h4>
+                        Redmi Note 11T 5G (Aquamarine Blue, 6GB RAM, 128GB ROM)| Dimensity 810 5G | 33W Pro Fast
+                        Charging |
+                        Charger Included | Additional Exchange Offers| Get 2 Months of YouTube Premium Free!
+                    </h4>
+                    <div class="order-price">
+                        <h4>₹ 15,999.00</h4>
+                    </div>
+                    <div class="quantity">
+                        <h4>Quantity:</h4>
+                        <small>1</small>
+                    </div>
+                    <div class="delivery-method quantity">
+                        <h4>Delivery Method:</h4>
+                        <small>Standard delivery</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="checkout-btn">
+        <a href="">Place your order</a>
+    </div>
+</div>
+{% endblock %}
+
+{% block js-checkout %}
+<script src="{% static 'app/js/checkout.js' %}"></script>
+{% endblock %}

@@ -1,0 +1,223 @@
+body {
+    background: rgb(255, 255, 255);
+}
+
+@media screen and (min-width:401px) {
+
+    .checkout-container {
+        width: 80%;
+        margin: auto;
+        gap: 10px;
+        display: flex;
+        margin-bottom: 18em;
+    }
+
+    .checkout-container h2,
+    .checkout-container h5,
+    .checkout-container h4,
+    .checkout-container small {
+        color: #000000;
+    }
+
+    .checkout-title {
+        padding-top: 20px;
+    }
+
+    .left-checkout-container {
+        width: 80%;
+    }
+
+    .address-payment-container {
+        display: flex;
+        margin-top: 20px;
+        padding: 5px;
+        border-radius: 5px;
+        border: 2px solid gainsboro;
+    }
+
+    .checkout-address-container {
+        width: 50%;
+        display: grid;
+        gap: 5px;
+    }
+
+    .checkout-payment-container {
+        width: 50%;
+    }
+
+    .delivery-date h3 {
+        color: green;
+    }
+
+    .product-checkout {
+        display: grid;
+        gap: 10px;
+        margin-top: 20px;
+        padding: 5px;
+        border: 2px solid gainsboro;
+        border-radius: 5px;
+    }
+
+    .order-detail {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .order-img {
+        width: 10%;
+    }
+
+    .order-desc {
+        width: 60%;
+        display: grid;
+        gap: 10px;
+    }
+
+    .quantity {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .delivery-method {
+        display: flex;
+        gap: 10px;
+        align-items: center;
+        justify-content: end;
+    }
+
+    .order-summary {
+        display: grid;
+        justify-content: center;
+        gap: 10px;
+    }
+
+    .right-checkout-container {
+        width: 20%;
+        display: grid;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 1em;
+    }
+
+    .place-order a {
+        display: grid;
+        justify-content: center;
+        padding: 5px 0;
+        border-radius: 5px;
+        text-decoration: none;
+        color: #000000;
+        background-color: orange;
+    }
+
+    .summary {
+        display: grid;
+        gap: 10px;
+        padding: 15px;
+        border: 2px solid gainsboro;
+        border-radius: 5px;
+    }
+
+    .order-sub-summary {
+        display: grid;
+        gap: 5px;
+    }
+
+    .item {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .order-total h3 {
+        color: rgb(199 16 16);
+    }
+}
+
+@media screen and (max-width:400px) {
+
+    .checkout-container-mob {
+        padding: 5px;
+    }
+
+    .checkout-container-mob h3,
+    .checkout-container-mob small,
+    .checkout-container-mob h4 {
+        color: #000000;
+    }
+
+    .checkout-summary {
+        padding: 5px;
+        border-radius: 5px;
+        border: 2px solid gainsboro;
+    }
+
+    .total-price h3 {
+        color: rgb(199 16 16);
+    }
+
+    .checkout-address {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .item {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .order-sub-summary {
+        display: grid;
+        gap: 5px;
+        margin-top: 1em;
+    }
+
+    .total-price {
+        margin-top: 1em;
+    }
+
+    .product-summary {
+        margin-top: 1em;
+        padding: 5px;
+        border-radius: 5px;
+        border: 2px solid gainsboro;
+    }
+
+    .delivery-date h3 {
+        color: green;
+    }
+
+    .order-detail {
+        display: flex;
+        margin-top: 1em;
+        gap: 10px;
+    }
+
+    .order-img {
+        width: 40%;
+    }
+
+    .order-desc {
+        width: 100%;
+        display: grid;
+        gap: 10px;
+    }
+
+    .quantity {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+    }
+
+    .checkout-btn a {
+        display: flex;
+        justify-content: center;
+        margin: auto;
+        margin-top: 1em;
+        padding: 10px;
+        background-color: yellow;
+        border-radius: 5px;
+        color: #000000;
+        text-decoration: none;
+    }
+}
