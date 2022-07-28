@@ -1,7 +1,7 @@
-from email.policy import default
+from email.mime import nonmultipart
 from django.db import models
 from django.contrib.auth.models import User
-from django.core.validators import MaxValueValidator, MinValueValidator
+from django_countries.fields import CountryField
 # Create your models here.
 
 
@@ -12,10 +12,12 @@ STATE_CHOICES = (("Andhra Pradesh", "Andhra Pradesh"), ("Arunachal Pradesh ", "A
 class Customer(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     name = models.CharField(max_length=200)
-    locality = models.CharField(max_length=200)
+    address = models.CharField(default=None, max_length=100)
+    locality = models.CharField(max_length=30)
     city = models.CharField(max_length=50)
-    zipcode = models.IntegerField()
     state = models.CharField(choices=STATE_CHOICES, max_length=50)
+    zipcode = models.IntegerField()
+    country = CountryField()
 
     def __str__(self):
         return str(self.id)
