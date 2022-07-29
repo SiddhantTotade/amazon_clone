@@ -24,7 +24,7 @@
                 <small>Track, return, or buy things again</small>
             </div>
         </a>
-        <div class="login user-order">
+        <a href="{% url 'profile' %}" class="login user-order">
             <div class="user-order-img">
                 <img src="{% static 'app/img/account/lock.png' %}" alt="">
             </div>
@@ -32,8 +32,8 @@
                 <h3>Login & security</h3>
                 <small>Edit login, name and mobile number</small>
             </div>
-        </div>
-        <div class="address user-order">
+        </a>
+        <a class="address user-order">
             <div class="user-order-img">
                 <img src="{% static 'app/img/account/address.png' %}" alt="">
             </div>
@@ -41,8 +41,8 @@
                 <h3>Your Address</h3>
                 <small>Edit addreses for orders and gifts</small>
             </div>
-        </div>
-        <div class="user-order">
+        </a>
+        <a class="user-order">
             <div class="user-order-img">
                 <img src="{% static 'app/img/account/pay.png' %}" alt="">
             </div>
@@ -50,8 +50,8 @@
                 <h3>Amazon Pay balance</h3>
                 <small>Add money to your balance</small>
             </div>
-        </div>
-        <div class="user-order">
+        </a>
+        <a class="user-order">
             <div class="user-order-img">
                 <img src="{% static 'app/img/account/wallet.png' %}" alt="">
             </div>
@@ -59,8 +59,8 @@
                 <h3>Payment options</h3>
                 <small>Edit or add payment methods</small>
             </div>
-        </div>
-        <div class="user-order">
+        </a>
+        <a class="user-order">
             <div class="user-order-img">
                 <img src="{% static 'app/img/account/prime.png' %}" alt="">
             </div>
@@ -68,7 +68,7 @@
                 <h3>Prime</h3>
                 <small>View benefits and payment settings</small>
             </div>
-        </div>
+        </a>
     </div>
 </div>
 {% endblock %}
