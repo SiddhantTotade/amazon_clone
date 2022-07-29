@@ -1,12 +1,27 @@
 {% extends 'app/base.html' %}
 {% load static %}
+
+{% block style-emptycart %}
+<link rel="stylesheet" href="{% static 'app/css/emptycart.css' %}">
+{% endblock %}
+
 {% block title %}Cart{% endblock title %}
-{% block main-content %}
-<div class="container my-5">
-    <div class="row">
-        <h1 class="text-center mb-5">You have no products in cart.</h1>
-        <div class="col-sm-8">
-        </div>
-    </div>
+{% block main-content-desk-emptycart %}
+<div class="empty-cart">
+    <h1>
+        You have no items in your cart.
+    </h1>
 </div>
 {% endblock main-content %}
+
+{% block main-content-mob-emptycart %}
+<div class="empty-cart-mob">
+    <h3>
+        You have no items in your cart.
+    </h3>
+</div>
+{% endblock main-content %}
+
+{% block js-emptycart %}
+<script src="{% static 'app/js/emptycart.js' %}"></script>
+{% endblock %}

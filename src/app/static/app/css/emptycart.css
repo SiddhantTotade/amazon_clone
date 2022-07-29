@@ -1,0 +1,13 @@
+@media screen and (min-width:401px) {
+    .empty-cart {
+        width: 80%;
+        margin: auto;
+    }
+}
+
+@media screen and (max-width:400px) {
+
+    .empty-cart-mob {
+        margin: auto;
+    }
+}

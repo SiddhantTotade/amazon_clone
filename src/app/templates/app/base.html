@@ -11,6 +11,8 @@
   {% block style-product %}{% endblock %}
   {% block style-address %}{% endblock %}
   {% block style-checkout %}{% endblock %}
+  {% block style-account %}{% endblock %}
+  {% block style-addtocart %}{% endblock %}
   <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
   <title>Amazon Clone | {% block title %}{% endblock %}</title>
 </head>
@@ -32,8 +34,8 @@
           {% else %}
           <h6 class="name">Sign in</h6>
           {% endif %}
-          <i class="uil uil-user"></i>
-          <i class="uil uil-shopping-cart"></i>
+          <a href="{% url 'account' %}"><i class="uil uil-user"></i></a>
+          <a href="{% url 'showcart' %}"><i class="uil uil-shopping-cart"></i></a>
         </div>
       </div>
       <!-- Search Form -->
@@ -119,6 +121,8 @@
   {% block main-content-mob-product %}{% endblock %}
   {% block main-content-mob-address %}{% endblock %}
   {% block main-content-mob-checkout %}{% endblock %}
+  {% block main-content-mob-account %}{% endblock %}
+  {% block main-content-mob-addtocart %}{% endblock %}
 
   <footer class="upper">
     <div class="col-1">
@@ -214,7 +218,7 @@
           <img class="india-flag" src="{% static 'app/img/india.png' %}" alt="">
           <i class="uil uil-angle-down"></i>
         </div>
-        <div class="account">
+        <a href="{% url 'account' %}" class="account">
           {% if request.user.is_authenticated %}
           <span><small>Hello, {{ request.user|capfirst }}</small></span>
           {% else %}
@@ -224,13 +228,13 @@
             <h4>Account & Lists</h4>
             <i class="uil uil-angle-down account-icon"></i>
           </div>
-        </div>
+        </a>
         <div class="order">
           <span><small>Return</small></span>
           <h4>& Orders</h4>
         </div>
         <div class="cart">
-          <i class="uil uil-shopping-cart cart-item"></i>
+          <a href="{% url 'showcart' %}"><i class="uil uil-shopping-cart cart-item"></i></a>
         </div>
       </div>
       <div class="sidebar-desktop">
@@ -291,9 +295,9 @@
         <div class="row-5 row">
           <h2>Help & Settings</h2>
           <div class="menu">
-            <a href="/account.html">Your Account</a>
+            <a href="{% url 'account' %}">Your Account</a>
             <a href="#">Customer Service</a>
-            <a href="#">Sign Out</a>
+            <a href="{% url 'logout' %}">Sign Out</a>
           </div>
         </div>
       </div>
@@ -360,6 +364,8 @@
   {% block main-content-desk-product %}{% endblock %}
   {% block main-content-desk-address %}{% endblock %}
   {% block main-content-desk-checkout %}{% endblock %}
+  {% block main-content-desk-account %}{% endblock %}
+  {% block main-content-desk-addtocart %}{% endblock %}
 
   <footer class="upper-desk">
     <div class="foot-col-1 foot-col">
@@ -521,6 +527,8 @@
 {% block js-product %}{% endblock %}
 {% block js-address %}{% endblock %}
 {% block js-checkout %}{% endblock %}
+{% block js-account %}{% endblock %}
+{% block js-addtocart %}{% endblock %}
 {% block js-upload-product %}{% endblock %}
 <script src="{% static 'app/js/base.js' %}"></script>
 

@@ -191,6 +191,11 @@ def orders(request):
     return render(request, 'app/orders.html', {'order_placed': op})
 
 
+@login_required
+def account(request):
+    return render(request, 'app/account.html')
+
+
 # def change_password(request):
 #     return render(request, 'app/changepassword.html')
 

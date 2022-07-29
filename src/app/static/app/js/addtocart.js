@@ -60,27 +60,8 @@ counter.forEach((node) => {
 
 // Media Query
 if (window.screen.width >= 400) {
-    document.querySelector(".desktop").style.display = 'block'
-    document.querySelector(".mobile").style.display = 'none'
     document.querySelector(".cart-container-mob").style.display = 'none'
-    document.querySelector(".upper").style.display = 'none'
-    document.querySelector(".lower").style.display = 'none'
 }
 else if (window.screen.width <= 400) {
-    document.querySelector(".mobile").style.display = 'block'
-    document.querySelector(".desktop").style.display = 'none'
     document.querySelector(".cart-container").style.display = 'none'
-    document.querySelector(".upper-desk").style.display = 'none'
-    document.querySelector(".middle-desk").style.display = 'none'
-    document.querySelector(".lower-desk").style.display = 'none'
 }
-
-// Redirect Page Desktop
-document.querySelector('.proceed-to-buy').addEventListener('click', () => {
-    location.href = '/address.html'
-})
-
-// Redirect Page Mobile
-document.querySelector('.proceed-to-buy-mob').addEventListener('click', () => {
-    location.href = '/address.html'
-})
