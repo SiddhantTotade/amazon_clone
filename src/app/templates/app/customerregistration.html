@@ -1,38 +1,74 @@
-{% extends 'app/base.html' %}
 {% load static %}
-{% block title %}Customer Registration{% endblock title %}
-{% block main-content %}
-<div class="container">
-   <div class="row my-3">
-      <div class="col-sm-6 offset-sm-3">
-         <h3>Customer Registration</h3>
-         <hr>
+<!DOCTYPE html>
+<html lang="en">
 
-         <form action="" method="post" novalidate class="shadow p-5">{% csrf_token %}
-            {% if messages %}
-            {% for message in messages %}
-            <p {% if message.tags %} class="alert alert-{{message.tags}} mb-5" {% endif %}>{{message}}</p>
-            {% endfor %}
-            {% endif %}
-            {% for fm in form %}
-            <div class="form-group mb-3">
-               {{fm.label_tag}} {{fm}} <small class="text-danger">
-                  {{fm.errors|striptags}}
-               </small>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Amazon Clone | Create</title>
+    <link rel="stylesheet" href="{% static 'app/css/customerregistration.css' %}">
+</head>
+
+<body>
+    <div class="login-desktop">
+        <div class="amazon-logo">
+            <img src="{% static 'app/img/amazon-black.png' %}" alt="">
+            <h4>.in</h4>
+        </div>
+        <form action="" method="post" novalidate>
+            <div class="login-container">
+                <div class="signin-container">
+                    <div class="sign-in-title">
+                        <h1>Create Account</h1>
+                    </div>
+                    <div class="user-login">
+                        {% for fm in form %}
+                        <div>
+                            {{fm.label_tag}}
+                        </div>
+                        {% endfor %}
+                        <!-- <div>
+                            <small>
+                                <h4>Name</h4>
+                            </small>
+                            <input type="text" name="" id="" placeholder="First and last name">
+                        </div>
+                        <div>
+                            <small>
+                                <h4>Mobile number</h4>
+                            </small>
+                            <input type="tel" name="" id="" placeholder="Mobile number">
+                        </div>
+                        <div>
+                            <small>
+                                <h4>Email (optional)</h4>
+                            </small>
+                            <input type="email" name="" id="" placeholder="Email">
+                        </div>
+                        <div>
+                            <small>
+                                <h4>Password</h4>
+                            </small>
+                            <input type="text" name="" id="" placeholder="At least 6 characters">
+                        </div> -->
+                        <button>Continue</button>
+                    </div>
+                </div>
+                <div class="continue user-login">
+                    <small>We will send you a text to verify your phone.
+                        Message and Data rates may apply.</small>
+                </div>
             </div>
-            {% endfor %}
-            <input type="submit" value="submit" class="btn btn-primary">
-            <br>
-            <div class="text-center text-primary fw-bold">
-               <small>Existing User ?<a href="{% url 'login' %}" class="text-danger"> Login</a></small>
+            <div class="new-amazon user-login">
+                <small>Already have an account ?</small>
             </div>
-            {% if form.non_field_errors %}
-            {% for error in form.non_field_errors %}
-            <p class="alert alert-danger my-3">{{error}}</p>
-            {% endfor %}
-            {% endif %}
-         </form>
-      </div>
-   </div>
-</div>
-{% endblock main-content %}
+            <div class="create-account">
+                <button class="login">Login</button>
+            </div>
+        </form>
+    </div>
+</body>
+<script src="{% static 'app/js/customerregistration.js' %}"></script>
+
+</html>

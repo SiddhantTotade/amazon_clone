@@ -1,7 +1,3 @@
-document.querySelector('.create').addEventListener('click', () => {
-    location.href = '/create.html';
-})
-
 // Media Query
 if (window.screen.width >= 400) {
     document.querySelector(".login-desktop").style.display = 'block'

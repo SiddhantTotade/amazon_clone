@@ -1,32 +1,123 @@
-{% extends 'app/base.html' %}
 {% load static %}
-{% block title %}Login{% endblock title %}
-{% block main-content %}
-<div class="container">
-    <div class="row my-3">
-        <div class="col-sm-6 offset-sm-3">
-            <h3>Login</h3>
-            <hr>
-            <form action="" method="post" novalidate class="shadow p-5">
-                {% csrf_token %}
-                {% for fm in form %}
-                <div class="form-group">
-                    {{fm.label_tag}} {{fm}} <small class="text-danger">{{fm.errors|striptags}}</small><br>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Amazon Clone | Login</title>
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
+    <link rel="stylesheet" href="{% static 'app/css/login.css' %}">
+</head>
+
+<body>
+    <!-- Login for Desktop -->
+    <div class="login-desktop">
+        <div class="amazon-logo">
+            <img src="{% static 'app/img/amazon-black.png' %}" alt="">
+            <h4>.in</h4>
+        </div>
+        <form action="" novalidate>
+            {% csrf_token %}
+            <div class="login-container">
+                <div class="signin-container">
+                    <div class="sign-in-title">
+                        <h1>Sign-In</h1>
+                    </div>
+                    <div class="user-login">
+                        {% for fm in form %}
+                        <div class="user-input">
+                            {{fm.label_tag}} {{fm}}
+                        </div>
+                        {% endfor %}
+                        <input type="submit" value="Continue" class="continue-btn">
+                    </div>
                 </div>
-                {% endfor %}
-                <small><a href="{% url 'password_reset' %}">Forgot Password ?</a></small><br>
-                <input type="submit" class="btn btn-primary mt-4" value="Login">
-                <br>
-                <div class="text-center text-primary fw-bold"><small>New to Eshop ? <a
-                            href="{% url 'customerregistration' %}" class="text-danger">Create an account</a></small>
+                <div class="continue user-login">
+                    <small>By continuing, you agree to Amazon's Conditions of Use and Privacy Notice.</small>
                 </div>
-                {% if form.non_field_errors %}
-                {% for error in form.non_field_errors %}
-                <p class="alert alert-danger my-3">{{error}}</p>
-                {% endfor %}
-                {% endif %}
-            </form>
+            </div>
+            <div class="new-amazon user-login">
+                <small>New to Amazon ?</small>
+            </div>
+            <div class="create-account">
+                <a href="{% url 'customerregistration' %}" class="create">Create your Amazon account</a>
+            </div>
+        </form>
+    </div>
+
+    <!-- Login for Mobile -->
+    <div class="login-mobile">
+        <div class="logo">
+            <img src="{% static 'app/img/amazon-logo.png' %}" alt="">
+            <h5>.in</h5>
+        </div>
+        <div class="login-container">
+            <div class="welcome-title">
+                <h1>Welcome</h1>
+            </div>
+            <div class="login-create">
+                <div class="create">
+                    <div class="login">
+                        <input type="radio" id="create">
+                        <h3>Create account.</h3><small>New to Amazon?</small>
+                    </div>
+                    <div id="user" class="user">
+                        <div class="user-details">
+                            <input type="text" placeholder="First and last name">
+                            <input type="tel" placeholder="Mobile number">
+                            <input type="email" placeholder="Email">
+                            <input type="password" placeholder="Set password">
+                            <div class="password">
+                                <i class="uil uil-info"></i>
+                                <small>Passwords must be at least 6 characters.</small>
+                            </div>
+                        </div>
+                        <div class="email">
+                            <div class="show-password">
+                                <input type="checkbox">
+                                <h4>Show password</h4>
+                            </div>
+                            <div class="confirm">
+                                <small>By enrolling your mobile phone number, you consent to receiving automated
+                                    security
+                                    notifications via text message from Amazon. You can opt out by removing your mobile
+                                    number
+                                    on the Login & Security page located in Your Account settings. Message and data
+                                    rates
+                                    may
+                                    apply.
+                                </small>
+                            </div>
+                            <button>Verify mobile number</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="login-user">
+                    <div class="login">
+                        <input type="radio" id="signin" checked>
+                        <h3>Sign-In.</h3><small>Already a customer?</small>
+                    </div>
+                    <div class="email" id="email">
+                        <input type="text" placeholder="Email or phone number">
+                        <button class="create-mob">Continue</button>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
-</div>
-{% endblock main-content %}
+    <footer class="delivery-footer">
+        <div class="footer-content">
+            <small>Conditions of Use</small>
+            <small>Privacy Notice</small>
+            <small>Interest-Based Ads</small>
+        </div>
+        <div class="copyrights">
+            <small>&copy;All rights reserved by Siddhat Totade</small>
+        </div>
+    </footer>
+</body>
+<script src="{% static 'app/js/login.js' %}"></script>
+
+</html>
