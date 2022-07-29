@@ -15,7 +15,7 @@
         <h1>Your Account</h1>
     </div>
     <div class="account-change">
-        <div class="user-order">
+        <a href="{% url 'orders' %}" class="user-order">
             <div class="user-order-img">
                 <img src="{% static 'app/img/account/order-box.png' %}" alt="">
             </div>
@@ -23,7 +23,7 @@
                 <h3>Your Orders</h3>
                 <small>Track, return, or buy things again</small>
             </div>
-        </div>
+        </a>
         <div class="login user-order">
             <div class="user-order-img">
                 <img src="{% static 'app/img/account/lock.png' %}" alt="">

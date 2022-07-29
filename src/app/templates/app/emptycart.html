@@ -6,21 +6,18 @@
 {% endblock %}
 
 {% block title %}Cart{% endblock title %}
+
 {% block main-content-desk-emptycart %}
 <div class="empty-cart">
-    <h1>
-        You have no items in your cart.
-    </h1>
+    <img src="{% static 'app/img/empty-cart.png' %}" alt="">
 </div>
-{% endblock main-content %}
+{% endblock %}
 
 {% block main-content-mob-emptycart %}
 <div class="empty-cart-mob">
-    <h3>
-        You have no items in your cart.
-    </h3>
+    <img src="{% static 'app/img/empty-cart.png' %}" alt="">
 </div>
-{% endblock main-content %}
+{% endblock %}
 
 {% block js-emptycart %}
 <script src="{% static 'app/js/emptycart.js' %}"></script>

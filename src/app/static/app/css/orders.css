@@ -1,0 +1,125 @@
+body {
+    background: #fff;
+}
+
+/* Media Query for Desktop */
+@media screen and (min-width:401px) {
+
+    .orders {
+        width: 80%;
+        margin: auto;
+        padding: 10px 10px;
+        margin-bottom: 17em;
+    }
+
+    .orders h1,
+    .orders h4,
+    .orders h3 {
+        color: #000000;
+    }
+
+    .orders h2 {
+        color: green;
+    }
+
+    .user-order-block {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        height: 25vh;
+        margin-top: 2em;
+        padding: 10px 10px;
+        border-radius: 5px;
+        border: 1px solid gray;
+    }
+
+    .user-order-block img {
+        width: 80%;
+    }
+
+    .order-img {
+        width: 10%;
+        display: grid;
+        justify-items: center;
+    }
+
+    .order-content {
+        width: 90%;
+        display: grid;
+        gap: 20px;
+    }
+
+    .order-content button {
+        padding: 5px 15px;
+        border-radius: 5px;
+        border: none;
+        background-color: yellow;
+        color: #000000;
+    }
+
+    .order-content i {
+        color: #000000;
+    }
+}
+
+/* Media Query for Mobile */
+@media screen and (max-width:400px) {
+
+    .orders-mob {
+        padding: 10px 10px;
+    }
+
+    .orders-mob h1,
+    .orders-mob h4,
+    .orders-mob h5 {
+        color: #000000;
+    }
+
+    .orders-mob h3 {
+        color: green;
+    }
+
+    .user-orders {
+        display: grid;
+        gap: 20px;
+        margin-top: 1em;
+    }
+
+    .user-order-block {
+        display: flex;
+        gap: 10px;
+        padding: 5px 5px;
+        border: 1px solid gray;
+        border-radius: 5px;
+    }
+
+
+    .order-img {
+        display: grid;
+        justify-items: center;
+        align-items: center;
+        width: 40%;
+    }
+
+    .order-img img {
+        display: grid;
+        width: 80%;
+    }
+
+    .order-content {
+        display: grid;
+        gap: 10px;
+        width: 90%;
+    }
+
+    .buy-again button {
+        padding: 5px 10px;
+        background-color: yellow;
+        border: none;
+        color: #000000;
+    }
+
+    .buy-again i {
+        color: #000000;
+    }
+}

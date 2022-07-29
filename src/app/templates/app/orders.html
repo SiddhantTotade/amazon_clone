@@ -1,63 +1,135 @@
 {% extends 'app/base.html' %}
 {% load static %}
-{% block title %}Orders{% endblock title %}
-{% block main-content %}
-<div class="container my-5">
-    <div class="row">
-        <h3>Welcome {{request.user}}</h3>
-        <div class="col-sm-2 border-end">
-            <ul class="list-unstyled">
-                <li class="d-grid"><a href="{% url 'orders' %}" class="btn btn-primary">Orders</a></li>
-            </ul>
-        </div>
-        <div class="col-sm-9 offset-sm-1">
-            {% for op in order_placed %}
-            <div class="row shadow-sm mb-3">
-                <div class="col-sm-2">
-                    <img src="{{op.product.product_image.url}}" srcset="" alt="" class="img-fluid" height="150"
-                        width="150">
-                </div>
-                <div class="col-sm-7">
-                    <p>Product: {{op.product.title}}</p>
-                    <p>Quantity: {{op.quantity}}</p>
-                    <p>Price: {{op.total_cost}}</p>
-                </div>
-                {% if op.status == 'Accepted' %}
-                <div class="col-sm-3 fw-bold">
-                    <p>Order Status: {{op.status}}</p>
-                    <div class="progress">
-                        <div class="progress-bar bg-danger" role="progressbar" style="width: 25%;" aria-valuenow="25"
-                            aria-valuemin="0" aria-valuemax="100"></div>
-                    </div>
-                </div>
-                {% elif op.status == 'Packed' %}
-                <div class="col-sm-3 fw-bold">
-                    <p>Order Status: {{op.status}}</p>
-                    <div class="progress">
-                        <div class="progress-bar bg-warning" role="progressbar" style="width: 50%;" aria-valuenow="50"
-                            aria-valuemin="0" aria-valuemax="100"></div>
-                    </div>
-                </div>
-                {% elif op.status == 'On the way' %}
-                <div class="col-sm-3 fw-bold">
-                    <p>Order Status: {{op.status}}</p>
-                    <div class="progress">
-                        <div class="progress-bar bg-info " role="progressbar" style="width: 75%;" aria-valuenow="75"
-                            aria-valuemin="0" aria-valuemax="100"></div>
-                    </div>
-                </div>
-                {% elif op.status == 'Delivered' %}
-                <div class="col-sm-3 fw-bold">
-                    <p>Order Status: {{op.status}}</p>
-                    <div class="progress">
-                        <div class="progress-bar bg-primary" role="progressbar" style="width: 100%;" aria-valuenow="100"
-                            aria-valuemin="0" aria-valuemax="100"></div>
-                    </div>
-                </div>
-                {% endif %}
+
+{% block title %}Orders{% endblock %}
+
+{% block style-orders %}
+<link rel="stylesheet" href="{% static 'app/css/orders.css' %}">
+{% endblock %}
+
+{% block main-content-desk-orders %}
+<!-- Orders for Desktop  -->
+<div class="orders">
+    <div class="order-title">
+        <h1>Your Orders</h1>
+    </div>
+    <div class="user-orders">
+        <div class="user-order-block">
+            <div class="order-img">
+                <img src="./img/card-carousel-2/card-carousel-1.jpg" alt="">
             </div>
-            {% endfor %}
+            <div class="order-content">
+                <h2>Arriving Wednesday</h2>
+                <h3>
+                    Redmi Note 10T 5G (Metallic Blue, 4GB RAM, 64GB Storage) | Dual 5G | 90Hz Adaptive Refresh Rate
+                    | MediaTek Dimensity 700 7nm Processor | 22.5W Charger Included
+                </h3>
+                <div class="buy-again">
+                    <button>Buy Again <i class="uil uil-sync"></i></button>
+                </div>
+                <div class="order-price">
+                    <h4>₹ 15, 499</h4>
+                </div>
+            </div>
+        </div>
+        <div class="user-order-block">
+            <div class="order-img">
+                <img src="./img/card-carousel-2/card-carousel-2.jpg" alt="">
+            </div>
+            <div class="order-content">
+                <h2>Arriving Today</h2>
+                <h3>
+                    Samsung Galaxy M32 (Light Blue, 6GB RAM, 128GB | FHD+ sAMOLED 90Hz Display | 6000mAh Battery |
+                    64MP Quad Camera
+                </h3>
+                <div class="buy-again">
+                    <button>Buy Again <i class="uil uil-sync"></i></button>
+                </div>
+                <div class="order-price">
+                    <h4>₹ 10, 990</h4>
+                </div>
+            </div>
+        </div>
+        <div class="user-order-block">
+            <div class="order-img">
+                <img src="./img/card-carousel-2/card-carousel-7.jpg" alt="">
+            </div>
+            <div class="order-content">
+                <h2>Arriving Saturday</h2>
+                <h3>HP GK100 Wired Full Size RGM Backlit Mechanical Gaming Keyboard, 4 LED Indicators, Mechanical
+                    Switches,Double Injection Key Caps, and Window Key Lock, 3 Years Warranty (1D763AA)
+                </h3>
+                <div class="buy-again">
+                    <button>Buy Again <i class="uil uil-sync"></i></button>
+                </div>
+                <div class="order-price">
+                    <h4>₹ 1,800</h4>
+                </div>
+            </div>
         </div>
     </div>
 </div>
-{% endblock main-content %}
+{% endblock %}
+
+{% block main-content-mob-orders %}
+<!--Header for Mobile -->
+<div class="orders-mob">
+    <div class="order-title">
+        <h1>Your Orders</h1>
+    </div>
+    <div class="user-orders">
+        <div class="user-order-block">
+            <div class="order-img">
+                <img src="./img/card-carousel-2/card-carousel-1.jpg" alt="">
+            </div>
+            <div class="order-content">
+                <h3>Arriving Wednesday</h3>
+                <h5>
+                    Redmi Note 10T 5G (Metallic Blue, 4GB RAM, 64GB Storage)...</h5>
+                <div class="buy-again">
+                    <button>Buy Again <i class="uil uil-sync"></i></button>
+                </div>
+                <div class="order-price">
+                    <h4>₹ 15, 499</h4>
+                </div>
+            </div>
+        </div>
+        <div class="user-order-block">
+            <div class="order-img">
+                <img src="./img/card-carousel-2/card-carousel-2.jpg" alt="">
+            </div>
+            <div class="order-content">
+                <h3>Arriving Today</h3>
+                <h5>
+                    Samsung Galaxy M32 (Light Blue, 6GB RAM...</h5>
+                <div class="buy-again">
+                    <button>Buy Again <i class="uil uil-sync"></i></button>
+                </div>
+                <div class="order-price">
+                    <h4>₹ 10, 990</h4>
+                </div>
+            </div>
+        </div>
+        <div class="user-order-block">
+            <div class="order-img">
+                <img src="./img/card-carousel-2/card-carousel-7.jpg" alt="">
+            </div>
+            <div class="order-content">
+                <h3>Arriving Saturday</h3>
+                <h5>HP GK100 Wired Full Size RGM Backlit Mechanical Gaming...
+                </h5>
+                <div class="buy-again">
+                    <button>Buy Again <i class="uil uil-sync"></i></button>
+                </div>
+                <div class="order-price">
+                    <h4>₹ 1,800</h4>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block js-orders %}
+<script src="{% static 'app/js/orders.js' %}"></script>
+{% endblock %}
