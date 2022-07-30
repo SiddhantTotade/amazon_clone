@@ -21,26 +21,44 @@ body {
         color: #000000;
     }
 
-    .user-address-container {
-        width: 40%;
-        display: grid;
-        gap: 20px;
-        padding: 10px 10px;
-        margin-top: 1em;
-        border-radius: 5px;
+    .user-add {
+        display: flex;
+        gap: 10px;
     }
 
-    .name {
+    .user-address-container {
         display: grid;
+        gap: 15px;
+        padding: 10px 10px;
+        margin-top: 2em;
+        border-radius: 5px;
+        border: 2px solid grey;
+    }
+
+    .user-address-container:hover {
+        cursor: pointer;
+        background-color: #cfcfcf;
+    }
+
+
+    .name {
+        display: flex;
         gap: 5px;
     }
 
-    .name input {
-        width: 100%;
-        padding: 10px 10px;
-        border: 2px solid rgb(201, 201, 201);
-        border-radius: 5px;
-        color: #000000;
+    .name h5 {
+        display: grid;
+        justify-content: center;
+        width: 20%;
+    }
+
+    .name small {
+        width: 80%;
+    }
+
+    .name:hover {
+        background-color: #cdcdcd;
+        cursor: pointer;
     }
 
     .save button {
@@ -83,22 +101,22 @@ body {
     }
 
     .name {
-        display: grid;
+        display: flex;
         gap: 5px;
+    }
+
+    .name h5 {
+        display: grid;
+        justify-content: center;
+        width: 20%;
     }
 
     .name small {
         width: 80%;
     }
 
-    .name input {
-        width: 100%;
-        padding: 10px 10px;
-        border: 2px solid gainsboro;
-        border-radius: 5px;
-    }
-
     .save button {
+        cursor: pointer;
         padding: 10px 25px;
         border: none;
         border-radius: 5px;

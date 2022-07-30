@@ -180,6 +180,11 @@ def select_address(request):
 
 
 @login_required
+def edit_address(request):
+    return render(request, 'app/editaddress.html')
+
+
+@login_required
 def payment(request):
     add = Customer.objects.filter(user=request.user)
     return render(request, 'app/payment.html', {'add': add})
