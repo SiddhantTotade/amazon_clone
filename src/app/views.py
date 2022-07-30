@@ -185,6 +185,21 @@ def edit_address(request):
 
 
 @login_required
+def edit_mobile(request):
+    return render(request, 'app/editmobile.html')
+
+
+@login_required
+def edit_email(request):
+    return render(request, 'app/editemail.html')
+
+
+@login_required
+def edit_name(request):
+    return render(request, 'app/editname.html')
+
+
+@login_required
 def payment(request):
     add = Customer.objects.filter(user=request.user)
     return render(request, 'app/payment.html', {'add': add})

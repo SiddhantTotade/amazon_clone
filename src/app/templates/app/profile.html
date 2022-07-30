@@ -15,18 +15,18 @@
         <h1>Login & Security</h1>
     </div>
     <div class="login-security-container">
-        <div class="name">
+        <a href="{% url 'editname' %}" class="name">
             <h3>Name:</h3>
             <small>Siddhant</small>
-        </div>
-        <div class="email name">
+        </a>
+        <a href="{% url 'editemail' %}" class="email name">
             <h3>E-mail:</h3>
             <small>xxx@gmail.com</small>
-        </div>
-        <div class="mobno name">
+        </a>
+        <a href="{% url 'editmobile' %}" class="mobno name">
             <h3>Mobile Phone Number:</h3>
             <small>xxxxxxxxxx</small>
-        </div>
+        </a>
         <a href="{% url 'passwordchange' %}" class="password name">
             <h3>Password:</h3>
             <small>xxxxxxxxxx</small>
