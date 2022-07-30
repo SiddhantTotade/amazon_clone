@@ -145,7 +145,7 @@ def buy_now(request):
 class ProfileView(View):
     def get(self, request,):
         form = CustomerProfileForm()
-        return render(request, 'app/profile.html', {'form': form, 'active': 'btn-primary'})
+        return render(request, 'app/editaddress.html', {'form': form})
 
     def post(self, request):
         form = CustomerProfileForm(request.POST)
@@ -161,7 +161,7 @@ class ProfileView(View):
             reg.save()
             messages.success(request, "Profile Updated Successfully")
 
-        return render(request, 'app/profile.html', {'form': form, 'active': 'btn-primary'})
+        return render(request, 'app/editaddress.html', {'form': form})
 
 
 # def profile(request):
@@ -179,9 +179,29 @@ def select_address(request):
     return render(request, 'app/selectaddress.html', {'add': add})
 
 
-@login_required
-def edit_address(request):
-    return render(request, 'app/editaddress.html')
+@method_decorator(login_required, name='dispatch')
+class EditAddressView(View):
+    def get(self, request,):
+        form = CustomerProfileForm()
+        return render(request, 'app/editaddress.html', {'form': form})
+
+    def post(self, request):
+        form = CustomerProfileForm(request.POST)
+        if form.is_valid():
+            usr = request.user
+            name = form.cleaned_data['name']
+            address = form.cleaned_data['address']
+            locality = form.cleaned_data['locality']
+            city = form.cleaned_data['city']
+            state = form.cleaned_data['state']
+            zipcode = form.cleaned_data['zipcode']
+            country = form.cleaned_data['country']
+            reg = Customer(user=usr, name=name, address=address, locality=locality,
+                           city=city, state=state, zipcode=zipcode, country=country)
+            reg.save()
+            messages.success(request, "Profile Updated Successfully")
+
+        return render(request, 'app/editaddress.html', {'form': form})
 
 
 @login_required

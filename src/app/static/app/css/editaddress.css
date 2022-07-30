@@ -43,6 +43,34 @@ body {
         color: #000000;
     }
 
+    .user-add {
+        width: 40%;
+        display: grid;
+    }
+
+    .user-add input {
+        height: 4vh;
+        border-radius: 5px;
+        padding: 10px 10px;
+        border: 2px solid gainsboro;
+        color: #000000;
+    }
+
+    .user-add label {
+        color: #000000;
+    }
+
+    .user-add select {
+        height: 4vh;
+        border-radius: 5px;
+        border: 2px solid gainsboro;
+        color: #000000;
+    }
+
+    .user-add option {
+        color: #000000;
+    }
+
     .save button {
         cursor: pointer;
         padding: 10px 25px;

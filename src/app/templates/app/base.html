@@ -188,7 +188,7 @@
           <img class="amazon-logo" src="{% static 'app/img/amazon-logo.png' %}" alt="">
           <span>.in</span>
         </div>
-        <div class="address-container">
+        <a href="{% url 'address' %}" class="address-container">
           <i class="uil uil-location-point location-icon"></i>
           <div class="address">
             {% if request.user.is_authenticated %}
@@ -199,7 +199,7 @@
             <h4>Raipur 0X0X0X</h4>
             {% endif %}
           </div>
-        </div>
+        </a>
       </div>
       <div class="middle">
         <div class="dropdown">
@@ -247,10 +247,10 @@
             <i class="uil uil-angle-down account-icon"></i>
           </div>
         </a>
-        <div class="order">
+        <a href="{% url 'orders' %}" class="order">
           <span><small>Return</small></span>
           <h4>& Orders</h4>
-        </div>
+        </a>
         <div class="cart">
           <a href="{% url 'showcart' %}"><i class="uil uil-shopping-cart cart-item"></i></a>
         </div>

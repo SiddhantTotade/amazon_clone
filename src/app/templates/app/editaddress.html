@@ -13,37 +13,17 @@
     <div class="login-title">
         <h1>Edit Address</h1>
     </div>
-    <div class="user-add">
-        <div class="user-address-container">
-            <div class="name">
-                <h5>Name</h5>
-                <input type="text" placeholder="Enter name">
-            </div>
-            <div class="locality name">
-                <h5>Address</h5>
-                <input type="text" placeholder="Enter House no. / Flat no. or Full address">
-            </div>
-            <div class="locality name">
-                <h5>Locality</h5>
-                <input type="text" placeholder="Enter Locality">
-            </div>
-            <div class="city name">
-                <h5>City</h5>
-                <input type="text" placeholder="Enter City">
-            </div>
-            <div class="state name">
-                <h5>State</h5>
-                <input type="text" placeholder="Enter State">
-            </div>
-            <div class="pin name">
-                <h5>Pin</h5>
-                <input type="number" placeholder="Enter PIN Code">
-            </div>
-            <div class="save">
-                <button class="save-btn">Save</button>
-            </div>
+    <form action="" method="post" class="user-form">
+        {% csrf_token %}
+        {% for fm in form %}
+        <div class="user-add">
+            {{fm.label_tag}} {{fm}} <small class="text-danger">{{fm.errors|striptags}}</small><br>
         </div>
-    </div>
+        {% endfor %}
+        <div class="save">
+            <button class="save-btn">Save</button>
+        </div>
+    </form>
 </div>
 {% endblock %}
 

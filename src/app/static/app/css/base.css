@@ -110,7 +110,7 @@ body {
         display: flex;
         justify-content: center;
         align-items: center;
-        cursor: pointer;
+        text-decoration: none;
     }
 
     .location-icon {
@@ -312,7 +312,7 @@ body {
     }
 
     .order {
-        cursor: pointer;
+        text-decoration: none;
     }
 
     .cart-item {
