@@ -1,3 +1,4 @@
+from unicodedata import name
 from django.http import JsonResponse
 from django.shortcuts import redirect, render
 from django.views import View
@@ -170,7 +171,8 @@ class ProfileView(View):
 @login_required
 def address(request):
     add = Customer.objects.filter(user=request.user)
-    return render(request, 'app/address.html', {'add': add, 'active': 'btn-primary'})
+    name = Customer.objects.filter()
+    return render(request, 'app/address.html', {'add': add})
 
 
 @method_decorator(login_required, name='dispatch')
