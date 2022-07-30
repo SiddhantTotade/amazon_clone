@@ -173,10 +173,29 @@ def address(request):
     return render(request, 'app/address.html', {'add': add, 'active': 'btn-primary'})
 
 
-@login_required
-def select_address(request):
-    add = Customer.objects.filter(user=request.user)
-    return render(request, 'app/selectaddress.html', {'add': add})
+@method_decorator(login_required, name='dispatch')
+class SelectAddress(View):
+    def get(self, request,):
+        form = CustomerProfileForm()
+        return render(request, 'app/selectaddress.html', {'form': form})
+
+    def post(self, request):
+        form = CustomerProfileForm(request.POST)
+        if form.is_valid():
+            usr = request.user
+            name = form.cleaned_data['name']
+            address = form.cleaned_data['address']
+            locality = form.cleaned_data['locality']
+            city = form.cleaned_data['city']
+            state = form.cleaned_data['state']
+            zipcode = form.cleaned_data['zipcode']
+            country = form.cleaned_data['country']
+            reg = Customer(user=usr, name=name, address=address, locality=locality,
+                           city=city, state=state, zipcode=zipcode, country=country)
+            reg.save()
+            messages.success(request, "Profile Updated Successfully")
+
+        return render(request, 'app/selectaddress.html', {'form': form})
 
 
 @method_decorator(login_required, name='dispatch')

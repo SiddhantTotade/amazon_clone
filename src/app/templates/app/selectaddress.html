@@ -41,109 +41,17 @@
         <div class="add-address-title">
             <h2>Add a new Address</h2>
         </div>
-        <div class="country">
-            <h5>Country/Region</h5>
-            <div class="select-dropdown">
-                <button class="dropbtn">India</button>
-                <div id="myDropdown" class="dropdown-content">
-                    <a href="">Afghanistan</a>
-                    <a href="">Aland Islands</a>
-                    <a href="">Albania</a>
-                    <a href="">Algeria</a>
-                    <a href="">Bangladsh</a>
-                    <a href="">Barbados</a>
-                    <a href="">Belarus</a>
-                    <a href="">Belgium</a>
-                    <a href="">Congo</a>
-                    <a href="">Costarica</a>
-                    <a href="">Croatia</a>
-                    <a href="">Cyprus</a>
-                    <a href="">Denmark</a>
-                    <a href="">Djibouti</a>
-                    <a href="">Dominica</a>
-                </div>
+        <form action="" method="post" class="user-form">
+            {% csrf_token %}
+            {% for fm in form %}
+            <div class="user-add">
+                {{fm.label_tag}} {{fm}} <small class="text-danger">{{fm.errors|striptags}}</small><br>
             </div>
-        </div>
-        <div class="add-name add">
-            <h5>Full name</h5>
-            <input type="text">
-        </div>
-        <div class="add-mob-no add">
-            <h5>Mobile number</h5>
-            <input type="tel">
-        </div>
-        <div class="add-pincode add">
-            <h5>Pincode</h5>
-            <input type="number">
-        </div>
-        <div class="add-user-address add">
-            <h5>Flat, House no., Building, Company, Apartment</h5>
-            <input type="text">
-        </div>
-        <div class="add-area add">
-            <h5>Area, Street, Sector, Village</h5>
-            <input type="text">
-        </div>
-        <div class="add-landmark add">
-            <h5>Landmark</h5>
-            <input type="text">
-        </div>
-        <div class="add-city add">
-            <div class="town">
-                <h5>Town/City</h5>
-                <input type="text">
+            {% endfor %}
+            <div class="save">
+                <button class="save-btn">Use this address</button>
             </div>
-            <div class="state town">
-                <h5>State</h5>
-                <div class="dropdown">
-                    <button class="dropbtn-state dropbtn">Select a State</button>
-                    <div id="myDropdown-state" class="dropdown-content-state">
-                        <a href="">ANDANMAN & NICOBAR ISLANDS</a>
-                        <a href="">ANDRA PRADESH</a>
-                        <a href="">ARUNANCHAL PRADESH</a>
-                        <a href="">ASSAM</a>
-                        <a href="">BIHAR</a>
-                        <a href="">CHANDIGARH</a>
-                        <a href="">CHHATTISGARH</a>
-                        <a href="">DELHI</a>
-                        <a href="">GOA</a>
-                        <a href="">GUJARAT</a>
-                        <a href="">HARYANA</a>
-                        <a href="">HIMACHAL PRADESH</a>
-                        <a href="">JAMMU & KASHMIR</a>
-                        <a href="">JHARKHAND</a>
-                        <a href="">KARNATAKA</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="instructions select-address">
-        <div class="default">
-            <input type="checkbox">
-            <h4> Make this my default address</h4>
-        </div>
-        <div class="instruction-title add">
-            <h3>Add delivery instructions</h3>
-            <p>
-                Preferences are used to plan your delivery. However, shipments can sometimes arrive early or later
-                than
-                planned.
-            </p>
-        </div>
-        <div class="address-type add">
-            <h5>Address Type</h5>
-            <div class="dropdown">
-                <button class="address-type-btn dropbtn">Select an Address Type</button>
-                <div id="myDropdown-add" class="dropdown-content-add">
-                    <a href="">Home (7 am - 9 pm delivery)</a>
-                    <a href="">Office/Commercial (10 AM - 6 PM delivery)</a>
-                </div>
-            </div>
-        </div>
-        <div class="use-address">
-            <button>Use this address</button>
-        </div>
+        </form>
     </div>
 </div>
 {% endblock %}

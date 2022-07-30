@@ -49,19 +49,28 @@ body {
     }
 
     .deliver-button {
-        margin: 10px 0;
+        width: 20%;
+        display: flex;
     }
 
     .deliver-button a {
+        width: 100%;
         text-decoration: none;
-        padding: 5px 40px;
+        padding: 10px 40px;
         border-radius: 5px;
         border: none;
         background-color: orange;
     }
 
+    .edit-del-button {
+        width: 20%;
+        display: flex;
+        gap: 10px;
+    }
+
     .edit-del-button a {
-        padding: 5px 40px;
+        width: 100%;
+        padding: 10px 40px;
         border-radius: 5px;
         border: none;
         text-decoration: none;
@@ -77,123 +86,51 @@ body {
         padding: 20px 0;
     }
 
-    .add-address input {
-        width: 100%;
-        height: 3vh;
-        border-radius: 5px;
-        border: none;
-        background-color: #dcdbdb;
-    }
-
-    .add {
+    .user-form {
         display: grid;
-        width: 50%;
-        gap: 5px;
-    }
-
-    .add-city {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
         gap: 10px;
     }
 
-    .country {
+    .user-add {
         display: grid;
+    }
+
+    .add-address input {
         width: 50%;
-        gap: 5px;
-    }
-
-    .select-dropdown {
-        display: grid;
-        width: 100%;
-        position: relative;
-        gap: 3px;
-    }
-
-    .dropbtn {
-        display: grid;
-        align-items: center;
-        justify-content: flex-start;
-        width: 100%;
-        height: 3vh;
+        height: 4vh;
         border-radius: 5px;
-        padding: 0 10px;
+        padding: 10px 10px;
         border: none;
+        background-color: #dcdbdb;
+        color: #000000;
+        font-size: medium;
     }
 
-    .dropdown-content {
-        display: none;
-        position: absolute;
-        min-width: 160px;
-        overflow: auto;
-        z-index: 1;
-    }
-
-
-    .dropdown-content a {
-        display: block;
-        padding: 12px 16px;
-        text-decoration: none;
-    }
-
-    .dropdown-content-state {
-        display: none;
-        position: absolute;
-        min-width: 160px;
-        overflow: auto;
-        z-index: 1;
-    }
-
-    .dropdown-content-state a {
-        display: block;
-        padding: 12px 16px;
-        text-decoration: none;
-    }
-
-    .dropdown-content-add {
-        display: none;
-        position: absolute;
-        min-width: 160px;
-        overflow: auto;
-        z-index: 1;
-    }
-
-    .dropdown-content-add a {
-        display: block;
-        padding: 12px 16px;
-        text-decoration: none;
-    }
-
-    .town {
-        display: grid;
-        gap: 3px;
-    }
-
-    .instructions {
-        display: grid;
-        padding-top: 2em;
-        gap: 20px;
-    }
-
-    .default {
-        display: flex;
-        align-items: center;
-    }
-
-    .default h4 {
-        padding: 0 10px;
-    }
-
-    .use-address {
+    .add-address select {
         width: 50%;
-    }
-
-    .use-address button {
-        width: 40%;
-        height: 3vh;
+        height: 4vh;
         border-radius: 5px;
         border: none;
+        background-color: #dcdbdb;
+        color: #000000;
+        font-size: medium;
+    }
+
+    .add-address label {
+        color: #000000;
+    }
+
+    .add-address option {
+        color: #000000;
+    }
+
+    .save button {
+        padding: 10px 20px;
+        font-size: medium;
         background-color: orange;
+        color: #000000;
+        border-radius: 5px;
+        border: none;
     }
 }
 

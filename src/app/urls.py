@@ -21,7 +21,7 @@ urlpatterns = [
     path('editmobile/', views.edit_mobile, name='editmobile'),
     path('editname/', views.edit_name, name='editname'),
     path('editemail/', views.edit_email, name='editemail'),
-    path('selectaddress/', views.select_address, name='selectaddress'),
+    path('selectaddress/', views.SelectAddress.as_view(), name='selectaddress'),
     path('orders/', views.orders, name='orders'),
     path('passwordchangedone/', auth_views.PasswordChangeDoneView.as_view(
         template_name='app/passwordchangedone.html'), name='passwordchangedone'),
