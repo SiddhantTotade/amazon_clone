@@ -1,6 +1,6 @@
 from django import forms
 from django.contrib.auth.models import User
-from django.contrib.auth.forms import UserCreationForm, AuthenticationForm, UsernameField, PasswordChangeForm, PasswordResetForm, SetPasswordForm
+from django.contrib.auth.forms import UserCreationForm, AuthenticationForm, UsernameField, PasswordChangeForm, PasswordResetForm, SetPasswordForm, UserChangeForm
 from django.utils.translation import gettext_lazy as _
 from django.contrib.auth import password_validation
 from .models import Customer, Product, Product_Img_Desktop
@@ -57,6 +57,13 @@ class CustomerProfileForm(forms.ModelForm):
                   'city', 'state', 'zipcode', 'country']
         widgets = {'name': forms.TextInput(attrs={'class': 'form-control'}), 'address': forms.TextInput(attrs={'class': 'form-control'}), 'locality': forms.TextInput(attrs={'class': 'form-control'}), 'city': forms.TextInput(
             attrs={'class': 'form-control'}), 'state': forms.Select(attrs={'class': 'form-control'}), 'zipcode': forms.NumberInput(attrs={'class': 'form-control'}), 'country': forms.Select(attrs={'class': 'form-control'})}
+
+
+class EditAddressForm(UserChangeForm):
+    class Meta:
+        model = Customer
+        fields = ['name', 'address', 'locality',
+                  'city', 'state', 'zipcode', 'country']
 
 
 class UploadProductForm(forms.ModelForm):

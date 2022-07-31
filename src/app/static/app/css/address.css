@@ -33,10 +33,10 @@ body {
         margin-top: 2em;
         border-radius: 5px;
         border: 2px solid grey;
+        text-decoration: none;
     }
 
     .user-address-container:hover {
-        cursor: pointer;
         background-color: #cfcfcf;
     }
 

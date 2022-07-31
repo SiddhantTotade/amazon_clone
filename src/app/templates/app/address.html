@@ -15,35 +15,41 @@
         <h1>Address</h1>
     </div>
     <div class="user-add">
+        {% for add in address %}
         <a href="{% url 'editaddress' %}" class="user-address-container">
             <div class="user-address-title">
-                <h3>Address - 1</h3>
+                <h3>Address - {{ forloop.counter }}</h3>
             </div>
             <div class="name">
                 <h5>Name:</h5>
-                <small>{{request.user}}</small>
+                <small>{{add.name}}</small>
             </div>
             <div class="locality name">
                 <h5>Address:</h5>
-                <small>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Provident, quam!</small>
+                <small>{{add.address}}</small>
             </div>
             <div class="locality name">
                 <h5>Locality:</h5>
-                <small>Lorem.</small>
+                <small>{{add.locality}}</small>
             </div>
             <div class="city name">
                 <h5>City:</h5>
-                <small>Lorem.</small>
+                <small>{{add.city}}</small>
             </div>
             <div class="state name">
                 <h5>State:</h5>
-                <small>Lorem.</small>
+                <small>{{add.state}}</small>
             </div>
             <div class="pin name">
                 <h5>Pin:</h5>
-                <small>X0X0X0.</small>
+                <small>{{add.zipcode}}</small>
+            </div>
+            <div class="pin name">
+                <h5>Country:</h5>
+                <small>{{add.country}}</small>
             </div>
         </a>
+        {% endfor %}
     </div>
     <div class="save">
         <button>Add another address</button>

@@ -1,9 +1,8 @@
-from unicodedata import name
 from django.http import JsonResponse
 from django.shortcuts import redirect, render
 from django.views import View
 from .models import Customer, Product, Cart, OrderPlaced, Product_Img_Desktop, Product_Img_Desc_Desktop
-from .forms import CustomerRegistrationForm, CustomerProfileForm, UploadProductForm
+from .forms import CustomerRegistrationForm, CustomerProfileForm, UploadProductForm, EditAddressForm
 from django.contrib import messages
 from django.db.models import Q
 from django.contrib.auth.decorators import login_required
@@ -171,13 +170,13 @@ class ProfileView(View):
 @login_required
 def address(request):
     add = Customer.objects.filter(user=request.user)
-    name = Customer.objects.filter()
-    return render(request, 'app/address.html', {'add': add})
+    address = Customer.objects.all()
+    return render(request, 'app/address.html', {'add': add, 'address': address})
 
 
 @method_decorator(login_required, name='dispatch')
 class SelectAddress(View):
-    def get(self, request,):
+    def get(self, request):
         form = CustomerProfileForm()
         return render(request, 'app/selectaddress.html', {'form': form})
 
@@ -202,8 +201,9 @@ class SelectAddress(View):
 
 @method_decorator(login_required, name='dispatch')
 class EditAddressView(View):
-    def get(self, request,):
+    def get(self, request):
         form = CustomerProfileForm()
+        # edit_add_form = EditAddressForm(request.POST, instance=request.user)
         return render(request, 'app/editaddress.html', {'form': form})
 
     def post(self, request):
@@ -223,6 +223,19 @@ class EditAddressView(View):
             messages.success(request, "Profile Updated Successfully")
 
         return render(request, 'app/editaddress.html', {'form': form})
+
+
+@login_required
+def edit_user_address(request):
+    if request.method == 'POST':
+        form = EditAddressForm(request.POST, instance=request.user)
+
+        if form.is_valid():
+            form.save()
+            return redirect('/address')
+    else:
+        form = EditAddressForm(instance=request.user)
+        return render(request, 'app/address.html', {'form': form})
 
 
 @login_required
