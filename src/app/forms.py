@@ -62,8 +62,8 @@ class CustomerProfileForm(forms.ModelForm):
 class EditAddressForm(UserChangeForm):
     class Meta:
         model = Customer
-        fields = ['name', 'address', 'locality',
-                  'city', 'state', 'zipcode', 'country']
+        fields = ('name', 'address', 'locality',
+                  'city', 'state', 'zipcode', 'country')
 
 
 class UploadProductForm(forms.ModelForm):

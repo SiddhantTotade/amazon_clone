@@ -21,53 +21,59 @@ body {
         color: #000000;
     }
 
-    .user-add {
-        display: flex;
-        gap: 10px;
-    }
-
     .user-address-container {
+        width: 40%;
         display: grid;
-        gap: 15px;
+        gap: 20px;
         padding: 10px 10px;
-        margin-top: 2em;
+        margin-top: 1em;
         border-radius: 5px;
-        border: 2px solid grey;
-        text-decoration: none;
     }
-
-    .user-address-container:hover {
-        background-color: #cfcfcf;
-    }
-
 
     .name {
-        display: flex;
+        display: grid;
         gap: 5px;
     }
 
-    .name h5 {
+    .name input {
+        width: 100%;
+        padding: 10px 10px;
+        border: 2px solid rgb(201, 201, 201);
+        border-radius: 5px;
+        color: #000000;
+    }
+
+    .user-add {
+        width: 40%;
         display: grid;
-        justify-content: center;
-        width: 20%;
     }
 
-    .name small {
-        width: 80%;
+    .user-add input {
+        height: 4vh;
+        border-radius: 5px;
+        padding: 10px 10px;
+        border: 2px solid gainsboro;
+        color: #000000;
     }
 
-    .name:hover {
-        background-color: #cdcdcd;
+    .user-add label {
+        color: #000000;
+    }
+
+    .user-add select {
+        height: 4vh;
+        border-radius: 5px;
+        border: 2px solid gainsboro;
+        color: #000000;
+    }
+
+    .user-add option {
+        color: #000000;
+    }
+
+    .save button {
         cursor: pointer;
-    }
-
-    .save {
-        margin: 15px 0;
-    }
-
-    .save a {
         padding: 10px 25px;
-        text-decoration: none;
         border: none;
         border-radius: 5px;
         background-color: yellow;
@@ -105,22 +111,22 @@ body {
     }
 
     .name {
-        display: flex;
-        gap: 5px;
-    }
-
-    .name h5 {
         display: grid;
-        justify-content: center;
-        width: 20%;
+        gap: 5px;
     }
 
     .name small {
         width: 80%;
     }
 
+    .name input {
+        width: 100%;
+        padding: 10px 10px;
+        border: 2px solid gainsboro;
+        border-radius: 5px;
+    }
+
     .save button {
-        cursor: pointer;
         padding: 10px 25px;
         border: none;
         border-radius: 5px;

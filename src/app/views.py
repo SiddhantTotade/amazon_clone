@@ -1,8 +1,9 @@
 from django.http import JsonResponse
 from django.shortcuts import redirect, render
-from django.views import View
+from django.urls import reverse_lazy
+from django.views import View, generic
 from .models import Customer, Product, Cart, OrderPlaced, Product_Img_Desktop, Product_Img_Desc_Desktop
-from .forms import CustomerRegistrationForm, CustomerProfileForm, UploadProductForm, EditAddressForm
+from .forms import CustomerRegistrationForm, CustomerProfileForm, UploadProductForm, EditAddressForm, UserChangeForm
 from django.contrib import messages
 from django.db.models import Q
 from django.contrib.auth.decorators import login_required
@@ -169,9 +170,8 @@ class ProfileView(View):
 
 @login_required
 def address(request):
-    add = Customer.objects.filter(user=request.user)
     address = Customer.objects.all()
-    return render(request, 'app/address.html', {'add': add, 'address': address})
+    return render(request, 'app/address.html', {'address': address})
 
 
 @method_decorator(login_required, name='dispatch')
@@ -200,11 +200,10 @@ class SelectAddress(View):
 
 
 @method_decorator(login_required, name='dispatch')
-class EditAddressView(View):
+class AddAddressView(View):
     def get(self, request):
         form = CustomerProfileForm()
-        # edit_add_form = EditAddressForm(request.POST, instance=request.user)
-        return render(request, 'app/editaddress.html', {'form': form})
+        return render(request, 'app/addaddress.html', {'form': form})
 
     def post(self, request):
         form = CustomerProfileForm(request.POST)
@@ -222,20 +221,12 @@ class EditAddressView(View):
             reg.save()
             messages.success(request, "Profile Updated Successfully")
 
-        return render(request, 'app/editaddress.html', {'form': form})
+        return render(request, 'app/addaddress.html', {'form': form})
 
 
 @login_required
-def edit_user_address(request):
-    if request.method == 'POST':
-        form = EditAddressForm(request.POST, instance=request.user)
-
-        if form.is_valid():
-            form.save()
-            return redirect('/address')
-    else:
-        form = EditAddressForm(instance=request.user)
-        return render(request, 'app/address.html', {'form': form})
+def edit_address(request):
+    return render(request, 'app/editaddress.html')
 
 
 @login_required
