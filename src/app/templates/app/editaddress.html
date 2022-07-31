@@ -1,7 +1,7 @@
 {% extends 'app/base.html' %}
 {% load static %}
 
-{% block title %}Edit Address{% endblock %}
+{% block title %}Edit address{% endblock %}
 
 {% block style-editaddress %}
 <link rel="stylesheet" href="{% static 'app/css/editaddress.css' %}">
@@ -13,7 +13,7 @@
     <div class="login-title">
         <h1>Edit Address</h1>
     </div>
-    <form action="" method="post">
+    <form action="" method="post" class="user-form">
         {% csrf_token %}
         {% for fm in form %}
         <div class="user-add">

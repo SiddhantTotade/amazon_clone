@@ -1,10 +1,11 @@
 from django.http import JsonResponse
 from django.shortcuts import redirect, render
-from django.urls import reverse_lazy
-from django.views import View, generic
+from django.views import View
+from django.views.generic import UpdateView
 from .models import Customer, Product, Cart, OrderPlaced, Product_Img_Desktop, Product_Img_Desc_Desktop
-from .forms import CustomerRegistrationForm, CustomerProfileForm, UploadProductForm, EditAddressForm, UserChangeForm
+from .forms import CustomerRegistrationForm, CustomerProfileForm, UploadProductForm, EditAddressForm
 from django.contrib import messages
+from django.urls import reverse
 from django.db.models import Q
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
@@ -224,9 +225,11 @@ class AddAddressView(View):
         return render(request, 'app/addaddress.html', {'form': form})
 
 
-@login_required
-def edit_address(request):
-    return render(request, 'app/editaddress.html')
+@method_decorator(login_required, name='dispatch')
+class EditAddress(UpdateView):
+    model = Customer
+    form_class = EditAddressForm
+    template_name = 'app/editaddress.html'
 
 
 @login_required

@@ -59,7 +59,7 @@ class CustomerProfileForm(forms.ModelForm):
             attrs={'class': 'form-control'}), 'state': forms.Select(attrs={'class': 'form-control'}), 'zipcode': forms.NumberInput(attrs={'class': 'form-control'}), 'country': forms.Select(attrs={'class': 'form-control'})}
 
 
-class EditAddressForm(UserChangeForm):
+class EditAddressForm(forms.ModelForm):
     class Meta:
         model = Customer
         fields = ('name', 'address', 'locality',
