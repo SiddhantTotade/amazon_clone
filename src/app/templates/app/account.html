@@ -79,42 +79,42 @@
         <h1>Your Account</h1>
     </div>
     <div class="account-change">
-        <div class="user-order">
+        <a href="{% url 'orders' %}" class="user-order">
             <div class="order-content">
                 <h3>Your Orders</h3>
                 <i class="uil uil-angle-right-b"></i>
             </div>
-        </div>
-        <div class="login user-order">
+        </a>
+        <a href="{% url 'profile' %}" class="login user-order">
             <div class="order-content">
                 <h3>Login & security</h3>
                 <i class="uil uil-angle-right-b"></i>
             </div>
-        </div>
-        <div class="address user-order">
+        </a>
+        <a href="{% url 'address' %}" class="address user-order">
             <div class="order-content">
                 <h3>Your Address</h3>
                 <i class="uil uil-angle-right-b"></i>
             </div>
-        </div>
-        <div class="address user-order">
+        </a>
+        <a class="address user-order">
             <div class="order-content">
                 <h3>Amazon Pay balance</h3>
                 <i class="uil uil-angle-right-b"></i>
             </div>
-        </div>
-        <div class="address user-order">
+        </a>
+        <a class="address user-order">
             <div class="order-content">
                 <h3>Payment options</h3>
                 <i class="uil uil-angle-right-b"></i>
             </div>
-        </div>
-        <div class="address user-order">
+        </a>
+        <a class="address user-order">
             <div class="order-content">
                 <h3>Prime</h3>
                 <i class="uil uil-angle-right-b"></i>
             </div>
-        </div>
+        </a>
     </div>
 </div>
 {% endblock %}

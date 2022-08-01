@@ -16,8 +16,8 @@
     </div>
     <div class="login-security-container">
         <a href="{% url 'editname' %}" class="name">
-            <h3>Name:</h3>
-            <small>Siddhant</small>
+            <h3>Username:</h3>
+            <small>{{ request.user|capfirst }}</small>
         </a>
         <a href="{% url 'editemail' %}" class="email name">
             <h3>E-mail:</h3>
@@ -46,22 +46,22 @@
         <h1>Login & Security</h1>
     </div>
     <div class="login-security-container">
-        <div class="name-mob">
+        <a href="{% url 'editname' %}" class="name-mob">
             <h3>Name:</h3>
             <small>Siddhant</small>
-        </div>
-        <div class="email name-mob">
+        </a>
+        <a href="{% url 'editemail' %}" class="email name-mob">
             <h3>E-mail:</h3>
             <small>xxx@gmail.com</small>
-        </div>
-        <div class="mobno name-mob">
+        </a>
+        <a href="{% url 'editmobile' %}" class="mobno name-mob">
             <h3>Mobile Phone Number:</h3>
             <small>xxxxxxxxxx</small>
-        </div>
-        <div class="password name-mob">
+        </a>
+        <a href="{% url 'passwordchange' %}" class="password name-mob">
             <h3>Password:</h3>
             <small>xxxxxxxxxx</small>
-        </div>
+        </a>
     </div>
     <div class="save">
         <button>Save</button>

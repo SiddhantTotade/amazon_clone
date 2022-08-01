@@ -1,9 +1,11 @@
+from unicodedata import name
 from django.http import JsonResponse
 from django.shortcuts import redirect, render
 from django.views import View
 from .models import Customer, Product, Cart, OrderPlaced, Product_Img_Desktop, Product_Img_Desc_Desktop
 from .forms import CustomerRegistrationForm, CustomerProfileForm, UploadProductForm, EditAddressForm
 from django.contrib import messages
+from django.contrib.auth.models import User
 from django.db.models import Q
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
@@ -143,29 +145,14 @@ def buy_now(request):
 
 @method_decorator(login_required, name='dispatch')
 class ProfileView(View):
-    def get(self, request,):
-        form = CustomerProfileForm()
-        return render(request, 'app/editaddress.html', {'form': form})
-
-    def post(self, request):
-        form = CustomerProfileForm(request.POST)
-        if form.is_valid():
-            usr = request.user
-            name = form.cleaned_data['name']
-            locality = form.cleaned_data['locality']
-            city = form.cleaned_data['city']
-            state = form.cleaned_data['state']
-            zipcode = form.cleaned_data['zipcode']
-            reg = Customer(user=usr, name=name, locality=locality,
-                           city=city, state=state, zipcode=zipcode)
-            reg.save()
-            messages.success(request, "Profile Updated Successfully")
-
-        return render(request, 'app/editaddress.html', {'form': form})
-
+    def get(self, request):
+        user = User.objects.all()
+        print(user)
+        return render(request, 'app/profile.html')
 
 # def profile(request):
 #     return render(request, 'app/profile.html')
+
 
 @login_required
 def address(request):
@@ -223,12 +210,6 @@ class AddAddressView(View):
         return render(request, 'app/addaddress.html', {'form': form})
 
 
-# @method_decorator(login_required, name='dispatch')
-# class EditAddress(UpdateView):
-#     model = Customer
-#     form_class = EditAddressForm
-#     template_name = 'app/editaddress.html'
-
 @login_required
 def edit_address(request, pk):
     edit_add = Customer.objects.get(pk=pk)
@@ -252,12 +233,6 @@ def delete_address(request, pk):
         return redirect('address')
     return render(request, 'app/deleteaddress.html', {'del_add': del_add})
 
-    # @method_decorator(login_required, name='dispatch')
-    # class DeleteAddress(DeleteView):
-    #     model = Customer
-    #     template_name = 'app/deleteaddress.html'
-    #     success_url = reverse_lazy('address')
-
 
 @login_required
 def edit_mobile(request):
@@ -271,6 +246,7 @@ def edit_email(request):
 
 @login_required
 def edit_name(request):
+    # edit_name =
     return render(request, 'app/editname.html')
 
 
