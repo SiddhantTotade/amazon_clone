@@ -1,11 +1,9 @@
 from django.http import JsonResponse
 from django.shortcuts import redirect, render
 from django.views import View
-from django.views.generic import UpdateView
 from .models import Customer, Product, Cart, OrderPlaced, Product_Img_Desktop, Product_Img_Desc_Desktop
 from .forms import CustomerRegistrationForm, CustomerProfileForm, UploadProductForm, EditAddressForm
 from django.contrib import messages
-from django.urls import reverse
 from django.db.models import Q
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
@@ -225,11 +223,40 @@ class AddAddressView(View):
         return render(request, 'app/addaddress.html', {'form': form})
 
 
-@method_decorator(login_required, name='dispatch')
-class EditAddress(UpdateView):
-    model = Customer
-    form_class = EditAddressForm
-    template_name = 'app/editaddress.html'
+# @method_decorator(login_required, name='dispatch')
+# class EditAddress(UpdateView):
+#     model = Customer
+#     form_class = EditAddressForm
+#     template_name = 'app/editaddress.html'
+
+@login_required
+def edit_address(request, pk):
+    edit_add = Customer.objects.get(pk=pk)
+    form = EditAddressForm(instance=edit_add)
+
+    if request.method == 'POST':
+        form = EditAddressForm(request.POST, instance=edit_add)
+        if form.is_valid():
+            form.save()
+            return redirect('address')
+
+    return render(request, 'app/editaddress.html', {'form': form, 'edit_add': edit_add})
+
+
+@login_required
+def delete_address(request, pk):
+    del_add = Customer.objects.get(pk=pk)
+
+    if request.method == 'POST':
+        del_add.delete()
+        return redirect('address')
+    return render(request, 'app/deleteaddress.html', {'del_add': del_add})
+
+    # @method_decorator(login_required, name='dispatch')
+    # class DeleteAddress(DeleteView):
+    #     model = Customer
+    #     template_name = 'app/deleteaddress.html'
+    #     success_url = reverse_lazy('address')
 
 
 @login_required

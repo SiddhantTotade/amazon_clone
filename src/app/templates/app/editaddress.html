@@ -15,13 +15,15 @@
     </div>
     <form action="" method="post" class="user-form">
         {% csrf_token %}
+
         {% for fm in form %}
         <div class="user-add">
             {{fm.label_tag}} {{fm}} <small class="text-danger">{{fm.errors|striptags}}</small><br>
         </div>
         {% endfor %}
         <div class="save">
-            <button class="save-btn">Save</button>
+            <button type="submit" class="save-btn">Save</button>
+            <a href="{% url 'deleteaddress' edit_add.id %}">Delete this address</a>
         </div>
     </form>
 </div>

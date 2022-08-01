@@ -1,0 +1,81 @@
+body {
+    background: #fff;
+}
+
+@media screen and (min-width:401px) {
+    .user-address {
+        width: 80%;
+        margin: auto;
+        display: grid;
+        gap: 10px;
+        padding: 10px 10px;
+        margin-bottom: 17em;
+    }
+
+    .user-address h1,
+    .user-address h4 {
+        color: #000000;
+    }
+
+    .user-add {
+        width: 40%;
+        display: grid;
+        gap: 10px;
+    }
+
+    .delete-add {
+        display: flex;
+        gap: 10px;
+    }
+
+    .delete-add button,
+    .delete-add a {
+        cursor: pointer;
+        display: grid;
+        gap: 10px;
+        padding: 10px 10px;
+        border: none;
+        color: #000000;
+        background-color: yellow;
+        font-size: medium;
+        border-radius: 5px;
+        text-decoration: none;
+    }
+}
+
+@media screen and (max-width:400px) {
+    .user-address-mob {
+        display: grid;
+        gap: 10px;
+        padding: 10px 10px;
+        margin-bottom: 17em;
+    }
+
+    .user-address-mob h1,
+    .user-address-mob h4 {
+        color: #000000;
+    }
+
+    .user-add {
+        display: grid;
+        gap: 10px;
+    }
+
+    .delete-add {
+        display: flex;
+        gap: 10px;
+    }
+
+    .delete-add button,
+    .delete-add a {
+        display: grid;
+        gap: 10px;
+        padding: 10px 10px;
+        border: none;
+        color: #000000;
+        background-color: yellow;
+        font-size: medium;
+        border-radius: 5px;
+        text-decoration: none;
+    }
+}
