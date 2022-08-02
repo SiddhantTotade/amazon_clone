@@ -12,14 +12,17 @@
 <!-- Edit name for desktop -->
 <div class="change-pass">
     <div class="change-pass-title">
-        <h1>Change Name</h1>
+        <h1>Change Username</h1>
     </div>
-    <div class="password-container">
-        <input type="password" placeholder="Enter your name">
-    </div>
-    <div class="save">
-        <button>Save</button>
-    </div>
+    <form action="" method="post" class="edit-name-form">
+        {% csrf_token %}
+        <div class="edit-name">
+            {{form.label_tag}} {{form}}
+        </div>
+        <div class="save">
+            <button>Save</button>
+        </div>
+    </form>
 </div>
 {% endblock %}
 

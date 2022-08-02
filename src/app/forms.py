@@ -22,6 +22,16 @@ class CustomerRegistrationForm(UserCreationForm):
             attrs={'class': 'form-control'})}
 
 
+class EditUsernameForm(forms.ModelForm):
+    class Meta:
+        model = User
+        fields = ('username',)
+        password = None
+        help_texts = {
+            'username': None,
+        }
+
+
 class LoginForm(AuthenticationForm):
     username = UsernameField(widget=forms.TextInput(
         attrs={'autofocus': True, 'class': 'form-control'}))

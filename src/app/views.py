@@ -2,7 +2,7 @@ from django.http import JsonResponse
 from django.shortcuts import redirect, render
 from django.views import View
 from .models import Customer, Product, Cart, OrderPlaced, Product_Img_Desktop, Product_Img_Desc_Desktop
-from .forms import CustomerRegistrationForm, CustomerProfileForm, UploadProductForm, EditAddressForm
+from .forms import CustomerRegistrationForm, CustomerProfileForm, UploadProductForm, EditAddressForm, EditUsernameForm, UserChangeForm
 from django.contrib import messages
 from django.contrib.auth.models import User
 from django.db.models import Q
@@ -148,6 +148,20 @@ class ProfileView(View):
         user = User.objects.all()
         return render(request, 'app/profile.html', {'user': user})
 
+
+# @login_required
+# def edit_username(request):
+#     username = User.objects.get(user=request.user)
+#     form = EditUsernameForm()
+#     print(username)
+
+#     if request.method == 'POST':
+#         form = EditUsernameForm()
+#         if form.is_valid():
+#             form.save()
+#             return redirect('profile')
+
+#     return render(request, 'app/editname.html', {'form': form})
 # def profile(request):
 #     return render(request, 'app/profile.html')
 
@@ -244,8 +258,17 @@ def edit_email(request):
 
 @login_required
 def edit_name(request):
-    # edit_name =
-    return render(request, 'app/editname.html')
+    if request.method == 'POST':
+        user = User.objects.get(username=request.user)
+        form = EditUsernameForm(request.POST, instance=user)
+        print(form)
+        if form.is_valid():
+            form.save()
+            return redirect('profile')
+        return render(request, 'app/editname.html', {'form': form})
+    else:
+        form = EditUsernameForm(instance=request.user)
+        return render(request, 'app/editname.html', {'form': form})
 
 
 @login_required
