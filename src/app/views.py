@@ -201,6 +201,7 @@ class AddAddressView(View):
                            city=city, state=state, zipcode=zipcode, country=country)
             reg.save()
             messages.success(request, "Profile Updated Successfully")
+            return redirect('address')
 
         return render(request, 'app/addaddress.html', {'form': form})
 
@@ -227,11 +228,6 @@ def delete_address(request, pk):
         del_add.delete()
         return redirect('address')
     return render(request, 'app/deleteaddress.html', {'del_add': del_add})
-
-
-@login_required
-def edit_mobile(request):
-    return render(request, 'app/editmobile.html')
 
 
 @login_required
