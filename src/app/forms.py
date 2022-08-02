@@ -77,13 +77,6 @@ class CustomerProfileForm(forms.ModelForm):
             attrs={'class': 'form-control'}), 'state': forms.Select(attrs={'class': 'form-control'}), 'zipcode': forms.NumberInput(attrs={'class': 'form-control'}), 'country': forms.Select(attrs={'class': 'form-control'})}
 
 
-class EditAddressForm(forms.ModelForm):
-    class Meta:
-        model = Customer
-        fields = ('name', 'address', 'locality',
-                  'city', 'state', 'zipcode', 'country')
-
-
 class UploadProductForm(forms.ModelForm):
     class Meta:
         model = Product

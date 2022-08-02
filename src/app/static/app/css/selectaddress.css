@@ -44,8 +44,29 @@ body {
         gap: 10px;
     }
 
-    .address-details {
-        width: 20%;
+    .user-address-container{
+        display: grid;
+        gap: 5px;
+    }
+
+    .user-add {
+        display: flex;
+    }
+
+    .user-add small,
+    .user-add h5 {
+        color: #000000;
+    }
+
+    .user-add a{
+        display: grid;
+        gap: 5px;
+        text-decoration: none;
+    }
+
+    .name{
+        display: flex;
+        gap: 5px;
     }
 
     .deliver-button {

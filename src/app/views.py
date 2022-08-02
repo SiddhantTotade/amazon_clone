@@ -2,7 +2,7 @@ from django.http import JsonResponse
 from django.shortcuts import redirect, render
 from django.views import View
 from .models import Customer, Product, Cart, OrderPlaced, Product_Img_Desktop, Product_Img_Desc_Desktop
-from .forms import CustomerRegistrationForm, CustomerProfileForm, UploadProductForm, EditAddressForm, EditUsernameForm, EditUserEmailForm
+from .forms import CustomerRegistrationForm, CustomerProfileForm, UploadProductForm, EditUsernameForm, EditUserEmailForm
 from django.contrib import messages
 from django.contrib.auth.models import User
 from django.db.models import Q
@@ -37,8 +37,9 @@ class ProductView(View):
 #     return render(request, 'app/home.html')
 
 class ProductDetailView(View):
-    def get(self, request, pk):
+    def get(self, request, pk, id):
         totalitem = 0
+        add_id = Customer.objects.get(id=id)
         product = Product.objects.get(pk=pk)
         product_img_dsk = Product_Img_Desktop.objects.filter(
             product_img_desktop=product)
@@ -49,7 +50,7 @@ class ProductDetailView(View):
             totalitem = len(Cart.objects.filter(user=request.user))
             item_already_in_cart = Cart.objects.filter(
                 Q(product=product.id) & Q(user=request.user)).exists()
-        return render(request, 'app/productdetail.html', {'product': product, 'product_img_dsk': product_img_dsk, 'product_desc_desk': product_desc_desk, 'item_already_in_cart': item_already_in_cart, 'totalitem': totalitem})
+        return render(request, 'app/productdetail.html', {'add_id': add_id, 'product': product, 'product_img_dsk': product_img_dsk, 'product_desc_desk': product_desc_desk, 'item_already_in_cart': item_already_in_cart, 'totalitem': totalitem})
 # def product_detail(request):
 #     return render(request, 'app/productdetail.html')
 
@@ -149,37 +150,6 @@ class ProfileView(View):
         return render(request, 'app/profile.html', {'user': user})
 
 
-@login_required
-def address(request):
-    address = Customer.objects.filter(user=request.user)
-    return render(request, 'app/address.html', {'address': address})
-
-
-@method_decorator(login_required, name='dispatch')
-class SelectAddress(View):
-    def get(self, request):
-        form = CustomerProfileForm()
-        return render(request, 'app/selectaddress.html', {'form': form})
-
-    def post(self, request):
-        form = CustomerProfileForm(request.POST)
-        if form.is_valid():
-            usr = request.user
-            name = form.cleaned_data['name']
-            address = form.cleaned_data['address']
-            locality = form.cleaned_data['locality']
-            city = form.cleaned_data['city']
-            state = form.cleaned_data['state']
-            zipcode = form.cleaned_data['zipcode']
-            country = form.cleaned_data['country']
-            reg = Customer(user=usr, name=name, address=address, locality=locality,
-                           city=city, state=state, zipcode=zipcode, country=country)
-            reg.save()
-            messages.success(request, "Profile Updated Successfully")
-
-        return render(request, 'app/selectaddress.html', {'form': form})
-
-
 @method_decorator(login_required, name='dispatch')
 class AddAddressView(View):
     def get(self, request):
@@ -207,12 +177,45 @@ class AddAddressView(View):
 
 
 @login_required
+def address(request):
+    address = Customer.objects.filter(user=request.user)
+    return render(request, 'app/address.html', {'address': address})
+
+
+@method_decorator(login_required, name='dispatch')
+class SelectAddress(View):
+    def get(self, request, pk):
+        add_id = Customer.objects.get(pk=pk)
+        address = Customer.objects.filter(user=request.user)
+        form = CustomerProfileForm()
+        return render(request, 'app/selectaddress.html', {'form': form, 'address': address})
+
+    def post(self, request):
+        form = CustomerProfileForm(request.POST)
+        if form.is_valid():
+            usr = request.user
+            name = form.cleaned_data['name']
+            address = form.cleaned_data['address']
+            locality = form.cleaned_data['locality']
+            city = form.cleaned_data['city']
+            state = form.cleaned_data['state']
+            zipcode = form.cleaned_data['zipcode']
+            country = form.cleaned_data['country']
+            reg = Customer(user=usr, name=name, address=address, locality=locality,
+                           city=city, state=state, zipcode=zipcode, country=country)
+            reg.save()
+            messages.success(request, "Profile Updated Successfully")
+
+        return render(request, 'app/selectaddress.html', {'form': form})
+
+
+@login_required
 def edit_address(request, pk):
     edit_add = Customer.objects.get(pk=pk)
-    form = EditAddressForm(instance=edit_add)
+    form = CustomerProfileForm(instance=edit_add)
 
     if request.method == 'POST':
-        form = EditAddressForm(request.POST, instance=edit_add)
+        form = CustomerProfileForm(request.POST, instance=edit_add)
         if form.is_valid():
             form.save()
             return redirect('address')

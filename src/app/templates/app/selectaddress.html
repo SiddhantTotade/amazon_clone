@@ -20,13 +20,39 @@
         </div>
         <div class="current-address">
             <div class="user-name">
-                <h2>{{request.user}}</h2>
+                {% for add in address|slice:":1" %}
+                <h2>{{add.name}}</h2>
+                {% endfor %}
             </div>
-            <div class="address-details">
-                <p>
-                    Lorem ipsum dolor sit, amet consectetur adipisicing elit. Animi natus modi impedit aperiam eos
-                    nam veniam voluptatibus harum nesciunt facere.
-                </p>
+            <div class="user-add">
+                {% for add in address|slice:":1" %}
+                <div class="user-address-container">
+                    <div class="locality name">
+                        <h5>Address:</h5>
+                        <small>{{add.address}}</small>
+                    </div>
+                    <div class="locality name">
+                        <h5>Locality:</h5>
+                        <small>{{add.locality}}</small>
+                    </div>
+                    <div class="city name">
+                        <h5>City:</h5>
+                        <small>{{add.city}}</small>
+                    </div>
+                    <div class="state name">
+                        <h5>State:</h5>
+                        <small>{{add.state}}</small>
+                    </div>
+                    <div class="pin name">
+                        <h5>Pin:</h5>
+                        <small>{{add.zipcode}}</small>
+                    </div>
+                    <div class="pin name">
+                        <h5>Country:</h5>
+                        <small>{{add.country}}</small>
+                    </div>
+                </div>
+                {% endfor %}
             </div>
             <div class="deliver-button">
                 <a href="/payment" class="delivery">Deliver to this address</a>
