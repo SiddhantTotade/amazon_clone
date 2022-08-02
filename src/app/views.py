@@ -149,23 +149,6 @@ class ProfileView(View):
         return render(request, 'app/profile.html', {'user': user})
 
 
-# @login_required
-# def edit_username(request):
-#     username = User.objects.get(user=request.user)
-#     form = EditUsernameForm()
-#     print(username)
-
-#     if request.method == 'POST':
-#         form = EditUsernameForm()
-#         if form.is_valid():
-#             form.save()
-#             return redirect('profile')
-
-#     return render(request, 'app/editname.html', {'form': form})
-# def profile(request):
-#     return render(request, 'app/profile.html')
-
-
 @login_required
 def address(request):
     address = Customer.objects.filter(user=request.user)

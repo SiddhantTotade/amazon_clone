@@ -38,15 +38,6 @@ body {
         background-color: #cdcdcd;
         cursor: pointer;
     }
-
-    .save button {
-        cursor: pointer;
-        padding: 10px 25px;
-        border: none;
-        border-radius: 5px;
-        background-color: yellow;
-        color: #000000;
-    }
 }
 
 /* Media Query for Mobile */
@@ -72,14 +63,6 @@ body {
     .name-mob {
         padding: 10px 10px;
         border: 1px solid gainsboro;
-        border-radius: 5px;
-    }
-
-    .save button {
-        color: #000000;
-        background-color: yellow;
-        padding: 10px 15px;
-        border: none;
         border-radius: 5px;
     }
 }

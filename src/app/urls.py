@@ -29,7 +29,7 @@ urlpatterns = [
     path('passwordchangedone/', auth_views.PasswordChangeDoneView.as_view(
         template_name='app/passwordchangedone.html'), name='passwordchangedone'),
     path('passwordchange/', auth_views.PasswordChangeView.as_view(template_name='app/passwordchange.html',
-         form_class=MyPasswordChangeForm, success_url='/passwordchangedone/'), name='passwordchange'),
+         form_class=MyPasswordChangeForm, success_url='/profile/'), name='passwordchange'),
     path('mobile/', views.mobile, name='mobile'),
     path('mobile/<slug:data>', views.mobile, name='mobiledata'),
     path('accounts/login/', auth_views.LoginView.as_view(template_name='app/login.html',
