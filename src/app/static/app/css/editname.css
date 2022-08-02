@@ -68,18 +68,25 @@ body {
         color: #000000;
     }
 
-    .password-container {
-        display: grid;
-        margin-top: 1em;
-        gap: 20px;
+    .edit-name label {
+        color: #000000;
     }
 
-    .password-container input {
-        width: 100%;
-        padding: 10px 10px;
+    .edit-name {
+        display: grid;
+    }
+
+    .edit-name-form input {
+        height: 4vh;
         border: 2px solid gainsboro;
         border-radius: 5px;
         color: #000000;
+        padding: 10px 10px;
+
+    }
+
+    .save {
+        margin-top: 1em;
     }
 
     .save button {

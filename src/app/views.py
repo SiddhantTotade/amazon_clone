@@ -2,7 +2,7 @@ from django.http import JsonResponse
 from django.shortcuts import redirect, render
 from django.views import View
 from .models import Customer, Product, Cart, OrderPlaced, Product_Img_Desktop, Product_Img_Desc_Desktop
-from .forms import CustomerRegistrationForm, CustomerProfileForm, UploadProductForm, EditAddressForm, EditUsernameForm, UserChangeForm
+from .forms import CustomerRegistrationForm, CustomerProfileForm, UploadProductForm, EditAddressForm, EditUsernameForm, EditUserEmailForm
 from django.contrib import messages
 from django.contrib.auth.models import User
 from django.db.models import Q
@@ -253,7 +253,17 @@ def edit_mobile(request):
 
 @login_required
 def edit_email(request):
-    return render(request, 'app/editemail.html')
+    if request.method == 'POST':
+        user = User.objects.get(username=request.user)
+        form = EditUserEmailForm(request.POST, instance=user)
+        print(form)
+        if form.is_valid():
+            form.save()
+            return redirect('profile')
+        return render(request, 'app/editemail.html', {'form': form})
+    else:
+        form = EditUserEmailForm(instance=request.user)
+        return render(request, 'app/editemail.html', {'form': form})
 
 
 @login_required

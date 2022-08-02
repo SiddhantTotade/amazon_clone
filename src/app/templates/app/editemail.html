@@ -13,12 +13,15 @@
     <div class="change-pass-title">
         <h1>Change Email</h1>
     </div>
-    <div class="password-container">
-        <input type="email" placeholder="Enter your email">
-    </div>
-    <div class="save">
-        <button>Save</button>
-    </div>
+    <form action="" method="post" class="edit-name-form">
+        {% csrf_token %}
+        <div class="edit-name">
+            {{form.label_tag}} {{form}}
+        </div>
+        <div class="save">
+            <button>Save</button>
+        </div>
+    </form>
 </div>
 {% endblock %}
 
@@ -27,12 +30,15 @@
     <div class="change-pass-title">
         <h1>Change Email</h1>
     </div>
-    <div class="password-container">
-        <input type="email" placeholder="Enter your email">
-    </div>
-    <div class="save">
-        <button>Save</button>
-    </div>
+    <form action="" method="post" class="edit-name-form">
+        {% csrf_token %}
+        <div class="edit-name">
+            {{form.label_tag}} {{form}}
+        </div>
+        <div class="save">
+            <button>Save</button>
+        </div>
+    </form>
 </div>
 {% endblock %}
 
