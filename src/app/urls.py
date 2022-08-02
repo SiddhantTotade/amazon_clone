@@ -7,7 +7,7 @@ from .forms import LoginForm, MyPasswordChangeForm, MyPasswordResetForm, MySetPa
 
 urlpatterns = [
     path('', views.ProductView.as_view(), name='home'),
-    path('product-detail/<int:pk>/<int:id>',
+    path('product-detail/<int:pk>',
          views.ProductDetailView.as_view(), name='product-detail'),
     path('add-to-cart/', views.add_to_cart, name='add-to-cart'),
     path('cart/', views.show_cart, name='showcart'),
@@ -23,7 +23,7 @@ urlpatterns = [
     path('addaddress/', views.AddAddressView.as_view(), name='addaddress'),
     path('editname/', views.edit_name, name='editname'),
     path('editemail/', views.edit_email, name='editemail'),
-    path('selectaddress/<int:pk>', views.SelectAddress.as_view(), name='selectaddress'),
+    path('selectaddress/', views.SelectAddress.as_view(), name='selectaddress'),
     path('orders/', views.orders, name='orders'),
     path('passwordchangedone/', auth_views.PasswordChangeDoneView.as_view(
         template_name='app/passwordchangedone.html'), name='passwordchangedone'),

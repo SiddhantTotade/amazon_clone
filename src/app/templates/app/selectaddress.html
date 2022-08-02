@@ -58,8 +58,10 @@
                 <a href="/payment" class="delivery">Deliver to this address</a>
             </div>
             <div class="edit-del-button">
-                <a href="" class="edit">Edit</a>
-                <a href="" class="delete">Delete</a>
+                {% for add in address|slice:":1" %}
+                <a href="{% url 'editaddress' add.id %}" class="edit">Edit</a>
+                <a href="{% url 'deleteaddress' add.id %}" class="delete">Delete</a>
+                {% endfor %}
             </div>
         </div>
     </div>

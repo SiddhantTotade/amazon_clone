@@ -37,9 +37,8 @@ class ProductView(View):
 #     return render(request, 'app/home.html')
 
 class ProductDetailView(View):
-    def get(self, request, pk, id):
+    def get(self, request, pk):
         totalitem = 0
-        add_id = Customer.objects.get(id=id)
         product = Product.objects.get(pk=pk)
         product_img_dsk = Product_Img_Desktop.objects.filter(
             product_img_desktop=product)
@@ -50,7 +49,7 @@ class ProductDetailView(View):
             totalitem = len(Cart.objects.filter(user=request.user))
             item_already_in_cart = Cart.objects.filter(
                 Q(product=product.id) & Q(user=request.user)).exists()
-        return render(request, 'app/productdetail.html', {'add_id': add_id, 'product': product, 'product_img_dsk': product_img_dsk, 'product_desc_desk': product_desc_desk, 'item_already_in_cart': item_already_in_cart, 'totalitem': totalitem})
+        return render(request, 'app/productdetail.html', {'product': product, 'product_img_dsk': product_img_dsk, 'product_desc_desk': product_desc_desk, 'item_already_in_cart': item_already_in_cart, 'totalitem': totalitem})
 # def product_detail(request):
 #     return render(request, 'app/productdetail.html')
 
@@ -170,7 +169,6 @@ class AddAddressView(View):
             reg = Customer(user=usr, name=name, address=address, locality=locality,
                            city=city, state=state, zipcode=zipcode, country=country)
             reg.save()
-            messages.success(request, "Profile Updated Successfully")
             return redirect('address')
 
         return render(request, 'app/addaddress.html', {'form': form})
@@ -184,8 +182,7 @@ def address(request):
 
 @method_decorator(login_required, name='dispatch')
 class SelectAddress(View):
-    def get(self, request, pk):
-        add_id = Customer.objects.get(pk=pk)
+    def get(self, request):
         address = Customer.objects.filter(user=request.user)
         form = CustomerProfileForm()
         return render(request, 'app/selectaddress.html', {'form': form, 'address': address})
@@ -204,7 +201,6 @@ class SelectAddress(View):
             reg = Customer(user=usr, name=name, address=address, locality=locality,
                            city=city, state=state, zipcode=zipcode, country=country)
             reg.save()
-            messages.success(request, "Profile Updated Successfully")
 
         return render(request, 'app/selectaddress.html', {'form': form})
 
