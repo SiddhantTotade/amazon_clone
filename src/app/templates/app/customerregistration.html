@@ -17,6 +17,7 @@
             <h4>.in</h4>
         </div>
         <form action="" method="post" novalidate>
+            {% csrf_token %}
             <div class="login-container">
                 <div class="signin-container">
                     <div class="sign-in-title">
@@ -25,7 +26,8 @@
                     <div class="user-login">
                         {% for fm in form %}
                         <div class="user-input">
-                            {{fm.label_tag}} {{fm}}
+                            {{fm.label_tag}} {{fm}} 
+                            <!-- <small class="text-danger"> {{fm.errors|striptags}} -->
                         </div>
                         {% endfor %}
                         <input type="submit" value="Continue" class="continue-btn">
@@ -38,6 +40,11 @@
                     </small>
                 </div>
             </div>
+            {% if form.non_field_errors %}
+            {% for error in form.non_field_errors %}
+            <p class="form-alert">{{error}}</p>
+            {% endfor %}
+            {% endif %}
             <div class="new-amazon user-login">
                 <small>Already have an account ?</small>
             </div>

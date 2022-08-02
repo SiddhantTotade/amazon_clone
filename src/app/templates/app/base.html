@@ -119,7 +119,7 @@
       <div class="location">
         <i class="uil uil-location-point"></i>
         {% if request.user.is_authenticated %}
-        <span><small>Deleiver to Siddhant - Raipur 492009</small></span>
+        <span><small>Deleiver to {{ request.user|capfirst }} - Raipur 492009</small></span>
         {% else %}
         <span><small>Deleiver to Sign in</small></span>
         {% endif %}
@@ -196,7 +196,7 @@
           <i class="uil uil-location-point location-icon"></i>
           <div class="address">
             {% if request.user.is_authenticated %}
-            <span><small>Deliver to Siddhant</small></span>
+            <span><small>Deliver to {{ request.user|capfirst }}</small></span>
             <h4>Raipur 0X0X0X</h4>
             {% else %}
             <span><small>Deliver to Sign in</small></span>

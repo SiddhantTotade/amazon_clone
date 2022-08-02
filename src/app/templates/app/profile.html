@@ -21,7 +21,7 @@
         </a>
         <a href="{% url 'editemail' %}" class="email name">
             <h3>E-mail:</h3>
-            <small>xxx@gmail.com</small>
+            <small>{{ request.user.email }}</small>
         </a>
         <a href="{% url 'editmobile' %}" class="mobno name">
             <h3>Mobile Phone Number:</h3>
@@ -47,12 +47,12 @@
     </div>
     <div class="login-security-container">
         <a href="{% url 'editname' %}" class="name-mob">
-            <h3>Name:</h3>
-            <small>Siddhant</small>
+            <h3>Username:</h3>
+            <small>{{ request.user|capfirst }}</small>
         </a>
         <a href="{% url 'editemail' %}" class="email name-mob">
             <h3>E-mail:</h3>
-            <small>xxx@gmail.com</small>
+            <small>{{ request.user.email }}</small>
         </a>
         <a href="{% url 'editmobile' %}" class="mobno name-mob">
             <h3>Mobile Phone Number:</h3>

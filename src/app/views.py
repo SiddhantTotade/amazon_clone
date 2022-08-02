@@ -1,4 +1,3 @@
-from unicodedata import name
 from django.http import JsonResponse
 from django.shortcuts import redirect, render
 from django.views import View
@@ -147,8 +146,7 @@ def buy_now(request):
 class ProfileView(View):
     def get(self, request):
         user = User.objects.all()
-        print(user)
-        return render(request, 'app/profile.html')
+        return render(request, 'app/profile.html', {'user': user})
 
 # def profile(request):
 #     return render(request, 'app/profile.html')
@@ -156,7 +154,7 @@ class ProfileView(View):
 
 @login_required
 def address(request):
-    address = Customer.objects.all()
+    address = Customer.objects.filter(user=request.user)
     return render(request, 'app/address.html', {'address': address})
 
 
