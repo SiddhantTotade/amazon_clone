@@ -55,7 +55,7 @@
                 {% endfor %}
             </div>
             <div class="deliver-button">
-                <a href="/payment" class="delivery">Deliver to this address</a>
+                <a href="{% url 'payment' product_id.id %}" class="delivery">Deliver to this address</a>
             </div>
             <div class="edit-del-button">
                 {% for add in address|slice:":1" %}

@@ -23,7 +23,7 @@ urlpatterns = [
     path('addaddress/', views.AddAddressView.as_view(), name='addaddress'),
     path('editname/', views.edit_name, name='editname'),
     path('editemail/', views.edit_email, name='editemail'),
-    path('selectaddress/', views.SelectAddress.as_view(), name='selectaddress'),
+    path('selectaddress/<int:pk>', views.SelectAddress.as_view(), name='selectaddress'),
     path('orders/', views.orders, name='orders'),
     path('passwordchangedone/', auth_views.PasswordChangeDoneView.as_view(
         template_name='app/passwordchangedone.html'), name='passwordchangedone'),
@@ -45,8 +45,8 @@ urlpatterns = [
          auth_views.PasswordResetCompleteView.as_view(template_name='app/password_reset_complete.html'), name='password_reset_complete'),
     path('password-reset-confirm/<uidb64>/<token>/',
          auth_views.PasswordResetConfirmView.as_view(template_name='app/password_reset_confirm.html', form_class=MySetPasswordForm), name='password_reset_confirm'),
-    path('checkout/', views.checkout, name='checkout'),
-    path('payment/', views.payment, name='payment'),
+    path('checkout/<int:pk>', views.checkout, name='checkout'),
+    path('payment/<int:pk>', views.payment, name='payment'),
     path('paymentdone/', views.payment_done, name='paymentdone'),
     path('uploaddetails/', views.ProductUpload.as_view(), name='saveproduct'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

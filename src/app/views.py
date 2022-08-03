@@ -1,3 +1,4 @@
+from itertools import product
 from django.http import JsonResponse
 from django.shortcuts import redirect, render
 from django.views import View
@@ -40,6 +41,7 @@ class ProductDetailView(View):
     def get(self, request, pk):
         totalitem = 0
         product = Product.objects.get(pk=pk)
+        print(product)
         product_img_dsk = Product_Img_Desktop.objects.filter(
             product_img_desktop=product)
         product_desc_desk = Product_Img_Desc_Desktop.objects.filter(
@@ -182,10 +184,11 @@ def address(request):
 
 @method_decorator(login_required, name='dispatch')
 class SelectAddress(View):
-    def get(self, request):
+    def get(self, request, pk):
+        product_id = Product.objects.get(pk=pk)
         address = Customer.objects.filter(user=request.user)
         form = CustomerProfileForm()
-        return render(request, 'app/selectaddress.html', {'form': form, 'address': address})
+        return render(request, 'app/selectaddress.html', {'product_id': product_id, 'form': form, 'address': address})
 
     def post(self, request):
         form = CustomerProfileForm(request.POST)
@@ -260,9 +263,10 @@ def edit_name(request):
 
 
 @login_required
-def payment(request):
+def payment(request, pk):
+    product_id = Product.objects.get(pk=pk)
     add = Customer.objects.filter(user=request.user)
-    return render(request, 'app/payment.html', {'add': add})
+    return render(request, 'app/payment.html', {'product_id': product_id, 'add': add})
 
 
 @login_required
@@ -315,10 +319,12 @@ class CustomerRegistrationView(View):
 
 
 @login_required
-def checkout(request):
+def checkout(request, pk):
+    product_id = Product.objects.get(pk=pk)
     user = request.user
     add = Customer.objects.filter(user=user)
     cart_items = Cart.objects.filter(user=user)
+    # print(cart_items)
     amount = 0.0
     shipping_amount = 40.0
     totalamount = 0.0
@@ -328,7 +334,7 @@ def checkout(request):
             tempamount = (p.quantity*p.product.discounted_price)
             amount += tempamount
         totalamount = amount+shipping_amount
-    return render(request, 'app/checkout.html', {'add': add, 'totalamount': totalamount, 'cart_items': cart_items})
+    return render(request, 'app/checkout.html', {'product_id': product_id, 'add': add, 'totalamount': totalamount, 'cart_items': cart_items})
 
 
 @login_required
