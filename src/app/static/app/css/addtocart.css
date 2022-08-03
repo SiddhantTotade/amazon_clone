@@ -19,8 +19,8 @@ body {
     .cart-container h1,
     .cart-container h3,
     .cart-container span,
-    .cart-container h2,
-    .cart-container small {
+    .cart-container label,
+    .cart-container h2 {
         color: #000000;
     }
 
@@ -31,6 +31,7 @@ body {
         padding: 20px 10px;
         margin-top: 1em;
         border: 2px solid gainsboro;
+        border-radius: 5px;
     }
 
     .price {
@@ -40,6 +41,7 @@ body {
         border-bottom: 1px solid gainsboro;
         border-top: 1px solid gainsboro;
         padding: 10px 70px;
+        border-radius: 5px;
     }
 
     .cart-product-content {
@@ -77,12 +79,17 @@ body {
         gap: 20px;
     }
 
+    .free-ship {
+        color: #009905;
+    }
+
     .gift {
         display: flex;
         align-items: center;
     }
 
     .gift small {
+        color: #000000;
         padding: 0 10px;
     }
 
@@ -91,17 +98,8 @@ body {
         gap: 15px;
     }
 
-    .product-counter .incr,
-    .product-counter .decr {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        width: 3%;
-        height: 25px;
-        border-radius: 5px;
-        border: none;
-        color: #000000;
-        font-size: 2em;
+    .product-counter a {
+        cursor: pointer;
     }
 
     .product-counter i {
@@ -135,7 +133,6 @@ body {
 
     .proceed i {
         font-size: 25px;
-        padding: 0 10px;
     }
 
     .checkout {
@@ -144,6 +141,7 @@ body {
 
     .free-delivery {
         display: flex;
+        gap: 5px;
         align-items: center;
     }
 
@@ -152,17 +150,13 @@ body {
         color: #009905;
     }
 
-    .checkout button {
-        width: 100%;
-        height: 3vh;
+    .checkout a {
+        text-decoration: none;
         color: #000000;
         background-color: yellow;
         border: none;
+        padding: 10px 50px;
         border-radius: 5px;
-    }
-
-    .checkout button:hover {
-        cursor: pointer;
     }
 }
 
