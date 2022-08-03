@@ -322,6 +322,8 @@ class CustomerRegistrationView(View):
 def checkout(request):
     user = request.user
     product_id = request.GET.get('prod_id')
+    product = Product.objects.get(id=product_id)
+    Cart(user=user, product=product).save()
     add = Customer.objects.filter(user=user)
     cart_items = Cart.objects.filter(user=user)
     amount = 0.0

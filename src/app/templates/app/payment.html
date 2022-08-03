@@ -73,9 +73,10 @@
                 <h5>Pay on Delivery</h5>
             </div>
         </div>
-        <div class="next payment-block-1">
-            <a href="{% url 'checkout' %}" class="continue">Continue</a>
-        </div>
+        <form action="/checkout" class="next payment-block-1">
+            <input type="hidden" name="prod_id" id="prod_id" value="{{product_id.id}}">
+            <button type="submit" class="continue">Continue</button>
+        </form>
     </div>
 </div>
 {% endblock %}

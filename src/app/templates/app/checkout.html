@@ -31,6 +31,7 @@
                 <small>Pay on delivery</small>
             </div>
         </div>
+        {% for item in cart_items %}
         <div class="product-checkout">
             <div class="delivery-date">
                 <h3>Delivery date: 2 Aug 2022</h3>
@@ -40,17 +41,13 @@
                     <img src="" alt="">
                 </div>
                 <div class="order-desc">
-                    <h4>{{product_id.title}}</h4>
+                    <h4>{{item.product.title}}</h4>
                     <div class="order-price">
-                        <h4>₹ {{product_id.discounted_price}}</h4>
+                        <h4>₹ {{item.total_cost}}</h4>
                     </div>
                     <div class="quantity">
                         <h4>Quantity:</h4>
-                        <div class="quantity-container">
-                            <a href="" class="incr-item"><i class="uil uil-plus"></i></a>
-                            <small>1</small>
-                            <a href="" class="incr-item"><i class="uil uil-minus"></i></a>
-                        </div>
+                        <small>{{item.quantity}}</small>
                     </div>
                 </div>
                 <div class="delivery-method">
@@ -59,6 +56,7 @@
                 </div>
             </div>
         </div>
+        {% endfor %}
     </div>
     <div class="right-checkout-container">
         <div class="summary">
