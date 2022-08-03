@@ -45,7 +45,7 @@ urlpatterns = [
          auth_views.PasswordResetCompleteView.as_view(template_name='app/password_reset_complete.html'), name='password_reset_complete'),
     path('password-reset-confirm/<uidb64>/<token>/',
          auth_views.PasswordResetConfirmView.as_view(template_name='app/password_reset_confirm.html', form_class=MySetPasswordForm), name='password_reset_confirm'),
-    path('checkout/<int:pk>', views.checkout, name='checkout'),
+    path('checkout/', views.checkout, name='checkout'),
     path('payment/<int:pk>', views.payment, name='payment'),
     path('paymentdone/', views.payment_done, name='paymentdone'),
     path('uploaddetails/', views.ProductUpload.as_view(), name='saveproduct'),

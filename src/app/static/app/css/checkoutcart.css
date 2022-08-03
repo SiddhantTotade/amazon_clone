@@ -79,22 +79,6 @@ body {
         gap: 10px;
     }
 
-    .quantity-container {
-        display: contents;
-    }
-
-    .quantity a {
-        padding: 2px 5px;
-        border-radius: 5px;
-        text-decoration: none;
-        color: #000000;
-        background-color: rgb(228, 228, 228);
-    }
-
-    .quantity a i{
-        color: #000000;
-    }
-
     .delivery-method {
         display: flex;
         gap: 10px;
@@ -132,7 +116,6 @@ body {
         padding: 15px;
         border: 2px solid gainsboro;
         border-radius: 5px;
-        margin-top: 2em;
     }
 
     .order-sub-summary {

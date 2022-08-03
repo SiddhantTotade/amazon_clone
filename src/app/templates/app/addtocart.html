@@ -16,6 +16,7 @@
                 <small>Price</small>
             </div>
         </div>
+        {% for cart in carts %}
         <div class="cart-product-content">
             <input type="checkbox">
             <div class="cart-img">
@@ -23,83 +24,28 @@
             </div>
             <div class="cart-content">
                 <div class="product-title">
-                    <h3>Apple iPhone 13 Pro Max (128GB) - Sierra Blue
-                    </h3>
+                    <h3>{{cart.product.title}}</h3>
                 </div>
-                <small>Eligible for FREE Shipping</small>
-                <div class="gift">
-                    <input type="checkbox">
-                    <small>This will be a gift Learn more</small>
-                </div>
-                <div class="product-counter">
-                    <button class="incr">+</button>
-                    <h4 class="counter">1</h4>
-                    <button class="decr">-</button>
-                    <button class="delete">Delete</button>
-                </div>
+                {% if cart.product.discounted_price < 499 %} <small>Delivery Charges - ₹ 40</small>
+                    {% else %}
+                    <small>Eligible for FREE Shipping</small>
+                    {% endif %}
+                    <div class="gift">
+                        <input type="checkbox">
+                        <small>This will be a gift Learn more</small>
+                    </div>
+                    <div class="product-counter">
+                        <a pid="{{cart.product.id}}" class="plus-cart"><i class="uil uil-plus"></i></a>
+                        <!-- <span id="quantity">{{cart.quantity}}</span> -->
+                        <a pid="{{cart.product.id}}" class="minus-cart"><i class="uil uil-minus"></i></a>
+                        <a pid="{{cart.product.id}}" class="remove-cart">Delete</a>
+                    </div>
             </div>
             <div class="product-price">
-                <h3>₹ 1,36,000.00</h3>
+                <h3>₹ {{cart.product.discounted_price}}</h3>
             </div>
         </div>
-        <div class="cart-product-content">
-            <input type="checkbox">
-            <div class="cart-img">
-                <img src="./img/card-carousel/card-carousel-1.jpg" alt="">
-            </div>
-            <div class="cart-content">
-                <div class="product-title">
-                    <h3>
-                        ASUS ROG Strix G15 (2020), 15.6-inch (39.62 cms) FHD 144Hz, Intel Core i7-10750H 10th Gen,
-                        NVIDIA GeForce GTX 1650 Ti 4GB Graphics, Gaming Laptop(8GB/512GB SSDWindows 10/Black/2.3
-                        Kg), G512LI-HN081T
-                    </h3>
-                </div>
-                <small>Eligible for FREE Shipping</small>
-                <div class="gift">
-                    <input type="checkbox">
-                    <small>This will be a gift Learn more</small>
-                </div>
-                <div class="product-counter">
-                    <button class="incr">+</button>
-                    <h4 class="counter">1</h4>
-                    <button class="decr">-</button>
-                    <button class="delete">Delete</button>
-                </div>
-            </div>
-            <div class="product-price">
-                <h3>₹ 79,990.00</h3>
-            </div>
-        </div>
-        <div class="cart-product-content">
-            <input type="checkbox">
-            <div class="cart-img">
-                <img src="/img/card-items/col-1-img-1.jpg" alt="">
-            </div>
-            <div class="cart-content">
-                <div class="product-title">
-                    <h3>
-                        Redgear Shadow Amulet Mechanical Keyboard with Clicky Blue Switch, Rainbow LED Modes,
-                        Windows
-                        Keylock and Floating Keycaps
-                    </h3>
-                </div>
-                <small>Eligible for FREE Shipping</small>
-                <div class="gift">
-                    <input type="checkbox">
-                    <small>This will be a gift Learn more</small>
-                </div>
-                <div class="product-counter">
-                    <button class="incr">+</button>
-                    <h4 class="counter">1</h4>
-                    <button class="decr">-</button>
-                    <button class="delete">Delete</button>
-                </div>
-            </div>
-            <div class="product-price">
-                <h3>₹ 1,499.00</h3>
-            </div>
-        </div>
+        {% endfor %}
     </div>
     <div class="proceed cart-container shopping-cart">
         <div class="free-delivery">
@@ -187,5 +133,6 @@
 {% endblock %}
 
 {% block js-addtocart %}
+<script src="{% static 'app/js/jquery.js' %}"></script>
 <script src="{% static 'app/js/addtocart.js' %}"></script>
 {% endblock %}

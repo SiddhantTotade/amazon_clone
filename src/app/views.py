@@ -319,9 +319,15 @@ class CustomerRegistrationView(View):
 
 
 @login_required
-def checkout(request, pk):
-    product_id = Product.objects.get(pk=pk)
+def checkout(request):
     user = request.user
+    product_id = request.GET.get('prod_id')
+    product = Product.objects.get(id=product_id)
+    # Cart(user=user, product=product).save()
+    # return redirect('/cart')
+
+    # product_id = Product.objects.get(pk=pk)
+    print(product)
     add = Customer.objects.filter(user=user)
     cart_items = Cart.objects.filter(user=user)
     # print(cart_items)

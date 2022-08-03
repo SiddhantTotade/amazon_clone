@@ -1,13 +1,13 @@
 {% extends 'app/base.html' %}
 {% load static %}
 
-{% block style-checkout %}
-<link rel="stylesheet" href="{% static 'app/css/checkout.css' %}">
+{% block style-checkoutcart %}
+<link rel="stylesheet" href="{% static 'app/css/checkoutcart.css' %}">
 {% endblock %}
 
 {% block title %}Checkout{% endblock %}
 
-{% block main-content-desk-checkout %}
+{% block main-content-desk-checkoutcart %}
 <div class="checkout-container">
     <div class="left-checkout-container">
         <div class="checkout-title">
@@ -31,73 +31,72 @@
                 <small>Pay on delivery</small>
             </div>
         </div>
-        <div class="product-checkout">
-            <div class="delivery-date">
-                <h3>Delivery date: 2 Aug 2022</h3>
+    </div>
+    {% for item in cart_items %}
+    <div class="product-checkout">
+        <div class="delivery-date">
+            <h3>Delivery date: 2 Aug 2022</h3>
+        </div>
+        <div class="order-detail">
+            <div class="order-img">
+                <img src="" alt="">
             </div>
-            <div class="order-detail">
-                <div class="order-img">
-                    <img src="" alt="">
+            <div class="order-desc">
+                <h4>{{item.product.title}}</h4>
+                <div class="order-price">
+                    <h4>₹ {{item.total_cost}}</h4>
                 </div>
-                <div class="order-desc">
-                    <h4>{{product_id.title}}</h4>
-                    <div class="order-price">
-                        <h4>₹ {{product_id.discounted_price}}</h4>
-                    </div>
-                    <div class="quantity">
-                        <h4>Quantity:</h4>
-                        <div class="quantity-container">
-                            <a href="" class="incr-item"><i class="uil uil-plus"></i></a>
-                            <small>1</small>
-                            <a href="" class="incr-item"><i class="uil uil-minus"></i></a>
-                        </div>
-                    </div>
+                <div class="quantity">
+                    <h4>Quantity:</h4>
+                    <small>{{item.quantity}}</small>
                 </div>
-                <div class="delivery-method">
-                    <h4>Delivery Method:</h4>
-                    <small>Standard delivery</small>
-                </div>
+            </div>
+            <div class="delivery-method">
+                <h4>Delivery Method:</h4>
+                <small>Standard delivery</small>
             </div>
         </div>
     </div>
-    <div class="right-checkout-container">
-        <div class="summary">
-            <div class="place-order">
-                <a href="">Place your order</a>
+    {% endfor %}
+</div>
+<div class="right-checkout-container">
+    <div class="summary">
+        <div class="place-order">
+            <a href="">Place your order</a>
+        </div>
+        <div class="summary-title">
+            <h4>Order Summary</h4>
+        </div>
+        <div class="order-sub-summary">
+            <div class="item-summary item">
+                <small>Items:</small>
+                <small>₹ 15,999.00</small>
             </div>
-            <div class="summary-title">
-                <h4>Order Summary</h4>
+            <div class="delivery item">
+                <small>Delivery:</small>
+                <small>₹ 40.00</small>
             </div>
-            <div class="order-sub-summary">
-                <div class="item-summary item">
-                    <small>Items:</small>
-                    <small>₹ 15,999.00</small>
-                </div>
-                <div class="delivery item">
-                    <small>Delivery:</small>
-                    <small>₹ 40.00</small>
-                </div>
-                <div class="total item">
-                    <small>Total:</small>
-                    <small>₹ 16,039.00</small>
-                </div>
-                <div class="promotion item">
-                    <small>Promotion applied:</small>
-                    <small>-₹ 40.00</small>
-                </div>
+            <div class="total item">
+                <small>Total:</small>
+                <small>₹ 16,039.00</small>
             </div>
-            <div class="order-total">
-                <div class="total-price item">
-                    <h3>Order Total</h3>
-                    <h3>₹ 15,999.00</h3>
-                </div>
+            <div class="promotion item">
+                <small>Promotion applied:</small>
+                <small>-₹ 40.00</small>
+            </div>
+        </div>
+        <div class="order-total">
+            <div class="total-price item">
+                <h3>Order Total</h3>
+                <h3>₹ 15,999.00</h3>
             </div>
         </div>
     </div>
 </div>
+</div>
 {% endblock %}
 
-{% block main-content-mob-checkout %}
+{% block main-content-mob-checkoutcart %}
 <div class="checkout-container-mob">
     <div class="checkout-summary">
         <div class="checkout-address">
@@ -163,6 +162,6 @@
 </div>
 {% endblock %}
 
-{% block js-checkout %}
-<script src="{% static 'app/js/checkout.js' %}"></script>
+{% block js-checkoutcart %}
+<script src="{% static 'app/js/checkoutcart.js' %}"></script>
 {% endblock %}
