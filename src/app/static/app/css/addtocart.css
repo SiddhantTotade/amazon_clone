@@ -150,6 +150,12 @@ body {
         color: #009905;
     }
 
+    .subtotal{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
     .checkout a {
         text-decoration: none;
         color: #000000;

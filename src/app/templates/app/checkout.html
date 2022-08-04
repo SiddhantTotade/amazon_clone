@@ -69,25 +69,25 @@
             <div class="order-sub-summary">
                 <div class="item-summary item">
                     <small>Items:</small>
-                    <small>₹ {{item.total_cost}}</small>
+                    <small>₹ {{item_amount}}</small>
                 </div>
                 <div class="delivery item">
                     <small>Delivery:</small>
+                    {% if item_amount > 499 %}
+                    <small>FREE Delivery</small>
+                    {% else %}
                     <small>₹ 40.00</small>
-                </div>
-                <div class="total item">
-                    <small>Total:</small>
-                    <small>₹ 16,039.00</small>
-                </div>
-                <div class="promotion item">
-                    <small>Promotion applied:</small>
-                    <small>-₹ 40.00</small>
+                    {% endif %}
                 </div>
             </div>
             <div class="order-total">
                 <div class="total-price item">
                     <h3>Order Total</h3>
-                    <h3>₹ 15,999.00</h3>
+                    {% if item_amount > 499 %}
+                    <h3>₹ {{item_amount}}</h3>
+                    {% else %}
+                    <h3>₹ {{totalamount}}</h3>
+                    {% endif %}
                 </div>
             </div>
         </div>
