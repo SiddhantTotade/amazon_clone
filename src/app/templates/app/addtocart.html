@@ -54,13 +54,13 @@
             <small>Select this item at checkout.</small>
         </div>
         <div class="subtotal">
-            <h2>Subtotal:</h2>
-            <h2 id="amount">₹ {{totalamount}}</h2>
+            <h2>Subtotal: ₹ </h2>
+            <h2 id="amount"> {{totalamount}}</h2>
         </div>
-        <div class="checkout">
-            <input type="hidden" name="prod_id" id="prod_id" value="{{product.id}}">
-            <a href="{% url 'checkout' %}" class="proceed-to-buy">Proceed to Buy</a>
-        </div>
+        <form action="/checkout" class="checkout">
+            <input type="hidden" name="prod_id" id="prod_id" value="{{product_id.id}}">
+            <button type="submit" class="continue">Proceed to buy</button>
+        </form>
     </div>
 </div>
 {% endblock %}

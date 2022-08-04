@@ -1,3 +1,4 @@
+from genericpath import exists
 from itertools import product
 from django.http import JsonResponse
 from django.shortcuts import redirect, render
@@ -70,31 +71,22 @@ def show_cart(request):
     if request.user.is_authenticated:
         user = request.user
         cart = Cart.objects.filter(user=user)
-        cart_amount = Cart.objects.get(user=user)
+        # cart_amount = Cart.objects.get(user=user)
         amount = 0.0
         shipping_amount = 40.0
-        for c in cart_amount:
-            if c.product.discounted_price >= 499:
-                cart_product = [p for p in Cart.objects.all() if p.user == user]
-                if cart_product:
-                    for p in cart_product:
-                        tempamount = (p.quantity*p.product.discounted_price)
-                        amount += tempamount
-                        totalamount = amount
-                    return render(request, 'app/addtocart.html', {'carts': cart, 'totalamount': totalamount})
-                else:
-                    return render(request, 'app/emptycart.html')
-            else:
-                cart_amount = c.product.discounted_price
-                cart_product = [p for p in Cart.objects.all() if p.user == user]
-                if cart_product:
-                    for p in cart_product:
-                        tempamount = (p.quantity*p.product.discounted_price)
-                        amount += tempamount
-                        totalamount = amount+shipping_amount
-                    return render(request, 'app/addtocart.html', {'carts': cart, 'totalamount': totalamount, 'amount': amount})
-                else:
-                    return render(request, 'app/emptycart.html')
+        # if cart_amount.product.discounted_price >= 499:
+        #     cart_amount = cart_amount.product.discounted_price
+        # else:
+        #     cart_amount = cart_amount.product.discounted_price
+        cart_product = [p for p in Cart.objects.all() if p.user == user]
+        if cart_product:
+            for p in cart_product:
+                tempamount = (p.quantity*p.product.discounted_price)
+                amount += tempamount
+                totalamount = amount+shipping_amount
+            return render(request, 'app/addtocart.html', {'carts': cart, 'totalamount': totalamount, 'amount': amount})
+        else:
+            return render(request, 'app/emptycart.html')
 
 
 def plus_cart(request):
@@ -335,10 +327,9 @@ class CustomerRegistrationView(View):
 def checkout(request):
     user = request.user
     product_id = request.GET.get('prod_id')
-    # product = Product.objects.get(id=product_id)
-    cart = Cart.objects.filter(user=user)
-    for c in cart:
-        if not c.product:
+    if request.META['HTTP_REFERER'] == 'http://127.0.0.1:8000/payment/':
+        product = Product.objects.get(id=product_id)
+        if not Cart.objects.filter(user=user, product=product).exists():
             Cart(user=user, product=product).save()
     add = Customer.objects.filter(user=user)
     cart_items = Cart.objects.filter(user=user)

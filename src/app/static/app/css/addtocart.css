@@ -156,7 +156,8 @@ body {
         align-items: center;
     }
 
-    .checkout a {
+    .checkout button {
+        cursor: pointer;
         text-decoration: none;
         color: #000000;
         background-color: yellow;

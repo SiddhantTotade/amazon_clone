@@ -14,80 +14,86 @@
             <h2>Review your order</h2>
             <small>By placing your order, you agree to Amazon's privacy notice and conditions to use.</small>
         </div>
-        <div class="address-payment-container">
-            <div class="checkout-address-container">
-                <h5>Shipping address</h5>
-                {% for ad in add|slice:":1" %}
-                <small>{{ad.name}}</small>
-                <small>{{ad.address}}</small>
-                <small>{{ad.locality}}</small>
-                <small>{{ad.city}}, {{ad.state}} {{ad.zipcode}}</small>
-                <small>Phone, 0X0X0X0X0X0X</small>
-                <small>{{ad.country}}</small>
+        <div class="product-container">
+            <div class="left-container">
+                <div class="address-payment-container">
+                    <div class="checkout-address-container">
+                        <h5>Shipping address</h5>
+                        {% for ad in add|slice:":1" %}
+                        <small>{{ad.name}}</small>
+                        <small>{{ad.address}}</small>
+                        <small>{{ad.locality}}</small>
+                        <small>{{ad.city}}, {{ad.state}} {{ad.zipcode}}</small>
+                        <small>Phone, 0X0X0X0X0X0X</small>
+                        <small>{{ad.country}}</small>
+                        {% endfor %}
+                    </div>
+                    <div class="checkout-payment-container">
+                        <h5>Payment method:</h5>
+                        <small>Pay on delivery</small>
+                    </div>
+                </div>
+                {% for item in cart_items %}
+                <div class="product-checkout">
+                    <div class="delivery-date">
+                        <h3>Delivery date: 2 Aug 2022</h3>
+                    </div>
+                    <div class="order-detail">
+                        <div class="order-img">
+                            <img src="{{item.product.product_image.url}}" alt="">
+                        </div>
+                        <div class="order-desc">
+                            <h4>{{item.product.title}}</h4>
+                            <div class="order-price">
+                                <h4>₹ {{item.total_cost}}</h4>
+                            </div>
+                            <div class="quantity">
+                                <h4>Quantity:</h4>
+                                <small>{{item.quantity}}</small>
+                            </div>
+                        </div>
+                        <div class="delivery-method">
+                            <h4>Delivery Method:</h4>
+                            <small>Standard delivery</small>
+                        </div>
+                    </div>
+                </div>
                 {% endfor %}
             </div>
-            <div class="checkout-payment-container">
-                <h5>Payment method:</h5>
-                <small>Pay on delivery</small>
-            </div>
-        </div>
-        {% for item in cart_items %}
-        <div class="product-checkout">
-            <div class="delivery-date">
-                <h3>Delivery date: 2 Aug 2022</h3>
-            </div>
-            <div class="order-detail">
-                <div class="order-img">
-                    <img src="" alt="">
-                </div>
-                <div class="order-desc">
-                    <h4>{{item.product.title}}</h4>
-                    <div class="order-price">
-                        <h4>₹ {{item.total_cost}}</h4>
+            <div class="right-container">
+                <div class="right-checkout-container">
+                    <div class="summary">
+                        <div class="place-order">
+                            <a href="">Place your order</a>
+                        </div>
+                        <div class="summary-title">
+                            <h4>Order Summary</h4>
+                        </div>
+                        <div class="order-sub-summary">
+                            <div class="item-summary item">
+                                <small>Items:</small>
+                                <small>₹ {{item_amount}}</small>
+                            </div>
+                            <div class="delivery item">
+                                <small>Delivery:</small>
+                                {% if item_amount > 499 %}
+                                <small>FREE Delivery</small>
+                                {% else %}
+                                <small>₹ 40.00</small>
+                                {% endif %}
+                            </div>
+                        </div>
+                        <div class="order-total">
+                            <div class="total-price item">
+                                <h3>Order Total</h3>
+                                {% if item_amount > 499 %}
+                                <h3>₹ {{item_amount}}</h3>
+                                {% else %}
+                                <h3>₹ {{totalamount}}</h3>
+                                {% endif %}
+                            </div>
+                        </div>
                     </div>
-                    <div class="quantity">
-                        <h4>Quantity:</h4>
-                        <small>{{item.quantity}}</small>
-                    </div>
-                </div>
-                <div class="delivery-method">
-                    <h4>Delivery Method:</h4>
-                    <small>Standard delivery</small>
-                </div>
-            </div>
-        </div>
-        {% endfor %}
-    </div>
-    <div class="right-checkout-container">
-        <div class="summary">
-            <div class="place-order">
-                <a href="">Place your order</a>
-            </div>
-            <div class="summary-title">
-                <h4>Order Summary</h4>
-            </div>
-            <div class="order-sub-summary">
-                <div class="item-summary item">
-                    <small>Items:</small>
-                    <small>₹ {{item_amount}}</small>
-                </div>
-                <div class="delivery item">
-                    <small>Delivery:</small>
-                    {% if item_amount > 499 %}
-                    <small>FREE Delivery</small>
-                    {% else %}
-                    <small>₹ 40.00</small>
-                    {% endif %}
-                </div>
-            </div>
-            <div class="order-total">
-                <div class="total-price item">
-                    <h3>Order Total</h3>
-                    {% if item_amount > 499 %}
-                    <h3>₹ {{item_amount}}</h3>
-                    {% else %}
-                    <h3>₹ {{totalamount}}</h3>
-                    {% endif %}
                 </div>
             </div>
         </div>
