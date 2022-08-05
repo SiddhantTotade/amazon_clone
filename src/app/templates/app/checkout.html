@@ -84,11 +84,11 @@
                         </div>
                         <div class="order-total">
                             <div class="total-price item">
-                                <h3>Order Total</h3>
+                                <h3>Order Total:</h3>
                                 {% if item_amount > 499 %}
-                                <h3>₹ {{item_amount}}</h3>
+                                <h3 id="price">₹ {{item_amount}}</h3>
                                 {% else %}
-                                <h3>₹ {{totalamount}}</h3>
+                                <h3 id="price">₹ {{totalamount}}</h3>
                                 {% endif %}
                             </div>
                         </div>
@@ -171,40 +171,75 @@
     src="https://www.paypal.com/sdk/js?client-id=AbU57w-WU2pGtqnocMVNWFcpfaRwBw5gVx4gDFw3kDmaIc-reJF_opxbF34hoj6FxPBydRdHmvufirxC"></script>
 
 <script>
-    console.log();
+    // Checking Price
+    var item_amount = '{{item_amount}}'
     // Render the PayPal button into #paypal-button-container
-    paypal.Buttons({
+    if (item_amount > 499) {
+        paypal.Buttons({
+            // Set up the transaction
+            createOrder: function (data, actions) {
+                return actions.order.create({
+                    purchase_units: [{
+                        amount: {
+                            value: '{{item_amount}}'
+                        }
+                    }]
+                });
+            },
 
-        // Set up the transaction
-        createOrder: function (data, actions) {
-            return actions.order.create({
-                purchase_units: [{
-                    amount: {
-                        value: '{{item_amount}}'
-                    }
-                }]
-            });
-        },
+            // Finalize the transaction
+            onApprove: function (data, actions) {
+                return actions.order.capture().then(function (orderData) {
+                    // Successful capture! For demo purposes:
+                    console.log('Capture result', orderData, JSON.stringify(orderData, null, 2));
+                    var transaction = orderData.purchase_units[0].payments.captures[0];
+                    alert('Transaction ' + transaction.status + ': ' + transaction.id + '\n\nSee console for all available details');
+                    document.getElementById("myform").submit()
 
-        // Finalize the transaction
-        onApprove: function (data, actions) {
-            return actions.order.capture().then(function (orderData) {
-                // Successful capture! For demo purposes:
-                console.log('Capture result', orderData, JSON.stringify(orderData, null, 2));
-                var transaction = orderData.purchase_units[0].payments.captures[0];
-                alert('Transaction ' + transaction.status + ': ' + transaction.id + '\n\nSee console for all available details');
-                document.getElementById("myform").submit()
-
-                // Replace the above to show a success message within this page, e.g.
-                // const element = document.getElementById('paypal-button-container');
-                // element.innerHTML = '';
-                // element.innerHTML = '<h3>Thank you for your payment!</h3>';
-                // Or go to another URL:  actions.redirect('thank_you.html');
-            });
-        }
+                    // Replace the above to show a success message within this page, e.g.
+                    // const element = document.getElementById('paypal-button-container');
+                    // element.innerHTML = '';
+                    // element.innerHTML = '<h3>Thank you for your payment!</h3>';
+                    // Or go to another URL:  actions.redirect('thank_you.html');
+                });
+            }
 
 
-    }).render('#paypal-button-container');
+        }).render('#paypal-button-container');
+    }
+    else {
+        paypal.Buttons({
+            // Set up the transaction
+            createOrder: function (data, actions) {
+                return actions.order.create({
+                    purchase_units: [{
+                        amount: {
+                            value: '{{totalamount}}'
+                        }
+                    }]
+                });
+            },
+
+            // Finalize the transaction
+            onApprove: function (data, actions) {
+                return actions.order.capture().then(function (orderData) {
+                    // Successful capture! For demo purposes:
+                    console.log('Capture result', orderData, JSON.stringify(orderData, null, 2));
+                    var transaction = orderData.purchase_units[0].payments.captures[0];
+                    alert('Transaction ' + transaction.status + ': ' + transaction.id + '\n\nSee console for all available details');
+                    document.getElementById("myform").submit()
+
+                    // Replace the above to show a success message within this page, e.g.
+                    // const element = document.getElementById('paypal-button-container');
+                    // element.innerHTML = '';
+                    // element.innerHTML = '<h3>Thank you for your payment!</h3>';
+                    // Or go to another URL:  actions.redirect('thank_you.html');
+                });
+            }
+
+
+        }).render('#paypal-button-container');
+    }
 </script>
 
 <script src="{% static 'app/js/checkout.js' %}"></script>

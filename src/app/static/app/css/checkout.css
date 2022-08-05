@@ -154,6 +154,7 @@ body {
     .item {
         display: flex;
         justify-content: space-between;
+        align-items: baseline;
     }
 
     .order-total h3 {
