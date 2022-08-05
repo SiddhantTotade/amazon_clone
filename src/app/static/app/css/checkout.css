@@ -130,7 +130,7 @@ body {
     .place-order a {
         display: grid;
         justify-content: center;
-        padding: 5px 0;
+        padding: 10px 10px;
         border-radius: 5px;
         text-decoration: none;
         color: #000000;
