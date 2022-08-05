@@ -6,7 +6,7 @@ else if (window.screen.width <= 400) {
     document.querySelector(".cart-container").style.display = 'none'
 }
 
-// Increment Item
+// Increment Item Desk
 $('.plus-cart').click(function () {
     let id = $(this).attr("pid").toString();
     let eml = this.parentNode.children[2]
@@ -24,7 +24,25 @@ $('.plus-cart').click(function () {
     })
 })
 
-// Decrement Item
+// Increment Item Mob
+$('.plus-cart-mob').click(function () {
+    let id = $(this).attr("pid").toString();
+    let eml = this.parentNode.children[1]
+    $.ajax({
+        type: "GET",
+        url: "/pluscart",
+        data: {
+            prod_id: id
+        },
+        success: function (data) {
+            eml.innerText = data.quantity
+            document.getElementById('amount-mob').innerText = data.amount
+            document.getElementById('totalamount-mob').innerText = data.totalamount
+        }
+    })
+})
+
+// Decrement Item Desk
 $('.minus-cart').click(function () {
     let id = $(this).attr("pid").toString();
     let eml = this.parentNode.children[2]
@@ -41,6 +59,23 @@ $('.minus-cart').click(function () {
         }
     })
 })
+// Decrement Item Mob
+$('.minus-cart-mob').click(function () {
+    let id = $(this).attr("pid").toString();
+    let eml = this.parentNode.children[1]
+    $.ajax({
+        type: "GET",
+        url: "/minuscart",
+        data: {
+            prod_id: id
+        },
+        success: function (data) {
+            eml.innerText = data.quantity
+            document.getElementById('amount-mob').innerText = data.amount
+            document.getElementById('totalamount-mob').innerText = data.totalamount
+        }
+    })
+})
 
 // Remove Item
 $('.remove-cart').click(function () {
@@ -53,7 +88,6 @@ $('.remove-cart').click(function () {
             prod_id: id
         },
         success: function (data) {
-            console.log(eml.parentNode.parentNode.parentNode);
             document.getElementById('amount').innerText = data.amount
             document.getElementById('totalamount').innerText = data.totalamount
             eml.parentNode.parentNode.parentNode.remove()
