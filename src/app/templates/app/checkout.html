@@ -86,9 +86,9 @@
                             <div class="total-price item">
                                 <h3>Order Total:</h3>
                                 {% if item_amount > 499 %}
-                                <h3 id="price">₹ {{item_amount}}</h3>
+                                <h3 id="price amount">₹ {{item_amount}}</h3>
                                 {% else %}
-                                <h3 id="price">₹ {{totalamount}}</h3>
+                                <h3 id="price totalamount">₹ {{totalamount}}</h3>
                                 {% endif %}
                             </div>
                         </div>
@@ -201,6 +201,7 @@
                     // element.innerHTML = '';
                     // element.innerHTML = '<h3>Thank you for your payment!</h3>';
                     // Or go to another URL:  actions.redirect('thank_you.html');
+                    actions.redirect('thankyou.html')
                 });
             }
 
@@ -234,6 +235,7 @@
                     // element.innerHTML = '';
                     // element.innerHTML = '<h3>Thank you for your payment!</h3>';
                     // Or go to another URL:  actions.redirect('thank_you.html');
+                    actions.redirect('thankyou.html')
                 });
             }
 

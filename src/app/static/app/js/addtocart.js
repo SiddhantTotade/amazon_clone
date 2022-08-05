@@ -53,9 +53,10 @@ $('.remove-cart').click(function () {
             prod_id: id
         },
         success: function (data) {
+            console.log(eml.parentNode.parentNode.parentNode);
             document.getElementById('amount').innerText = data.amount
             document.getElementById('totalamount').innerText = data.totalamount
-            eml.parentNode.parentNode.parentNode.parentNode.remove()
+            eml.parentNode.parentNode.parentNode.remove()
         }
     })
 })

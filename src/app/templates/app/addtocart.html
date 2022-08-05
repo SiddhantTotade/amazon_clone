@@ -57,8 +57,10 @@
             <h2>Subtotal: ₹</h2>
             {% if totalamount > 499 %}
             <h2 id="amount">&nbsp;{{amount}}</h2>
+            <h2 id="totalamount"></h2>
             {% else %}
-            <h2 id="amount">&nbsp;{{totalamount}}</h2>
+            <h2 id="amount"></h2>
+            <h2 id="totalamount">&nbsp;{{totalamount}}</h2>
             {% endif %}
         </div>
         <form action="/checkout" class="checkout">
