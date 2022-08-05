@@ -60,6 +60,10 @@ body {
         width: 50%;
     }
 
+    .delivery-date {
+        display: flex;
+    }
+
     .delivery-date h3 {
         color: green;
     }

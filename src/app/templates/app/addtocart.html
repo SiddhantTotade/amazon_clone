@@ -54,8 +54,8 @@
             <small>Select this item at checkout.</small>
         </div>
         <div class="subtotal">
-            <h2>Subtotal: ₹ </h2>
-            <h2 id="amount"> {{totalamount}}</h2>
+            <h2>Subtotal: ₹</h2>
+            <h2 id="amount">&nbsp;{{totalamount}}</h2>
         </div>
         <form action="/checkout" class="checkout">
             <input type="hidden" name="prod_id" id="prod_id" value="{{product_id.id}}">

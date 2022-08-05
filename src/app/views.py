@@ -1,5 +1,4 @@
-from genericpath import exists
-from itertools import product
+from datetime import date, datetime
 from django.http import JsonResponse
 from django.shortcuts import redirect, render
 from django.views import View
@@ -11,6 +10,7 @@ from django.db.models import Q
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
 import random
+import datetime
 
 
 class ProductView(View):
@@ -327,7 +327,9 @@ class CustomerRegistrationView(View):
 def checkout(request):
     user = request.user
     product_id = request.GET.get('prod_id')
-    if request.META['HTTP_REFERER'] == 'http://127.0.0.1:8000/payment/':
+    delivery_date = (datetime.datetime.now() +
+                     datetime.timedelta(days=10)).strftime("%d %B %Y")
+    if request.META['HTTP_REFERER'] == 'http://127.0.0.1:8000/payment/'+product_id:
         product = Product.objects.get(id=product_id)
         if not Cart.objects.filter(user=user, product=product).exists():
             Cart(user=user, product=product).save()
@@ -345,7 +347,7 @@ def checkout(request):
         totalamount = amount+shipping_amount
     for p in cart_product:
         item_amount += p.product.discounted_price
-    return render(request, 'app/checkout.html', {'product_id': product_id, 'add': add, 'totalamount': totalamount, 'item_amount': item_amount, 'cart_items': cart_items})
+    return render(request, 'app/checkout.html', {'product_id': product_id, 'add': add, 'totalamount': totalamount, 'item_amount': item_amount, 'cart_items': cart_items, 'delivery_date': delivery_date})
 
 
 @login_required
