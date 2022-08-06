@@ -190,15 +190,34 @@ body {
         gap: 10px;
     }
 
+    .user-add-mob {
+        display: inline-block;
+        width: 65%;
+        overflow: hidden !important;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+
+    .delivery .free {
+        color: green;
+    }
+
     .item {
         display: flex;
         justify-content: space-between;
+        align-items: center;
     }
 
     .order-sub-summary {
         display: grid;
         gap: 5px;
         margin-top: 1em;
+    }
+
+    .product-checkout {
+        margin-bottom: 1em;
+        border-bottom: 2px solid gainsboro;
+        padding-bottom: 10px;
     }
 
     .total-price {
@@ -210,6 +229,7 @@ body {
         padding: 5px;
         border-radius: 5px;
         border: 2px solid gainsboro;
+        margin-bottom: 1em;
     }
 
     .delivery-date h3 {
@@ -226,6 +246,11 @@ body {
         width: 40%;
     }
 
+    .order-img img {
+        width: 100%;
+        object-fit: scale-down;
+    }
+
     .order-desc {
         width: 100%;
         display: grid;
@@ -234,7 +259,6 @@ body {
 
     .quantity {
         display: flex;
-        align-items: center;
         gap: 5px;
     }
 

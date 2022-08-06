@@ -6,10 +6,13 @@ body {
 @media screen and (min-width:401px) {
 
     .cart-container {
+        width: 80%;
+        margin: auto;
         display: flex;
         align-items: flex-start;
         justify-content: space-evenly;
         margin-bottom: 18em;
+        gap: 10px;
     }
 
     .cart-title h1 {
@@ -44,11 +47,15 @@ body {
         border-radius: 5px;
     }
 
+    .price small {
+        color: #000000;
+    }
+
     .cart-product-content {
         display: flex;
         align-items: center;
         justify-content: flex-start;
-        gap: 70px;
+        gap: 35px;
         border-bottom: 1px solid gainsboro;
         padding: 20px 0;
     }
@@ -124,10 +131,10 @@ body {
     }
 
     .proceed {
+        width: 20%;
         display: grid;
         justify-content: center;
         align-items: center;
-        width: 15%;
         height: 20vh;
     }
 

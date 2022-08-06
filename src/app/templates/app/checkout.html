@@ -104,53 +104,48 @@
 <div class="checkout-container-mob">
     <div class="checkout-summary">
         <div class="checkout-address">
+            {% for ad in add|slice:":1" %}
             <h3>Shipping to:</h3>
-            <small>Siddhant Totade, Lorem, dolor....</small>
+            <small class="user-add-mob">{{ad.name}}, {{ad.address}}</small>
+            {% endfor %}
         </div>
         <div class="order-sub-summary">
-            <div class="item-summary item">
-                <h3>Items:</h3>
-                <h3>₹ 15,999.00</h3>
-            </div>
             <div class="delivery item">
                 <h3>Delivery:</h3>
-                <h3>₹ 40.00</h3>
+                {% if item_amount > 499 %}
+                <h3 class="free">FREE Delivery</h3>
+                {% else %}
+                <h3 class="free">₹ 40.00</h3>
+                {% endif %}
             </div>
             <div class="total item">
-                <h3>Total:</h3>
-                <h3>₹ 16,039.00</h3>
-            </div>
-            <div class="promotion item">
-                <h3>Promotion applied:</h3>
-                <h3>-₹ 40.00</h3>
+                <h3>Items:</h3>
+                <h3>₹ {{item_amount}}</h3>
             </div>
         </div>
         <div class="total-price item">
-            <h3>Order Total</h3>
-            <h3>₹ 15,999.00</h3>
+            <h3>Order Total:</h3>
+            <h3>₹ {{item_amount}}</h3>
         </div>
     </div>
     <div class="product-summary">
+        {% for item in cart_items %}
         <div class="product-checkout">
             <div class="delivery-date">
-                <h3>Delivery date: 2 Aug 2022</h3>
+                <h3>Delivery date: {{delivery_date}}</h3>
             </div>
             <div class="order-detail">
                 <div class="order-img">
-                    <img src="" alt="">
+                    <img src="{{item.product.product_image.url}}" alt="">
                 </div>
                 <div class="order-desc">
-                    <h4>
-                        Redmi Note 11T 5G (Aquamarine Blue, 6GB RAM, 128GB ROM)| Dimensity 810 5G | 33W Pro Fast
-                        Charging |
-                        Charger Included | Additional Exchange Offers| Get 2 Months of YouTube Premium Free!
-                    </h4>
+                    <h4>{{item.product.title}}</h4>
                     <div class="order-price">
-                        <h4>₹ 15,999.00</h4>
+                        <h4>₹ {{item.total_cost}}</h4>
                     </div>
                     <div class="quantity">
                         <h4>Quantity:</h4>
-                        <small>1</small>
+                        <small>{{item.quantity}}</small>
                     </div>
                     <div class="delivery-method quantity">
                         <h4>Delivery Method:</h4>
@@ -159,10 +154,9 @@
                 </div>
             </div>
         </div>
+        {% endfor %}
     </div>
-    <div class="checkout-btn">
-        <a href="">Place your order</a>
-    </div>
+    <div class="checkout-btn" id="paypal-button-container-mob"></div>
 </div>
 {% endblock %}
 
@@ -170,6 +164,7 @@
 <script
     src="https://www.paypal.com/sdk/js?client-id=AbU57w-WU2pGtqnocMVNWFcpfaRwBw5gVx4gDFw3kDmaIc-reJF_opxbF34hoj6FxPBydRdHmvufirxC"></script>
 
+<!--Paypal for Desktop  -->
 <script>
     // Checking Price
     var item_amount = '{{item_amount}}'
@@ -195,13 +190,13 @@
                     var transaction = orderData.purchase_units[0].payments.captures[0];
                     alert('Transaction ' + transaction.status + ': ' + transaction.id + '\n\nSee console for all available details');
                     document.getElementById("myform").submit()
+                    actions.redirect('thankyou.html')
 
                     // Replace the above to show a success message within this page, e.g.
                     // const element = document.getElementById('paypal-button-container');
                     // element.innerHTML = '';
                     // element.innerHTML = '<h3>Thank you for your payment!</h3>';
                     // Or go to another URL:  actions.redirect('thank_you.html');
-                    actions.redirect('thankyou.html')
                 });
             }
 
@@ -241,6 +236,81 @@
 
 
         }).render('#paypal-button-container');
+    }
+</script>
+
+<!-- Paypal for Mobile -->
+<script>
+    // Checking Price
+    var item_amount = '{{item_amount}}'
+    // Render the PayPal button into #paypal-button-container
+    if (item_amount > 499) {
+        paypal.Buttons({
+            // Set up the transaction
+            createOrder: function (data, actions) {
+                return actions.order.create({
+                    purchase_units: [{
+                        amount: {
+                            value: '{{item_amount}}'
+                        }
+                    }]
+                });
+            },
+
+            // Finalize the transaction
+            onApprove: function (data, actions) {
+                return actions.order.capture().then(function (orderData) {
+                    // Successful capture! For demo purposes:
+                    console.log('Capture result', orderData, JSON.stringify(orderData, null, 2));
+                    var transaction = orderData.purchase_units[0].payments.captures[0];
+                    alert('Transaction ' + transaction.status + ': ' + transaction.id + '\n\nSee console for all available details');
+                    document.getElementById("myform").submit()
+
+                    // Replace the above to show a success message within this page, e.g.
+                    // const element = document.getElementById('paypal-button-container');
+                    // element.innerHTML = '';
+                    // element.innerHTML = '<h3>Thank you for your payment!</h3>';
+                    // Or go to another URL:  actions.redirect('thank_you.html');
+                    actions.redirect('thankyou.html')
+                });
+            }
+
+
+        }).render('#paypal-button-container-mob');
+    }
+    else {
+        paypal.Buttons({
+            // Set up the transaction
+            createOrder: function (data, actions) {
+                return actions.order.create({
+                    purchase_units: [{
+                        amount: {
+                            value: '{{totalamount}}'
+                        }
+                    }]
+                });
+            },
+
+            // Finalize the transaction
+            onApprove: function (data, actions) {
+                return actions.order.capture().then(function (orderData) {
+                    // Successful capture! For demo purposes:
+                    console.log('Capture result', orderData, JSON.stringify(orderData, null, 2));
+                    var transaction = orderData.purchase_units[0].payments.captures[0];
+                    alert('Transaction ' + transaction.status + ': ' + transaction.id + '\n\nSee console for all available details');
+                    document.getElementById("myform").submit()
+
+                    // Replace the above to show a success message within this page, e.g.
+                    // const element = document.getElementById('paypal-button-container');
+                    // element.innerHTML = '';
+                    // element.innerHTML = '<h3>Thank you for your payment!</h3>';
+                    // Or go to another URL:  actions.redirect('thank_you.html');
+                    actions.redirect('thankyou.html')
+                });
+            }
+
+
+        }).render('#paypal-button-container-mob');
     }
 </script>
 
