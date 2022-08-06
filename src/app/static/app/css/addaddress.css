@@ -107,7 +107,23 @@ body {
 
     .user-add {
         display: grid;
-        gap: 10px;
+    }
+
+    .user-add label {
+        color: #000000;
+    }
+
+    .user-add input,
+    .user-add select {
+        font-size: medium;
+        color: #000000;
+        padding: 10px 10px;
+        border-radius: 5px;
+        border: 2px solid gainsboro;
+    }
+
+    .user-add option {
+        color: #000000;
     }
 
     .name {
