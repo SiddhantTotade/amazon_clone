@@ -207,7 +207,7 @@ body {
         align-items: center;
     }
 
-    .checkout button {
+    .checkout-mob button {
         width: 100%;
         padding: 0 100px;
         height: 4vh;
@@ -268,7 +268,7 @@ body {
         color: #000000;
     }
 
-    .product-counter .remove-cart {
+    .product-counter .remove-cart-mob {
         display: flex;
         align-items: center;
         color: #007cfb;

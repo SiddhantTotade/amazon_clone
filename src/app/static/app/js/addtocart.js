@@ -77,7 +77,7 @@ $('.minus-cart-mob').click(function () {
     })
 })
 
-// Remove Item
+// Remove Cart Desktop
 $('.remove-cart').click(function () {
     let id = $(this).attr("pid").toString();
     let eml = this
@@ -89,8 +89,26 @@ $('.remove-cart').click(function () {
         },
         success: function (data) {
             document.getElementById('amount').innerText = data.amount
-            document.getElementById('totalamount').innerText = data.totalamount
+            // document.getElementById('totalamount').innerText = data.totalamount
             eml.parentNode.parentNode.parentNode.remove()
+        }
+    })
+})
+
+// Remove cart Mob
+$('.remove-cart-mob').click(function () {
+    let id = $(this).attr("pid").toString();
+    let eml = this
+    $.ajax({
+        type: "GET",
+        url: "/removecart",
+        data: {
+            prod_id: id
+        },
+        success: function (data) {
+            document.getElementById('amount-mob').innerText = data.amount
+            // document.getElementById('totalamount-mob').innerText = data.totalamount
+            eml.parentNode.parentNode.parentNode.parentNode.remove()
         }
     })
 })

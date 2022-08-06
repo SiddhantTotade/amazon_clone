@@ -327,11 +327,12 @@ class CustomerRegistrationView(View):
 
 @login_required
 def checkout(request):
+    cust_id = request.GET.get('custid')
     user = request.user
     product_id = request.GET.get('prod_id')
     delivery_date = (datetime.datetime.now() +
                      datetime.timedelta(days=10)).strftime("%d %B %Y")
-    if request.META['HTTP_REFERER'] == 'http://127.0.0.1:8000/payment/'+product_id:
+    if request.META['HTTP_REFERER'] == 'http://127.0.0.1:8000/payment/'+product_id+"?custid="+cust_id:
         product = Product.objects.get(id=product_id)
         if not Cart.objects.filter(user=user, product=product).exists():
             Cart(user=user, product=product).save()
@@ -355,7 +356,8 @@ def checkout(request):
 @login_required
 def payment_done(request):
     user = request.user
-    custid = request.GET.get('custid')
+    custid = request.GET.get('cust_id')
+    print(custid)
     customer = Customer.objects.get(id=custid)
     cart = Cart.objects.filter(user=user)
     for c in cart:

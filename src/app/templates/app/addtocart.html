@@ -81,7 +81,7 @@
             <h2 id="totalamount-mob">{{totalamount}}</h2>
             {% endif %}
         </div>
-        <form action="/checkout" class="checkout">
+        <form action="/checkout" class="checkout-mob">
             <input type="hidden" name="prod_id" id="prod_id" value="{{product_id.id}}">
             <button type="submit" class="continue">Proceed to buy</button>
         </form>
@@ -104,7 +104,7 @@
                     <a pid="{{cart.product.id}}" class="minus-cart-mob"><i class="uil uil-minus"></i></a>
                     <span id="quantity-mob">{{cart.quantity}}</span>
                     <a pid="{{cart.product.id}}" class="plus-cart-mob"><i class="uil uil-plus"></i></a>
-                    <a pid="{{cart.product.id}}" class="remove-cart">Delete</a>
+                    <a pid="{{cart.product.id}}" class="remove-cart-mob">Delete</a>
                 </div>
             </div>
         </div>

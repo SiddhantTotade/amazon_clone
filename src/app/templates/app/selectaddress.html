@@ -91,32 +91,29 @@
         <div class="address-title">
             <h2>Select a delivery address</h2>
         </div>
-        <div class="address-box">
-            <div class="radio-btn">
-                <input type="radio" name="" id="">
+        {% for add in address %}
+        <div class="user-address-loop">
+            <div class="address-box">
+                <div class="user-address">
+                    <h4>{{add.name}}</h4>
+                    <p>{{add.address}}, {{add.locality}}, {{add.city}}, {{add.state}}, {{add.state}}, {{add.zipcode}}
+                    </p>
+                    <p>
+                        Phone number: X1X2X3X4X5
+                    </p>
+                </div>
             </div>
-            {% for add in address|slice:":1" %}
-            <div class="user-address">
-                <h4>RECENTLY USED</h4>
-                <h4>{{add.name}}</h4>
-                <p>{{add.address}}, {{add.locality}}, {{add.city}}, {{add.state}}, {{add.state}}, {{add.zipcode}}</p>
-                <p>
-                    Phone number: X1X2X3X4X5
-                </p>
-            </div>
-            {% endfor %}
-        </div>
-        <div class="delivery-buttons">
-            <div class="delivery-container">
-                <a href="{% url 'payment' product_id.id %}" class="delivery">Deliver to this address</a>
-            </div>
-            <div class="edit-btn">
-                {% for add in address|slice:":1" %}
-                <a href="{% url 'editaddress' add.id %}" class="edit">Edit</a>
-                <a href="{% url 'deleteaddress' add.id %}" class="delete">Delete</a>
-                {% endfor %}
+            <div class="delivery-buttons">
+                <div class="delivery-container">
+                    <a href="{% url 'payment' product_id.id %}" class="delivery">Deliver to this address</a>
+                </div>
+                <div class="edit-btn">
+                    <a href="{% url 'editaddress' add.id %}" class="edit">Edit</a>
+                    <a href="{% url 'deleteaddress' add.id %}" class="delete">Delete</a>
+                </div>
             </div>
         </div>
+        {% endfor %}
         <div class="new-address">
             <a href="{% url 'addaddress' %}" class="add-address">Add a new address
                 <i class="uil uil-angle-right-b"></i>

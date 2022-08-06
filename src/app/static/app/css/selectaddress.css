@@ -198,13 +198,12 @@ body {
         gap: 10px;
     }
 
-    .radio-btn {
-        width: 10%;
-    }
-
-    .radio-btn input {
-        width: 25px;
-        height: 20px;
+    .user-address-loop {
+        display: grid;
+        gap: 20px;
+        border: 2px solid gainsboro;
+        border-radius: 5px;
+        padding: 10px 10px;
     }
 
     .user-address {
@@ -228,12 +227,15 @@ body {
     }
 
     .delivery-container a {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        padding: 10px 0;
         background-color: yellow;
         color: #000000;
         border-radius: 5px;
         border: none;
         text-decoration: none;
-        padding: 10px 70px;
     }
 
     .edit-btn {

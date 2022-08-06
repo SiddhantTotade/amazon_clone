@@ -157,12 +157,13 @@
         text-decoration: none;
         color: #000000;
         background-color: #fda22c;
+        font-size: medium;
     }
 
     .buy button {
         padding: 10px 25px;
         border-radius: 30px;
-        font-size: 15px;
+        font-size: medium;
         border: none;
         color: #000000;
         background-color: #fda22c;
@@ -466,17 +467,19 @@
         justify-content: center;
     }
 
-    .buy-buttons a {
+    .add-to-cart button {
         color: #000000;
         text-decoration: none;
         padding: 10px 120px;
         margin-bottom: 10px;
         background-color: #fda22c;
         border: none;
+        font-size: medium;
         border-radius: 5px;
     }
 
     .buy-now {
+        color: #000000;
         text-decoration: none;
         padding: 10px 120px;
         margin-bottom: 10px;

@@ -460,7 +460,7 @@
             {% if item_already_in_cart %}
             <a href="{% url 'showcart' %}" class="addtocart-mob">Goto Cart</a>
             {% else %}
-            <form action="/add-to-cart">
+            <form action="/add-to-cart" class="add-to-cart">
                 <input type="hidden" name="prod_id" id="prod_id" value="{{product.id}}">
                 <button type="submit" class="buynow-mob">Add to cart</button>
             </form>
@@ -468,13 +468,13 @@
             {% endif %}
 
             {% if not request.user.is_authenticated %}
-            <form action="/checkout">
+            <form action="/checkout" class="add-to-cart">
                 <input type="hidden" name="prod_id" id="prod_id" value="{{product.id}}">
                 <button type="submit" class="addtocart">Add to cart</button>
             </form>
             {% endif %}
 
-            <a href="{% url 'selectaddress' product.id %}">Buy now</a>
+            <a href="{% url 'selectaddress' product.id %}" class="buy-now">Buy now</a>
         </div>
     </div>
     <div class="product-details product-offer">
