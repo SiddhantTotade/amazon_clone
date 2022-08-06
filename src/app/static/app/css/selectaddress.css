@@ -224,7 +224,7 @@ body {
         padding: 10px 70px;
     }
 
-    .edit-btn{
+    .edit-btn {
         display: grid;
         gap: 10px;
     }
@@ -247,17 +247,14 @@ body {
         border: 1px solid gray;
     }
 
-    .new-address {
-        display: grid;
-        gap: 10px;
-    }
-
     .new-address h3,
     .new-address i {
         color: #000000;
     }
 
     .add-address {
+        color: #000000;
+        text-decoration: none;
         display: flex;
         align-items: center;
         justify-content: space-between;
@@ -266,6 +263,11 @@ body {
         padding: 0 10px;
         border: 1px solid gray;
         border-radius: 5px;
+    }
+
+    .add-address a {
+        color: #000000;
+        text-decoration: none;
     }
 
     .pickup-location {
