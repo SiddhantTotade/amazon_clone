@@ -119,8 +119,12 @@ body {
         width: 80%;
     }
 
-    .save button {
-        cursor: pointer;
+    .save {
+        margin-bottom: 1em;
+    }
+
+    .save a {
+        text-decoration: none;
         padding: 10px 25px;
         border: none;
         border-radius: 5px;

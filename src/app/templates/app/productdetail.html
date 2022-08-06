@@ -532,13 +532,9 @@
             <h2>From the manufacturer</h2>
         </div>
         <div class="details-img-container">
-            <img src="./img/product/product-detail-img-mob-1.jpg" alt="">
-            <img src="./img/product/product-detail-img-mob-2.jpg" alt="">
-            <img src="./img/product/product-detail-img-mob-3.jpg" alt="">
-            <img src="./img/product/product-detail-img-mob-4.jpg" alt="">
-            <img src="./img/product/product-detail-img-mob-5.jpg" alt="">
-            <img src="./img/product/product-detail-img-mob-6.jpg" alt="">
-            <img src="./img/product/product-detail-img-mob-7.jpg" alt="">
+            {% for p in product_desc_desk %}
+            <img src="{{p.product_img_desc_mobile.url}}" alt="">
+            {% endfor %}
         </div>
     </div>
     <div class="features-details product-details product-offer">
@@ -546,21 +542,7 @@
             <h2>Features & Details</h2>
         </div>
         <div class="details-desc">
-            <ul>
-                <li>17 cm (6.7-inch) Super Retina XDR display with ProMotion for a faster, more responsive feel</li>
-            </ul>
-            <ul>
-                <li>Cinematic mode adds shallow depth of field and shifts focus automatically in your videos</li>
-            </ul>
-            <ul>
-                <li>Pro camera system with new 12MP Telephoto, Wide and Ultra Wide cameras; LiDAR Scanner; 6x
-                    optical
-                    zoom range; macro photography; Photographic Styles, ProRes video, Smart HDR 4, Night mode, Apple
-                    ProRAW, 4K Dolby Vision HDR recording</li>
-            </ul>
-            <ul>
-                <li>12MP TrueDepth front camera with Night mode, 4K Dolby Vision HDR recording</li>
-            </ul>
+            {{ product.description|linebreaks }}
         </div>
     </div>
     <div class="product-review product-details product-offer">
