@@ -462,7 +462,18 @@
         justify-content: center;
     }
 
-    .buy-buttons button {
+    .buy-buttons a {
+        color: #000000;
+        text-decoration: none;
+        padding: 7px 120px;
+        margin-bottom: 10px;
+        background-color: #fda22c;
+        border: none;
+        border-radius: 5px;
+    }
+
+    .buy-now {
+        text-decoration: none;
         padding: 7px 120px;
         margin-bottom: 10px;
         background-color: #fda22c;
