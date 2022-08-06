@@ -11,10 +11,6 @@ body {
         margin-bottom: 15em;
     }
 
-    .select-address-container button:hover {
-        cursor: pointer;
-    }
-
     .select-address {
         width: 80%;
         padding-bottom: 20px;
@@ -38,10 +34,19 @@ body {
         padding: 15px 0;
     }
 
+    .loop-address-container {
+        margin-top: 1em;
+        display: flex;
+        gap: 20px;
+    }
+
     .current-address {
         display: grid;
         padding: 20px 0;
         gap: 10px;
+        border: 2px solid gainsboro;
+        border-radius: 5px;
+        padding: 10px 10px;
     }
 
     .user-address-container {
@@ -70,11 +75,16 @@ body {
     }
 
     .deliver-button {
-        width: 20%;
+        width: 100%;
         display: flex;
     }
 
-    .deliver-button a {
+    .deliver-button input {
+        color: #000000;
+        font-size: medium;
+        cursor: pointer;
+        display: flex;
+        justify-content: center;
         width: 100%;
         text-decoration: none;
         padding: 10px 40px;
@@ -84,12 +94,14 @@ body {
     }
 
     .edit-del-button {
-        width: 20%;
+        width: 100%;
         display: flex;
         gap: 10px;
     }
 
     .edit-del-button a {
+        display: flex;
+        justify-content: center;
         width: 100%;
         padding: 10px 40px;
         border-radius: 5px;
