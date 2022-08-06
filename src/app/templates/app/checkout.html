@@ -63,7 +63,8 @@
             </div>
             <div class="right-container">
                 <div class="right-checkout-container">
-                    <div class="summary">
+                    <form action="/paymentdone" id="myform" class="summary">
+                        <input type="hidden" name="custid" value="{{custid}}">
                         <div class="place-order" id="paypal-button-container"></div>
                         <div class="summary-title">
                             <h4>Order Summary</h4>
@@ -92,7 +93,7 @@
                                 {% endif %}
                             </div>
                         </div>
-                    </div>
+                    </form>
                 </div>
             </div>
         </div>
@@ -190,7 +191,7 @@
                     var transaction = orderData.purchase_units[0].payments.captures[0];
                     alert('Transaction ' + transaction.status + ': ' + transaction.id + '\n\nSee console for all available details');
                     document.getElementById("myform").submit()
-                    actions.redirect('thankyou.html')
+                    // actions.redirect('thankyou.html')
 
                     // Replace the above to show a success message within this page, e.g.
                     // const element = document.getElementById('paypal-button-container');
@@ -230,7 +231,7 @@
                     // element.innerHTML = '';
                     // element.innerHTML = '<h3>Thank you for your payment!</h3>';
                     // Or go to another URL:  actions.redirect('thank_you.html');
-                    actions.redirect('thankyou.html')
+                    // actions.redirect('thankyou.html')
                 });
             }
 
@@ -271,7 +272,7 @@
                     // element.innerHTML = '';
                     // element.innerHTML = '<h3>Thank you for your payment!</h3>';
                     // Or go to another URL:  actions.redirect('thank_you.html');
-                    actions.redirect('thankyou.html')
+                    // actions.redirect('thankyou.html')
                 });
             }
 
@@ -305,7 +306,7 @@
                     // element.innerHTML = '';
                     // element.innerHTML = '<h3>Thank you for your payment!</h3>';
                     // Or go to another URL:  actions.redirect('thank_you.html');
-                    actions.redirect('thankyou.html')
+                    // actions.redirect('thankyou.html')
                 });
             }
 

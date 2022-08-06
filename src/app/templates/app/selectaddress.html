@@ -55,7 +55,6 @@
                 <form action="/payment/{{product_id.id}}" class="deliver-button">
                     <input type="hidden" name="custid" value="{{add.id}}" id="">
                     <input type="submit" name="" value="Deliver to this address" id="">
-                    <!-- <a type="submit" class="delivery">Deliver to this address</a> -->
                 </form>
                 <div class="edit-del-button">
                     <a href="{% url 'editaddress' add.id %}" class="edit">Edit</a>
@@ -104,9 +103,10 @@
                 </div>
             </div>
             <div class="delivery-buttons">
-                <div class="delivery-container">
-                    <a href="{% url 'payment' product_id.id %}" class="delivery">Deliver to this address</a>
-                </div>
+                <form action="/payment/{{product_id.id}}" class="deliver-form">
+                    <input type="hidden" name="custid" value="{{add.id}}" id="">
+                    <input type="submit" name="" value="Deliver to this address" id="">
+                </form>
                 <div class="edit-btn">
                     <a href="{% url 'editaddress' add.id %}" class="edit">Edit</a>
                     <a href="{% url 'deleteaddress' add.id %}" class="delete">Delete</a>

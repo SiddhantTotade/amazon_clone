@@ -327,8 +327,8 @@ class CustomerRegistrationView(View):
 
 @login_required
 def checkout(request):
-    cust_id = request.GET.get('custid')
     user = request.user
+    cust_id = request.GET.get('custid')
     product_id = request.GET.get('prod_id')
     delivery_date = (datetime.datetime.now() +
                      datetime.timedelta(days=10)).strftime("%d %B %Y")
@@ -350,13 +350,13 @@ def checkout(request):
         totalamount = amount+shipping_amount
     for p in cart_product:
         item_amount += p.product.discounted_price
-    return render(request, 'app/checkout.html', {'product_id': product_id, 'add': add, 'totalamount': totalamount, 'item_amount': item_amount, 'cart_items': cart_items, 'delivery_date': delivery_date})
+    return render(request, 'app/checkout.html', {'product_id': product_id, 'add': add, 'totalamount': totalamount, 'item_amount': item_amount, 'cart_items': cart_items, 'delivery_date': delivery_date, 'custid': cust_id})
 
 
 @login_required
 def payment_done(request):
     user = request.user
-    custid = request.GET.get('cust_id')
+    custid = request.GET.get('custid')
     print(custid)
     customer = Customer.objects.get(id=custid)
     cart = Cart.objects.filter(user=user)
@@ -364,7 +364,7 @@ def payment_done(request):
         OrderPlaced(user=user, customer=customer,
                     product=c.product, quantity=c.quantity).save()
         c.delete()
-        return redirect('orders')
+        return render(request, 'app/thankyou.html')
 
 
 class ProductUpload(View):

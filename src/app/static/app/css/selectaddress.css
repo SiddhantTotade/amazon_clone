@@ -189,18 +189,8 @@ body {
         color: #000000;
     }
 
-    .address-box {
-        display: flex;
-        align-items: center;
-        justify-items: center;
-        padding: 20px 0;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 10px;
-    }
-
     .user-address-loop {
         display: grid;
-        gap: 20px;
         border: 2px solid gainsboro;
         border-radius: 5px;
         padding: 10px 10px;
@@ -220,15 +210,10 @@ body {
         gap: 10px;
     }
 
-    .delivery-container {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-
-    .delivery-container a {
+    .deliver-form input {
         width: 100%;
         display: flex;
+        font-size: medium;
         justify-content: center;
         padding: 10px 0;
         background-color: yellow;

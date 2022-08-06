@@ -89,6 +89,7 @@
         <h2>Select a payment method</h2>
     </div>
     <form action="/checkout" class="next payment-block-1">
+        <input type="hidden" name="custid" id="custid" value="{{cust_id}}">
         <input type="hidden" name="prod_id" id="prod_id" value="{{product_id.id}}">
         <button type="submit" class="continue">Continue</button>
     </form>
@@ -164,6 +165,7 @@
         </div>
     </div>
     <form action="/checkout" class="next payment-block-1">
+        <input type="hidden" name="custid" id="custid" value="{{cust_id}}">
         <input type="hidden" name="prod_id" id="prod_id" value="{{product_id.id}}">
         <button type="submit" class="continue">Continue</button>
     </form>
