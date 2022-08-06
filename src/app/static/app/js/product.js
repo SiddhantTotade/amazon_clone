@@ -1,7 +1,6 @@
 // Media Query
 if (window.screen.width >= 400) {
     document.querySelector(".product-mob").style.display = 'none'
-    document.querySelector(".mobile").style.display = 'none'
 }
 else if (window.screen.width <= 400) {
     document.querySelector(".product").style.display = 'none'

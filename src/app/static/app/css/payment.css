@@ -97,6 +97,11 @@ body {
 
 @media screen and (max-width:400px) {
 
+    .payment-mob {
+        display: grid;
+        gap: 20px;
+    }
+
     .address-container {
         padding: 0 10px;
     }
@@ -125,9 +130,14 @@ body {
 
     .continue {
         display: grid;
+        align-items: center;
     }
 
-    .next-continue {
+    .next {
+        margin-bottom: 1em;
+    }
+
+    .next button {
         width: 90%;
         margin: auto;
         height: 4vh;

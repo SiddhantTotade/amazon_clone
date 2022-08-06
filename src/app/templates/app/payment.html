@@ -87,9 +87,10 @@
     <div class="address-title">
         <h2>Select a payment method</h2>
     </div>
-    <div class="continue address-title">
-        <button class="next-continue" id="next-continue">Continue</button>
-    </div>
+    <form action="/checkout" class="next payment-block-1">
+        <input type="hidden" name="prod_id" id="prod_id" value="{{product_id.id}}">
+        <button type="submit" class="continue">Continue</button>
+    </form>
     <div class="amazon-pay address-title">
         <div class="title">
             <h4>Amazon Pay balance ₹ X.xx</h4>
@@ -161,9 +162,10 @@
             </small>
         </div>
     </div>
-    <div class="continue address-title">
-        <button class="next-continue" id="next-continue">Continue</button>
-    </div>
+    <form action="/checkout" class="next payment-block-1">
+        <input type="hidden" name="prod_id" id="prod_id" value="{{product_id.id}}">
+        <button type="submit" class="continue">Continue</button>
+    </form>
 </div>
 {% endblock %}
 
