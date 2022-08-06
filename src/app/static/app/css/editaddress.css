@@ -116,23 +116,23 @@ body {
 
     .user-add {
         display: grid;
-        gap: 10px;
     }
 
-    .name {
-        display: grid;
-        gap: 5px;
+    .user-add label {
+        color: #000000;
     }
 
-    .name small {
-        width: 80%;
-    }
-
-    .name input {
-        width: 100%;
+    .user-add input,
+    .user-add select {
+        font-size: medium;
+        color: #000000;
         padding: 10px 10px;
-        border: 2px solid gainsboro;
         border-radius: 5px;
+        border: 2px solid gainsboro;
+    }
+
+    .user-add option {
+        color: #000000;
     }
 
     .save button {

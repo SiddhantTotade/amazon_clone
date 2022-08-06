@@ -126,22 +126,6 @@ body {
         color: #000000;
     }
 
-    .name {
-        display: grid;
-        gap: 5px;
-    }
-
-    .name small {
-        width: 80%;
-    }
-
-    .name input {
-        width: 100%;
-        padding: 10px 10px;
-        border: 2px solid gainsboro;
-        border-radius: 5px;
-    }
-
     .save button {
         padding: 10px 25px;
         border: none;
