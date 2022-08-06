@@ -270,8 +270,10 @@ def edit_name(request):
 @login_required
 def payment(request, pk):
     product_id = Product.objects.get(pk=pk)
+    cust_id = request.GET.get('custid')
+    print(cust_id)
     add = Customer.objects.filter(user=request.user)
-    return render(request, 'app/payment.html', {'product_id': product_id, 'add': add})
+    return render(request, 'app/payment.html', {'product_id': product_id, 'add': add, 'cust_id': cust_id})
 
 
 @login_required
