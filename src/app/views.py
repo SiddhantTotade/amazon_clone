@@ -357,14 +357,15 @@ def checkout(request):
 def payment_done(request):
     user = request.user
     custid = request.GET.get('custid')
-    print(custid)
+    delivery_date = (datetime.datetime.now() +
+                     datetime.timedelta(days=10)).strftime("%d %B %Y")
     customer = Customer.objects.get(id=custid)
     cart = Cart.objects.filter(user=user)
     for c in cart:
         OrderPlaced(user=user, customer=customer,
                     product=c.product, quantity=c.quantity).save()
         c.delete()
-        return render(request, 'app/thankyou.html')
+    return render(request, 'app/thankyou.html', {'delivery_date': delivery_date})
 
 
 class ProductUpload(View):

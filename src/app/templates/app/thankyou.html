@@ -2,7 +2,7 @@
 {% load static %}
 
 {% block style-thankyou %}
-<link rel="stylesheet" href="{% static 'app/css/checkout.css' %}">
+<link rel="stylesheet" href="{% static 'app/css/thankyou.css' %}">
 {% endblock %}
 
 {% block title %}Thankyou{% endblock %}
@@ -16,42 +16,28 @@
         <h1>Thank You for Ordering from Us.</h1>
         <h3>Please check your email for order confirmation and detailed delivery information or visit Message Center
             to review your notifications.</h3>
-        <div class="order">
-            <strong>
-                <h4>
-                    Order Number: XXX-XXXXXX-XXXXX
-                </h4>
-                <h4>
-                    iPhone - 13 Pro Max, Lorem ipsum dolor sit amet consectetur, adipisicing elit, will be
-                    shipped to Siddhant Totade by Amazon.in
-                </h4>
-            </strong>
-        </div>
         <div class="delivery">
             <div class="gurantee">
                 <strong>Guranteed delivery:</strong>
             </div>
             <div class="delivery-date">
                 <strong>
-                    <h4>Nov, 13, 2023</h4>
+                    <h4>{{delivery_date}}</h4>
                 </strong>
             </div>
         </div>
     </div>
     <div class="product-img">
-        <img src="/img/product/product-img-1.jpg" alt="">
+        <img src="{% static 'app/img/payment-done.png' %}" alt="">
     </div>
 </div>
 <div class="continue-shopping">
-    <button class="continue-shopping-btn">Continue Shopping</button>
+    <a href="{% url 'home' %}" class="continue-shopping-btn">Continue Shopping</a>
 </div>
 {% endblock %}
 
 {% block main-content-mob-thankyou %}
-<div class="thank-you">
-    <div class="product-img">
-        <img src="/img/product/product-img-1.jpg" alt="">
-    </div>
+<div class="thank-you-mob">
     <div class="thank">
         <i class="uil uil-check"></i>
         <div class="thankyou-order">
@@ -60,32 +46,24 @@
                 Please check your email for order confirmation and detailed delivery information or visit
                 Message Center to review your notifications.
             </h3>
-            <div class="order">
-                <strong>
-                    <h4>
-                        Order Number: XXX-XXXXXX-XXXXX
-                    </h4>
-                    <h4>
-                        iPhone - 13 Pro Max, Lorem ipsum dolor sit amet consectetur, adipisicing elit, will be
-                        shipped to Siddhant Totade by Amazon.in
-                    </h4>
-                </strong>
-            </div>
             <div class="delivery">
                 <div class="gurantee">
                     <strong>Guranteed delivery:</strong>
                 </div>
                 <div class="delivery-date">
                     <strong>
-                        <h4>Nov, 13, 2023</h4>
+                        <h4>{{delivery_date}}</h4>
                     </strong>
                 </div>
+            </div>
+            <div class="product-img">
+                <img src="{% static 'app/img/payment-done.png' %}" alt="">
             </div>
         </div>
     </div>
 </div>
-<div class="continue-shopping">
-    <button class="shopping">Continue Shopping</button>
+<div class="continue-shopping-mob">
+    <a href="{% url 'home' %}" class="shopping">Continue Shopping</a>
 </div>
 </div>
 {% endblock %}
