@@ -1,4 +1,3 @@
-from datetime import date, datetime
 from django.http import JsonResponse
 from django.shortcuts import redirect, render
 from django.views import View
@@ -8,6 +7,7 @@ from django.contrib import messages
 from django.contrib.auth.models import User
 from django.db.models import Q
 from django.contrib.auth.decorators import login_required
+from django.views.decorators.cache import cache_page
 from django.utils.decorators import method_decorator
 import random
 import datetime
@@ -335,7 +335,12 @@ def checkout(request):
     product_id = request.GET.get('prod_id')
     delivery_date = (datetime.datetime.now() +
                      datetime.timedelta(days=10)).strftime("%d %B %Y")
-    if request.META['HTTP_REFERER'] == 'http://127.0.0.1:8000/payment/'+product_id+"?custid="+cust_id:
+    print(request.path)
+    if request.META['HTTP_REFERER'] == 'http://127.0.0.1:8000/paymentdone/?custid='+cust_id:
+        print("Payment done")
+        return redirect('home')
+    elif request.META['HTTP_REFERER'] == 'http://127.0.0.1:8000/payment/'+product_id+"?custid="+cust_id:
+        print("Payment")
         product = Product.objects.get(id=product_id)
         if not Cart.objects.filter(user=user, product=product).exists():
             Cart(user=user, product=product).save()
