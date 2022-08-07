@@ -279,7 +279,10 @@ def payment(request, pk):
 @login_required
 def orders(request):
     op = OrderPlaced.objects.filter(user=request.user)
-    return render(request, 'app/orders.html', {'order_placed': op})
+    delivery_date = (datetime.datetime.now() +
+                     datetime.timedelta(days=10)).strftime("%A")
+
+    return render(request, 'app/orders.html', {'order_placed': op, 'delivery_date': delivery_date})
 
 
 @login_required

@@ -14,16 +14,16 @@
         <h1>Your Orders</h1>
     </div>
     <div class="user-orders">
-        {% if op.exists %}
+        {% if order_placed.exists %}
         {% for op in order_placed %}
         <div class="user-order-block">
             <div class="order-img">
                 <img src="{{op.product.product_image.url}}" alt="">
             </div>
             <div class="order-content">
-                <h2>Arriving Wednesday</h2>
+                <h2>Arriving {{delivery_date}}</h2>
                 <h3>{{op.product.title}}</h3>
-                <h3>{{op.quantity}}</h3>
+                <h3>Quantity: {{op.quantity}}</h3>
                 <div class="buy-again">
                     <button>Buy Again <i class="uil uil-sync"></i></button>
                 </div>
@@ -33,31 +33,36 @@
             </div>
             {% if op.status == 'Accepted' %}
             <div class="order-status">
-                <p>Order Status: {{op.status}}</p>
+                <h4>Order Status: {{op.status}}</h4>
                 <div class="progress-bar">
-                    <div class="progres-accepted"></div>
+                    <div class="progress-accepted"></div>
                 </div>
             </div>
             {% elif op.status == 'Packed' %}
             <div class="order-status">
-                <p>Order Status: {{op.status}}</p>
+                <h4>Order Status: {{op.status}}</h4>
                 <div class="progress-bar">
-                    <div class="progres-packed"></div>
+                    <div class="progress-packed"></div>
                 </div>
             </div>
             {% elif op.status == 'On the way' %}
             <div class="order-status">
-                <p>Order Status: {{op.status}}</p>
+                <h4>Order Status: {{op.status}}</h4>
                 <div class="progress-bar">
-                    <div class="progres-ontheway"></div>
+                    <div class="progress-ontheway"></div>
                 </div>
             </div>
             {% elif op.status == 'Delivered' %}
             <div class="order-status">
-                <p>Order Status: {{op.status}}</p>
+                <h4>Order Status: {{op.status}}</h4>
                 <div class="progress-bar">
-                    <div class="progres-delivered"></div>
+                    <div class="progress-delivered"></div>
                 </div>
+            </div>
+            {% elif op.status == 'Cancel' %}
+            <div class="order-cancel">
+                <h4>Order Status: {{op.status}}</h4>
+                <h3 class="progress-cancel">This order is cancelled by you.</h3>
             </div>
             {% endif %}
         </div>
@@ -78,54 +83,23 @@
         <h1>Your Orders</h1>
     </div>
     <div class="user-orders">
+        {% for op in order_placed %}
         <div class="user-order-block">
             <div class="order-img">
-                <img src="./img/card-carousel-2/card-carousel-1.jpg" alt="">
+                <img src="{{op.product.product_image.url}}" alt="">
             </div>
             <div class="order-content">
-                <h3>Arriving Wednesday</h3>
-                <h5>
-                    Redmi Note 10T 5G (Metallic Blue, 4GB RAM, 64GB Storage)...</h5>
+                <h3>Arriving {{delivery_date}}</h3>
+                <h5>{{op.product.title}}</h5>
                 <div class="buy-again">
                     <button>Buy Again <i class="uil uil-sync"></i></button>
                 </div>
                 <div class="order-price">
-                    <h4>₹ 15, 499</h4>
+                    <h4>₹ {{op.total_cost}}</h4>
                 </div>
             </div>
         </div>
-        <div class="user-order-block">
-            <div class="order-img">
-                <img src="./img/card-carousel-2/card-carousel-2.jpg" alt="">
-            </div>
-            <div class="order-content">
-                <h3>Arriving Today</h3>
-                <h5>
-                    Samsung Galaxy M32 (Light Blue, 6GB RAM...</h5>
-                <div class="buy-again">
-                    <button>Buy Again <i class="uil uil-sync"></i></button>
-                </div>
-                <div class="order-price">
-                    <h4>₹ 10, 990</h4>
-                </div>
-            </div>
-        </div>
-        <div class="user-order-block">
-            <div class="order-img">
-                <img src="./img/card-carousel-2/card-carousel-7.jpg" alt="">
-            </div>
-            <div class="order-content">
-                <h3>Arriving Saturday</h3>
-                <h5>HP GK100 Wired Full Size RGM Backlit Mechanical Gaming...
-                </h5>
-                <div class="buy-again">
-                    <button>Buy Again <i class="uil uil-sync"></i></button>
-                </div>
-                <div class="order-price">
-                    <h4>₹ 1,800</h4>
-                </div>
-            </div>
-        </div>
+        {% endfor %}
     </div>
 </div>
 {% endblock %}
