@@ -368,7 +368,7 @@ def payment_done(request):
         OrderPlaced(user=user, customer=customer,
                     product=c.product, quantity=c.quantity).save()
         c.delete()
-    return render(request, 'app/thankyou.html', {'delivery_date': delivery_date})
+        return render(request, 'app/thankyou.html', {'delivery_date': delivery_date})
 
 
 class ProductUpload(View):

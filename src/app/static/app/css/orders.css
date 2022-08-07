@@ -49,10 +49,12 @@ body {
         gap: 20px;
     }
 
-    .order-content button {
-        padding: 5px 15px;
+    .order-content a {
+        padding: 10px 15px;
         border-radius: 5px;
         border: none;
+        text-decoration: none;
+        font-size: medium;
         background-color: yellow;
         color: #000000;
     }
@@ -159,7 +161,8 @@ body {
         width: 90%;
     }
 
-    .buy-again button {
+    .buy-again a {
+        text-decoration: none;
         padding: 5px 10px;
         background-color: yellow;
         border: none;

@@ -25,7 +25,7 @@
                 <h3>{{op.product.title}}</h3>
                 <h3>Quantity: {{op.quantity}}</h3>
                 <div class="buy-again">
-                    <button>Buy Again <i class="uil uil-sync"></i></button>
+                    <a href="{% url 'selectaddress' op.product.id %}">Buy Again <i class="uil uil-sync"></i></a>
                 </div>
                 <div class="order-price">
                     <h4>₹ {{op.total_cost}}</h4>
@@ -92,7 +92,7 @@
                 <h3>Arriving {{delivery_date}}</h3>
                 <h5>{{op.product.title}}</h5>
                 <div class="buy-again">
-                    <button>Buy Again <i class="uil uil-sync"></i></button>
+                    <a href="{% url 'selectaddress' op.product.id %}">Buy Again <i class="uil uil-sync"></i></a>
                 </div>
                 <div class="order-price">
                     <h4>₹ {{op.total_cost}}</h4>
