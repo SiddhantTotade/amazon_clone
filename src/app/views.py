@@ -291,26 +291,47 @@ def account(request):
 #     return render(request, 'app/changepassword.html')
 
 
-def mobile(request, data=None):
+def mobile(request):
     PRODUCT_CHOICES = {'M': 'mobiles', 'L': 'laptops',
-                       'TW': 'top_wears', 'BW': 'bottom_wears', 'W': 'watches',
+                       'TW': 'top wears', 'BW': 'bottom wears', 'W': 'watches',
                        'P': 'printers', 'F': 'fans', 'EB': 'earbuds',
-                       'C': 'cameras', 'O': 'oils', 'SH': 'showers', 'MU': 'muselis', 'CL': 'cleaners', 'CA': 'computer_and_accessories'}
-    search_product = request.POST.get('search_products')
-    product_key = None
+                       'C': 'cameras', 'O': 'oils', 'SH': 'showers', 'MU': 'muselis', 'CL': 'cleaners', 'CA': 'computer and accessories'}
+    # search_product = request.POST.get('search_products')
+    if "search_products" in request.GET:
+        search_product = request.GET.get('search_products')
+    product_key = ""
+    product_check = 0
     for key, val in PRODUCT_CHOICES.items():
         if search_product.lower() == val:
             product_key = key
-    if data == None:
-        mobiles = Product.objects.filter(category=product_key)
-    elif data == 'Xiomi' or data == 'Samsung' or data == 'Nokia' or data == 'Realme' or data == 'Oneplus' or data == 'Motorola':
-        mobiles = Product.objects.filter(category='M').filter(brand=data)
-    elif data == 'below':
+            product_check = 1
+    if product_check:
         mobiles = Product.objects.filter(
-            category='M').filter(discounted_price__lt=10000)
-    elif data == 'above':
-        mobiles = Product.objects.filter(
-            category='M').filter(discounted_price__gt=10000)
+            category=product_key)
+    elif product_check == 0:
+        brand_name = search_product.split(" ")
+        brand_filter = brand_name
+        price_limit = brand_name.pop()
+        if len(brand_name) == 1:
+            mobiles = Product.objects.filter(
+                brand=brand_name[0].upper())
+        elif len(brand_name) != 1:
+            if any(char.isdigit() for char in search_product):
+                price_limit = int(price_limit)
+                for key, val in PRODUCT_CHOICES.items():
+                    if brand_name[0].lower() == val:
+                        product_key = key
+                mobiles = Product.objects.filter(
+                    category=product_key).filter(discounted_price__lt=price_limit)
+            else:
+                for key, val in PRODUCT_CHOICES.items():
+                    if brand_filter[1].lower() == val:
+                        product_key = key
+                mobiles = Product.objects.filter(
+                    category=product_key).filter(brand=brand_filter[0].upper())
+    # elif data == 'above':
+    #     mobiles = Product.objects.filter(
+    #         category='M').filter(discounted_price__gt=10000)
 
     return render(request, 'app/product-list.html', {'mobiles': mobiles})
 

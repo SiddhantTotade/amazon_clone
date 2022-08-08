@@ -234,7 +234,7 @@
             <li><a href="#">Watches</a></li>
           </div>
           <div class="search-form">
-            <form action="/product-list/" method="post" class="search" id="search">
+            <form action="/product-list/" method="get" class="search" id="search">
               {% csrf_token %}
               <input type="text" id="search-bar" name="search_products" class="search-bar">
               <button class="search-btn" type="submit"><i class="uil uil-search"></i></button>

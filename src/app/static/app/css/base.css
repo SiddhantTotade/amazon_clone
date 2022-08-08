@@ -260,11 +260,12 @@ body {
     }
 
     .search input[type="text"] {
-        border: 0px;
         width: 100%;
         padding: 10px 10px;
         border: none;
-        font-weight: 600;
+        font-size: medium;
+        border: none;
+        outline: none;
         color: #000000;
     }
 
