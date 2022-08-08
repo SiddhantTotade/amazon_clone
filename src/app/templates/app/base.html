@@ -9,6 +9,7 @@
   <link rel="stylesheet" href="{% static 'app/css/base.css' %}">
   {% block style-home %}{% endblock %}
   {% block style-product %}{% endblock %}
+  {% block style-productlist %}{% endblock %}
   {% block style-address %}{% endblock %}
   {% block style-checkout %}{% endblock %}
   {% block style-checkoutcart %}{% endblock %}
@@ -132,6 +133,7 @@
   {% block upload-product %}{% endblock %}
   {% block main-content-mob-index %}{% endblock %}
   {% block main-content-mob-product %}{% endblock %}
+  {% block main-content-mob-productlist %}{% endblock %}
   {% block main-content-mob-address %}{% endblock %}
   {% block main-content-mob-checkout %}{% endblock %}
   {% block main-content-mob-checkoutcart %}{% endblock %}
@@ -232,8 +234,9 @@
             <li><a href="#">Watches</a></li>
           </div>
           <div class="search-form">
-            <form class="search" id="search">
-              <input type="text" id="search-bar" class="search-bar">
+            <form action="/product-list/" method="post" class="search" id="search">
+              {% csrf_token %}
+              <input type="text" id="search-bar" name="search_products" class="search-bar">
               <button class="search-btn" type="submit"><i class="uil uil-search"></i></button>
             </form>
           </div>
@@ -388,6 +391,7 @@
 
   {% block main-content-desk-index %}{% endblock %}
   {% block main-content-desk-product %}{% endblock %}
+  {% block main-content-desk-productlist %}{% endblock %}
   {% block main-content-desk-address %}{% endblock %}
   {% block main-content-desk-checkout %}{% endblock %}
   {% block main-content-desk-checkoutcart %}{% endblock %}
@@ -564,6 +568,7 @@
 </body>
 {% block js-home %}{% endblock %}
 {% block js-product %}{% endblock %}
+{% block js-productlist %}{% endblock %}
 {% block js-address %}{% endblock %}
 {% block js-checkout %}{% endblock %}
 {% block js-checkoutcart %}{% endblock %}

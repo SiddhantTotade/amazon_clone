@@ -1,3 +1,5 @@
+from encodings import search_function
+import itertools
 from django.http import JsonResponse
 from django.shortcuts import redirect, render
 from django.views import View
@@ -7,7 +9,6 @@ from django.contrib import messages
 from django.contrib.auth.models import User
 from django.db.models import Q
 from django.contrib.auth.decorators import login_required
-from django.views.decorators.cache import cache_page
 from django.utils.decorators import method_decorator
 import random
 import datetime
@@ -42,7 +43,6 @@ class ProductDetailView(View):
     def get(self, request, pk):
         totalitem = 0
         product = Product.objects.get(pk=pk)
-        print(product)
         product_img_dsk = Product_Img_Desktop.objects.filter(
             product_img_desktop=product)
         product_desc_desk = Product_Img_Desc_Desktop.objects.filter(
@@ -242,7 +242,6 @@ def edit_email(request):
     if request.method == 'POST':
         user = User.objects.get(username=request.user)
         form = EditUserEmailForm(request.POST, instance=user)
-        print(form)
         if form.is_valid():
             form.save()
             return redirect('profile')
@@ -257,7 +256,6 @@ def edit_name(request):
     if request.method == 'POST':
         user = User.objects.get(username=request.user)
         form = EditUsernameForm(request.POST, instance=user)
-        print(form)
         if form.is_valid():
             form.save()
             return redirect('profile')
@@ -271,7 +269,6 @@ def edit_name(request):
 def payment(request, pk):
     product_id = Product.objects.get(pk=pk)
     cust_id = request.GET.get('custid')
-    print(cust_id)
     add = Customer.objects.filter(user=request.user)
     return render(request, 'app/payment.html', {'product_id': product_id, 'add': add, 'cust_id': cust_id})
 
@@ -295,8 +292,17 @@ def account(request):
 
 
 def mobile(request, data=None):
+    PRODUCT_CHOICES = {'M': 'mobiles', 'L': 'laptops',
+                       'TW': 'top_wears', 'BW': 'bottom_wears', 'W': 'watches',
+                       'P': 'printers', 'F': 'fans', 'EB': 'earbuds',
+                       'C': 'cameras', 'O': 'oils', 'SH': 'showers', 'MU': 'muselis', 'CL': 'cleaners', 'CA': 'computer_and_accessories'}
+    search_product = request.POST.get('search_products')
+    product_key = None
+    for key, val in PRODUCT_CHOICES.items():
+        if search_product.lower() == val:
+            product_key = key
     if data == None:
-        mobiles = Product.objects.filter(category='M')
+        mobiles = Product.objects.filter(category=product_key)
     elif data == 'Xiomi' or data == 'Samsung' or data == 'Nokia' or data == 'Realme' or data == 'Oneplus' or data == 'Motorola':
         mobiles = Product.objects.filter(category='M').filter(brand=data)
     elif data == 'below':
@@ -306,7 +312,7 @@ def mobile(request, data=None):
         mobiles = Product.objects.filter(
             category='M').filter(discounted_price__gt=10000)
 
-    return render(request, 'app/mobile.html', {'mobiles': mobiles})
+    return render(request, 'app/product-list.html', {'mobiles': mobiles})
 
 
 def login(request):
@@ -335,12 +341,7 @@ def checkout(request):
     product_id = request.GET.get('prod_id')
     delivery_date = (datetime.datetime.now() +
                      datetime.timedelta(days=10)).strftime("%d %B %Y")
-    print(request.path)
-    if request.META['HTTP_REFERER'] == 'http://127.0.0.1:8000/paymentdone/?custid='+cust_id:
-        print("Payment done")
-        return redirect('home')
-    elif request.META['HTTP_REFERER'] == 'http://127.0.0.1:8000/payment/'+product_id+"?custid="+cust_id:
-        print("Payment")
+    if request.META['HTTP_REFERER'] == 'http://127.0.0.1:8000/payment/'+product_id+"?custid="+cust_id:
         product = Product.objects.get(id=product_id)
         if not Cart.objects.filter(user=user, product=product).exists():
             Cart(user=user, product=product).save()
