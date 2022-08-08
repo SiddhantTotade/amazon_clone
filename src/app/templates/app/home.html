@@ -227,8 +227,8 @@
     </div>
     <div class="owl-carousel" id="carousel-2">
       {% for ms in mobile_shuffle %}
-      <a href="{% url 'product-detail' ms.id %}">
-        <div class="item">
+      <a href="{% url 'product-detail' ms.id %}" class="item">
+        <div class="product-item">
           <img src="{{ms.product_image.url}}" alt="">
           <div class="offer">
             <h4>{{ms.id}}% off</h4>
@@ -245,9 +245,9 @@
     </div>
     <div class="owl-carousel" id="carousel-3">
       {% for is in item_shuffle %}
-      <div class="item">
+      <a href="{% url 'product-detail' is.id %}" class="item">
         <img src="{{is.product_image.url}}" alt="">
-      </div>
+      </a>
       {% endfor %}
     </div>
   </div>
@@ -326,13 +326,13 @@
     </div>
     <div class="owl-carousel" id="carousel-4">
       {% for w in watch_shuffle %}
-      <div class="item">
+      <a href="{% url 'product-detail' w.id %}" class="item">
         <img src="{{w.product_image.url}}" alt="">
         <div class="offer">
           <h4>{{w.id}}% off</h4>
           <h5>Deal of the Day</h5>
         </div>
-      </div>
+      </a>
       {% endfor %}
     </div>
   </div>
