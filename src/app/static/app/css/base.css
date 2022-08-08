@@ -479,6 +479,8 @@ body {
         padding: 8px 11px;
         margin: 0 7px;
         border: none;
+        font-size: medium;
+        outline: none;
         overflow: auto;
         color: #282838;
         border-radius: 5px;

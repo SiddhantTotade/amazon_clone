@@ -9,7 +9,7 @@
 
 {% block main-content-desk-productlist %}
 <div class="product-list-container page-1" id="product-list-container">
-    {% for product in mobiles %}
+    {% for product in product %}
     <a href="{% url 'product-detail' product.id %}" class="product-container">
         <div class="product-img">
             <img src="{{product.product_image.url}}" alt="">
@@ -49,17 +49,15 @@
 {% endblock %}
 
 {% block main-content-mob-productlist %}
+{% for product in product %}
 <div class="product-list-container-mob page-1-mob" id="product-list-container">
     <div class="product-container">
         <div class="product-img">
-            <img src="./img/product-list/product-list-1.jpg" alt="">
+            <img src="{{product.product_image.url}}" alt="">
         </div>
         <div class="product-content">
             <div class="product-name-desc">
-                <h4>
-                    Samsung Galaxy M33 5G (Emerald Brown, 8GB, 128GB Storage) | 5nm Processor | 6000mAh Battery |
-                    Voice
-                </h4>
+                <h4>{{product.title}}</h4>
                 <div class="stars">
                     <div class="star">
                         <span class="fa fa-star checked"></span>
@@ -82,164 +80,13 @@
                 </div>
             </div>
             <div class="product-price">
-                <h4>₹ 19,499</h4>
+                <h4>₹ {{product.discounted_price}}</h4>
                 <small>FREE Delivery by Amazon</small>
             </div>
         </div>
-    </div>
-    <div class="product-container">
-        <div class="product-img">
-            <img src="./img/product-list/product-list-2.jpg" alt="">
-        </div>
-        <div class="product-content">
-            <div class="product-name-desc">
-                <h4>
-                    Samsung Galaxy M32 (Light Blue, 6GB RAM, 128GB | FHD+ sAMOLED 90Hz Display | 6000mAh Battery |
-                    64MP Quad Camera
-                </h4>
-                <div class="stars">
-                    <div class="star">
-                        <span class="fa fa-star checked"></span>
-                    </div>
-                    <div class="star">
-                        <span class="fa fa-star checked"></span>
-                    </div>
-                    <div class="star">
-                        <span class="fa fa-star checked"></span>
-                    </div>
-                    <div class="star">
-                        <span class="fa fa-star unchecked"></span>
-                    </div>
-                    <div class="star">
-                        <span class="fa fa-star unchecked"></span>
-                    </div>
-                </div>
-                <div class="deal">
-                    <small>Limited time deal</small>
-                </div>
-            </div>
-            <div class="product-price">
-                <h4>₹ 16,999</h4>
-                <small>FREE Delivery by Amazon</small>
-            </div>
-        </div>
-    </div>
-    <div class="product-container">
-        <div class="product-img">
-            <img src="./img/product-list/product-list-3.jpg" alt="">
-        </div>
-        <div class="product-content">
-            <div class="product-name-desc">
-                <h4>
-                    Redmi 9A Sport (Coral Green, 2GB RAM, 32GB Storage) | 2GHz Octa-core Helio G25 Processor | 5000
-                    mAh Battery
-                </h4>
-                <div class="stars">
-                    <div class="star">
-                        <span class="fa fa-star checked"></span>
-                    </div>
-                    <div class="star">
-                        <span class="fa fa-star checked"></span>
-                    </div>
-                    <div class="star">
-                        <span class="fa fa-star checked"></span>
-                    </div>
-                    <div class="star">
-                        <span class="fa fa-star unchecked"></span>
-                    </div>
-                    <div class="star">
-                        <span class="fa fa-star unchecked"></span>
-                    </div>
-                </div>
-                <div class="deal">
-                    <small>Limited time deal</small>
-                </div>
-            </div>
-            <div class="product-price">
-                <h4>₹ 6,499</h4>
-                <small>FREE Delivery by Amazon</small>
-            </div>
-        </div>
-    </div>
-    <div class="product-container">
-        <div class="product-img">
-            <img src="./img/product-list/product-list-4.jpg" alt="">
-        </div>
-        <div class="product-content">
-            <div class="product-name-desc">
-                <h4>
-                    Redmi 9 Activ (Coral Green, 4GB RAM, 64GB Storage)
-                </h4>
-                <div class="stars">
-                    <div class="star">
-                        <span class="fa fa-star checked"></span>
-                    </div>
-                    <div class="star">
-                        <span class="fa fa-star checked"></span>
-                    </div>
-                    <div class="star">
-                        <span class="fa fa-star checked"></span>
-                    </div>
-                    <div class="star">
-                        <span class="fa fa-star checked"></span>
-                    </div>
-                    <div class="star">
-                        <span class="fa fa-star unchecked"></span>
-                    </div>
-                </div>
-                <div class="deal">
-                    <small>Limited time deal</small>
-                </div>
-            </div>
-            <div class="product-price">
-                <h4>₹ 8,499</h4>
-                <small>FREE Delivery by Amazon</small>
-            </div>
-        </div>
-    </div>
-    <div class="product-container">
-        <div class="product-img">
-            <img src="./img/product-list/product-list-5.jpg" alt="">
-        </div>
-        <div class="product-content">
-            <div class="product-name-desc">
-                <h4>
-                    OPPO A31 (Mystery Black, 6GB RAM, 128GB Storage) with No Cost EMI/Additional Exchange Offers
-                </h4>
-                <div class="stars">
-                    <div class="star">
-                        <span class="fa fa-star checked"></span>
-                    </div>
-                    <div class="star">
-                        <span class="fa fa-star checked"></span>
-                    </div>
-                    <div class="star">
-                        <span class="fa fa-star checked"></span>
-                    </div>
-                    <div class="star">
-                        <span class="fa fa-star checked"></span>
-                    </div>
-                    <div class="star">
-                        <span class="fa fa-star unchecked"></span>
-                    </div>
-                </div>
-                <div class="deal">
-                    <small>Limited time deal</small>
-                </div>
-            </div>
-            <div class="product-price">
-                <h4>₹ 11,990</h4>
-                <small>FREE Delivery by Amazon</small>
-            </div>
-        </div>
-    </div>
-    <div class="pagination">
-        <a href=""><i class="uil uil-angle-left-b prev-mob"></i></a>
-        <a href="" id="one-mob">1</a>
-        <a href="#" id="two-mob">2</a>
-        <a href="#"><i class="uil uil-angle-right-b next-mob"></i></a>
     </div>
 </div>
+{% endfor %}
 {% endblock %}
 
 {% block js-productlist %}

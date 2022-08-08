@@ -291,7 +291,7 @@ def account(request):
 #     return render(request, 'app/changepassword.html')
 
 
-def mobile(request):
+def product_list(request):
     PRODUCT_CHOICES = {'M': 'mobiles', 'L': 'laptops',
                        'TW': 'top wears', 'BW': 'bottom wears', 'W': 'watches',
                        'P': 'printers', 'F': 'fans', 'EB': 'earbuds',
@@ -306,14 +306,14 @@ def mobile(request):
             product_key = key
             product_check = 1
     if product_check:
-        mobiles = Product.objects.filter(
+        product = Product.objects.filter(
             category=product_key)
     elif product_check == 0:
         brand_name = search_product.split(" ")
         brand_filter = brand_name
         price_limit = brand_name.pop()
         if len(brand_name) == 1:
-            mobiles = Product.objects.filter(
+            product = Product.objects.filter(
                 brand=brand_name[0].upper())
         elif len(brand_name) != 1:
             if any(char.isdigit() for char in search_product):
@@ -321,19 +321,15 @@ def mobile(request):
                 for key, val in PRODUCT_CHOICES.items():
                     if brand_name[0].lower() == val:
                         product_key = key
-                mobiles = Product.objects.filter(
+                product = Product.objects.filter(
                     category=product_key).filter(discounted_price__lt=price_limit)
             else:
                 for key, val in PRODUCT_CHOICES.items():
                     if brand_filter[1].lower() == val:
                         product_key = key
-                mobiles = Product.objects.filter(
+                product = Product.objects.filter(
                     category=product_key).filter(brand=brand_filter[0].upper())
-    # elif data == 'above':
-    #     mobiles = Product.objects.filter(
-    #         category='M').filter(discounted_price__gt=10000)
-
-    return render(request, 'app/product-list.html', {'mobiles': mobiles})
+    return render(request, 'app/product-list.html', {'product': product})
 
 
 def login(request):
