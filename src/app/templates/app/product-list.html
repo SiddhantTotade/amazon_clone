@@ -8,7 +8,7 @@
 {% block title %}Product-List{% endblock %}
 
 {% block main-content-desk-productlist %}
-<div class="product-list-container page-1" id="product-list-container">
+<div class="product-list-container" id="product-list-container">
     {% for product in product %}
     <a href="{% url 'product-detail' product.id %}" class="product-container">
         <div class="product-img">
@@ -49,44 +49,46 @@
 {% endblock %}
 
 {% block main-content-mob-productlist %}
-{% for product in product %}
-<div class="product-list-container-mob page-1-mob" id="product-list-container">
-    <div class="product-container">
-        <div class="product-img">
-            <img src="{{product.product_image.url}}" alt="">
-        </div>
-        <div class="product-content">
-            <div class="product-name-desc">
-                <h4>{{product.title}}</h4>
-                <div class="stars">
-                    <div class="star">
-                        <span class="fa fa-star checked"></span>
+<div class="product-list-mob">
+    {% for product in product %}
+    <a href="{% url 'product-detail' product.id %}" class="product-list-container-mob" id="product-list-container">
+        <div class="product-container">
+            <div class="product-img">
+                <img src="{{product.product_image.url}}" alt="">
+            </div>
+            <div class="product-content">
+                <div class="product-name-desc">
+                    <h4>{{product.title}}</h4>
+                    <div class="stars">
+                        <div class="star">
+                            <span class="fa fa-star checked"></span>
+                        </div>
+                        <div class="star">
+                            <span class="fa fa-star checked"></span>
+                        </div>
+                        <div class="star">
+                            <span class="fa fa-star checked"></span>
+                        </div>
+                        <div class="star">
+                            <span class="fa fa-star checked"></span>
+                        </div>
+                        <div class="star">
+                            <span class="fa fa-star unchecked"></span>
+                        </div>
                     </div>
-                    <div class="star">
-                        <span class="fa fa-star checked"></span>
-                    </div>
-                    <div class="star">
-                        <span class="fa fa-star checked"></span>
-                    </div>
-                    <div class="star">
-                        <span class="fa fa-star checked"></span>
-                    </div>
-                    <div class="star">
-                        <span class="fa fa-star unchecked"></span>
+                    <div class="deal">
+                        <small>Limited time deal</small>
                     </div>
                 </div>
-                <div class="deal">
-                    <small>Limited time deal</small>
+                <div class="product-price">
+                    <h4>₹ {{product.discounted_price}}</h4>
+                    <small>FREE Delivery by Amazon</small>
                 </div>
             </div>
-            <div class="product-price">
-                <h4>₹ {{product.discounted_price}}</h4>
-                <small>FREE Delivery by Amazon</small>
-            </div>
         </div>
-    </div>
+    </a>
+    {% endfor %}
 </div>
-{% endfor %}
 {% endblock %}
 
 {% block js-productlist %}
