@@ -1,10 +1,8 @@
-from encodings import search_function
-import itertools
 from django.http import JsonResponse
 from django.shortcuts import redirect, render
 from django.views import View
 from .models import Customer, Product, Cart, OrderPlaced, Product_Img_Desktop, Product_Img_Desc_Desktop
-from .forms import CustomerRegistrationForm, CustomerProfileForm, UploadProductForm, EditUsernameForm, EditUserEmailForm
+from .forms import CustomerRegistrationForm, CustomerProfileForm, UploadProductForm, EditUsernameForm, EditUserEmailForm, MyPasswordResetForm
 from django.contrib import messages
 from django.contrib.auth.models import User
 from django.db.models import Q
@@ -12,6 +10,7 @@ from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
 import random
 import datetime
+import smtplib
 
 
 class ProductView(View):
@@ -287,8 +286,24 @@ def account(request):
     return render(request, 'app/account.html')
 
 
-# def change_password(request):
-#     return render(request, 'app/changepassword.html')
+def reset_password(request):
+    form = MyPasswordResetForm(request.POST)
+    if form.is_valid():
+        email = form.cleaned_data['email']
+        smtplib.SMTP(email, 25)
+    return render(request, 'app/password_reset.html', {'form': form})
+
+
+class PasswordResetView(View):
+    def get(request):
+        form = MyPasswordResetForm
+        return render(request, 'app/password_reset.html', {'form': form})
+
+    def post(request):
+        form = MyPasswordResetForm
+        user_email = form.cleaned_data['email']
+        print(user_email)
+        return render(request, 'app/password_reset.html', {'form': form})
 
 
 def product_list(request):
@@ -296,7 +311,6 @@ def product_list(request):
                        'TW': 'top wears', 'BW': 'bottom wears', 'W': 'watches',
                        'P': 'printers', 'F': 'fans', 'EB': 'earbuds',
                        'C': 'cameras', 'O': 'oils', 'SH': 'showers', 'MU': 'muselis', 'CL': 'cleaners', 'CA': 'computer and accessories'}
-    # search_product = request.POST.get('search_products')
     if "search_products" in request.GET:
         search_product = request.GET.get('search_products')
     product_key = ""
