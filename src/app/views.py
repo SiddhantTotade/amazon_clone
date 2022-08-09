@@ -8,9 +8,13 @@ from django.contrib.auth.models import User
 from django.db.models import Q
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
+from email.message import EmailMessage
+from . import password
 import random
+import string
 import datetime
 import smtplib
+import ssl
 
 
 class ProductView(View):
@@ -289,8 +293,17 @@ def account(request):
 def reset_password(request):
     form = MyPasswordResetForm(request.POST)
     if form.is_valid():
+        passcode_ascii = ''.join(random.choice(
+            string.ascii_uppercase)for _ in range(2))
+        passcode_num = ''.join(random.choice(string.digits)for _ in range(3))
+        passcode = passcode_ascii.join(passcode_num)
         email = form.cleaned_data['email']
-        smtplib.SMTP(email, 25)
+        print(request.user)
+        # email_sender = 'noreply.amazonclone.project@gmail.com'
+        # email_password = password
+        # email_receiver = email
+        # sub = "Reset Password"
+        # body = """Username : request.user"""
     return render(request, 'app/password_reset.html', {'form': form})
 
 
