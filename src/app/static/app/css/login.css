@@ -197,31 +197,6 @@ body {
         color: #000000;
     }
 
-
-    .user-details {
-        display: grid;
-        gap: 10px;
-        margin-top: 1em;
-    }
-
-    .user-details input {
-        height: 4vh;
-        padding: 0 10px;
-        border-radius: 5px;
-        border: 1px solid gainsboro;
-    }
-
-    .password {
-        display: flex;
-        align-items: center;
-        gap: 10px;
-    }
-
-    .password i {
-        font-size: 25px;
-        color: #348cbf;
-    }
-
     .email {
         display: grid;
         gap: 10px;

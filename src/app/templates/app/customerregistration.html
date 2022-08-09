@@ -11,6 +11,7 @@
 </head>
 
 <body>
+    <!-- Registration for Desktop -->
     <div class="login-desktop">
         <div class="amazon-logo">
             <img src="{% static 'app/img/amazon-black.png' %}" alt="">
@@ -26,7 +27,7 @@
                     <div class="user-login">
                         {% for fm in form %}
                         <div class="user-input">
-                            {{fm.label_tag}} {{fm}} 
+                            {{fm.label_tag}} {{fm}}
                             <!-- <small class="text-danger"> {{fm.errors|striptags}} -->
                         </div>
                         {% endfor %}
@@ -53,7 +54,56 @@
             </div>
         </form>
     </div>
+
+    <!-- Registration for Mobile -->
+    <div class="login-mobile">
+        <div class="logo">
+            <img src="{% static 'app/img/amazon-logo.png' %}" alt="">
+            <h5>.in</h5>
+        </div>
+        <div class="login-container-mob">
+            <div class="welcome-title">
+                <h1>Welcome</h1>
+            </div>
+            <div class="login-create">
+                <div class="create">
+                    <form action="" method="post" novalidate class="login-user">
+                        {% csrf_token %}
+                        <div class="login">
+                            <h3>Create Account.</h3>
+                            <small>New to Amazon ?</small>
+                        </div>
+                        <div class="email" id="email">
+                            {% for fm in form %}
+                            <div class="login-form">
+                                {{fm.label_tag}} {{fm}} <small class="text-danger">{{fm.errors|striptags}}</small><br>
+                            </div>
+                            {% endfor %}
+                            {% if form.non_field_errors %}
+                            {% for error in form.non_field_errors %}
+                            <p>{{error}}</p>
+                            {% endfor %}
+                            {% endif %}
+                            <button class="create-mob">Continue</button>
+                        </div>
+                        <a href="{% url 'login' %}" class="create-account-mob">Login</a>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer class="delivery-footer">
+        <div class="footer-content">
+            <small>Conditions of Use</small>
+            <small>Privacy Notice</small>
+            <small>Interest-Based Ads</small>
+        </div>
+        <div class="copyrights">
+            <small>&copy;All rights reserved by Siddhant Totade</small>
+        </div>
+        </div>
+    </footer>
 </body>
-<script src="{% static 'app/js/customerregistration.js' %}"></script>
+<script src="{% static 'app/js/login.js' %}"></script>
 
 </html>
