@@ -97,16 +97,17 @@
                         </div>
                     </div>
                 </div>
-                <div class="login-user">
+                <form action="" method="post" novalidate class="login-user">
                     <div class="login">
                         <input type="radio" id="signin" checked>
                         <h3>Sign-In.</h3><small>Already a customer?</small>
                     </div>
                     <div class="email" id="email">
                         <input type="text" placeholder="Email or phone number">
+                        <a href="{% url 'password_reset' %}"><small>Forgot Username or Password ?</small></a>
                         <button class="create-mob">Continue</button>
                     </div>
-                </div>
+                </form>
             </div>
         </div>
     </div>
