@@ -290,21 +290,21 @@ def account(request):
     return render(request, 'app/account.html')
 
 
-def reset_password(request):
-    form = MyPasswordResetForm(request.POST)
-    if form.is_valid():
-        passcode_ascii = ''.join(random.choice(
-            string.ascii_uppercase)for _ in range(2))
-        passcode_num = ''.join(random.choice(string.digits)for _ in range(3))
-        passcode = passcode_ascii.join(passcode_num)
-        email = form.cleaned_data['email']
-        print(request.user)
-        # email_sender = 'noreply.amazonclone.project@gmail.com'
-        # email_password = password
-        # email_receiver = email
-        # sub = "Reset Password"
-        # body = """Username : request.user"""
-    return render(request, 'app/password_reset.html', {'form': form})
+# def reset_password(request):
+#     form = MyPasswordResetForm(request.POST)
+#     if form.is_valid():
+#         passcode_ascii = ''.join(random.choice(
+#             string.ascii_uppercase)for _ in range(2))
+#         passcode_num = ''.join(random.choice(string.digits)for _ in range(3))
+#         passcode = passcode_ascii.join(passcode_num)
+#         email = form.cleaned_data['email']
+#         print(request.user)
+#         # email_sender = 'noreply.amazonclone.project@gmail.com'
+#         # email_password = password
+#         # email_receiver = email
+#         # sub = "Reset Password"
+#         # body = """Username : request.user"""
+#     return render(request, 'app/password_reset.html', {'form': form})
 
 
 class PasswordResetView(View):
