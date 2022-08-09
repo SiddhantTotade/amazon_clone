@@ -28,10 +28,15 @@
                     <div class="user-login">
                         {% for fm in form %}
                         <div class="user-input">
-                            {{fm.label_tag}} {{fm}}
+                            {{fm.label_tag}} {{fm}} <small class="text-danger">{{fm.errors|striptags}}</small><br>
                         </div>
                         {% endfor %}
                         <input type="submit" value="Continue" class="continue-btn">
+                        {% if form.non_field_errors %}
+                        {% for error in form.non_field_errors %}
+                        <p>{{error}}</p>
+                        {% endfor %}
+                        {% endif %}
                     </div>
                 </div>
                 <div class="password-reset user-login">
@@ -56,58 +61,38 @@
             <img src="{% static 'app/img/amazon-logo.png' %}" alt="">
             <h5>.in</h5>
         </div>
-        <div class="login-container">
+        <div class="login-container-mob">
             <div class="welcome-title">
                 <h1>Welcome</h1>
             </div>
             <div class="login-create">
                 <div class="create">
-                    <div class="login">
-                        <input type="radio" id="create">
-                        <h3>Create account.</h3><small>New to Amazon?</small>
-                    </div>
-                    <div id="user" class="user">
-                        <div class="user-details">
-                            <input type="text" placeholder="First and last name">
-                            <input type="tel" placeholder="Mobile number">
-                            <input type="email" placeholder="Email">
-                            <input type="password" placeholder="Set password">
-                            <div class="password">
-                                <i class="uil uil-info"></i>
-                                <small>Passwords must be at least 6 characters.</small>
-                            </div>
+                    <form action="" method="post" novalidate class="login-user">
+                        {% csrf_token %}
+                        <div class="login">
+                            <h3>Sign-In.</h3><small>Already a customer?</small>
                         </div>
-                        <div class="email">
-                            <div class="show-password">
-                                <input type="checkbox">
-                                <h4>Show password</h4>
+                        <div class="email" id="email">
+                            {% for fm in form %}
+                            <div class="login-form">
+                                {{fm.label_tag}} {{fm}} <small class="text-danger">{{fm.errors|striptags}}</small><br>
                             </div>
-                            <div class="confirm">
-                                <small>By enrolling your mobile phone number, you consent to receiving automated
-                                    security
-                                    notifications via text message from Amazon. You can opt out by removing your mobile
-                                    number
-                                    on the Login & Security page located in Your Account settings. Message and data
-                                    rates
-                                    may
-                                    apply.
-                                </small>
-                            </div>
-                            <button>Verify mobile number</button>
+                            {% endfor %}
+                            {% if form.non_field_errors %}
+                            {% for error in form.non_field_errors %}
+                            <p>{{error}}</p>
+                            {% endfor %}
+                            {% endif %}
+                            <a href="{% url 'password_reset' %}"><small>Forgot Username or Password ?</small></a>
+                            <button class="create-mob">Continue</button>
                         </div>
-                    </div>
+                        <div class="new-amazon-mob">
+                            <small>New to Amazon ?</small>
+                        </div>
+                        <a href="{% url 'customerregistration' %}" class="create-account-mob">Create your Amazon
+                            Account</a>
+                    </form>
                 </div>
-                <form action="" method="post" novalidate class="login-user">
-                    <div class="login">
-                        <input type="radio" id="signin" checked>
-                        <h3>Sign-In.</h3><small>Already a customer?</small>
-                    </div>
-                    <div class="email" id="email">
-                        <input type="text" placeholder="Email or phone number">
-                        <a href="{% url 'password_reset' %}"><small>Forgot Username or Password ?</small></a>
-                        <button class="create-mob">Continue</button>
-                    </div>
-                </form>
             </div>
         </div>
     </div>
@@ -119,6 +104,7 @@
         </div>
         <div class="copyrights">
             <small>&copy;All rights reserved by Siddhat Totade</small>
+        </div>
         </div>
     </footer>
 </body>

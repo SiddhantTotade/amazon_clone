@@ -95,8 +95,8 @@ body {
         margin-top: 2em;
     }
 
-    .password-reset a{
-        color: #000000;
+    .password-reset a {
+        color: #19628c;
     }
 
     .new-amazon {
@@ -162,16 +162,16 @@ body {
         min-width: 10px;
     }
 
-    .login-container {
+    .login-container-mob {
         width: 95%;
         margin: auto;
     }
 
-    .login-container h1,
-    .login-container h3,
-    .login-container h4,
-    .login-container small,
-    .login-container i {
+    .login-container-mob h1,
+    .login-container-mob h3,
+    .login-container-mob h4,
+    .login-container-mob small,
+    .login-container-mob i {
         color: #000000;
     }
 
@@ -185,14 +185,18 @@ body {
         gap: 10px;
     }
 
-    .login input {
-        width: 5%;
-        height: 2vh;
-    }
-
     .login-user {
         margin-top: 1em;
     }
+
+    .login-form {
+        display: grid;
+    }
+
+    .login-form label {
+        color: #000000;
+    }
+
 
     .user-details {
         display: grid;
@@ -234,10 +238,11 @@ body {
     }
 
     .email input {
-        border: 1px solid gainsboro;
+        font-size: medium;
+        border: 2px solid gainsboro;
     }
 
-    .email a small{
+    .email a small {
         color: #348cbf;
     }
 
@@ -255,6 +260,37 @@ body {
     .show-password input {
         width: 5%;
         height: 3vh;
+    }
+
+    .new-amazon-mob {
+        display: flex;
+        justify-content: center;
+        margin: 1em;
+    }
+
+    .new-amazon-mob small {
+        padding: 0 10px;
+        color: rgb(130, 130, 130);
+    }
+
+    .new-amazon-mob::after,
+    .new-amazon-mob::before {
+        content: "";
+        flex: 1 1;
+        border-bottom: 1px solid rgb(130, 130, 130);
+        margin: auto;
+    }
+
+    .create-account-mob {
+        display: grid;
+        justify-content: center;
+        align-items: center;
+        text-decoration: none;
+        color: #000000;
+        border-radius: 5px;
+        height: 4vh;
+        border: 1px solid black;
+        background: rgb(212, 212, 212);
     }
 
     .delivery-footer {

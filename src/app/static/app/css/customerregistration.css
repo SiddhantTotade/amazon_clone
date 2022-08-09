@@ -23,7 +23,8 @@ body {
     }
 
     .login-container {
-        margin-top: 1em;
+        display: grid;
+        justify-content: center;
         border: 1px solid gainsboro;
         margin: auto;
         width: 25%;
@@ -70,7 +71,6 @@ body {
 
     .user-input input {
         height: 4vh;
-        width: 100%;
         border: 2px solid gainsboro;
         border-radius: 5px;
         color: #000000;

@@ -8,13 +8,8 @@ from django.contrib.auth.models import User
 from django.db.models import Q
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
-from email.message import EmailMessage
-from . import password
 import random
-import string
 import datetime
-import smtplib
-import ssl
 
 
 class ProductView(View):
