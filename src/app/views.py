@@ -46,11 +46,14 @@ class ProductDetailView(View):
         product_desc_desk = Product_Img_Desc_Desktop.objects.filter(
             product_img_desc_desktop=product)
         item_already_in_cart = False
+        product_detail = Product.objects.get(id=pk)
+        product_detail_dict = eval(product_detail.product_details)
+        print(product_detail_dict.keys())
         if request.user.is_authenticated:
             totalitem = len(Cart.objects.filter(user=request.user))
             item_already_in_cart = Cart.objects.filter(
                 Q(product=product.id) & Q(user=request.user)).exists()
-        return render(request, 'app/productdetail.html', {'product': product, 'product_img_dsk': product_img_dsk, 'product_desc_desk': product_desc_desk, 'item_already_in_cart': item_already_in_cart, 'totalitem': totalitem})
+        return render(request, 'app/productdetail.html', {'product': product, 'product_img_dsk': product_img_dsk, 'product_desc_desk': product_desc_desk, 'item_already_in_cart': item_already_in_cart, 'totalitem': totalitem, 'product_detail_dict': product_detail_dict})
 # def product_detail(request):
 #     return render(request, 'app/productdetail.html')
 

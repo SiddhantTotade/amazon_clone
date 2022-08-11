@@ -195,12 +195,7 @@
     }
 
     .product-detail-table {
-        display: grid;
-        justify-content: center;
-        align-items: flex-start;
-        grid-template-columns: repeat(2, 1fr);
         padding: 10px 10px;
-        gap: 1em;
     }
 
     .product-detail-table strong {
