@@ -39,13 +39,13 @@
 import pandas as pd
 
 # # you could add index_col=0 if there's an index
-df = pd.read_excel('src/app/data_to_dict.xlsx', index_col=None)
+df = pd.read_excel('/home/siddhanttotade/Documents/Docs/Programming/GIT/amazon_clone/src/app/data_to_dict.xlsx', index_col=None)
 key = df['Key'].tolist()
 val = df['Value'].replace("\\u200e", "", regex=True).tolist()
 combine = dict(list(zip(key, val)))
 
-# with open('data.txt', 'w') as f:
-#     f.write(str(combine))
+with open('/home/siddhanttotade/Documents/Docs/Programming/GIT/amazon_clone/src/app/data.txt', 'w') as f:
+    f.write(str(combine))
 
 # with open('data.txt', 'r') as f:
 #     print()
