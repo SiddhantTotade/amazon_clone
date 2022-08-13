@@ -35,12 +35,11 @@
     }
 
     .small-img-container a {
-        width: 40%;
         margin: auto;
     }
 
     .xzoom-thumbs {
-        width: 80%;
+        width: 100%;
         display: grid;
         grid-template-columns: repeat(5, 1fr);
         margin: auto;
@@ -49,7 +48,9 @@
     }
 
     .xzoom-thumbs img {
-        width: 100%;
+        width: 100px;
+        height: 8vh;
+        object-fit: contain;
         border: 1px solid #282838;
     }
 
