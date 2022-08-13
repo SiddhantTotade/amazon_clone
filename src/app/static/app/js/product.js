@@ -6,6 +6,9 @@ else if (window.screen.width <= 400) {
     document.querySelector(".product").style.display = 'none'
 }
 
+// List-item
+document.getElementById('list-item')
+
 // Product Zoom
 $(function () {
     $(".xzoom,.xzoom-gallery").xzoom({
