@@ -3,7 +3,7 @@ body {
 }
 
 /* Media Query for Desktop */
-@media screen and (min-width:401px) {
+@media screen and (min-width:401px) { 
 
     .product-list-container {
         width: 60%;
@@ -135,6 +135,10 @@ body {
 }
 
 @media screen and (max-width:400px) {
+
+    .product-list-mob {
+        display: none;
+    }
 
     .product-list-container-mob {
         display: grid;
@@ -287,5 +291,21 @@ body {
 
     .rights {
         margin-bottom: 1em;
+    }
+
+    .empty-product-mob {
+        width: 100%;
+        display: grid;
+        gap: 20px;
+        padding: 10px;
+        margin-bottom: 2em;
+    }
+
+    .empty-product-mob h1 {
+        color: rgb(255, 0, 0);
+    }
+
+    .empty-product-mob h3 {
+        color: #000000;
     }
 }

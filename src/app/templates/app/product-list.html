@@ -8,64 +8,17 @@
 {% block title %}Product-List{% endblock %}
 
 {% block main-content-desk-productlist %}
-{% if product.exists %}
-<div class="product-list-container" id="product-list-container">
-    {% for product in product %}
-    <a href="{% url 'product-detail' product.id %}" class="product-container">
-        <div class="product-img">
-            <img src="{{product.product_image.url}}" alt="">
-        </div>
-        <div class="product-content">
-            <div class="product-name-desc">
-                <h3>{{product.title}}</h3>
-                <div class="stars">
-                    <div class="star">
-                        <span class="fa fa-star checked"></span>
-                    </div>
-                    <div class="star">
-                        <span class="fa fa-star checked"></span>
-                    </div>
-                    <div class="star">
-                        <span class="fa fa-star checked"></span>
-                    </div>
-                    <div class="star">
-                        <span class="fa fa-star checked"></span>
-                    </div>
-                    <div class="star">
-                        <span class="fa fa-star unchecked"></span>
-                    </div>
-                </div>
-                <div class="deal">
-                    <small>Limited time deal</small>
-                </div>
-            </div>
-            <div class="product-price">
-                <h3>₹ {{product.discounted_price}}</h3>
-                <small>FREE Delivery by Amazon</small>
-            </div>
-        </div>
-    </a>
-    {% endfor %}
-</div>
-{% else %}
-<div class="empty-product">
-    <h1>Your search didn't match any Product.</h1>
-    <h3>Try to search something different and make sure that all the words are spelled correctly.</h3>
-</div>
-{% endif %}
-{% endblock %}
-
-{% block main-content-mob-productlist %}
-<div class="product-list-mob">
-    {% for product in product %}
-    <a href="{% url 'product-detail' product.id %}" class="product-list-container-mob" id="product-list-container">
-        <div class="product-container">
+<div class="product-desk-container">
+    {% if product.exists %}
+    <div class="product-list-container" id="product-list-container">
+        {% for product in product %}
+        <a href="{% url 'product-detail' product.id %}" class="product-container">
             <div class="product-img">
                 <img src="{{product.product_image.url}}" alt="">
             </div>
             <div class="product-content">
                 <div class="product-name-desc">
-                    <h4>{{product.title}}</h4>
+                    <h3>{{product.title}}</h3>
                     <div class="stars">
                         <div class="star">
                             <span class="fa fa-star checked"></span>
@@ -88,13 +41,71 @@
                     </div>
                 </div>
                 <div class="product-price">
-                    <h4>₹ {{product.discounted_price}}</h4>
+                    <h3>₹ {{product.discounted_price}}</h3>
                     <small>FREE Delivery by Amazon</small>
                 </div>
             </div>
-        </div>
-    </a>
-    {% endfor %}
+        </a>
+        {% endfor %}
+    </div>
+    {% else %}
+    <div class="empty-product">
+        <h1>Your search didn't match any Product.</h1>
+        <h3>Try to search something different and make sure that all the words are spelled correctly.</h3>
+    </div>
+    {% endif %}
+</div>
+{% endblock %}
+
+{% block main-content-mob-productlist %}
+<div class="product-mob-container">
+    {% if product.exists %}
+    <div class="product-list-mob">
+        {% for product in product %}
+        <a href="{% url 'product-detail' product.id %}" class="product-list-container-mob" id="product-list-container">
+            <div class="product-container">
+                <div class="product-img">
+                    <img src="{{product.product_image.url}}" alt="">
+                </div>
+                <div class="product-content">
+                    <div class="product-name-desc">
+                        <h4>{{product.title}}</h4>
+                        <div class="stars">
+                            <div class="star">
+                                <span class="fa fa-star checked"></span>
+                            </div>
+                            <div class="star">
+                                <span class="fa fa-star checked"></span>
+                            </div>
+                            <div class="star">
+                                <span class="fa fa-star checked"></span>
+                            </div>
+                            <div class="star">
+                                <span class="fa fa-star checked"></span>
+                            </div>
+                            <div class="star">
+                                <span class="fa fa-star unchecked"></span>
+                            </div>
+                        </div>
+                        <div class="deal">
+                            <small>Limited time deal</small>
+                        </div>
+                    </div>
+                    <div class="product-price">
+                        <h4>₹ {{product.discounted_price}}</h4>
+                        <small>FREE Delivery by Amazon</small>
+                    </div>
+                </div>
+            </div>
+        </a>
+        {% endfor %}
+    </div>
+    {% else %}
+    <div class="empty-product-mob">
+        <h1>Your search didn't match any Product.</h1>
+        <h3>Try to search something different and make sure that all the words are spelled correctly.</h3>
+    </div>
+    {% endif %}
 </div>
 {% endblock %}
 

@@ -352,7 +352,7 @@ def product_list(request):
                         product = Product.objects.filter(
                             category=product_key).filter(discounted_price__lt=price_limit)
                     except:
-                        print("Hello")
+                        return redirect('noproduct')
             else:
                 for key, val in PRODUCT_CHOICES.items():
                     try:
@@ -361,8 +361,12 @@ def product_list(request):
                         product = Product.objects.filter(
                             category=product_key).filter(brand=brand_filter[0].upper())
                     except:
-                        return redirect('home')
+                        return redirect('noproduct')
     return render(request, 'app/product-list.html', {'product': product})
+
+
+def no_product(request):
+    return render(request, 'app/noproduct.html')
 
 
 def login(request):
