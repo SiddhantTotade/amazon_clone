@@ -31,6 +31,7 @@ urlpatterns = [
     path('passwordchange/', auth_views.PasswordChangeView.as_view(template_name='app/passwordchange.html',
          form_class=MyPasswordChangeForm, success_url='/profile/'), name='passwordchange'),
     path('product-list/', views.product_list, name='mobile'),
+    path('product-not-found/', name='productnotfound'),
     path('accounts/login/', auth_views.LoginView.as_view(template_name='app/login.html',
          authentication_form=LoginForm), name='login'),
     path('account/', views.account, name='account'),

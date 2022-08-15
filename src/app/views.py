@@ -344,16 +344,22 @@ def product_list(request):
             if any(char.isdigit() for char in search_product):
                 price_limit = int(price_limit)
                 for key, val in PRODUCT_CHOICES.items():
-                    if brand_name[0].lower() == val:
-                        product_key = key
-                product = Product.objects.filter(
-                    category=product_key).filter(discounted_price__lt=price_limit)
+                    try:
+                        if brand_name[0].lower() == val:
+                            product_key = key
+                        product = Product.objects.filter(
+                            category=product_key).filter(discounted_price__lt=price_limit)
+                    except:
+                        print("Hello")
             else:
                 for key, val in PRODUCT_CHOICES.items():
-                    if brand_filter[1].lower() == val:
-                        product_key = key
-                product = Product.objects.filter(
-                    category=product_key).filter(brand=brand_filter[0].upper())
+                    try:
+                        if brand_filter[1].lower() == val:
+                            product_key = key
+                        product = Product.objects.filter(
+                            category=product_key).filter(brand=brand_filter[0].upper())
+                    except:
+                        return redirect('home')
     return render(request, 'app/product-list.html', {'product': product})
 
 
