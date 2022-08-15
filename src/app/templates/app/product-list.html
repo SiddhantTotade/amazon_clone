@@ -8,6 +8,7 @@
 {% block title %}Product-List{% endblock %}
 
 {% block main-content-desk-productlist %}
+{% if product.exists %}
 <div class="product-list-container" id="product-list-container">
     {% for product in product %}
     <a href="{% url 'product-detail' product.id %}" class="product-container">
@@ -46,6 +47,12 @@
     </a>
     {% endfor %}
 </div>
+{% else %}
+<div class="empty-product">
+    <h1>Your search didn't match any Product.</h1>
+    <h3>Try to search something different and make sure that all the words are spelled correctly.</h3>
+</div>
+{% endif %}
 {% endblock %}
 
 {% block main-content-mob-productlist %}

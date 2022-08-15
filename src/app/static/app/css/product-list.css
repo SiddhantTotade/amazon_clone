@@ -115,6 +115,23 @@ body {
     .page-2 {
         display: none;
     }
+
+    .empty-product {
+        width: 80%;
+        display: grid;
+        gap: 20px;
+        margin: auto;
+        margin-bottom: 17em;
+        padding: 10px;
+    }
+
+    .empty-product h1 {
+        color: rgb(255, 0, 0);
+    }
+
+    .empty-product h3 {
+        color: #000000;
+    }
 }
 
 @media screen and (max-width:400px) {

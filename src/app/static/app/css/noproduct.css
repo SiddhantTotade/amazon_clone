@@ -4,4 +4,20 @@ body {
 
 /* Media Query for Desktop */
 @media screen and (min-width:401px) {
+    .empty-product-desk {
+        width: 80%;
+        display: grid;
+        gap: 20px;
+        margin: auto;
+        margin-bottom: 17em;
+        padding: 10px;
+    }
+
+    .empty-product-desk h1 {
+        color: rgb(255, 0, 0);
+    }
+
+    .empty-product-desk h3 {
+        color: #000000;
+    }
 }

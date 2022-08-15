@@ -7,12 +7,20 @@
 <link rel="stylesheet" href="{% static 'app/css/noproduct.css' %}">
 {% endblock %}
 
-{% block main-content-desk-addtocart %}
-<div class="no-product">
-    <div class="no-product-title">
-        <h1>Product not found.</h1>
-        <h3>Try from below search items : </h3>
-        <label for=""></label>
-    </div>
+{% block main-content-desk-noproduct %}
+<div class="empty-product-desk">
+    <h1>Your search didn't match any Product.</h1>
+    <h3>Try to search something different and make sure that all the words are spelled correctly.</h3>
 </div>
+{% endblock %}
+
+{% block main-content-mob-noproduct %}
+<div class="empty-product-mob">
+    <h1>Your search didn't match any Product.</h1>
+    <h3>Try to search something different and make sure that all the words are spelled correctly.</h3>
+</div>
+{% endblock %}
+
+{% block js-noproduct %}
+<script src="{% static 'app/js/noproduct.js' %}"></script>
 {% endblock %}
