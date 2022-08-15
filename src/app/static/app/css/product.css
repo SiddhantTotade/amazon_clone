@@ -43,7 +43,6 @@
         display: grid;
         grid-template-columns: repeat(5, 1fr);
         margin: auto;
-        height: 15vh;
         gap: 10px;
     }
 
