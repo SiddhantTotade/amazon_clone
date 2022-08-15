@@ -1,0 +1,18 @@
+{% extends 'app/base.html' %}
+{% load static %}
+
+{% block title %}Product not found{% endblock %}
+
+{% block style-noproduct %}
+<link rel="stylesheet" href="{% static 'app/css/noproduct.css' %}">
+{% endblock %}
+
+{% block main-content-desk-addtocart %}
+<div class="no-product">
+    <div class="no-product-title">
+        <h1>Product not found.</h1>
+        <h3>Try from below search items : </h3>
+        <label for=""></label>
+    </div>
+</div>
+{% endblock %}

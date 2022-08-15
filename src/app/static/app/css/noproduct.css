@@ -1,0 +1,7 @@
+body {
+    background: rgb(255, 255, 255);
+}
+
+/* Media Query for Desktop */
+@media screen and (min-width:401px) {
+}
