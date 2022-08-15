@@ -99,3 +99,12 @@ $(document).ready(() => {
         }
     })
 })
+
+// Modal
+window.onload = () => {
+    document.getElementById('myModal').style.display = 'grid'
+}
+
+document.querySelector('.close-modal').addEventListener('click', () => {
+    document.getElementById('myModal').style.display = 'none'
+})
