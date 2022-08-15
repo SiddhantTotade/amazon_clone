@@ -6,8 +6,6 @@ else if (window.screen.width <= 400) {
     document.querySelector(".product").style.display = 'none'
 }
 
-// List-item
-document.getElementById('list-item')
 
 // Product Zoom
 $(function () {
@@ -37,4 +35,14 @@ $('.owl-carousel').owlCarousel({
             items: 5
         }
     }
+})
+
+// List-item
+document.getElementById('show-more').addEventListener('click', () => {
+    document.getElementById('list-item-more').style.display = "grid"
+    document.getElementById('list-item').style.display = "none"
+})
+document.getElementById('show-less').addEventListener('click', () => {
+    document.getElementById('list-item-more').style.display = "none"
+    document.getElementById('list-item').style.display = "grid"
 })

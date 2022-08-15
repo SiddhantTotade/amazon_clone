@@ -97,9 +97,22 @@
         </div>
         <div class="product-short-desc product-name">
             <h3>About this item</h3>
-            <p id="list-item">
-                {{ product.description|linebreaks }}
-            </p>
+            <div id="list-item">
+                <p>{{ product.description|truncatechars:1100|linebreaks }}</p>
+                {% if product.description|length > 1000 %}
+                <div class="show-more-desc">
+                    <a id="show-more">Show more</a>
+                    <i class="uil uil-angle-right"></i>
+                </div>
+                {% endif %}
+            </div>
+            <div id="list-item-more">
+                <p>{{ product.description|linebreaks }}</p>
+                <div class="show-more-desc">
+                    <a id="show-less">Show less</a>
+                    <i class="uil uil-angle-left"></i>
+                </div>
+            </div>
         </div>
     </div>
     <div class="product-description">
