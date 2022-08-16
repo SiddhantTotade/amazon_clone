@@ -20,7 +20,7 @@
     </div>
     <div class="modal-inner-content">
       <div class="modal-title">
-        <h2>Welcome to Amazon Clone</h2>
+        <h1>Welcome to Amazon Clone</h1>
       </div>
       <div class="inner-content">
         <ul>
@@ -85,35 +85,19 @@
 <!-- Grid for desktop -->
 <div class="grid-container">
   <div class="item1">
-    <div class="card">
-      <div class="card-title">
+    <div class="card-item-1 card">
+      <div class="card-title-item1 card-title">
         <h3>Keep shopping for</h3>
       </div>
-      <div class="card-images">
-        <div class="card-product-img">
-          <img src="{% static 'app/img/card-items/col-1-img-1.jpg' %}" alt="">
-          <div class="card-product-name">
-            <span><small>Readgear shadow</small></span>
+      <div class="card-images-item1 card-images">
+      {% for is in item_shuffle|slice:":4" %}
+        <a href="{% url 'product-detail' is.id %}" class="card-product-img-item1 card-product-img">
+          <img src="{{is.product_image.url}}" alt="">
+          <div class="card-product-name-item1 card-product-name">
+            <span><small>{{is.title|truncatechars:20}}</small></span>
           </div>
-        </div>
-        <div class="card-product-img">
-          <img src="{% static 'app/img/card-items/col-1-img-2.jpg' %}" alt="">
-          <div class="card-product-name">
-            <span><small>HP KM300F</small></span>
-          </div>
-        </div>
-        <div class="card-product-img">
-          <img src="{% static 'app/img/card-items/col-1-img-3.jpg' %}" alt="">
-          <div class="card-product-name">
-            <span><small>TVS Electronic Gold</small></span>
-          </div>
-        </div>
-        <div class="card-product-img">
-          <img src="{% static 'app/img/card-items/col-1-img-4.jpg' %}" alt="">
-          <div class="card-product-name">
-            <span><small>TVS -e Gold Bharat</small></span>
-          </div>
-        </div>
+        </a>
+        {% endfor %}
       </div>
     </div>
   </div>

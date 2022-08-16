@@ -55,7 +55,7 @@
     }
 
     .modal-content p,
-    .modal-content h2,
+    .modal-content h1,
     .modal-content li,
     .modal-content span {
         color: #000000;
@@ -163,8 +163,14 @@
     .card-images {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
-        column-gap: 1em;
-        height: 13em;
+        gap: 10px;
+    }
+
+    .card-images-item1 {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+        margin-top: .5em;
     }
 
     .card-title h3 {
@@ -195,6 +201,14 @@
         margin: auto;
     }
 
+    .card-product-img-item1 {
+        display: grid;
+        height: 16vh;
+        justify-items: center;
+        align-items: flex-end;
+        margin: auto;
+    }
+
     .card-product-img:hover {
         cursor: pointer;
     }
@@ -202,6 +216,11 @@
     .card-images img {
         width: 100%;
         height: 100%;
+        object-fit: contain;
+    }
+
+    .card-images-item1 img {
+        width: 50%;
         object-fit: contain;
     }
 
