@@ -1,5 +1,3 @@
-from audioop import reverse
-from unicodedata import category
 from django.http import JsonResponse
 from django.shortcuts import redirect, render
 from django.views import View
@@ -16,6 +14,8 @@ import datetime
 
 class ProductView(View):
     def get(self, request):
+        request.session['person'] = {'name': 'Sid', 'age': '22'}
+        print(request.session['person'])
         totalitem = 0
         topwears = Product.objects.filter(category='TW')
         bottomwears = Product.objects.filter(category='BW')
@@ -30,10 +30,11 @@ class ProductView(View):
         mobile_shuffle_mob = random.sample(random_mobile, 4)
         random_item = list(Product.objects.all())
         item_shuffle = random.sample(random_item, 20)
+        address = Customer.objects.first()
         if request.user.is_authenticated:
             totalitem = len(Cart.objects.filter(user=request.user))
 
-        return render(request, 'app/home.html', {'topwears': topwears, 'bottomwears': bottomwears, 'mobiles': mobiles, 'laptops': laptops, 'watch': watch, 'computer_accessories': computer_accessories, 'watch_shuffle': watch_shuffle, 'mobile_shuffle': mobile_shuffle, 'mobile_shuffle_mob': mobile_shuffle_mob, 'item_shuffle': item_shuffle, 'totalitem': totalitem})
+        return render(request, 'app/home.html', {'address': address, 'topwears': topwears, 'bottomwears': bottomwears, 'mobiles': mobiles, 'laptops': laptops, 'watch': watch, 'computer_accessories': computer_accessories, 'watch_shuffle': watch_shuffle, 'mobile_shuffle': mobile_shuffle, 'mobile_shuffle_mob': mobile_shuffle_mob, 'item_shuffle': item_shuffle, 'totalitem': totalitem})
 
 
 # def home(request):
@@ -50,12 +51,12 @@ class ProductDetailView(View):
         item_already_in_cart = False
         product_detail = Product.objects.get(id=pk)
         product_detail_dict = eval(product_detail.product_details)
-        print(product_detail_dict.keys())
+        address = Customer.objects.first()
         if request.user.is_authenticated:
             totalitem = len(Cart.objects.filter(user=request.user))
             item_already_in_cart = Cart.objects.filter(
                 Q(product=product.id) & Q(user=request.user)).exists()
-        return render(request, 'app/productdetail.html', {'product': product, 'product_img_dsk': product_img_dsk, 'product_desc_desk': product_desc_desk, 'item_already_in_cart': item_already_in_cart, 'totalitem': totalitem, 'product_detail_dict': product_detail_dict})
+        return render(request, 'app/productdetail.html', {'address': address, 'product': product, 'product_img_dsk': product_img_dsk, 'product_desc_desk': product_desc_desk, 'item_already_in_cart': item_already_in_cart, 'totalitem': totalitem, 'product_detail_dict': product_detail_dict})
 # def product_detail(request):
 #     return render(request, 'app/productdetail.html')
 
@@ -74,6 +75,7 @@ def show_cart(request):
     if request.user.is_authenticated:
         user = request.user
         cart = Cart.objects.filter(user=user)
+        address = Customer.objects.first()
         # cart_amount = Cart.objects.get(user=user)
         amount = 0.0
         shipping_amount = 40.0
@@ -87,7 +89,7 @@ def show_cart(request):
                 tempamount = (p.quantity*p.product.discounted_price)
                 amount += tempamount
                 totalamount = amount+shipping_amount
-            return render(request, 'app/addtocart.html', {'carts': cart, 'totalamount': totalamount, 'amount': amount})
+            return render(request, 'app/addtocart.html', {'address': address, 'carts': cart, 'totalamount': totalamount, 'amount': amount})
         else:
             return render(request, 'app/emptycart.html')
 
@@ -156,14 +158,16 @@ def buy_now(request):
 class ProfileView(View):
     def get(self, request):
         user = User.objects.all()
-        return render(request, 'app/profile.html', {'user': user})
+        address = Customer.objects.first()
+        return render(request, 'app/profile.html', {'address': address, 'user': user})
 
 
 @method_decorator(login_required, name='dispatch')
 class AddAddressView(View):
     def get(self, request):
         form = CustomerProfileForm()
-        return render(request, 'app/addaddress.html', {'form': form})
+        address = Customer.objects.first()
+        return render(request, 'app/addaddress.html', {'address': address, 'form': form})
 
     def post(self, request):
         form = CustomerProfileForm(request.POST)
@@ -187,7 +191,8 @@ class AddAddressView(View):
 @login_required
 def address(request):
     address = Customer.objects.filter(user=request.user)
-    return render(request, 'app/address.html', {'address': address})
+    add = Customer.objects.first()
+    return render(request, 'app/address.html', {'location': add, 'address': address})
 
 
 @method_decorator(login_required, name='dispatch')
@@ -196,7 +201,8 @@ class SelectAddress(View):
         product_id = Product.objects.get(pk=pk)
         address = Customer.objects.filter(user=request.user)
         form = CustomerProfileForm()
-        return render(request, 'app/selectaddress.html', {'product_id': product_id, 'form': form, 'address': address})
+        add = Customer.objects.first()
+        return render(request, 'app/selectaddress.html', {'location': add, 'product_id': product_id, 'form': form, 'address': address})
 
     def post(self, request):
         form = CustomerProfileForm(request.POST)
@@ -219,6 +225,7 @@ class SelectAddress(View):
 @login_required
 def edit_address(request, pk):
     edit_add = Customer.objects.get(pk=pk)
+    address = Customer.objects.first()
     form = CustomerProfileForm(instance=edit_add)
 
     if request.method == 'POST':
@@ -227,17 +234,18 @@ def edit_address(request, pk):
             form.save()
             return redirect('address')
 
-    return render(request, 'app/editaddress.html', {'form': form, 'edit_add': edit_add})
+    return render(request, 'app/editaddress.html', {'address': address, 'form': form, 'edit_add': edit_add})
 
 
 @login_required
 def delete_address(request, pk):
     del_add = Customer.objects.get(pk=pk)
+    address = Customer.objects.first()
 
     if request.method == 'POST':
         del_add.delete()
         return redirect('address')
-    return render(request, 'app/deleteaddress.html', {'del_add': del_add})
+    return render(request, 'app/deleteaddress.html', {'address': address, 'del_add': del_add})
 
 
 @login_required
@@ -251,7 +259,8 @@ def edit_email(request):
         return render(request, 'app/editemail.html', {'form': form})
     else:
         form = EditUserEmailForm(instance=request.user)
-        return render(request, 'app/editemail.html', {'form': form})
+        address = Customer.objects.first()
+        return render(request, 'app/editemail.html', {'address': address, 'form': form})
 
 
 @login_required
@@ -265,7 +274,8 @@ def edit_name(request):
         return render(request, 'app/editname.html', {'form': form})
     else:
         form = EditUsernameForm(instance=request.user)
-        return render(request, 'app/editname.html', {'form': form})
+        address = Customer.objects.first()
+        return render(request, 'app/editname.html', {'address': address, 'form': form})
 
 
 @login_required
@@ -273,21 +283,24 @@ def payment(request, pk):
     product_id = Product.objects.get(pk=pk)
     cust_id = request.GET.get('custid')
     add = Customer.objects.filter(user=request.user)
-    return render(request, 'app/payment.html', {'product_id': product_id, 'add': add, 'cust_id': cust_id})
+    address = Customer.objects.first()
+    return render(request, 'app/payment.html', {'address': address, 'product_id': product_id, 'add': add, 'cust_id': cust_id})
 
 
 @login_required
 def orders(request):
+    address = Customer.objects.first()
     op = OrderPlaced.objects.filter(user=request.user)
     delivery_date = (datetime.datetime.now() +
                      datetime.timedelta(days=10)).strftime("%A")
 
-    return render(request, 'app/orders.html', {'order_placed': op, 'delivery_date': delivery_date})
+    return render(request, 'app/orders.html', {'address': address, 'order_placed': op, 'delivery_date': delivery_date})
 
 
 @login_required
 def account(request):
-    return render(request, 'app/account.html')
+    address = Customer.objects.first()
+    return render(request, 'app/account.html', {'address': address})
 
 
 # def reset_password(request):
@@ -328,6 +341,7 @@ def product_list(request):
         search_product = request.GET.get('search_products')
     product_key = ""
     product_check = 0
+    address = Customer.objects.first()
     for key, val in PRODUCT_CHOICES.items():
         if search_product.lower() == val:
             product_key = key
@@ -362,7 +376,7 @@ def product_list(request):
                             category=product_key).filter(brand=brand_filter[0].upper())
                     except:
                         return redirect('noproduct')
-    return render(request, 'app/product-list.html', {'product': product})
+    return render(request, 'app/product-list.html', {'address': address, 'product': product})
 
 
 def no_product(request):
@@ -390,30 +404,33 @@ class CustomerRegistrationView(View):
 
 @login_required
 def checkout(request):
+    address = Customer.objects.first()
     user = request.user
     cust_id = request.GET.get('custid')
     product_id = request.GET.get('prod_id')
     delivery_date = (datetime.datetime.now() +
                      datetime.timedelta(days=10)).strftime("%d %B %Y")
-    if request.META['HTTP_REFERER'] == 'http://127.0.0.1:8000/payment/'+product_id+"?custid="+cust_id:
-        product = Product.objects.get(id=product_id)
-        if not Cart.objects.filter(user=user, product=product).exists():
-            Cart(user=user, product=product).save()
-    add = Customer.objects.filter(user=user)
-    cart_items = Cart.objects.filter(user=user)
-    amount = 0.0
-    item_amount = 0.0
-    shipping_amount = 40.0
-    totalamount = 0.0
-    cart_product = [p for p in Cart.objects.all() if p.user == user]
-    if cart_product:
+    try:
+        if request.META['HTTP_REFERER'] == 'http://127.0.0.1:8000/payment/'+product_id+"?custid="+cust_id:
+            product = Product.objects.get(id=product_id)
+            if not Cart.objects.filter(user=user, product=product).exists():
+                Cart(user=user, product=product).save()
+    except:
+        add = Customer.objects.filter(user=user)
+        cart_items = Cart.objects.filter(user=user)
+        amount = 0.0
+        item_amount = 0.0
+        shipping_amount = 40.0
+        totalamount = 0.0
+        cart_product = [p for p in Cart.objects.all() if p.user == user]
+        if cart_product:
+            for p in cart_product:
+                tempamount = (p.quantity*p.product.discounted_price)
+                amount += tempamount
+            totalamount = amount+shipping_amount
         for p in cart_product:
-            tempamount = (p.quantity*p.product.discounted_price)
-            amount += tempamount
-        totalamount = amount+shipping_amount
-    for p in cart_product:
-        item_amount += p.product.discounted_price
-    return render(request, 'app/checkout.html', {'product_id': product_id, 'add': add, 'totalamount': totalamount, 'item_amount': item_amount, 'cart_items': cart_items, 'delivery_date': delivery_date, 'custid': cust_id})
+            item_amount += p.product.discounted_price
+    return render(request, 'app/checkout.html', {'address': address, 'product_id': product_id, 'add': add, 'totalamount': totalamount, 'item_amount': item_amount, 'cart_items': cart_items, 'delivery_date': delivery_date, 'custid': cust_id})
 
 
 @login_required

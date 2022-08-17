@@ -209,7 +209,8 @@
           <div class="address">
             {% if request.user.is_authenticated %}
             <span><small>Deliver to {{ request.user|capfirst }}</small></span>
-            <h4>Raipur 0X0X0X</h4>
+            <h4>{{location.city|capfirst}} {{location.zipcode}}</h4>
+            <h4>{{address.city|capfirst}} {{address.zipcode}}</h4>
             {% else %}
             <span><small>Deliver to Sign in</small></span>
             <h4>Raipur 0X0X0X</h4>
