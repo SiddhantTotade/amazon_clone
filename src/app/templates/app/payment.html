@@ -74,7 +74,7 @@
             </div>
             <form class="options-3 chkbox">
                 <input type="radio" id="paypal" name="paypal-radio" value="paypal-checked">
-                <h5>Pay on Delivery</h5>
+                <h5>Pay on Delivery {{request.session.paypal_checked}}</h5>
             </form>
         </div>
         <form action="/checkout" class="next payment-block-1">

@@ -14,8 +14,6 @@ import datetime
 
 class ProductView(View):
     def get(self, request):
-        request.session['person'] = {'name': 'Sid', 'age': '22'}
-        print(request.session['person'])
         totalitem = 0
         topwears = Product.objects.filter(category='TW')
         bottomwears = Product.objects.filter(category='BW')

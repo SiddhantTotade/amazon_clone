@@ -12,6 +12,8 @@ document.querySelector('#paypal').addEventListener('click', () => {
     sessionStorage.setItem("paypal_checked", paypal_val)
 });
 
-window.onload = () => {
-    sessionStorage.clear()
-}
+console.log(sessionStorage.getItem("paypal_checked"));
+
+// window.onload = () => {
+//     sessionStorage.clear()
+// }
