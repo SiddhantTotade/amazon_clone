@@ -7,13 +7,10 @@ else if (window.screen.width <= 400) {
 }
 
 // Session storage
-document.querySelector('#paypal').addEventListener('click', () => {
-    let paypal_val = document.querySelector('#paypal').value;
-    sessionStorage.setItem("paypal_checked", paypal_val)
+document.getElementById('paypal').addEventListener('click', () => {
+    document.getElementById('continue').style.display = 'flex'
 });
 
-console.log(sessionStorage.getItem("paypal_checked"));
-
-// window.onload = () => {
-//     sessionStorage.clear()
-// }
+window.onload = () => {
+    alert("Please select paypal option to proceed")
+}

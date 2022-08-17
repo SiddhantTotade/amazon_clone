@@ -407,12 +407,14 @@ def checkout(request):
     cust_id = request.GET.get('custid')
     product_id = request.GET.get('prod_id')
     delivery_date = (datetime.datetime.now() +
-                     datetime.timedelta(days=10)).strftime("%d %B %Y")
+                     datetime.timedelta(days=10)).strftime("%d %B %Y")                 
+
     try:
         if request.META['HTTP_REFERER'] == 'http://127.0.0.1:8000/payment/'+product_id+"?custid="+cust_id:
             product = Product.objects.get(id=product_id)
             if not Cart.objects.filter(user=user, product=product).exists():
                 Cart(user=user, product=product).save()
+        return render(request, 'app/checkout.html', {'address': address, 'product_id': product_id, 'add': add, 'totalamount': totalamount, 'item_amount': item_amount, 'cart_items': cart_items, 'delivery_date': delivery_date, 'custid': cust_id})
     except:
         add = Customer.objects.filter(user=user)
         cart_items = Cart.objects.filter(user=user)
@@ -428,7 +430,7 @@ def checkout(request):
             totalamount = amount+shipping_amount
         for p in cart_product:
             item_amount += p.product.discounted_price
-    return render(request, 'app/checkout.html', {'address': address, 'product_id': product_id, 'add': add, 'totalamount': totalamount, 'item_amount': item_amount, 'cart_items': cart_items, 'delivery_date': delivery_date, 'custid': cust_id})
+        return render(request, 'app/checkout.html', {'address': address, 'product_id': product_id, 'add': add, 'totalamount': totalamount, 'item_amount': item_amount, 'cart_items': cart_items, 'delivery_date': delivery_date, 'custid': cust_id})
 
 
 @login_required
