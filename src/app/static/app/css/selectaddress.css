@@ -158,6 +158,7 @@ body {
     }
 
     .save button {
+        cursor: pointer;
         padding: 10px 20px;
         font-size: medium;
         background-color: orange;
