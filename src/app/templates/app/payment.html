@@ -92,10 +92,10 @@
     <div class="address-title">
         <h2>Select a payment method</h2>
     </div>
-    <form action="/checkout" class="next payment-block-1">
+    <form action="/checkout" id="next-mob" class="next-mob payment-block-1">
         <input type="hidden" name="custid" id="custid" value="{{cust_id}}">
         <input type="hidden" name="prod_id" id="prod_id" value="{{product_id.id}}">
-        <button type="submit" class="continue">Continue</button>
+        <button type="submit" class="continue" id="continue-mob">Continue</button>
     </form>
     <div class="amazon-pay address-title">
         <div class="title">
@@ -168,10 +168,19 @@
             </small>
         </div>
     </div>
-    <form action="/checkout" class="next payment-block-1">
+    <div class="pay-on-delivery address-title upi">
+        <input type="radio" id="paypal-mob" class="paypal-rad-mob" name="paypal-radio" value="paypal-checked">
+        <div class="info">
+            <h4>Paypal (Please select this option to proceed )</h4>
+            <small>
+                Pay using paypal, Create an account on Paypal developer then add some digits on your account and PAY.
+            </small>
+        </div>
+    </div>
+    <form action="/checkout" id="next-mob" class="next-mob payment-block-1">
         <input type="hidden" name="custid" id="custid" value="{{cust_id}}">
         <input type="hidden" name="prod_id" id="prod_id" value="{{product_id.id}}">
-        <button type="submit" class="continue">Continue</button>
+        <button type="submit" class="continue" id="continue-mob">Continue</button>
     </form>
 </div>
 {% endblock %}

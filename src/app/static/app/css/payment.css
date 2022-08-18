@@ -111,7 +111,6 @@ body {
         width: 95%;
         margin: auto;
         display: grid;
-        /* background-color: #000000; */
         border-bottom: 1px solid gainsboro;
         padding: 20px 0;
         gap: 10px;
@@ -129,16 +128,12 @@ body {
         color: rgb(6, 187, 253);
     }
 
-    .continue {
-        display: grid;
-        align-items: center;
-    }
-
-    .next {
+    .next-mob {
+        display: none;
         margin-bottom: 1em;
     }
 
-    .next button {
+    .next-mob button {
         width: 90%;
         margin: auto;
         height: 4vh;
