@@ -136,10 +136,6 @@ body {
 
 @media screen and (max-width:400px) {
 
-    .product-list-mob {
-        display: none;
-    }
-
     .product-list-container-mob {
         display: grid;
         text-decoration: none;
