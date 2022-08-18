@@ -22,7 +22,6 @@ $(function () {
 $('.owl-carousel').owlCarousel({
     loop: true,
     margin: 0,
-    nav: false,
     dots: true,
     responsive: {
         0: {
@@ -38,11 +37,11 @@ $('.owl-carousel').owlCarousel({
 })
 
 // List-item
-document.getElementById('show-more').addEventListener('click', () => {
-    document.getElementById('list-item-more').style.display = "grid"
-    document.getElementById('list-item').style.display = "none"
-})
-document.getElementById('show-less').addEventListener('click', () => {
-    document.getElementById('list-item-more').style.display = "none"
-    document.getElementById('list-item').style.display = "grid"
-})
+// document.getElementById('show-more').addEventListener('click', () => {
+//     document.getElementById('list-item-more').style.display = "grid"
+//     document.getElementById('list-item').style.display = "none"
+// })
+// document.getElementById('show-less').addEventListener('click', () => {
+//     document.getElementById('list-item-more').style.display = "none"
+//     document.getElementById('list-item').style.display = "grid"
+// })
