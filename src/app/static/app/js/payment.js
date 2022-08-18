@@ -11,14 +11,12 @@ document.getElementById('paypal').addEventListener('click', () => {
     document.getElementById('continue').style.display = 'flex';
 });
 
+let next = document.getElementsByClassName('next-mob')
 document.getElementById('paypal-mob').addEventListener('click', () => {
-    document.getElementById('next-mob').style.display = 'flex';
+    for (let index = 0; index < next.length; index++) {
+        next[index].style.display = 'flex'
+    }
 });
-
-let next = document.querySelectorAll('#next-mob')
-
-
-
 
 window.onload = () => {
     alert("Please select paypal option to proceed")
