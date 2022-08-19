@@ -578,40 +578,54 @@
         <span><small>Upto 70% off | Deals on fashion</small></span>
       </div>
       <div class="grid-container-mob">
+        {% for msm in mobile_shuffle_mob|slice:":1" %}
         <form method="post" action="/product-list/" class="img-grid">
           {% csrf_token %}
           <input type="hidden" name="Mobile" id="mobile" value="Mobile">
           <button type="submit" class="item-img">
-            <img src="{% static 'app/img/grid-images-mobile/grid-img-mob-1.jpg' %}" alt="">
+            <img src="{{msm.product_image.url}}" alt="">
           </button>
           <div class="item-title">
-            <small>Clothing</small>
+            <small>Mobiles</small>
           </div>
         </form>
-        <div class="img-grid">
-          <div class="item-img">
-            <img src="{% static 'app/img/grid-images-mobile/grid-img-mob-2.jpg' %}" alt="">
-          </div>
-          <div class="item-title">
-            <small>Beauty & makeup</small>
-          </div>
-        </div>
-        <div class="img-grid">
-          <div class="item-img">
-            <img src="{% static 'app/img/grid-images-mobile/grid-img-mob-3.jpg' %}" alt="">
-          </div>
-          <div class="item-title">
-            <small>Footwear</small>
-          </div>
-        </div>
-        <div class="img-grid">
-          <div class="item-img">
-            <img src="{% static 'app/img/grid-images-mobile/grid-img-mob-4.jpg' %}" alt="">
-          </div>
+        {% endfor %}
+        {% for wsm in watch_shuffle_mob|slice:":1" %}
+        <form method="post" action="/product-list/" class="img-grid">
+          {% csrf_token %}
+          <input type="hidden" name="Watch" id="watch" value="Watch">
+          <button type="submit" class="item-img">
+            <img src="{{wsm.product_image.url}}" alt="">
+          </button>
           <div class="item-title">
             <small>Watches</small>
           </div>
-        </div>
+        </form>
+        {% endfor %}
+        {% for casm in com_acc_shuffle_mob|slice:":1" %}
+        <form method="post" action="/product-list/" class="img-grid">
+          {% csrf_token %}
+          <input type="hidden" name="ComAndAcc" id="comandacc" value="ComAndAcc">
+          <button class="item-img">
+            <img src="{{casm.product_image.url}}" alt="">
+          </button>
+          <div class="item-title">
+            <small>Computer and Accessories</small>
+          </div>
+        </form>
+        {% endfor %}
+        {% for lsm in laptop_shuffle_mob|slice:":1" %}
+        <form method="post" action="/product-list/" class="img-grid">
+          {% csrf_token %}
+          <input type="hidden" name="Laptop" id="laptop" value="Laptop">
+          <button class="item-img">
+            <img src="{{lsm.product_image.url}}" alt="">
+          </button>
+          <div class="item-title">
+            <small>Laptops</small>
+          </div>
+        </form>
+        {% endfor %}
       </div>
     </div>
     <div class="item-cards-grid">

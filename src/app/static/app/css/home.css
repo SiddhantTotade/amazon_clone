@@ -665,14 +665,19 @@
     }
 
     .item-img {
+        border: none;
         width: 100%;
+        background: none;
+    }
+
+    .img-grid {
+        width: 90%;
     }
 
     .img-grid img {
         width: 100%;
         object-fit: contain;
         height: 20vh;
-        object-fit: fill;
     }
 
     .item-title small {

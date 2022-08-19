@@ -1,3 +1,4 @@
+from unicodedata import category
 from django.http import JsonResponse
 from django.shortcuts import redirect, render
 from django.views import View
@@ -24,8 +25,13 @@ class ProductView(View):
         random_watch = list(watch)
         watch_shuffle = random.sample(random_watch, 14)
         random_mobile = list(mobiles)
+        random_laptop = list(laptops)
+        random_computer_accessories = list(computer_accessories)
         mobile_shuffle = random.sample(random_mobile, 11)
         mobile_shuffle_mob = random.sample(random_mobile, 4)
+        watch_shuffle_mob = random.sample(random_watch, 4)
+        com_acc_shuffle_mob = random.sample(random_computer_accessories, 4)
+        laptop_shuffle_mob = random.sample(random_laptop, 4)
         random_item = list(Product.objects.all())
         item_shuffle = random.sample(random_item, 20)
         address = Customer.objects.first()
@@ -34,7 +40,7 @@ class ProductView(View):
         if request.user.is_authenticated:
             totalitem = len(Cart.objects.filter(user=request.user))
 
-        return render(request, 'app/home.html', {'address': address, 'topwears': topwears, 'bottomwears': bottomwears, 'mobiles': mobiles, 'laptops': laptops, 'watch': watch, 'computer_accessories': computer_accessories, 'watch_shuffle': watch_shuffle, 'mobile_shuffle': mobile_shuffle, 'mobile_shuffle_mob': mobile_shuffle_mob, 'item_shuffle': item_shuffle, 'totalitem': totalitem})
+        return render(request, 'app/home.html', {'address': address, 'topwears': topwears, 'bottomwears': bottomwears, 'mobiles': mobiles, 'laptops': laptops, 'watch': watch, 'computer_accessories': computer_accessories, 'watch_shuffle': watch_shuffle, 'mobile_shuffle': mobile_shuffle, 'mobile_shuffle_mob': mobile_shuffle_mob, 'com_acc_shuffle_mob': com_acc_shuffle_mob, 'watch_shuffle_mob': watch_shuffle_mob, 'laptop_shuffle_mob': laptop_shuffle_mob, 'item_shuffle': item_shuffle, 'totalitem': totalitem})
 
 
 # def home(request):
@@ -334,18 +340,27 @@ class PasswordResetView(View):
 
 def product_list(request):
     if request.method == 'POST':
-        product_name = request.POST['Mobile']
-        PRODUCT_CHOICES = {'M': 'mobiles', 'L': 'laptops',
-                           'TW': 'top wears', 'BW': 'bottom wears', 'W': 'watches',
-                           'P': 'printers', 'F': 'fans', 'EB': 'earbuds',
-                           'C': 'cameras', 'O': 'oils', 'SH': 'showers', 'MU': 'muselis', 'CL': 'cleaners', 'CA': 'computer and accessories'}
-        product_key = ""
-        address = Customer.objects.first()
-        for key, val in PRODUCT_CHOICES.items():
-            if product_name.lower() == val:
-                product_key = key
-        # product = Product.objects.get()
-        return render(request, 'app/product-list.html')
+        if request.POST.get('Mobile') == 'Mobile':
+            product_name = 1
+        elif request.POST.get('Watch') == 'Watch':
+            product_name = 2
+        elif request.POST.get('Laptop') == 'Laptop':
+            product_name = 3
+        elif request.POST.get('ComAndAcc') == 'ComAndAcc':
+            product_name = 4
+
+        match (product_name):
+            case 1:
+                product_name = 'M'
+            case 2:
+                product_name = 'W'
+            case 3:
+                product_name = 'L'
+            case 4:
+                product_name = 'CA'
+
+        product = Product.objects.filter(category=product_name)
+        return render(request, 'app/product-list.html', {'product': product})
     else:
         PRODUCT_CHOICES = {'M': 'mobiles', 'L': 'laptops',
                            'TW': 'top wears', 'BW': 'bottom wears', 'W': 'watches',
