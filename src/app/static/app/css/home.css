@@ -219,6 +219,10 @@
         object-fit: contain;
     }
 
+    .card-images-big img {
+        width: 100%;
+    }
+
     .card-images-item1 img {
         width: 50%;
         object-fit: contain;

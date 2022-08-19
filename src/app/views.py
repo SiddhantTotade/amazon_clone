@@ -29,6 +29,8 @@ class ProductView(View):
         random_item = list(Product.objects.all())
         item_shuffle = random.sample(random_item, 20)
         address = Customer.objects.first()
+        product_name = request.GET.get('Mobile')
+        print(product_name)
         if request.user.is_authenticated:
             totalitem = len(Cart.objects.filter(user=request.user))
 
@@ -331,50 +333,65 @@ class PasswordResetView(View):
 
 
 def product_list(request):
-    PRODUCT_CHOICES = {'M': 'mobiles', 'L': 'laptops',
-                       'TW': 'top wears', 'BW': 'bottom wears', 'W': 'watches',
-                       'P': 'printers', 'F': 'fans', 'EB': 'earbuds',
-                       'C': 'cameras', 'O': 'oils', 'SH': 'showers', 'MU': 'muselis', 'CL': 'cleaners', 'CA': 'computer and accessories'}
-    if "search_products" in request.GET:
-        search_product = request.GET.get('search_products')
-    product_key = ""
-    product_check = 0
-    address = Customer.objects.first()
-    for key, val in PRODUCT_CHOICES.items():
-        if search_product.lower() == val:
-            product_key = key
-            product_check = 1
-    if product_check:
-        product = Product.objects.filter(
-            category=product_key)
-    elif product_check == 0:
-        brand_name = search_product.split(" ")
-        brand_filter = brand_name
-        price_limit = brand_name.pop()
-        if len(brand_name) == 1:
+    if request.method == 'POST':
+        product_name = request.POST['Mobile']
+        PRODUCT_CHOICES = {'M': 'mobiles', 'L': 'laptops',
+                           'TW': 'top wears', 'BW': 'bottom wears', 'W': 'watches',
+                           'P': 'printers', 'F': 'fans', 'EB': 'earbuds',
+                           'C': 'cameras', 'O': 'oils', 'SH': 'showers', 'MU': 'muselis', 'CL': 'cleaners', 'CA': 'computer and accessories'}
+        product_key = ""
+        address = Customer.objects.first()
+        for key, val in PRODUCT_CHOICES.items():
+            if product_name.lower() == val:
+                product_key = key
+        # product = Product.objects.get()
+        return render(request, 'app/product-list.html')
+    else:
+        PRODUCT_CHOICES = {'M': 'mobiles', 'L': 'laptops',
+                           'TW': 'top wears', 'BW': 'bottom wears', 'W': 'watches',
+                           'P': 'printers', 'F': 'fans', 'EB': 'earbuds',
+                           'C': 'cameras', 'O': 'oils', 'SH': 'showers', 'MU': 'muselis', 'CL': 'cleaners', 'CA': 'computer and accessories'}
+        if "search_products" in request.GET:
+            search_product = request.GET.get('search_products')
+        product_key = ""
+        product_check = 0
+        address = Customer.objects.first()
+        for key, val in PRODUCT_CHOICES.items():
+            if search_product.lower() == val:
+                product_key = key
+                product_check = 1
+        if product_check:
             product = Product.objects.filter(
-                brand=brand_name[0].upper())
-        elif len(brand_name) != 1:
-            if any(char.isdigit() for char in search_product):
-                price_limit = int(price_limit)
-                for key, val in PRODUCT_CHOICES.items():
-                    try:
-                        if brand_name[0].lower() == val:
-                            product_key = key
-                        product = Product.objects.filter(
-                            category=product_key).filter(discounted_price__lt=price_limit)
-                    except:
-                        return redirect('noproduct')
-            else:
-                for key, val in PRODUCT_CHOICES.items():
-                    try:
-                        if brand_filter[1].lower() == val:
-                            product_key = key
-                        product = Product.objects.filter(
-                            category=product_key).filter(brand=brand_filter[0].upper())
-                    except:
-                        return redirect('noproduct')
+                category=product_key)
+        elif product_check == 0:
+            brand_name = search_product.split(" ")
+            brand_filter = brand_name
+            price_limit = brand_name.pop()
+            if len(brand_name) == 1:
+                product = Product.objects.filter(
+                    brand=brand_name[0].upper())
+            elif len(brand_name) != 1:
+                if any(char.isdigit() for char in search_product):
+                    price_limit = int(price_limit)
+                    for key, val in PRODUCT_CHOICES.items():
+                        try:
+                            if brand_name[0].lower() == val:
+                                product_key = key
+                            product = Product.objects.filter(
+                                category=product_key).filter(discounted_price__lt=price_limit)
+                        except:
+                            return redirect('noproduct')
+                else:
+                    for key, val in PRODUCT_CHOICES.items():
+                        try:
+                            if brand_filter[1].lower() == val:
+                                product_key = key
+                            product = Product.objects.filter(
+                                category=product_key).filter(brand=brand_filter[0].upper())
+                        except:
+                            return redirect('noproduct')
     return render(request, 'app/product-list.html', {'address': address, 'product': product})
+    # return render(request, 'app/product-list.html')
 
 
 def no_product(request):
@@ -407,7 +424,7 @@ def checkout(request):
     cust_id = request.GET.get('custid')
     product_id = request.GET.get('prod_id')
     delivery_date = (datetime.datetime.now() +
-                     datetime.timedelta(days=10)).strftime("%d %B %Y")                 
+                     datetime.timedelta(days=10)).strftime("%d %B %Y")
 
     try:
         if request.META['HTTP_REFERER'] == 'http://127.0.0.1:8000/payment/'+product_id+"?custid="+cust_id:
