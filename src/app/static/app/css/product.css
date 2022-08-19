@@ -381,15 +381,6 @@
         color: #000000;
     }
 
-    .item {
-        border: 2px solid red;
-    }
-
-    .item img{
-        width: 100%;
-        border: 2px solid rebeccapurple;
-    }
-
     .product-color {
         display: grid;
         gap: 10px;

@@ -19,22 +19,25 @@ $(function () {
 
 
 // Product Carousel
-$('.owl-carousel').owlCarousel({
-    loop: true,
-    margin: 0,
-    dots: true,
-    responsive: {
-        0: {
-            items: 1
-        },
-        600: {
-            items: 3
-        },
-        1000: {
-            items: 5
-        }
+jQuery('.owl-carousel').owlCarousel({
+    // Here goes default configs
+    responsive : {
+      // breakpoint from 0 up
+      0 : {
+        stagePadding: 0,
+        loop: false,
+        responsiveClass: true,
+        dots: true,
+        nav: true,
+        autoHeight: true,
+        items: 1
+      },
+      // breakpoint from 768 up
+    //   100 : {
+    //     items: 1
+    //   }
     }
-})
+  });
 
 // List-item
 // document.getElementById('show-more').addEventListener('click', () => {
