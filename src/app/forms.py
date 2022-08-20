@@ -1,12 +1,9 @@
-from dataclasses import fields
-from importlib.metadata import files
-from pyexpat import model
 from django import forms
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm, UsernameField, PasswordChangeForm, PasswordResetForm, SetPasswordForm, UserChangeForm
 from django.utils.translation import gettext_lazy as _
 from django.contrib.auth import password_validation
-from .models import Customer, Product, Product_Img_Desktop
+from .models import Customer, Product
 
 
 class CustomerRegistrationForm(UserCreationForm):
