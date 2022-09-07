@@ -1,4 +1,4 @@
-# Getting Started
+## Getting Started
 
 # Amazon Clone - An E-Commerce Website
 
@@ -11,5 +11,5 @@
 * Type command `python manage.py runserver`. This command will run the python server locally.
 
 ### That's it.
-#Enjoy !!
+# Enjoy !!
 #### Don't forget to Leave a STAR.
