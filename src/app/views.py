@@ -1,4 +1,3 @@
-from unicodedata import category
 from django.http import JsonResponse
 from django.shortcuts import redirect, render
 from django.views import View
